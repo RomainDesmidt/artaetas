@@ -49,3 +49,16 @@
   padding-left: 0px;
   padding-right: 0px;
 }
+
+@media (min-width: 576px) {
+
+  .navbar-lewagon .navbar-brand img {
+  // width: 40px;
+  width: 200px;
+}
+
+.navbar-lewagon .navbar-buffer {
+  display:none;
+}
+
+}
