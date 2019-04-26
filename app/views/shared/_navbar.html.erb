@@ -4,11 +4,18 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+  <%= link_to "#", class: "navbar-buffer" do %>
+  <% end %>
   <%= link_to "#", class: "navbar-brand" do %>
-   <!--  <= image_tag "https://www.graphicsprings.com/filestorage/stencils/79305d295538fd80126b1880b7120ce8.svg" > -->
-   <%= image_tag "artaetas_noir.svg" %>
-    <% end %>
+   <%= image_tag "artaetas_noir_seul.svg", class: "centered-img" %>
+  <% end %>
 
+  <%= link_to "#", class: "navbar-item d-sm-none" do %>
+   <%= image_tag "recherche.svg", class: "centered-img" %>
+  <% end %>
+  <%= link_to "#", class: "navbar-item d-sm-none" do %>
+   <%= image_tag "tiers.svg", class: "centered-img" %>
+  <% end %>
 
 
 
