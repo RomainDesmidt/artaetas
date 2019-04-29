@@ -13,7 +13,7 @@
 
 .navbar-lewagon .navbar-brand svg {
   // width: 40px;
-  width: 100%;
+  width: 70%;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -24,14 +24,24 @@
 //   width: 43%;
 // }
 
+
+.navbar-loupe svg {
+  width: 40%;
+}
+
+.navbar-tiers svg {
+  width: 51%;
+}
 .navbar-lewagon .navbar-item svg {
   // width: 40px;
-  width: 43%;
+  // width: 43%;
   height: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
+
+
 
 .navbar-lewagon .navbar-item svg path {
  fill: #7d7d7d;
@@ -63,6 +73,7 @@
 
 .navbar-lewagon .navbar-buffer {
   flex: 0 0 18%;
+  height: 50px;
 }
 
 .navbar-toggler {
@@ -72,10 +83,12 @@
 }
 
 .navbar {
-  box-shadow: 0px 2px 12px #aaa;
+  box-shadow: 0px 2px 12px #000;
   background-color: #fafafa;
 
 }
+
+
 
 .navbar-item img {
   fill: green !important;
