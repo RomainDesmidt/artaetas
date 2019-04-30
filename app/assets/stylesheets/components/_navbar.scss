@@ -26,7 +26,15 @@
 //   width: 43%;
 // }
 
+.navbar-toggler {
+  flex: 0 0 10%;
+  height: 33px;
+  margin-left: 10px;
+}
 
+.navbar-toggler-icon {
+  height: 100%;
+}
 
 
 .navbar-tiers svg {
@@ -87,7 +95,7 @@
 }
 
 .navbar-lewagon .navbar-buffer {
-  flex: 0 0 18%;
+  flex: 0 0 13%;
   height: 50px;
 }
 
