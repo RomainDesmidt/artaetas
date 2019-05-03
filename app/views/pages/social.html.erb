@@ -2,18 +2,32 @@
 <p>Nos hamsters travaillent d'arrache pieds, a vous confectionner, un site aux petits oignons!</p>
 <p>Repassez souvent !</p>
 
+<div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 
-<!-- <a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet"
-  data-size="large"
-  data-text="Nos Hamsters"
-  data-url="https://dev.twitter.com/web/tweet-button"
-  data-hashtags="example,demo"
-  data-via="twitterdev"
-  data-related="twitterapi,twitter">
-Tweet
-</a>
- -->
+<!-- <script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script> -->
+
 
 <!-- <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 76px; height: 28px;" title="Twitter Tweet Button" src="https://platform.twitter.com/widgets/tweet_button.2e9f365dae390394eb8d923cba8c5b11.en.html#dnt=false&amp;hashtags=Hamsters%2COignons%2CMignons&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https%3A%2F%2Fhttp://artaetasv0.herokuapp.com&amp;related=twitterapi%2Ctwitter&amp;size=l&amp;text=Nos%20Hamsters%20sont%20Malins&amp;time=1556898923306&amp;type=share&amp;url=https%3A%2F%2Fhttp://artaetasv0.herokuapp.com&amp;via=artaetas" data-url="https://dev.twitter.com/web/tweet-button"></iframe>
  -->
@@ -21,6 +35,10 @@ Tweet
 <!-- <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a> -->
 
 
+<div class="fb-share-button"
+    data-href="http://artaetasv0.herokuapp.com"
+    data-layout="standard">
+  </div>
 <a class="twitter-share-button"
   href="https://twitter.com/intent/tweet"
   data-size="large"
