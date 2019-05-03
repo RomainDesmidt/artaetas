@@ -1,3 +1,12 @@
+.avatar {
+ width: 30px;
+}
+
+.dropdown-menu {
+padding: 0px;
+}
+
+
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
@@ -132,8 +141,8 @@
 }
 
 .nav-item img {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 
 }
 
@@ -178,6 +187,11 @@ a:active {
     padding-top: 0px;
     padding-bottom: 0px;
 
+}
+
+div .dropdown {
+  position: absolute;
+  right: 5px;
 }
 
 
