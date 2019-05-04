@@ -2,14 +2,14 @@
 <p>Nos hamsters travaillent d'arrache pieds, a vous confectionner, un site aux petits oignons!</p>
 <p>Repassez souvent !</p>
 
-<div id="fb-root"></div>
+<!-- <div id="fb-root"></div>
   <script>(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
     js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
     fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
+  }(document, 'script', 'facebook-jssdk'));</script> -->
 
 <!-- <script>window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
@@ -35,19 +35,25 @@
 <!-- <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a> -->
 
 
-<div class="fb-share-button"
-    data-href="http://artaetasv0.herokuapp.com"
+<div class="flex-container">
+  <div class="fb-share-button"
+      data-href="http://artaetasv0.herokuapp.com"
+      data-size="large"
+      data-layout="button" id="button-size">
+  </div>
+  <a class="twitter-share-button"
+    href="https://twitter.com/intent/tweet"
     data-size="large"
-    data-layout="button">
+    data-text="Nos Hamsters @ Petit Oignons"
+    data-url="http://artaetasv0.herokuapp.com/social"
+    data-hashtags="art,oignons,hamsters"
+    data-via="artaetasv0"
+    data-related="artaetas,art,yaa"
+    id="button-size">
+  Tweet
+  </a>
+  <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" data-pin-media="http://artaetasv0.herokuapp.com/assets/bgv1-ad2694c49a8d55aa1fe31bbb625d46bc1d39308ffc3d05be6fc5e6c3866ee7d3.png" data-pin-description="Artaetas, Les Hamsters de l'espace" data-pin-url="http://artaetasv0.herokuapp.com"
+  id="button-size"></a>
 </div>
-<a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet"
-  data-size="large"
-  data-text="Nos Hamsters @ Petit Oignons"
-  data-url="http://artaetasv0.herokuapp.com/social"
-  data-hashtags="art,oignons,hamsters"
-  data-via="artaetasv0"
-  data-related="artaetas,art,yaa">
-Tweet
-</a>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
