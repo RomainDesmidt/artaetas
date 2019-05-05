@@ -141,8 +141,9 @@ padding: 0px;
 }
 
 .nav-item img {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: 40px;
 
 }
 
@@ -165,6 +166,19 @@ a:active {
 }
 
 
+.nav-flex-14 {
+  flex: 0 0 14%;
+  height: 50px;
+}
+
+.nav-flex-14 img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 50px;
+  padding: 5px 0;
+}
+
 
 @media (min-width: 576px) {
 
@@ -184,8 +198,8 @@ a:active {
   }
 
   .nav-item img {
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding-top:5px;
+    padding-bottom: 5px;
 
 }
 
@@ -194,6 +208,9 @@ div .dropdown {
   right: 5px;
 }
 
+.navbar-collapse {
+ margin-right: 4%;
+}
 
 }
 
