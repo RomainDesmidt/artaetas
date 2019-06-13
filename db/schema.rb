@@ -10,10 +10,103 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_21_200725) do
+ActiveRecord::Schema.define(version: 2019_06_06_140648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "annonces", force: :cascade do |t|
+    t.boolean "envente_yesno"
+    t.string "name"
+    t.integer "anneecreation"
+    t.text "description"
+    t.decimal "prix"
+    t.string "format"
+    t.string "disposition"
+    t.string "nom_artiste"
+    t.bigint "user_id"
+    t.integer "user_id_artiste"
+    t.integer "hauteur"
+    t.integer "largeur"
+    t.integer "profondeur"
+    t.boolean "oeuvre_unique"
+    t.integer "oeuvre_limite"
+    t.boolean "oeuvre_illimite"
+    t.boolean "certificat_authenticite"
+    t.boolean "facture_achat"
+    t.boolean "encadrement"
+    t.boolean "etat_neuf"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_annonces_on_user_id"
+  end
+
+  create_table "categorie_annonces", force: :cascade do |t|
+    t.bigint "categorie_id"
+    t.bigint "annonce_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["annonce_id"], name: "index_categorie_annonces_on_annonce_id"
+    t.index ["categorie_id"], name: "index_categorie_annonces_on_categorie_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "couleur_annonces", force: :cascade do |t|
+    t.bigint "couleur_id"
+    t.bigint "annonce_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["annonce_id"], name: "index_couleur_annonces_on_annonce_id"
+    t.index ["couleur_id"], name: "index_couleur_annonces_on_couleur_id"
+  end
+
+  create_table "couleurs", force: :cascade do |t|
+    t.string "couleur_dominante"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "courant_annonces", force: :cascade do |t|
+    t.bigint "courant_id"
+    t.bigint "annonce_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["annonce_id"], name: "index_courant_annonces_on_annonce_id"
+    t.index ["courant_id"], name: "index_courant_annonces_on_courant_id"
+  end
+
+  create_table "courant_users", force: :cascade do |t|
+    t.bigint "courant_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["courant_id"], name: "index_courant_users_on_courant_id"
+    t.index ["user_id"], name: "index_courant_users_on_user_id"
+  end
+
+  create_table "courants", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.date "date"
+    t.boolean "oeuvre_vendue"
+    t.bigint "annonce_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["annonce_id"], name: "index_orders_on_annonce_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +116,37 @@ ActiveRecord::Schema.define(version: 2019_04_21_200725) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "surname"
+    t.string "lastname"
+    t.boolean "afficher_identite"
+    t.boolean "afficher_email"
+    t.string "tel"
+    t.boolean "afficher_tel"
+    t.string "paysresidence"
+    t.string "villeresidence"
+    t.integer "codepostal"
+    t.string "instagram"
+    t.string "facebook"
+    t.string "website"
+    t.text "description"
+    t.boolean "masquefavoris"
+    t.string "statut"
+    t.boolean "masquepublication"
+    t.integer "nbvue_profil"
+    t.boolean "confirmation_webmaster"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "annonces", "users"
+  add_foreign_key "categorie_annonces", "annonces"
+  add_foreign_key "categorie_annonces", "categories", column: "categorie_id"
+  add_foreign_key "couleur_annonces", "annonces"
+  add_foreign_key "couleur_annonces", "couleurs"
+  add_foreign_key "courant_annonces", "annonces"
+  add_foreign_key "courant_annonces", "courants"
+  add_foreign_key "courant_users", "courants"
+  add_foreign_key "courant_users", "users"
+  add_foreign_key "orders", "annonces"
+  add_foreign_key "orders", "users"
 end
