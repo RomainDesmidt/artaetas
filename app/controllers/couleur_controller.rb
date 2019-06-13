@@ -1,0 +1,2 @@
+class CouleurController < ApplicationController
+end
