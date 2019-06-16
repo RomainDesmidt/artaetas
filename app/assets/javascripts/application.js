@@ -99,7 +99,7 @@ function getRandomSize(min, max) {
 
 function appendCat(container) {
 var allImages = "";
-for (var ka = 0; ka < 10; ka++) {
+for (var ka = 0; ka < 4; ka++) {
   var width = getRandomSize(200, 400);
   var height =  getRandomSize(200, 400);
   allImages += '<img src="https://placekitten.com/'+width+'/'+height+'" alt="pretty kitty">';
@@ -114,5 +114,15 @@ appendCat('photos2');
 appendCat('photos3');
 appendCat('photos4');
 appendCat('photos5');
+appendCat('photos6');
+appendCat('photos7');
+appendCat('photos8');
+appendCat('photos9');
+appendCat('photos10');
+appendCat('photos11');
+appendCat('photos12');
+appendCat('photos13');
+appendCat('photos14');
+appendCat('photos15');
 
 
