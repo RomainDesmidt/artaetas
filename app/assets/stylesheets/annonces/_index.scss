@@ -17,8 +17,8 @@ body { overflow-x: hidden }
   transform: translate(calc(var(--i, 0)/var(--n)*-100%));
 
   div {
-    width: 100%; // fallback
-    width: calc(100%/var(--n));
+    width: 33%; // fallback
+    width: calc(33%/var(--n));
     user-select: none;
     pointer-events: none;
     border-style: solid 5px;
@@ -32,11 +32,11 @@ body { overflow-x: hidden }
    /* Prevent vertical gaps */
    line-height: 0;
 
-   -webkit-column-count: 5;
+   -webkit-column-count: 2;
    -webkit-column-gap:   20px;
-   -moz-column-count:    5;
+   -moz-column-count:    2;
    -moz-column-gap:      20px;
-   column-count:         5;
+   column-count:         2;
    column-gap:           20px;
 }
 
@@ -47,34 +47,48 @@ body { overflow-x: hidden }
   padding: 10px 0px;
 }
 
-// @media (max-width: 1200px) {
-//   [id*=photos] {
-//   -moz-column-count:    4;
-//   -webkit-column-count: 4;
-//   column-count:         4;
-//   }
-// }
-// @media (max-width: 1000px) {
-//   [id*=photos] {
-//   -moz-column-count:    3;
-//   -webkit-column-count: 3;
-//   column-count:         3;
-//   }
-// }
-// @media (max-width: 800px) {
-//   [id*=photos] {
-//   -moz-column-count:    2;
-//   -webkit-column-count: 2;
-//   column-count:         2;
-//   }
-// }
-// @media (max-width: 400px) {
-//   [id*=photos] {
-//   -moz-column-count:    1;
-//   -webkit-column-count: 1;
-//   column-count:         1;
-//   }
-// }
+@media (max-width: 1200px) {
+  .container-annonces div {
+    width: 33%; // fallback
+    width: calc(33%/var(--n));
+  }
+  // [id*=photos] {
+  // -moz-column-count:    4;
+  // -webkit-column-count: 4;
+  // column-count:         4;
+  // }
+}
+@media (max-width: 1000px) {
+
+.container-annonces div {
+    width: 50%; // fallback
+    width: calc(50%/var(--n));
+  }
+  // [id*=photos] {
+  // -moz-column-count:    3;
+  // -webkit-column-count: 3;
+  // column-count:         3;
+  // }
+}
+@media (max-width: 800px) {
+
+  .container-annonces div {
+    width: 100%; // fallback
+    width: calc(100%/var(--n));
+  }
+  // [id*=photos] {
+  // -moz-column-count:    2;
+  // -webkit-column-count: 2;
+  // column-count:         2;
+  // }
+}
+@media (max-width: 400px) {
+  // [id*=photos] {
+  // -moz-column-count:    1;
+  // -webkit-column-count: 1;
+  // column-count:         1;
+  // }
+}
 
 // body {
 //   margin: 0;
