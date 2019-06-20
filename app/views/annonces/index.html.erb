@@ -1,4 +1,4 @@
-<div class='container-annonces'>
+<!-- <div class='container-annonces'>
 <div><section id="photos1"></section></div>
 <div><section id="photos2"></section></div>
 <div><section id="photos3"></section></div>
@@ -14,4 +14,15 @@
 <div><section id="photos13"></section></div>
 <div><section id="photos14"></section></div>
 <div><section id="photos15"></section></div>
+</div> -->
+<div style="display: flex; flex-direction: column; flex-flow: nowrap;">
+  <% @annonces.each do |t| %>
+  <div style="">
+    <%= cl_image_tag t.photo, height: 300, width: 400, crop: :fill %>
+    <br>
+    <%= t.name %>
+    <br>
+    <%= t.description%>
+  </div>
+  <% end %>
 </div>
