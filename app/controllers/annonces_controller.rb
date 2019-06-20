@@ -13,7 +13,7 @@ class AnnoncesController < ApplicationController
     @annonce = current_user.annonces.new(annonce_params)
     @annonce_params = annonce_params
     if  @annonce.save
-      # redirect_to '/'
+      redirect_to '/annonces'
       flash[:error] = "it worked"
     else
       render 'new'
