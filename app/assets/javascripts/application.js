@@ -109,20 +109,20 @@ div.innerHTML += allImages;
 }
 
 
-appendCat('photos1');
-appendCat('photos2');
-appendCat('photos3');
-appendCat('photos4');
-appendCat('photos5');
-appendCat('photos6');
-appendCat('photos7');
-appendCat('photos8');
-appendCat('photos9');
-appendCat('photos10');
-appendCat('photos11');
-appendCat('photos12');
-appendCat('photos13');
-appendCat('photos14');
-appendCat('photos15');
+// appendCat('photos1');
+// appendCat('photos2');
+// appendCat('photos3');
+// appendCat('photos4');
+// appendCat('photos5');
+// appendCat('photos6');
+// appendCat('photos7');
+// appendCat('photos8');
+// appendCat('photos9');
+// appendCat('photos10');
+// appendCat('photos11');
+// appendCat('photos12');
+// appendCat('photos13');
+// appendCat('photos14');
+// appendCat('photos15');
 
 
