@@ -8,4 +8,5 @@ class Annonce < ApplicationRecord
   has_many :courants, through: :courant_annonces
   has_one  :order
 
+  mount_uploader :photo, PhotoUploader
 end
