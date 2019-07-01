@@ -1,0 +1,3 @@
+<% @users.each do |u| %>
+<%= link_to u.email, "/users/#{u.id}" %>
+<% end %>
