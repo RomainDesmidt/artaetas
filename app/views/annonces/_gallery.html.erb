@@ -1,0 +1,66 @@
+<!-- <div class='container-annonces'>
+<div><section id="photos1"></section></div>
+<div><section id="photos2"></section></div>
+<div><section id="photos3"></section></div>
+<div><section id="photos4"></section></div>
+<div><section id="photos5"></section></div>
+<div><section id="photos6"></section></div>
+<div><section id="photos7"></section></div>
+<div><section id="photos8"></section></div>
+<div><section id="photos9"></section></div>
+<div><section id="photos10"></section></div>
+<div><section id="photos11"></section></div>
+<div><section id="photos12"></section></div>
+<div><section id="photos13"></section></div>
+<div><section id="photos14"></section></div>
+<div><section id="photos15"></section></div>
+</div> -->
+<div class='container-annonces'>
+  <div class='annonce-cont-4'>
+
+    <div class='annonce-column'>
+      <div>
+        <%= cl_image_tag @annonces.find(1).photo %>
+        <br>
+        <%= @annonces.find(1).name %>
+        <br>
+        <%= @annonces.find(1).description %>
+        <br>
+      </div>
+      <div>
+        <%= cl_image_tag @annonces.find(2).photo %>
+        <br>
+        <%= @annonces.find(2).name %>
+        <br>
+        <%= @annonces.find(2).description %>
+      </div>
+    </div>
+    <div class='annonce-column'>
+      <div>
+        <%= cl_image_tag @annonces.find(3).photo %>
+        <br>
+        <%= @annonces.find(3).name %>
+        <br>
+        <%= @annonces.find(3).description %>
+        <br>
+      </div>
+      <div>
+        <%= cl_image_tag @annonces.find(4).photo %>
+        <br>
+        <%= @annonces.find(4).name %>
+        <br>
+        <%= @annonces.find(4).description %>
+      </div>
+    </div>
+
+
+  <!-- < @annonces.each do |t| >
+    < cl_image_tag t.photo, height: 300, width: 400, crop: :fill >
+    <br>
+    < t.name >
+    <br>
+    < t.description>
+  < end > -->
+  </div>
+
+</div>

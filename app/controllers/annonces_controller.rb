@@ -20,7 +20,24 @@ class AnnoncesController < ApplicationController
     end
   end
 
+  def search
+    @annonces = Annonce.where(name: 'Garboulet')
+  end
 
+
+  def show
+    @annonces = Annonce.find(params[:id])
+  end
+
+  def edit
+    @annonce = Annonce.find(params[:id])
+  end
+
+  def update
+    @annonce = Annonce.find(params[:id])
+    @annonce.update(annonce_params) # We'll see that in a moment.
+    redirect_to ('/annonces')
+  end
 
   private
 

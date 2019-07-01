@@ -21,10 +21,8 @@
       <div class='annonce-column'>
     <% end %>
       <div>
-          <%= cl_image_tag t.photo %>
-        <%= link_to "annonces/#{t.id}" do %>
+        <%= cl_image_tag t.photo %>
         <p class='p-titre'><%= t.name %></p>
-        <% end %>
         <p class='p-description'><%= t.description %></p>
       </div>
     <% i += 1 %>

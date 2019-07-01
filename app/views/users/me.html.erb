@@ -1,0 +1,10 @@
+<% if user_signed_in? %>
+  <%= current_user.email %>
+<% end %>
+
+  <% if current_user.annonces.count > 0 %>
+    <% current_user.annonces.each do |a| %>
+    <p><%= link_to a.name, "/annonces/#{a.id}" %>
+    <%= a.description %> <%= link_to "Edit", "/annonces/#{a.id}/edit"%></p>
+  <% end %>
+<% end %>

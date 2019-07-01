@@ -1,0 +1,8 @@
+<%= link_to "Liste Users", users_path %>
+<br>
+<%= @user.email %>
+<br>
+<% @user.annonces.each do |a| %>
+<p><%= link_to a.name, "/annonces/#{a.id}" %>
+<%= a.description %></p>
+<% end %>
