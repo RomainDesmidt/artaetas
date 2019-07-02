@@ -1,3 +1,34 @@
+<div class="aa-show-bg">
+  <div class="aa-show-container">
+    <div class="aa-show-detailannonce">
+      <div class="aa-show-detailannonce-photo" id="aa-show-nopaddingtop">
         <%= cl_image_tag @annonces.photo %>
-        <p class='p-titre'><%= @annonces.name %></p>
-        <p class='p-description'><%= @annonces.description %></p>
+      </div>
+      <div class="aa-show-detailannonce-titre aa-show-minheight aa-show-marginbottom">
+        <b><p class='aa-show-titre'><%= @annonces.name %></p></b>
+        <p class=''><%= @annonces.prix %>€</p>
+        <p class=''><%= @annonces.created_at.to_date %></p>
+      </div>
+      <div class="aa-show-detailannonce-criteres aa-show-border aa-show-minheight aa-show-marginbottom">
+        <b><p>Criteres</p></b>
+        <p>Dimensions (h x l x p): <%= @annonces.hauteur %> X <%= @annonces.largeur %> X <%= @annonces.profondeur %></p>
+        <p>Format: <%= @annonces.format %></p>
+        <p>disposition: <%= @annonces.disposition %></p>
+        <p>oeuvre limite:<%= @annonces.oeuvre_limite %></p>
+        <p>oeuvre illimite:<%= @annonces.oeuvre_illimite ? "OUI" : "NON" %></p>
+        <p>certificat d'authenticite:<%= @annonces.certificat_authenticite ? "OUI" : "NON" %></p>
+        <p>facture d'achat:<%= @annonces.facture_achat ? "OUI" : "NON" %></p>
+        <p>encadrement:<%= @annonces.encadrement ? "OUI" : "NON" %></p>
+        <p>etat neuf:<%= @annonces.etat_neuf ? "OUI" : "NON" %></p>
+      </div>
+      <div class="aa-show-detailannonce-description aa-show-border aa-show-minheight aa-show-marginbottom">
+      <div class='aa-show-description'><b><p>Description</p></b><p><%= @annonces.description %></p></div>
+      </div>
+    </div>
+    <div class="aa-show-detailuser">
+      <div class="aa-show-detailuser-contact aa-show-minheight">
+        <p><%= @annonces.user.email %></p>
+      </div>
+    </div>
+  </div>
+</div>
