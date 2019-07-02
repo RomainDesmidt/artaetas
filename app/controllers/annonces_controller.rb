@@ -13,7 +13,7 @@ class AnnoncesController < ApplicationController
     @annonce = current_user.annonces.new(annonce_params)
     @annonce_params = annonce_params
     if  @annonce.save
-      redirect_to '/annonces'
+      redirect_to @annonce
       flash[:error] = "it worked"
     else
       render 'new'
@@ -36,13 +36,13 @@ class AnnoncesController < ApplicationController
   def update
     @annonce = Annonce.find(params[:id])
     @annonce.update(annonce_params) # We'll see that in a moment.
-    redirect_to ('/annonces')
+    redirect_to @annonce
   end
 
   private
 
   def annonce_params
-    params.require(:annonce).permit(:name, :description, :photo, :photo_cache , :user_id)
+    params.require(:annonce).permit(:name, :description, :photo, :photo_cache , :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf)
   end
 end
 
