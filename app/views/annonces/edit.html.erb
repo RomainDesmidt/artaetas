@@ -1,9 +1,39 @@
-<%= simple_form_for(@annonce) do |f| %>
-  <!-- [...] -->
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :photo %>
-  <%= f.input :photo_cache, as: :hidden %>
-  <%= f.submit "Modifier l'annonce", class: "btn btn-primary" %>
-  <!-- [...] -->
-<% end %>
+<div class="aa-new-bg">
+  <div class="aa-new-container">
+    <%= simple_form_for(@annonce) do |f| %>
+    <div class="aa-new-accroche">Deposer une annonce</div>
+
+    <div class="aa-new-containerfield">
+      <div class="aa-new-titrefield">Votre Annonce</div>
+      <div class="aa-new-vafield">
+        <!-- [...] -->
+        <%= f.input :name %>
+        <%= f.input :description, placeholder: "Seule la premiere ligne apparait dans l'index max 50 caracteres" %>
+        <%= f.input :prix, placeholder: "€", input_html: { class: 'aa-textalignright' } %>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
+        <!-- [...] -->
+      </div>
+    </div>
+
+    <div class="aa-new-containerfield">
+      <div class="aa-new-titrefield">Vos Criteres</div>
+      <div class="aa-new-vafield">
+      <%= f.input :format , placeholder: "" %>
+      <%= f.input :disposition, placeholder: "Portrait, Paysage" %>
+      <%= f.input :hauteur, placeholder: "cm", input_html: { class: 'aa-textalignright' } %>
+      <%= f.input :largeur, placeholder: "cm", input_html: { class: 'aa-textalignright' } %>
+      <%= f.input :profondeur, placeholder: "cm", input_html: { class: 'aa-textalignright' } %>
+      <%= f.input :oeuvre_limite, placeholder: "nombre d'oeuvre editee" %>
+      <%= f.input :oeuvre_unique %>
+      <%= f.input :oeuvre_illimite %>
+      <%= f.input :certificat_authenticite %>
+      <%= f.input :facture_achat %>
+      <%= f.input :encadrement %>
+      <%= f.input :etat_neuf %>
+      </div>
+    </div>
+    <%= f.submit "Modifier l'annonce", class: "btn btn-primary aa-mobile-btn" %>
+    <% end %>
+  </div>
+</div>

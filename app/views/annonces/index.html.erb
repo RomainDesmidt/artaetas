@@ -25,7 +25,7 @@
         <%= link_to "annonces/#{t.id}" do %>
         <p class='p-titre'><%= t.name %></p>
         <% end %>
-        <p class='p-description'><%= t.description %></p>
+        <p class='p-description'><%= t.description.lines.first[0,50] %></p>
       </div>
     <% i += 1 %>
     <% j += 1 %>
