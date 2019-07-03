@@ -120,7 +120,7 @@ a:focus { text-decoration: none}
   width: 100%; // fallback
   width: calc(var(--n)*100%);
   // height: 50vw;
-  height: 50vw;
+  height: 34vw;
   max-height: 100vh;
   transform: translate(calc(var(--i, 0)/var(--n)*-100%));
   background-color: #ECECEC;
