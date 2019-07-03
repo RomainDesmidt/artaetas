@@ -23,9 +23,9 @@
       <div>
           <%= cl_image_tag t.photo %>
         <%= link_to "annonces/#{t.id}" do %>
-        <p class='p-titre'><%= t.name.lines.first[0,30] %></p>
+        <p class='p-titre'><%= t.name.lines.first[0,20] %></p>
         <% end %>
-        <p class='p-description'><%= t.description.lines.first[0,50] %></p>
+        <p class='p-description'><%= t.description.lines.first[0,30] %></p>
       </div>
     <% i += 1 %>
     <% j += 1 %>
