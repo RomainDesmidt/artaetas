@@ -21,7 +21,7 @@
       <div class='annonce-column'>
     <% end %>
       <div class="aa-annonce-card">
-          <%= cl_image_tag t.photo %>
+          <%= cl_image_tag t.photo, { class: "aa-annonce-card-image"} %>
         <div class="aa-annonce-card-texte">
         <%= link_to "annonces/#{t.id}" do %>
         <p class='p-titre'><%= t.name.lines.first[0,20] %></p>

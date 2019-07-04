@@ -175,7 +175,7 @@ p {
   display: flex;
   flex-direction: column;
 
-  flex: 1 0 30%;
+  flex: 1 1 auto;
 }
 
 .annonce-column .aa-annonce-card:first-child {
@@ -190,7 +190,7 @@ p {
 
 .annonce-column .aa-annonce-card:first-child {
   // margin-bottom: 40px;
-  // margin-bottom: 1vw;
+   margin-bottom: 5px;
 }
 
 .aa-annonce-card-texte {
@@ -203,10 +203,10 @@ p {
   max-width: 100%;
   min-width: 100%;
   // max-height:100%;
-  min-height: 70%;
-  max-height: 90%;
+  min-height: 87%;
+  max-height: 100%;
   flex: 0 1 auto;
-  object-fit: cover;
+  object-fit: fill;
 
 
 }
@@ -262,7 +262,7 @@ p {
 
   .annonce-column div:first-child {
   // margin-bottom: 40px;
-  // margin-bottom: 5vw;
+  // margin-bottom: 2vw;
 }
   // [id*=photos] {
   // -moz-column-count:    2;
@@ -332,7 +332,7 @@ p {
 
 .annonce-column div:first-child {
   // margin-bottom: 40px;
-  // margin-bottom: 8vw;
+  // margin-bottom: 4vw;
 }
 
 }
