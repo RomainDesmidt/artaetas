@@ -6,9 +6,26 @@
 <p>< link_to a.name, "/annonces/#{a.id}" >
 < a.description ></p>
 < end > -->
-
+<div class="aa-me-annonce-container">
+  <div class="aa-me-show-details">
+    <div class="aa-me-show-details-encart">
+        <% if @user.afficher_email %>
+            <%=  "#{@user.email}" %>
+          <% else %>
+            <%= "User_#{@user.created_at.to_i}" %>
+          <% end %>
+          <% if @user.afficher_identite %>
+            <p><%= "#{@user.surname} #{@user.lastname}" %></p>
+          <% end %>
+          <% if @user.afficher_tel %>
+            <p><%= "#{@user.tel}" %></p>
+          <% end %>
+    </div>
+  </div>
+</div>
 <div class="aa-me-annonce-container">
       <% if @user.annonces.count > 0 %>
+      <h2><%= "#{@user.annonces.count} annonces en ligne" %></h2>
         <% @user.annonces.each do |a| %>
 
             <div class="aa-me-annonce-card">
