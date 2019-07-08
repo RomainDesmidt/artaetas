@@ -73,9 +73,11 @@
           </div>
     </div>
 <% else %>
-  <%= link_to "/users/sign_in", class: "navbar-item d-sm-none navbar-tiers" do %>
+  <!-- < link_to "", class: "navbar-item d-sm-none navbar-tiers" do > -->
+    <a href="" class="navbar-item d-sm-none navbar-tiers" data-toggle="modal" data-target="#exampleModal">
     <%= svg 'tiers' %>
-  <% end %>
+    </a>
+  <!-- < end > -->
 <% end %>
 
 
