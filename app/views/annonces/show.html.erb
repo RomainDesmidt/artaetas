@@ -27,7 +27,19 @@
     </div>
     <div class="aa-show-detailuser">
       <div class="aa-show-detailuser-contact aa-show-minheight">
-        <p><%= @annonces.user.email %></p>
+        <p>
+          <% if @annonces.user.afficher_email %>
+            <%= link_to "#{@annonces.user.email}", "/users/#{@annonces.user.id}" %>
+          <% else %>
+            <%= link_to "Profil Auteur", "/users/#{@annonces.user.id}" %>
+          <% end %>
+          <% if @annonces.user.afficher_identite %>
+            <p><%= "#{@annonces.user.surname} #{@annonces.user.lastname}" %></p>
+          <% end %>
+          <% if @annonces.user.afficher_tel %>
+            <p><%= "#{@annonces.user.tel}" %></p>
+          <% end %>
+        </p>
       </div>
     </div>
   </div>

@@ -1,0 +1,125 @@
+// MES ANNONCES
+
+.aa-me-annonce-container {
+  max-width: 1066px ;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+
+.aa-me-annonce-card {
+  flex: 1 1 100px;
+  display: flex;
+  flex-direction: raw;
+  margin-bottom: 10px;
+}
+
+.aa-me-annonce-card-detail,
+.aa-me-annonce-card-detail:hover,
+.aa-me-annonce-card-detail:link,
+.aa-me-annonce-card-detail:visited,
+.aa-me-annonce-card-detail:active {
+  text-decoration: none !important;
+  color: black;
+}
+
+.aa-me-annonce-card:last-child {
+  margin-bottom: 0px;
+}
+.aa-me-annonce-card-image {
+  flex: 0 0 240px;
+  display: flex;
+  justify-content: center;
+  background-color: #CAD1D9;
+}
+
+.aa-me-annonce-card-detail {
+  flex: 1 1 auto;
+  align-items: start;
+  background-color: white;
+}
+
+.aa-me-annonce-card-control {
+  flex: 0 1 20px;
+  align-items: end;
+  background-color: white;
+}
+
+
+
+.aa-me-annonce-card-image img{
+  object-fit: cover ;
+  height: 100px;
+}
+
+
+// MON COMPTE
+
+
+.aa-me-moncompte-container {
+  max-width: 1066px ;
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+  // width: 100%;
+}
+
+
+#myTab {
+  max-width: 1066px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.aa-me-tablematiere {
+  flex: 1 1 33% !important;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 10px;
+  top: -96px;
+}
+
+.aa-me-infoperso {
+  padding: 20px 10px;
+  flex: 1 1 66% !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.aa-me-tablematiere-item a {
+  position: fixed;
+}
+
+// .aa-me-tablematiere a:nth-child(1)
+// {
+//   top:
+// }
+
+.aa-me-infocivil,
+.aa-me-email,
+.aa-me-psw {
+margin-bottom: 10px;
+background-color: white;
+padding: 20px 0px;
+}
+
+.aa-me-email {
+
+}
+
+.aa-me-psw {
+
+}
+
+
+@media (max-width: 576px) {
+
+  .aa-me-tablematiere{
+    display: none;
+  }
+
+}
