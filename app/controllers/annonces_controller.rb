@@ -21,10 +21,10 @@ class AnnoncesController < ApplicationController
   end
 
   def search
-    @annonces = if params[:term]
-      Annonce.where('name ILIKE ?', "%#{params[:term]}%")
+    if params[:term]
+      @annonces = Annonce.where('name ILIKE ? OR description ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%")
     else
-      Annonce.all
+      @annonces = Annonce.all
     end
   end
 
