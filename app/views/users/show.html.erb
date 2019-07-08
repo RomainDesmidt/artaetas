@@ -1,8 +1,34 @@
-<%= link_to "Liste Users", users_path %>
+<!-- < link_to "Liste Users", users_path > -->
+<!-- <br>
+< @user.email >
 <br>
-<%= @user.email %>
-<br>
-<% @user.annonces.each do |a| %>
-<p><%= link_to a.name, "/annonces/#{a.id}" %>
-<%= a.description %></p>
-<% end %>
+< @user.annonces.each do |a| >
+<p>< link_to a.name, "/annonces/#{a.id}" >
+< a.description ></p>
+< end > -->
+
+<div class="aa-me-annonce-container">
+      <% if @user.annonces.count > 0 %>
+        <% @user.annonces.each do |a| %>
+
+            <div class="aa-me-annonce-card">
+            <%= link_to a, class: "aa-me-annonce-card-image" do %>
+              <!-- <div class="aa-me-annonce-card-image"> -->
+                <%= cl_image_tag a.photo %>
+              <!-- </div> -->
+            <% end %>
+            <%= link_to a, class: "aa-me-annonce-card-detail" do %>
+              <p><%= a.name %></p>
+              <p><%= a.prix %><%= "€" unless a.prix.nil? %></p>
+              <p><%= a.description.lines.first[0,30] %></p>
+            <% end %>
+
+
+            </div>
+
+        <% end %>
+      <% else %>
+        <h1>Aucune annonce trouvee</h1>
+      <% end %>
+    </div>
+  </div>

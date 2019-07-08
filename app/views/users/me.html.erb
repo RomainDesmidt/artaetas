@@ -1,10 +1,170 @@
-<% if user_signed_in? %>
-  <%= current_user.email %>
-<% end %>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link" id="annonces-tab" data-toggle="tab" href="#annonces" role="tab" aria-controls="annonces" aria-selected="false">Mes annonces</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="transactions-tab" data-toggle="tab" href="#transactions" role="tab" aria-controls="transactions" aria-selected="false">Mes transactions</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" id="compte-tab" data-toggle="tab" href="#compte" role="tab" aria-controls="compte" aria-selected="true">Mon compte</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
 
-  <% if current_user.annonces.count > 0 %>
-    <% current_user.annonces.each do |a| %>
-    <p><%= link_to a.name, "/annonces/#{a.id}" %>
-    <%= a.description %> <%= link_to "Edit", "/annonces/#{a.id}/edit"%></p>
-  <% end %>
-<% end %>
+
+
+  <div class="tab-pane fade" id="annonces" role="tabpanel" aria-labelledby="annonces-tab">
+    <div class="aa-me-annonce-container">
+      <% if current_user.annonces.count > 0 %>
+        <% current_user.annonces.each do |a| %>
+
+            <div class="aa-me-annonce-card">
+            <%= link_to a, class: "aa-me-annonce-card-image" do %>
+              <!-- <div class="aa-me-annonce-card-image"> -->
+                <%= cl_image_tag a.photo %>
+              <!-- </div> -->
+            <% end %>
+            <%= link_to a, class: "aa-me-annonce-card-detail" do %>
+              <p><%= a.name %></p>
+              <p><%= a.prix %><%= "€" unless a.prix.nil? %></p>
+              <p><%= a.description.lines.first[0,30] %></p>
+            <% end %>
+
+              <div class="aa-me-annonce-card-control">
+                <p>
+                  <!-- < link_to a.name, "/annonces/#{a.id}" > -->
+                  <!-- < a.description > -->
+                  <%= link_to "Edit", "/annonces/#{a.id}/edit"%>
+                  <%= link_to 'Supprimer',  a ,  method: :delete, data: { confirm: 'Are you sure?' } %>
+                </p>
+              </div>
+
+
+            </div>
+
+        <% end %>
+      <% else %>
+        <h1>Aucune annonce trouvee</h1>
+      <% end %>
+    </div>
+  </div>
+
+
+
+
+  <div class="tab-pane fade" id="transactions" role="tabpanel" aria-labelledby="transactions-tab">
+  Aucune transaction pour le moment!
+  </div>
+
+
+
+
+  <div class="tab-pane fade show active" id="compte" role="tabpanel" aria-labelledby="compte-tab">
+    <div class="aa-me-moncompte-container">
+      <div class="aa-me-tablematiere">
+        <div class="aa-me-tablematiere-item">
+          <a href="#infoperso">Infos personnelles</a><br>
+        </div>
+        <div class="aa-me-tablematiere-item">
+          <a href="#email"> Email </a><br>
+        </div>
+        <div class="aa-me-tablematiere-item">
+          <a href="#psw"> Mot de passe </a><br>
+        </div>
+        <div class="aa-me-tablematiere-item">
+          <%= link_to "Profil Public", "/users/#{current_user.id}" %>
+        </div>
+      </div>
+      <div class="aa-me-infoperso">
+        <div class="aa-me-infocivil">
+          <a name="infoperso"></a>
+          <h2>Mes informations personnelles</h2>
+            <%= simple_form_for(current_user, url: registration_path(current_user), html: { method: :put }) do |f| %>
+              <%= f.error_notification %>
+
+              <div class="form-inputs">
+                <%= f.input :email, required: true, autofocus: true %>
+
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                <% end %>
+                <%= f.label :surname, "Prenom" %>
+                <%= f.input :surname, hint: "votre prenom", require: false, label: false %>
+
+                <%= f.label :lastname, "Nom de famille" %>
+                <%= f.input :lastname, hint: "votre nom de famille", require: false, label: false %>
+
+                <%= f.input :afficher_identite,
+                            hint: "cocher pour que vos noms et prenoms apparaissent dans votre profil",
+                            require: false
+                            %>
+                <%= f.input :afficher_email,
+                            hint: "cocher pour que votre email apparaisse dans votre profil",
+                            require: false, default: 'false'
+                            %>
+
+                <%= f.input :tel, hint: "numero pour vous contacter", require: false %>
+                <%= f.input :afficher_tel, hint: "afficher ce numero sur votre profil", require: false %>
+
+
+                <%= f.input :paysresidence, hint: "pays de residence", require: false %>
+                <%= f.input :villeresidence, hint: "ville de residence", require: false %>
+                <%= f.input :codepostal, hint: "codepostal", require: false %>
+
+                <%= f.input :instagram, hint: "compte instagram", require: false %>
+                <%= f.input :facebook, hint: "compte facebook", require: false %>
+                <%= f.input :website, hint: "site web", require: false %>
+                <%= f.input :statut, hint: "statut de votre profil", require: false %>
+                <%= f.input :description, hint: "description de vous", require: false %>
+                <%= f.input :masquefavoris, hint: "masquer vos publications et users favoris", require: false %>
+                <%= f.input :masquepublication, hint: "masquer les annonces que vous avez cree", require: false %>
+
+              </div>
+
+
+
+            <!-- <h3>Cancel my account</h3>
+
+            <p>Unhappy? < link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete ></p> -->
+
+            <%= link_to "Back", :back %>
+
+        </div>
+        <div class="aa-me-email">
+        <a name="email"></a>
+        <h2>Mon email</h2>
+
+          <div class="form-inputs">
+            <%= f.input :email, required: true, autofocus: true %>
+          </div>
+        </div>
+        <div class="aa-me-psw">
+        <a name="psw"></a>
+        <h2>Mon mot de passe</h2>
+         <div class="form-inputs">
+           <%= f.input :password,
+                              hint: "leave it blank if you don't want to change it",
+                              required: false,
+                              input_html: { autocomplete: "new-password" } %>
+                  <%= f.input :password_confirmation,
+                              required: false,
+                              input_html: { autocomplete: "new-password" } %>
+                  <%= f.input :current_password,
+                              hint: "we need your current password to confirm your changes",
+                              required: true,
+                              input_html: { autocomplete: "current-password" } %>
+          </div>
+        </div>
+        <div class="aa-me-submit">
+          <div class="form-actions">
+            <%= f.button :submit, "Valider les information", class: "btn-primary aa-signin-btn" %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

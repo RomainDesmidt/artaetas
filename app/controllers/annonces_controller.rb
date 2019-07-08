@@ -39,6 +39,12 @@ class AnnoncesController < ApplicationController
     redirect_to @annonce
   end
 
+  def destroy
+    @annonce = Annonce.find(params[:id])
+    @annonce.destroy
+  redirect_to '/users/me'
+  end
+
   private
 
   def annonce_params
