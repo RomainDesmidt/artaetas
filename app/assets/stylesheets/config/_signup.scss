@@ -1,0 +1,51 @@
+.aa-signin-container {
+  display: flex;
+  flex-direction: row;
+  max-width: 1066px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgba(0,0,0,0.1);
+  background-color: #ffffff;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  margin-top: 30px;
+}
+
+.aa-signin-column {
+  flex: 1 1 50%;
+  padding: 10px 10px;
+}
+
+.aa-signin-form-titre {
+
+  border: solid black;
+border-width: 0px 0px 1px 0px;
+
+
+}
+
+.aa-signin-column:first-child {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5%;
+  padding-right: 2%;
+}
+
+.aa-signin-accroche {
+  flex: 1 1 auto;
+}
+
+.aa-signin-laiusdetail {
+  flex: 1 1 auto;
+}
+
+.aa-signin-btn {
+  width: 100%;
+}
+
+@media (max-width: 576px) {
+  #aa-signin-hide {
+    display: none;
+  }
+
+}
