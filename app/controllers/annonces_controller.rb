@@ -21,7 +21,11 @@ class AnnoncesController < ApplicationController
   end
 
   def search
-    @annonces = Annonce.where(name: 'Garboulet')
+    @annonces = if params[:term]
+      Annonce.where('name ILIKE ?', "%#{params[:term]}%")
+    else
+      Annonce.all
+    end
   end
 
 
@@ -48,7 +52,7 @@ class AnnoncesController < ApplicationController
   private
 
   def annonce_params
-    params.require(:annonce).permit(:name, :description, :photo, :photo_cache , :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf)
+    params.require(:annonce).permit(:name, :description, :photo, :photo_cache , :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term)
   end
 end
 

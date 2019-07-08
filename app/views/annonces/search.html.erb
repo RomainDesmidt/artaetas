@@ -1,10 +1,11 @@
 <div class='aa-accroche'>
-<div class='aa-accroche-texture'>
-  <p class='p-titre p-accroche-desktop'>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "</p>
-  <p class='p-titre p-accroche-mobile'>"Artaetas, its time for art"</p>
-  <a href="" class="aa-accroche-button">QUI SOMMES NOUS?</a>
-</div>
+  <div class='aa-accroche-texture'>
+  <%= form_tag('/searchannonce/', method: :get) do %>
+  <%= text_field_tag :term %>
+  <%= submit_tag 'Search' %>
+  <% end %>
 
+  </div>
 </div>
 <div class='container-annonces'>
 
@@ -20,10 +21,14 @@
     <% if i == 0 %>
       <div class='annonce-column'>
     <% end %>
-      <div>
-        <%= cl_image_tag t.photo %>
-        <p class='p-titre'><%= t.name %></p>
-        <p class='p-description'><%= t.description %></p>
+      <div class="aa-annonce-card">
+          <%= cl_image_tag t.photo, { class: "aa-annonce-card-image"} %>
+        <div class="aa-annonce-card-texte">
+        <%= link_to "annonces/#{t.id}" do %>
+        <p class='p-titre'><%= t.name.lines.first[0,20] %></p>
+        <% end %>
+        <p class='p-description'><%= t.description.lines.first[0,30] %></p>
+        </div>
       </div>
     <% i += 1 %>
     <% j += 1 %>
@@ -38,21 +43,21 @@
   <% end %>
   <% case annonces_reste %>
   <% when 1 %>
-    <div></div>
+    <div  class="aa-annonce-card"></div>
     </div>
     <div class='annonce-column'>
-      <div></div>
-      <div></div>
+      <div class="aa-annonce-card"></div>
+      <div class="aa-annonce-card"></div>
     </div>
     </div>
   <% when 2 %>
     <div class='annonce-column'>
-      <div></div>
-      <div></div>
+      <div class="aa-annonce-card"></div>
+      <div class="aa-annonce-card"></div>
     </div>
     </div>
   <% when 3 %>
-    <div></div>
+    <div class="aa-annonce-card"></div>
     </div>
     </div>
   <% end %>
