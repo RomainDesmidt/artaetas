@@ -3,6 +3,7 @@
 
 @import "new";
 @import "show";
+@import "search";
 
 * { margin: 0 }
 
@@ -18,6 +19,7 @@ a:focus { text-decoration: none}
   height: 65px;
   width: 100%;
   position: relative;
+  margin-top: 50px;
 }
 
 .aa-accroche-button {

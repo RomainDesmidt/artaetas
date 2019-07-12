@@ -1,5 +1,18 @@
 //= require rails-ujs
 //= require_tree .
+window.onload = toggleMobile();
+
+function toggleMobile()
+{
+   document.getElementById('mobilesearch').onclick = function()
+   {
+       document.getElementById('tabmobilesearch').classList.toggle("aa-search-hidden");
+       document.getElementById('tabmobileform').classList.toggle("aa-search-mobile");
+       console.log("it worked");
+       // document.getElementById('tabmobileform2').classList.toggle("aa-search-mobile2");
+   }
+}
+
 const _C = document.querySelector('.container-annonces'),
       N = _C.children.length, NF = 30,
       TFN = {
@@ -93,20 +106,20 @@ _C.addEventListener('mouseup', move, false);
 _C.addEventListener('touchend', move, false);
 
 
-function getRandomSize(min, max) {
-  return Math.round(Math.random() * (max - min) + min);
-}
+// function getRandomSize(min, max) {
+//   return Math.round(Math.random() * (max - min) + min);
+// }
 
-function appendCat(container) {
-var allImages = "";
-for (var ka = 0; ka < 4; ka++) {
-  var width = getRandomSize(200, 400);
-  var height =  getRandomSize(200, 400);
-  allImages += '<img src="https://placekitten.com/'+width+'/'+height+'" alt="pretty kitty">';
-}
-var div = document.getElementById(container);
-div.innerHTML += allImages;
-}
+// function appendCat(container) {
+// var allImages = "";
+// for (var ka = 0; ka < 4; ka++) {
+//   var width = getRandomSize(200, 400);
+//   var height =  getRandomSize(200, 400);
+//   allImages += '<img src="https://placekitten.com/'+width+'/'+height+'" alt="pretty kitty">';
+// }
+// var div = document.getElementById(container);
+// div.innerHTML += allImages;
+// }
 
 
 // appendCat('photos1');
