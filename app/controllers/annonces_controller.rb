@@ -21,10 +21,25 @@ class AnnoncesController < ApplicationController
   end
 
   def search
-    if params[:term]
-      @annonces = Annonce.where('name ILIKE ? OR description ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%")
-    else
-      @annonces = Annonce.all
+    @pricemin = params[:pricemin]
+    @pricemax = params[:pricemax]
+    @annonces = Annonce.all
+    unless params[:term] == "Que recherchez-vous?"
+      if params[:term]
+        @annonces = Annonce.where('name ILIKE ? OR description ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%")
+      end
+    end
+    unless params[:pricemin] == ''
+      if params[:pricemin]
+        @annonces = @annonces.where("prix > ?", params[:pricemin])
+      end
+    end
+
+
+    unless params[:pricemax] == ''
+      if params[:pricemax]
+        @annonces = @annonces.where("prix < ?", params[:pricemax])
+      end
     end
   end
 

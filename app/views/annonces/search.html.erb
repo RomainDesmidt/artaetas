@@ -1,79 +1,57 @@
-<div class='aa-accroche'>
-  <div class='aa-accroche-texture'>
+<div class='aa-search-field-bg' id="tabmobileform" >
+  <div class='aa-search-field-form' id="tabmobileform2">
   <%= form_tag('/searchannonce/', method: :get) do %>
-  <%= text_field_tag :term %>
-  <%= submit_tag 'Search' %>
+  <% if params[:term] == '' || params[:term].nil? %>
+    <%= text_field_tag :term,  "Que recherchez-vous?", :class => "aa-search-field-text" %>
+  <% else %>
+    <%= text_field_tag :term,  params[:term] , :class => "aa-search-field-text" %>
+  <% end %>
+  <%= submit_tag 'Rechercher', :class => "btn btn-primary aa-search-field-form-btn" %>
+<label class="aa-search-field-label-begin">Prix entre :</label>
+  <% if params[:pricemin] == '' || params[:pricemin].nil? %>
+    <%= select_tag :pricemin,  options_for_select([[0, 0], [20, 20], [50, 50]], selected: @pricemin || nil), :class =>"aa-search-field-select", include_blank: "Prix min" %>
+  <% else %>
+    <%= select_tag :pricemin,  options_for_select([[0, 0], [20, 20], [50, 50]], selected: @pricemin || nil), :class =>"aa-search-field-select", :selected_value => @pricemin %>
+  <% end %>
+<label class="aa-search-field-label-end">et</label>
+<% if params[:pricemax] == '' || params[:pricemax].nil?%>
+   <%= select_tag :pricemax,  options_for_select([[20, 20], [50, 50], [100, 100]], selected: @pricemax || nil), :class =>"aa-search-field-select", include_blank: "Prix max"  %>
+<% else %>
+   <%= select_tag :pricemax,  options_for_select([[20, 20], [50, 50], [100, 100 ]], selected: @pricemax || nil), :class =>"aa-search-field-select", include_blank: params[:pricemax]  %>
+<% end %>
+
+
   <% end %>
 
   </div>
 </div>
-<div class='container-annonces'>
+<div class="aa-search-annonce-container">
+      <% if @annonces.count > 0 %>
+        <% @annonces.each do |a| %>
 
-  <% annonces_count = @annonces.count %>
-  <% annonces_reste = annonces_count % 4 %>
-  <% annonces_blank = 4 - annonces_reste %>
-  <% i = 0 %>
-  <% j = 0 %>
-  <% @annonces.each do |t| %>
-    <% if j == 0 %>
-      <div class='container-annonces-div annonce-cont-4'>
-    <% end %>
-    <% if i == 0 %>
-      <div class='annonce-column'>
-    <% end %>
-      <div class="aa-annonce-card">
-          <%= cl_image_tag t.photo, { class: "aa-annonce-card-image"} %>
-        <div class="aa-annonce-card-texte">
-        <%= link_to "/annonces/#{t.id}" do %>
-        <p class='p-titre'><%= t.name.lines.first[0,20] %></p>
+            <div class="aa-search-annonce-card">
+            <%= link_to a, class: "aa-search-annonce-card-image" do %>
+              <!-- <div class="aa-search-annonce-card-image"> -->
+                <%= cl_image_tag a.photo %>
+              <!-- </div> -->
+            <% end %>
+            <%= link_to a, class: "aa-search-annonce-card-detail" do %>
+              <p><%= a.name.lines.first[0,30] %></p>
+              <p><%= a.prix %><%= "€" unless a.prix.nil? %></p>
+              <p><%= a.description.lines.first[0,30] %></p>
+            <% end %>
+
+              <div class="aa-search-annonce-card-control">
+              </div>
+
+
+            </div>
+
         <% end %>
-        <p class='p-description'><%= t.description.lines.first[0,30] %></p>
-        </div>
-      </div>
-    <% i += 1 %>
-    <% j += 1 %>
-    <% if i == 2 %>
-      </div>
-      <% i = 0 %>
-    <% end %>
-    <% if j == 4 %>
-      </div>
-      <% j = 0 %>
-    <% end %>
-  <% end %>
-  <% case annonces_reste %>
-  <% when 1 %>
-    <div  class="aa-annonce-card"></div>
-    </div>
-    <div class='annonce-column'>
-      <div class="aa-annonce-card"></div>
-      <div class="aa-annonce-card"></div>
-    </div>
-    </div>
-  <% when 2 %>
-    <div class='annonce-column'>
-      <div class="aa-annonce-card"></div>
-      <div class="aa-annonce-card"></div>
-    </div>
-    </div>
-  <% when 3 %>
-    <div class="aa-annonce-card"></div>
-    </div>
-    </div>
-  <% end %>
-  </div>
+      <% else %>
+        <h1>Aucune annonce trouvee</h1>
+      <% end %>
 </div>
-<div class="aa-button">
-<div class="aa-button-decouvrir">
-<%= link_to "Decouvrir une oeuvre", { :controller => "annonces", :action => :search }, :method => :get, :class => "aa-button-link aa-decouvrir"  %></div>
-<div class="aa-button-deposer">
-<%= link_to "Deposer une oeuvre", { :controller => "annonces", :action => :new }, :method => :get, :class => "aa-button-link aa-deposer"  %></div>
+<div class="aa-search-field-mobile aa-search-hidden" id="tabmobilesearch">
 </div>
 
-<div class="aa-who">
-  <p class="aa-who-p-title">Le passage de Lorem Ipsum standard, utilisé depuis 1500</p>
-<p class="aa-who-p">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-
-<p class="aa-who-p-title">Section 1.10.32 du "De Finibus Bonorum et Malorum" de Ciceron (45 av. J.-C.)</p>
-<p class="aa-who-p">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
-</div>
