@@ -8,9 +8,20 @@ function toggleMobile()
    {
        document.getElementById('tabmobilesearch').classList.toggle("aa-search-hidden");
        document.getElementById('tabmobileform').classList.toggle("aa-search-mobile");
-       console.log("it worked");
+
        // document.getElementById('tabmobileform2').classList.toggle("aa-search-mobile2");
    }
+}
+window.onload = navbarWidth();
+window.onresize = navbarWidth();
+function navbarWidth ()
+{
+   // var bodyWidth = document.getElementById('navbar-lewagon').parentElement.width;
+   var bodyWidth = document.body.clientWidth;
+   document.getElementById('navbar-lewagon').width = bodyWidth
+   var navWidth = document.getElementById('navbar-lewagon').width
+  console.log(bodyWidth);
+  console.log(navWidth);
 }
 
 const _C = document.querySelector('.container-annonces'),
