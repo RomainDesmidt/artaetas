@@ -1,5 +1,11 @@
 //= require rails-ujs
 //= require_tree .
+
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
+
+
 window.onload = toggleMobile();
 
 function toggleMobile()
