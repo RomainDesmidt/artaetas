@@ -288,12 +288,18 @@ p {
   }
 
 .container-annonces {
-  height: 425px;
-  max-height: 100vh;
+  // height: 425px;
+  // max-height: 100vh;
+  min-height: 300px;
   transform: translate(calc(var(--i, 0)/var(--n)*-100%));
   background-color: #ECECEC;
   height: 60%;
  }
+
+.aa-accroche {
+  min-height: 70px;
+  height: 10%;
+}
 
  .aa-who {
   display: none;
