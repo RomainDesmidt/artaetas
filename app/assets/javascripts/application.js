@@ -33,17 +33,17 @@ function toggleMobile()
 const _C = document.querySelector('.container-annonces'),
       N = _C.children.length, NF = 30,
       TFN = {
-        /* can remove these if not used
-        'linear': function(k) { return k },
-        'ease-in': function(k, e = 1.675) {
-          return Math.pow(k, e)
-        },
-        'ease-out': function(k, e = 1.675) {
-          return 1 - Math.pow(1 - k, e)
-        },
-        'ease-in-out': function(k) {
-          return .5*(Math.sin((k - .5)*Math.PI) + 1)
-        }, */
+         // can remove these if not used
+        // 'linear': function(k) { return k },
+        // 'ease-in': function(k, e = 1.675) {
+        //   return Math.pow(k, e)
+        // },
+        // 'ease-out': function(k, e = 1.675) {
+        //   return 1 - Math.pow(1 - k, e)
+        // },
+        // 'ease-in-out': function(k) {
+        //   return .5*(Math.sin((k - .5)*Math.PI) + 1)
+        // },
         'bounce-out': function(k, a = 2.75, b = 1.5) {
           return 1 - Math.pow(1 - k, a)*Math.abs(Math.cos(Math.pow(k, b)*(n + .5)*Math.PI))
         }
@@ -57,7 +57,9 @@ function stopAni() {
 };
 
 function ani(cf = 0) {
-  _C.style.setProperty('--i', ini + (fin - ini)*TFN['bounce-out'](cf/anf));
+  _C.style.setProperty('--i', ini + (fin - ini);
+ // _C.style.setProperty('--i', ini + (fin - ini)*TFN['bounce-out'](cf/anf));
+ // bounce
 
   if(cf === anf) {
     stopAni();
