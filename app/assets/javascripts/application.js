@@ -57,7 +57,7 @@ function stopAni() {
 };
 
 function ani(cf = 0) {
-  _C.style.setProperty('--i', ini + (fin - ini);
+  _C.style.setProperty('--i', ini + (fin - ini));
  // _C.style.setProperty('--i', ini + (fin - ini)*TFN['bounce-out'](cf/anf));
  // bounce
 
