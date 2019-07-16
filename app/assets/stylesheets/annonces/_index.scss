@@ -370,7 +370,7 @@ p {
 
    .aa-button {
     height: 50px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     height: 15%;
    }
 
@@ -439,12 +439,13 @@ p {
 
 
   .aa-button-gros {
-    font-size: 2em;
+    font-size: 1.2em;
     align-self: center;
   }
 
   .aa-button-petit {
-    font-size: 1.5em;
+    font-size: 0.8em;
+
   }
 
   .aa-button-text {
@@ -454,7 +455,7 @@ p {
     text-align: center;
     justify-content: center;
     align-content: center;
-    line-height: 1.4em;
+    line-height: 1em;
   }
 
 }
