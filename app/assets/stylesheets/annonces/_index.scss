@@ -223,6 +223,7 @@ p {
 }
 
 .p-description {
+  // width: 87%;
   font-size: xx-small;
   // white-space: nowrap;
   // overflow: hidden;
@@ -285,6 +286,7 @@ p {
   flex: 0 0 10%;
   background-color: white;
   z-index: 1;
+  width: 100%;
 }
 
 .aa-annonce-card img{
