@@ -217,11 +217,16 @@ p {
 .p-titre {
 
   font-size: xx-small;
-
+  // white-space: nowrap;
+  // text-overflow: ellipsis;
+   // overflow: hidden;
 }
 
 .p-description {
   font-size: xx-small;
+  // white-space: nowrap;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
 }
 
 .container-annonces-div {
@@ -250,12 +255,13 @@ p {
 }
 
 .aa-annonce-card {
-  background-color: #ececec;
+  // background-color: #ececec;
   // max-height: 70%;
   width: 100%;
   display: flex;
   flex-direction: column;
-
+  padding: 5px;
+  background-color: white;
   flex: 1 1 auto;
 }
 
