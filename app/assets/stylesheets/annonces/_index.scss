@@ -101,7 +101,7 @@ a:focus { text-decoration: none}
 
 .aa-button-symb-blue,
 .aa-button-symb-white {
-  flex: 0 0 33%;
+  flex: 0 1 20%;
   align-self: center;
   display: flex;
   align-items: flex-end;
@@ -115,23 +115,30 @@ a:focus { text-decoration: none}
   justify-content: center;
   align-content: center;
   line-height: 1.4em;
+  white-space: nowrap;
 }
 
-.aa-button-symb-blue svg,
-.aa-button-symb-white svg {
+.aa-button-symb-blue a svg,
+.aa-button-symb-white a svg {
   width: 30px !important;
   height: 30px !important;
   margin-left: auto;
 }
 
 
+.aa-button-symb-blue a,
+.aa-button-symb-white a {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
 
 
-.aa-button-symb-blue svg path {
+.aa-button-symb-blue a svg path {
  fill: #4787B6;
 }
 
-.aa-button-symb-white svg path {
+.aa-button-symb-white a svg path {
  fill: white;
 }
 .aa-button-gros {
