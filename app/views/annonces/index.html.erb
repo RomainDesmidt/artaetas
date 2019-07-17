@@ -67,9 +67,9 @@
 </div>
 
 <div class="aa-button">
-  <div class="aa-button-decouvrir">
+  <div class="aa-button-decouvrir" id="aa-decouvrir">
     <div class="aa-button-symb-blue">
-      <%= svg 'attribut' %>
+      <a href="/searchannonce"><%= svg 'attribut' %></a>
     </div>
     <div class="aa-button-text">
       <div class="aa-button-gros">
@@ -82,9 +82,9 @@
    <!-- link_to "Decouvrir une oeuvre", { :controller => "annonces", :action => :search }, :method => :get, :class => "aa-button-link aa-decouvrir"  >
      -->
   </div>
-  <div class="aa-button-deposer">
+  <div class="aa-button-deposer" id="aa-deposer">
     <div class="aa-button-symb-white">
-      <%= svg 'archiver' %>
+      <a href="/annonces/new" ><%= svg 'archiver' %></a>
     </div>
     <div class="aa-button-text">
       <div class="aa-button-gros">

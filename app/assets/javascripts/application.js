@@ -30,6 +30,18 @@ function toggleMobile()
 //   console.log(navWidth);
 // }
 
+document.getElementById('aa-decouvrir').onclick = function()
+{
+  window.location = this.querySelector("a").href;
+}
+
+document.getElementById('aa-deposer').onclick = function()
+{
+  window.location = this.querySelector("a").href;
+}
+
+
+
 const _C = document.querySelector('.container-annonces'),
       N = _C.children.length, NF = 30,
       TFN = {
