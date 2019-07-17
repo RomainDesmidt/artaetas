@@ -180,10 +180,42 @@ a:focus { text-decoration: none}
   background-color: white;
   height: 28%;
 }
+.aa-who-modal-title {
+  text-align: center;
+  width: 100%;
+}
+
+.aa-who,
+.aa-who-modal {
+   text-align: center;
+}
+
+.aa-who svg,
+.aa-who-modal svg {
+  max-width: 125px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.aa-who h6,
+.aa-who-modal h6 {
+  margin-top: 10px;
+}
+
+
 
 .aa-who-p {
   font-size: xx-small;
   text-align: center;
+}
+
+.aa-who-footer {
+  font-size: xx-small;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.aa-whoo-footer-modal {
+  margin-top: 5px;
 }
 
 .aa-who-p-title {
