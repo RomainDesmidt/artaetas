@@ -286,7 +286,7 @@ p {
    // overflow: hidden;
 }
 
-.p-accroche-desktop {
+.p-accroche-desktop p {
   font-size: 13px;
   font-weight: 500;
 }
@@ -497,11 +497,15 @@ p {
    .p-accroche-desktop { display: none; }
    .p-accroche-mobile {
      display: block;
+
+
+  }
+
+  .p-accroche-mobile p {
     font-weight: 500;
     font-size: 9px;
     height: 100%;
     line-height: 13px !important;
-
   }
 
   .aa-accroche-texture {
