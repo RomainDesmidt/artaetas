@@ -496,15 +496,17 @@ p {
 
    .p-accroche-desktop { display: none; }
    .p-accroche-mobile {
-    display: inline;
+     display: block;
     font-weight: 500;
     font-size: 9px;
     height: 100%;
+    line-height: 13px !important;
+
   }
 
   .aa-accroche-texture {
     padding-bottom: 10px;
-    padding-top: 0px;
+    // padding-top: 0px;
   }
 
   .aa-accroche-button {
