@@ -287,7 +287,7 @@ p {
 }
 
 .p-accroche-desktop {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
 }
 
@@ -495,7 +495,16 @@ p {
    }
 
    .p-accroche-desktop { display: none; }
-   .p-accroche-mobile { display: inline;}
+   .p-accroche-mobile {
+    display: inline;
+    font-weight: medium;
+    font-size: 9px;
+    height: 100%;
+  }
+
+  .aa-accroche-texture {
+    padding-bottom: 10px;
+  }
 
   .aa-accroche-button {
     border-width: 1px;
