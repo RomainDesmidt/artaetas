@@ -23,6 +23,21 @@ padding: 0px;
   // margin-top: 1px !important;
 
 }
+
+.aa-nav-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.aa-nav-item svg {
+  width: 20px;
+  height: 20px;
+  margin: 16px 0px 16px 5px;
+}
+
+.aa-nav-item svg path {
+  fill: #7E7E7E;
+}
 .aa-menu-link-last {
   // border-width: 0px 0.5px 0px 0.5px !important;
 }

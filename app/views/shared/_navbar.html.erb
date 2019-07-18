@@ -40,25 +40,37 @@
   <div class="collapse navbar-collapse aa-menu-navcontainer" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Découvrir", "/annonces", class: "nav-link aa-menu-link" %>
+        <li class="nav-item aa-nav-item">
+          <a href="#" class="nav-link aa-menu-link"></a>
         </li>
-        <li class="nav-item">
-          <%= link_to "Rechercher", "/searchannonce", class: "nav-link aa-menu-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Deposer", "/annonces/new", class: "nav-link aa-menu-link" %>
-        </li>
-      <% else %>
-      <li class="nav-item">
+        <li class="nav-item aa-nav-item">
+          <%= svg 'aide' %>
           <%= link_to "Découvrir Artaetas", "/annonces", class: "nav-link aa-menu-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item aa-nav-item">
+          <%= svg 'recherche' %>
           <%= link_to "Rechercher", "/searchannonce", class: "nav-link aa-menu-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item aa-nav-item">
+          <%= svg 'archiver2' %>
+          <%= link_to "Déposer", "/annonces/new", class: "nav-link aa-menu-link" %>
+        </li>
+      <% else %>
+        <li class="nav-item aa-nav-item">
+          <a href="#" class="nav-link aa-menu-link"></a>
+        </li>
+        <li class="nav-item aa-nav-item">
+          <%= svg 'aide' %>
+          <%= link_to "Découvrir Artaetas", "/annonces", class: "nav-link aa-menu-link" %>
+        </li>
+        <li class="nav-item aa-nav-item">
+          <%= svg 'recherche' %>
+          <%= link_to "Rechercher", "/searchannonce", class: "nav-link aa-menu-link" %>
+        </li>
+        <li class="nav-item aa-nav-item">
           <!-- < link_to "Se Connecter", new_user_session_path, class: "nav-link" > -->
           <!-- Button trigger modal -->
+          <%= svg 'tiers' %>
           <a href="" class="nav-link aa-menu-link aa-menu-link-last" data-toggle="modal" data-target="#exampleModal">
               S'inscrire/se connecter
           </a>
