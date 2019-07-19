@@ -50,7 +50,6 @@ var manyCards = document.getElementsByClassName("aa-annonce-card");
 // });
 
 Array.prototype.forEach.call(manyCards, function(oneCard) {
-    // Do stuff here
     oneCard.addEventListener('click', function() {
     window.location = this.querySelector("a").href;
 
