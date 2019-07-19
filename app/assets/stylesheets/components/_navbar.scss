@@ -6,7 +6,8 @@
 padding: 0px;
 }
 
- .aa-navbar-hres {
+
+ .aa-baseline {
     display: none;
     width: 200px;
     max-width: 200px;
@@ -240,15 +241,14 @@ a:active {
   padding: 5px 0;
 }
 
-@media (min-width: 900x) {
-  .aa-navbar-hres {
+
+@media (min-width: 900px) {
+
+  .aa-baseline {
     display: block;
-    width: 200px;
-    max-width: 200px;
-    margin-left: 0px;
-    margin-right: 0px;
   }
 }
+
 
 @media (min-width: 576px) {
 
@@ -263,6 +263,8 @@ a:active {
   .navbar-lewagon .navbar-buffer {
     display:none;
   }
+
+
 
   .nav-item a {
     border: none;
