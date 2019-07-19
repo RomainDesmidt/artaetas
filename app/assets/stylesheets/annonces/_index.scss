@@ -529,17 +529,26 @@ p {
    }
 
    .p-accroche-desktop { display: none; }
+
    .p-accroche-mobile {
-     display: block;
-
-
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
+     align-items: center;
+     height: 100%;
   }
 
   .p-accroche-mobile p {
     font-weight: 500;
     font-size: 9px;
-    height: 100%;
+    // height: 100%;
     line-height: 13px !important;
+    align-self: center;
+    flex: 0 1 auto;
+  }
+
+   .p-accroche-mobile p:last-child {
+    padding-bottom: 5px;
   }
 
   .aa-accroche-texture {
