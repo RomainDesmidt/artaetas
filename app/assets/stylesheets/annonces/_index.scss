@@ -340,6 +340,11 @@ p {
   // text-overflow: ellipsis;
 }
 
+.aa-annonce-titre .p-titre {
+  max-width: 20ch;
+  white-space: nowrap;
+}
+
 .container-annonces-div {
     width: 33%; // fallback
     width: calc(33%/var(--n));
