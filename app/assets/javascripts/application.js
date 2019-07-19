@@ -40,6 +40,23 @@ document.getElementById('aa-deposer').onclick = function()
   window.location = this.querySelector("a").href;
 }
 
+var manyCards = document.getElementsByClassName("aa-annonce-card");
+// manyCards.forEach(function(oneCard) {
+
+//   oneCard.addEventListener('click', function() {
+//     window.location = this.querySelector("a").href;
+
+//   });
+// });
+
+Array.prototype.forEach.call(manyCards, function(oneCard) {
+    // Do stuff here
+    oneCard.addEventListener('click', function() {
+    window.location = this.querySelector("a").href;
+
+  });
+});
+
 
 
 const _C = document.querySelector('.container-annonces'),
