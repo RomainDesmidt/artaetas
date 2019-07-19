@@ -5,6 +5,10 @@
 @import "show";
 @import "search";
 
+#myModal {
+  display: block !important;
+}
+
 * { margin: 0 }
 
 body {
@@ -293,6 +297,8 @@ p {
 .p-titre {
 
   font-size: xx-small;
+  color: black;
+  font-weight: bold;
   // white-space: nowrap;
   // text-overflow: ellipsis;
    // overflow: hidden;
@@ -320,6 +326,7 @@ p {
 .p-description {
   // width: 87%;
   font-size: xx-small;
+  color: grey;
   // white-space: nowrap;
   // overflow: hidden;
   // text-overflow: ellipsis;
