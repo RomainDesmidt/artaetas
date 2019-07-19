@@ -365,15 +365,19 @@ p {
   flex-direction: column;
   padding: 5px;
   background-color: white;
-  flex: 1 1 auto;
 }
+
 
 .annonce-column .aa-annonce-card:first-child {
   justify-content: flex-start;
+  flex: 0 0 1;
+  max-height: 70%;
 }
 
 .annonce-column .aa-annonce-card:last-child {
   justify-content: flex-end;
+  flex: 1 1 auto;
+  min-height: 30%;
 }
 
 
