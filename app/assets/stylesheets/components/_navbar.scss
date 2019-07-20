@@ -35,10 +35,7 @@ padding: 0px;
 .aa-nav-item {
   display: flex;
   flex-direction: row;
-  border-width: 0px 2px 0px 0px !important;
-  border-style: solid !important;
-  border-color: rgba(0,0,0,0.1) !important;
-
+  border: none;
 }
 
 .aa-nav-item svg {
@@ -293,6 +290,16 @@ a:active {
     display: block;
   }
 
+  .aa-button-deposer,
+  .aa-button-decouvrir {
+    margin-bottom: 15px;
+  }
+
+  .aa-nav-item {
+  border-width: 0px 2px 0px 0px !important;
+  border-style: solid !important;
+  border-color: rgba(0,0,0,0.1) !important;
+  }
 }
 
 
