@@ -14,6 +14,7 @@ function toggleMobile()
    {
        document.getElementById('tabmobilesearch').classList.toggle("aa-search-hidden");
        document.getElementById('tabmobileform').classList.toggle("aa-search-mobile");
+       document.getElementById('aa-textfield-on').readOnly = false;
 
        // document.getElementById('tabmobileform2').classList.toggle("aa-search-mobile2");
    }
