@@ -157,9 +157,9 @@
   <div class='aa-search-field-form' id="tabmobileform2">
   <%= form_tag('/searchannonce/', method: :get) do %>
   <% if params[:term] == '' || params[:term].nil? %>
-    <%= text_field_tag :term,  "Que recherchez-vous?", :class => "aa-search-field-text" %>
+    <%= text_field_tag :term,  "Que recherchez-vous?", :class => "aa-search-field-text", readonly: true %>
   <% else %>
-    <%= text_field_tag :term,  params[:term] , :class => "aa-search-field-text" %>
+    <%= text_field_tag :term,  params[:term] , :class => "aa-search-field-text", readonly: true %>
   <% end %>
   <%= submit_tag 'Rechercher', :class => "btn btn-primary aa-search-field-form-btn" %>
 <label class="aa-search-field-label-begin">Prix entre :</label>
