@@ -45,18 +45,51 @@
           <a href="#" class="nav-link aa-menu-link"></a>
         </li>
         <li class="nav-item aa-nav-item">
-          <%= svg 'aide' %>
-          <a href="" class="nav-link aa-menu-link" data-toggle="modal" data-target="#infosmodal">Découvrir Artaetas</a>
+          <div><%= svg 'aide' %></div>
+          <div><a href="" class="nav-link aa-menu-link" data-toggle="modal" data-target="#infosmodal">Découvrir Artaetas</a></div>
           <!-- < link_to "Découvrir Artaetas", "#cestquoi", class: "nav-link aa-menu-link" > -->
         </li>
         <li class="nav-item aa-nav-item">
-          <%= svg 'recherche' %>
-          <%= link_to "Rechercher", "/searchannonce", class: "nav-link aa-menu-link" %>
+          <div><%= svg 'recherche' %></div>
+          <div><%= link_to "Rechercher", "/searchannonce", class: "nav-link aa-menu-link" %></div>
         </li>
         <li class="nav-item aa-nav-item">
-          <%= svg 'archiver2' %>
-          <%= link_to "Déposer", "/annonces/new", class: "nav-link aa-menu-link" %>
+          <div><%= svg 'archiver2' %></div>
+          <div><%= link_to "Déposer", "/annonces/new", class: "nav-link aa-menu-link" %></div>
         </li>
+        <li class="nav-item aa-menu-separateur aa-mobile-only">
+          <p>COMPTE</p>
+        </li>
+        <li class="nav-item aa-nav-item aa-mobile-only">
+        <div></div>
+          <div><%= link_to "Mon Profil", "/users/me", class: "nav-link aa-menu-link" %></div>
+        </li>
+        <li class="nav-item aa-nav-item aa-mobile-only">
+        <div></div>
+         <div><%= link_to "Se Deconnecter", destroy_user_session_path, method: :delete, class: "nav-link aa-menu-link" %></div>
+        </li>
+        <li class="nav-item aa-menu-separateur aa-mobile-only">
+          <p>INFOS</p>
+        </li>
+        <li class="nav-item aa-nav-item aa-mobile-only">
+        <div></div>
+          <div><%= link_to "CGU", "#", class: "nav-link aa-menu-link" %></div>
+        </li>
+        <li class="nav-item aa-nav-item aa-mobile-only">
+        <div></div>
+          <div><%= link_to "CGV", "#", class: "nav-link aa-menu-link" %></div>
+        </li>
+        <li class="nav-item aa-nav-item aa-mobile-only">
+        <div></div>
+          <div><%= link_to "Mentions Legales", "#", class: "nav-link aa-menu-link" %></div>
+        </li>
+        <li class="nav-item aa-nav-item aa-mobile-only">
+        <div></div>
+          <div><%= link_to "Contact", "#", class: "nav-link aa-menu-link" %></div>
+        </li>
+
+
+
       <% else %>
         <li class="nav-item aa-nav-item">
           <a href="#" class="nav-link aa-menu-link"></a>
