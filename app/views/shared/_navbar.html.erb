@@ -53,7 +53,7 @@
           <div><%= svg 'recherche' %></div>
           <div><%= link_to "Rechercher", "/searchannonce", class: "nav-link aa-menu-link" %></div>
         </li>
-        <li class="nav-item aa-nav-item">
+        <li class="nav-item aa-nav-item aa-section-end">
           <div><%= svg 'archiver2' %></div>
           <div><%= link_to "Déposer", "/annonces/new", class: "nav-link aa-menu-link" %></div>
         </li>
@@ -64,7 +64,7 @@
         <div></div>
           <div><%= link_to "Mon Profil", "/users/me", class: "nav-link aa-menu-link" %></div>
         </li>
-        <li class="nav-item aa-nav-item aa-mobile-only">
+        <li class="nav-item aa-nav-item aa-mobile-only aa-section-end">
         <div></div>
          <div><%= link_to "Se Deconnecter", destroy_user_session_path, method: :delete, class: "nav-link aa-menu-link" %></div>
         </li>

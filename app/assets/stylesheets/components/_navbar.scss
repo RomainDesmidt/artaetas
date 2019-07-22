@@ -18,9 +18,9 @@ padding: 0px;
   font-size: 11px;
   font-weight: 400;
   color: #7F7F7F !important;
-  height: 50px !important;
+  height: 37px !important;
   white-space: nowrap;
-  padding: 16px 10px 18px 10px !important;
+  padding: 16px !important;
   margin-top: 2px;
   // -webkit-box-shadow: 0.5px 0px 0.1px 0px rgba(0,0,0,0.75) !important;
   // -moz-box-shadow: 0.5px 0px 0.1px 0px rgba(0,0,0,0.75) !important;
@@ -41,8 +41,19 @@ padding: 0px;
   color: darkgrey;
   margin-left: 15px;
 
+
 }
 
+.aa-section-end {
+  margin-bottom: 10px;
+}
+
+
+
+.aa-menu-separateur p {
+  position: relative;
+  top: 10px;
+}
 .aa-nav-item {
   display: flex;
   flex-direction: row;
@@ -64,7 +75,7 @@ padding: 0px;
 
 .aa-nav-item div:last-child {
   flex: 1 1 auto;
-  margin-left: 50px;
+  margin-left: 60px;
 }
 
 .aa-mobile-only {
@@ -350,6 +361,11 @@ a:active {
 
   .aa-menu-separateur {
     margin-left: 0px;
+  }
+
+  .aa-menu-link {
+  padding: 16px 10px 18px 10px !important;
+  height: 50px !important;
   }
 }
 
