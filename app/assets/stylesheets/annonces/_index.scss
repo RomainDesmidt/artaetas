@@ -16,19 +16,21 @@
 }
 
 .aa-footer-ae path {
-  fill: rgb(230,230,230)
+  fill: #e5e5e5;
 }
 
 .aa-footer {
-  background-color: #727272;
+  background-color: #717171;
   width: 100%;
   height: 15%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  color: rgb(230,230,230);
+  color: #e5e5e5;
 }
+
+
 
 // .aa-footer-item {
 //   flex: 1 1 30%;
@@ -40,7 +42,7 @@
   display: flex;
   justify-content: flex-end;
   padding-right: 20px;
-  flex: 0 0 20%;
+  flex: 0 0 auto;
 }
 
 
@@ -48,7 +50,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  flex: 0 0 30%;
+  flex: 0 0 auto;
 }
 
 .aa-share {
@@ -63,13 +65,29 @@
   height: 75px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  flex: 1 1 auto;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  margin: 0px 105px 0px 50px;
+  padding: 5px 0px;
 }
 .p-footer-titre {
-  color: #444;
+  color: #464646;
   font-weight: bold;
   margin-bottom: 5px;
+}
+
+.p-footer-share {
+  color: #464646;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+
+.p-footer-share {
+  color: #e5e5e5;
+  font-weight: bold;
+  margin-bottom: 5px;
+
 }
 
 .p-footer-link {
