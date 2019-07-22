@@ -218,6 +218,7 @@ padding: 0px;
 .navbar-lewagon .navbar-buffer {
   flex: 0 0 13%;
   height: 50px;
+  margin-right: 70px;
 }
 
 .navbar-toggler {
@@ -291,6 +292,9 @@ a:active {
 .navbar-nav .aa-nav-item:first-child {
     display: none;
   }
+.aa-desktop-only {
+  display: none !important;
+}
 
 
 @media (min-width: 900px) {
@@ -370,6 +374,14 @@ a:active {
 
   .aa-section-end {
     margin-bottom: 0px;
+  }
+
+  // .aa-desktop-only {
+  //   display: block;
+  // }
+
+  .show {
+    display: block !important;
   }
 }
 
