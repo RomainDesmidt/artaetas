@@ -9,4 +9,18 @@ class Annonce < ApplicationRecord
   has_one  :order
 
   mount_uploader :photo, PhotoUploader
+
+  def categorie_ids=(ids)
+  #   ids.each do |id|
+  #     categorie = Categorie.find(id)
+  #     categoriea = CategorieAnnonce.new( categorie: categorie, annonce_id: self.id )
+  #     categoriea.save!
+  #   end
+  end
+
+  def couleur_ids=(ids)
+  end
+
+  def courant_ids=(ids)
+  end
 end

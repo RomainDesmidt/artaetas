@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-  puts "Cleaning database..."
+puts "Cleaning database..."
 CategorieAnnonce.destroy_all
 CouleurAnnonce.destroy_all
 CourantAnnonce.destroy_all
@@ -79,15 +79,15 @@ user: camille,
 nom_artiste: "leonard",
 # user_id_artiste: User.first.id,
 description: "produite par leonard de vinci",
-categorie_annonces: [
-  CategorieAnnonce.new(
-    categorie: tribal
-  ),
+  categorie_annonces: [
+    CategorieAnnonce.new(
+      categorie: tribal
+    ),
 
-  CategorieAnnonce.new(
-    categorie: moderne
-  )
- ],
+    CategorieAnnonce.new(
+      categorie: moderne
+    )
+   ],
  couleur_annonces: [
   CouleurAnnonce.new(
     couleur: red
