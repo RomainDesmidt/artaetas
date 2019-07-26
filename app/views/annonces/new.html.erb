@@ -10,12 +10,36 @@
         <%= f.input :name %>
         <%= f.input :description, placeholder: "Seule la premiere ligne apparait dans l'index max 50 caracteres" %>
         <%= f.input :prix, placeholder: "€", input_html: { class: 'aa-textalignright' } %>
+        <!-- < f.collection_check_boxes :categorie_ids, Categorie.all, :id, :name  > -->
+
         <%= f.input :photo %>
         <%= f.input :photo_cache, as: :hidden %>
         <!-- [...] -->
       </div>
     </div>
-
+    <div class="aa-new-containerfield">
+      <div class="aa-new-titrefield">Vos Tags</div>
+      <div class="aa-new-vafield">
+        <p class="aa-new-label">Categories</p>
+        <% for categorie in Categorie.all %>
+          <label>
+          <%= check_box_tag "annonce[categorie_ids][]", categorie.id %>
+          <%=h categorie.name %></label><br />
+         <% end %>
+        <p class="aa-new-label">Courants</p>
+        <% for courant in Courant.all %>
+        <label>
+          <%= check_box_tag "annonce[courant_ids][]", courant.id %>
+          <%=h courant.name %></label><br />
+         <% end %>
+        <p class="aa-new-label">Couleurs</p>
+        <% for couleur in Couleur.all %>
+        <label>
+          <%= check_box_tag "annonce[couleur_ids][]", couleur.id %>
+          <%=h couleur.couleur_dominante %></label><br />
+         <% end %>
+      </div>
+    </div>
     <div class="aa-new-containerfield">
       <div class="aa-new-titrefield">Vos Criteres</div>
       <div class="aa-new-vafield">
