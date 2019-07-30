@@ -15,6 +15,49 @@
         <!-- [...] -->
       </div>
     </div>
+    <div class="aa-new-containerfield">
+      <div class="aa-new-titrefield">Vos Tags</div>
+      <div class="aa-new-vafield">
+        <p class="aa-new-label">Categories</p>
+        <% for categorie in Categorie.all %>
+          <% if @categories.include?(categorie.id) %>
+            <label>
+            <%= check_box_tag "annonce[categorie_ids][]", categorie.id, true %>
+            <%=h categorie.name %></label><br />
+          <% else %>
+            <%= check_box_tag "annonce[categorie_ids][]", categorie.id%>
+            <%=h categorie.name %></label><br />
+          <% end %>
+         <% end %>
+
+        <p class="aa-new-label">Courants</p>
+        <% for courant in Courant.all %>
+          <% if @courants.include?(courant.id) %>
+            <label>
+            <%= check_box_tag "annonce[courant_ids][]", courant.id, true %>
+            <%=h courant.name %></label><br />
+          <% else %>
+            <label>
+            <%= check_box_tag "annonce[courant_ids][]", courant.id %>
+            <%=h courant.name %></label><br />
+          <% end %>
+        <% end %>
+
+        <p class="aa-new-label">Couleurs</p>
+        <% for couleur in Couleur.all %>
+          <% if @couleurs.include?(couleur.id) %>
+            <label>
+            <%= check_box_tag "annonce[couleur_ids][]", couleur.id, true %>
+            <%=h couleur.couleur_dominante %></label><br />
+          <% else %>
+            <label>
+            <%= check_box_tag "annonce[couleur_ids][]", couleur.id %>
+            <%=h couleur.couleur_dominante %></label><br />
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
 
     <div class="aa-new-containerfield">
       <div class="aa-new-titrefield">Vos Criteres</div>
