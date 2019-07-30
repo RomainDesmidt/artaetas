@@ -22,7 +22,6 @@
         <p>encadrement:<%= @annonces.encadrement ? "OUI" : "NON" %></p>
         <p>etat neuf:<%= @annonces.etat_neuf ? "OUI" : "NON" %></p>
 
-
         <b><p>Tags</p></b>
         <% unless CategorieAnnonce.all.where(annonce_id: @annonces.id).nil? %>
           <% CategorieAnnonce.all.where(annonce_id: @annonces.id).each do |cat| %>
@@ -60,6 +59,7 @@
           <% if @annonces.user.afficher_tel %>
             <p><%= "#{@annonces.user.tel}" %></p>
           <% end %>
+           <%= social_share_button_tag("Cette annonce est super venez la decouvrir sur http:\/\/artaetasv1.herokuapp.com\/annonces\/#{@annonces.id}", :image => "#{@annonces.photo.url}", :'data-twitter-hashtags' => "art,artaetas", :'via' => "artaetas", :'data-type' => 'photo', :url => "#{@annonces.photo.url}", desc: "It's time for art!", :'data-quote' => "Une plaforme d\'achat et vente d\'oeuvres d\'art de toutes catégories, dédiée aux artistes, amateurs et collectionneurs", :'data-summary' => "Une plaforme d\'achat et vente d\'oeuvres d\'art de toutes catégories, dédiée aux artistes, amateurs et collectionneurs") %>
         </p>
       </div>
     </div>

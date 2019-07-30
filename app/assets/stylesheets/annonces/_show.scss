@@ -1,3 +1,34 @@
+.ssb-facebook {
+ background-image: image-url('fb.png') !important;
+}
+
+.ssb-twitter {
+  background-image: image-url('tw.png') !important;
+}
+
+.ssb-pinterest {
+  background-image: image-url('pint.png') !important;
+}
+
+.ssb-linkedin {
+  background-image: image-url('in.png') !important;
+}
+
+.ssb-tumblr {
+ background-image: image-url('tumblr.png') !important;
+}
+
+
+.ssb-icon {
+  // border: 1px solid !important;
+  border: 3px solid !important;
+  border-radius: 45px !important;
+  border-color: lightgray !important;
+  padding: 20px !important;
+
+}
+
+
 .aa-show-bg {
  background-color: #FAFAFA;
  margin-top: 53px;
