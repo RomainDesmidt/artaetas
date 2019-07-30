@@ -8,6 +8,7 @@
         <b><p class='aa-show-titre'><%= @annonces.name %></p></b>
         <p class=''><%= @annonces.prix %>€</p>
         <p class=''><%= @annonces.created_at.to_date %></p>
+
       </div>
       <div class="aa-show-detailannonce-criteres aa-show-border aa-show-minheight aa-show-marginbottom">
         <b><p>Criteres</p></b>
@@ -20,6 +21,26 @@
         <p>facture d'achat:<%= @annonces.facture_achat ? "OUI" : "NON" %></p>
         <p>encadrement:<%= @annonces.encadrement ? "OUI" : "NON" %></p>
         <p>etat neuf:<%= @annonces.etat_neuf ? "OUI" : "NON" %></p>
+
+
+        <b><p>Tags</p></b>
+        <% unless CategorieAnnonce.all.where(annonce_id: @annonces.id).nil? %>
+          <% CategorieAnnonce.all.where(annonce_id: @annonces.id).each do |cat| %>
+          <p><%= Categorie.find(cat.categorie_id).name %></p>
+          <% end %>
+        <% end %>
+        <b><p>Courants</p></b>
+        <% unless CourantAnnonce.all.where(annonce_id: @annonces.id).nil? %>
+          <% CourantAnnonce.all.where(annonce_id: @annonces.id).each do |cour| %>
+          <p><%= Courant.find(cour.courant_id).name %></p>
+          <% end %>
+        <% end %>
+        <b><p>Couleurs</p></b>
+        <% unless CouleurAnnonce.all.where(annonce_id: @annonces.id).nil? %>
+          <% CouleurAnnonce.all.where(annonce_id: @annonces.id).each do |coul| %>
+          <p><%= Couleur.find(coul.couleur_id).couleur_dominante %></p>
+          <% end %>
+        <% end %>
       </div>
       <div class="aa-show-detailannonce-description aa-show-border aa-show-minheight aa-show-marginbottom">
       <div class='aa-show-description'><b><p>Description</p></b><p><%= @annonces.description %></p></div>
