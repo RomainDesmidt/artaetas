@@ -39,6 +39,12 @@ class AnnoncesController < ApplicationController
   def search
     @pricemin = params[:pricemin]
     @pricemax = params[:pricemax]
+    @categorie_search = params[:categorie_search]
+    @categorie_idarray = []
+    @courant_search = params[:courant_search]
+    @courant_idarray = []
+    @couleur_search = params[:couleur_search]
+    @couleur_idarray = []
     @annonces = Annonce.all
     unless params[:term] == "Que recherchez-vous?"
       if params[:term]
@@ -57,6 +63,38 @@ class AnnoncesController < ApplicationController
         @annonces = @annonces.where("prix < ?", params[:pricemax])
       end
     end
+
+    unless params[:categorie_search] == ''
+      if params[:categorie_search]
+        CategorieAnnonce.where(categorie_id: params[:categorie_search].to_i).each do |cat|
+          @categorie_idarray << cat.annonce_id
+        end
+        @annonces = @annonces.where(id: @categorie_idarray)
+        # @annonces = @annonces.where("prix < ?", params[:pricemax])
+      end
+    end
+
+    unless params[:courant_search] == ''
+      if params[:courant_search]
+        CourantAnnonce.where(courant_id: params[:courant_search].to_i).each do |cour|
+          @courant_idarray << cour.annonce_id
+        end
+        @annonces = @annonces.where(id: @courant_idarray)
+        # @annonces = @annonces.where("prix < ?", params[:pricemax])
+      end
+    end
+
+    unless params[:couleur_search] == ''
+      if params[:couleur_search]
+        CouleurAnnonce.where(couleur_id: params[:couleur_search].to_i).each do |coul|
+          @couleur_idarray << coul.annonce_id
+        end
+        @annonces = @annonces.where(id: @couleur_idarray)
+        # @annonces = @annonces.where("prix < ?", params[:pricemax])
+      end
+    end
+
+
   end
 
 
@@ -228,7 +266,7 @@ class AnnoncesController < ApplicationController
   private
 
   def annonce_params
-    params.require(:annonce).permit(:name, :description, :photo, :photo_cache , :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_ids =>   [], :courant_ids =>   [], :couleur_ids =>   [])
+    params.require(:annonce).permit(:name, :description, :photo, :photo_cache, :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :categorie_ids => [], :courant_ids => [], :couleur_ids => [])
   end
 end
 
