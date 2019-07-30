@@ -211,6 +211,16 @@ class AnnoncesController < ApplicationController
 
   def destroy
     @annonce = Annonce.find(params[:id])
+
+    unless CategorieAnnonce.all.where(annonce_id: @annonce.id).nil?
+      CategorieAnnonce.all.where(annonce_id: @annonce.id).destroy_all
+     end
+     unless CourantAnnonce.all.where(annonce_id: @annonce.id).nil?
+       CourantAnnonce.all.where(annonce_id: @annonce.id).destroy_all
+     end
+     unless CouleurAnnonce.all.where(annonce_id: @annonce.id).nil?
+       CouleurAnnonce.all.where(annonce_id: @annonce.id).destroy_all
+     end
     @annonce.destroy
   redirect_to '/users/me'
   end
