@@ -62,17 +62,19 @@
   <div class="tab-pane fade show active" id="compte" role="tabpanel" aria-labelledby="compte-tab">
     <div class="aa-me-moncompte-container">
       <div class="aa-me-tablematiere">
-        <div class="aa-me-tablematiere-item">
-          <a href="#infoperso">Infos personnelles</a><br>
-        </div>
-        <div class="aa-me-tablematiere-item">
-          <a href="#email"> Email </a><br>
-        </div>
-        <div class="aa-me-tablematiere-item">
-          <a href="#psw"> Mot de passe </a><br>
-        </div>
-        <div class="aa-me-tablematiere-item">
-          <%= link_to "Profil Public", "/users/#{current_user.id}" %>
+        <div class="aa-me-tablematiere-ilot">
+          <div class="aa-me-tablematiere-item">
+            <a href="#infoperso">Infos personnelles</a><br>
+          </div>
+          <div class="aa-me-tablematiere-item">
+            <a href="#email"> Email </a><br>
+          </div>
+          <div class="aa-me-tablematiere-item">
+            <a href="#psw"> Mot de passe </a><br>
+          </div>
+          <div class="aa-me-tablematiere-item">
+            <%= link_to "Profil Public", "/users/#{current_user.id}" %>
+          </div>
         </div>
       </div>
       <div class="aa-me-infoperso">
