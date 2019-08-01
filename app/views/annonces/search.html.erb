@@ -1,42 +1,41 @@
 <div class='aa-search-field-bg' id="tabmobileform" >
   <div class='aa-search-field-form' id="tabmobileform2">
-    <%= form_tag('/searchannonce/', method: :get) do %>
+    <%= form_tag('/searchannonce/', method: :get, :class => 'aa-search-form' ) do %>
       <% if params[:term] == '' || params[:term].nil? %>
-        <%= text_field_tag :term,  "Que recherchez-vous?", :class => "aa-search-field-text" %>
+        <div class="aa-search-textfieldwrap"><%= text_field_tag :term,  "Que recherchez-vous?", :class => "aa-search-field-text" %></div>
       <% else %>
-        <%= text_field_tag :term,  params[:term] , :class => "aa-search-field-text" %>
+        <div class="aa-search-textfieldwrap"><%= text_field_tag :term,  params[:term] , :class => "aa-search-field-text" %></div>
       <% end %>
-      <%= submit_tag 'Rechercher', :class => "btn btn-primary aa-search-field-form-btn" %>
-      <label class="aa-search-field-label-begin">Prix entre :</label>
+      <% if params[:categorie_search] == '' || params[:categorie_search].nil?%>
+        <%= select_tag :categorie_search,  options_from_collection_for_select(Categorie.all, "id", "name", selected: @categorie_search || nil), :class =>"aa-search-field-select aa-search-field-select-tag aa-search-field-basis", include_blank: "Categorie"  %>
+      <% else %>
+        <%= select_tag :categorie_search,  options_from_collection_for_select(Categorie.all, "id", "name", selected: @categorie_search || nil), :class =>"aa-search-field-select aa-search-field-select-tag aa-search-field-basis", include_blank: params[:categorie_search]  %>
+      <% end %>
+
+      <% if params[:courant_search] == '' || params[:courant_search].nil?%>
+        <%= select_tag :courant_search,  options_from_collection_for_select(Courant.all, "id", "name", selected: @courant_search || nil), :class =>"aa-search-field-select aa-search-field-select-tag aa-search-field-basis", include_blank: "Courant"  %>
+      <% else %>
+        <%= select_tag :courant_search,  options_from_collection_for_select(Courant.all, "id", "name", selected: @courant_search || nil), :class =>"aa-search-field-select aa-search-field-select-tag aa-search-field-basis", include_blank: params[:courant_search]  %>
+      <% end %>
+
+      <% if params[:couleur_search] == '' || params[:couleur_search].nil?%>
+        <%= select_tag :couleur_search,  options_from_collection_for_select(Couleur.all, "id", "couleur_dominante", selected: @couleur_search || nil), :class =>"aa-search-field-select aa-search-field-select-tag aa-search-field-basis", include_blank: "Couleur"  %>
+      <% else %>
+        <%= select_tag :couleur_search,  options_from_collection_for_select(Couleur.all, "id", "couleur_dominante", selected: @couleur_search || nil), :class =>"aa-search-field-select aa-search-field-select-tag aa-search-field-basis", include_blank: params[:couleur_search]  %>
+      <% end %>
+
       <% if params[:pricemin] == '' || params[:pricemin].nil? %>
         <%= select_tag :pricemin,  options_for_select([[0, 0], [20, 20], [50, 50]], selected: @pricemin || nil), :class =>"aa-search-field-select", include_blank: "Prix min" %>
       <% else %>
         <%= select_tag :pricemin,  options_for_select([[0, 0], [20, 20], [50, 50]], selected: @pricemin || nil), :class =>"aa-search-field-select", :selected_value => @pricemin %>
       <% end %>
-      <label class="aa-search-field-label-end">et</label>
       <% if params[:pricemax] == '' || params[:pricemax].nil?%>
         <%= select_tag :pricemax,  options_for_select([[20, 20], [50, 50], [100, 100]], selected: @pricemax || nil), :class =>"aa-search-field-select", include_blank: "Prix max"  %>
       <% else %>
         <%= select_tag :pricemax,  options_for_select([[20, 20], [50, 50], [100, 100 ]], selected: @pricemax || nil), :class =>"aa-search-field-select", include_blank: params[:pricemax]  %>
       <% end %>
 
-      <% if params[:categorie_search] == '' || params[:categorie_search].nil?%>
-        <%= select_tag :categorie_search,  options_from_collection_for_select(Categorie.all, "id", "name", selected: @categorie_search || nil), :class =>"aa-search-field-select aa-search-field-basis", include_blank: "Categorie"  %>
-      <% else %>
-        <%= select_tag :categorie_search,  options_from_collection_for_select(Categorie.all, "id", "name", selected: @categorie_search || nil), :class =>"aa-search-field-select aa-search-field-basis", include_blank: params[:categorie_search]  %>
-      <% end %>
-
-      <% if params[:courant_search] == '' || params[:courant_search].nil?%>
-        <%= select_tag :courant_search,  options_from_collection_for_select(Courant.all, "id", "name", selected: @courant_search || nil), :class =>"aa-search-field-select aa-search-field-basis", include_blank: "Courant"  %>
-      <% else %>
-        <%= select_tag :courant_search,  options_from_collection_for_select(Courant.all, "id", "name", selected: @courant_search || nil), :class =>"aa-search-field-select aa-search-field-basis", include_blank: params[:courant_search]  %>
-      <% end %>
-
-      <% if params[:couleur_search] == '' || params[:couleur_search].nil?%>
-        <%= select_tag :couleur_search,  options_from_collection_for_select(Couleur.all, "id", "couleur_dominante", selected: @couleur_search || nil), :class =>"aa-search-field-select aa-search-field-basis", include_blank: "Couleur"  %>
-      <% else %>
-        <%= select_tag :couleur_search,  options_from_collection_for_select(Couleur.all, "id", "couleur_dominante", selected: @couleur_search || nil), :class =>"aa-search-field-select aa-search-field-basis", include_blank: params[:couleur_search]  %>
-      <% end %>
+      <%= submit_tag 'Rechercher', :class => "btn btn-primary aa-search-field-form-btn" %>
 
     <% end %>
 
