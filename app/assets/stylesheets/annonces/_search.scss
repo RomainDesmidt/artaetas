@@ -1,3 +1,17 @@
+::-webkit-input-placeholder {
+   font-style: italic;
+}
+:-moz-placeholder {
+   font-style: italic;
+}
+::-moz-placeholder {
+   font-style: italic;
+}
+:-ms-input-placeholder {
+   font-style: italic;
+}
+
+
 .aa-search-annonce-container {
   max-width: 1066px ;
   display: flex;
@@ -8,25 +22,28 @@
 
 }
 
-.aa-annonce-titre {
+.aa-annonce-titre-search {
   font-weight: 700;
   font-size: 16px;
   margin-bottom: 10px;
+  color: #212121;
 
 }
 
-.aa-annonce-prix {
+.aa-annonce-prix-search {
 
-  font-weight: 500;
+  font-weight: 700;
   font-style: italic;
   font-size: 13px;
   margin-bottom: 20px;
+  color: #595959;
 
 }
-.aa-annonce-description {
+.aa-annonce-description-search {
 
 font-weight: 400;
 font-size: 11px;
+color: #595959;
 
 }
 
@@ -56,6 +73,7 @@ font-size: 11px;
   display: flex;
   flex-direction: raw;
   margin-bottom: 10px;
+  height: 200px;
 }
 
 .aa-search-annonce-card-detail,
@@ -84,6 +102,7 @@ font-size: 11px;
   align-items: start;
   background-color: white;
   padding: 20px;
+  overflow: hidden !important;
 }
 
 .aa-search-annonce-card-control {
@@ -151,14 +170,14 @@ font-size: 11px;
   border-radius: 0px;
   padding: 10px 15px;
   background-color: #E2E3E7 !important;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-top: 20px;
 }
 
 .aa-search-field-form-btn {
   flex: 1 0 30%;
   position: absolute;
-  bottom: -40px;
+  bottom: -55px;
   left: 50%;
   transform: translate(-50%, 0%);
   padding: 5px 70px;
@@ -173,7 +192,14 @@ font-size: 11px;
   border-radius: 0px !important;
   font-size: 11px;
   color: #717679;
+  // background-color: #e0e3e5;
+  background: image-url('br_down.png') no-repeat right 10px center;
   background-color: #e0e3e5;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-left: 20px;
+  // border: solid 1px;
 }
 
 .aa-search-field-select-tag {
