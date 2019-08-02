@@ -23,19 +23,19 @@
       <div class="aa-new-vafield">
         <p class="aa-new-label">Categories</p>
         <% for categorie in Categorie.all %>
-          <label>
+          <label class="aa-new-label-tags">
           <%= check_box_tag "annonce[categorie_ids][]", categorie.id %>
           <%=h categorie.name %></label><br />
          <% end %>
         <p class="aa-new-label">Courants</p>
         <% for courant in Courant.all %>
-        <label>
+        <label class="aa-new-label-tags">
           <%= check_box_tag "annonce[courant_ids][]", courant.id %>
           <%=h courant.name %></label><br />
          <% end %>
         <p class="aa-new-label">Couleurs</p>
         <% for couleur in Couleur.all %>
-        <label>
+        <label class="aa-new-label-tags">
           <%= check_box_tag "annonce[couleur_ids][]", couleur.id %>
           <%=h couleur.couleur_dominante %></label><br />
          <% end %>
