@@ -17,29 +17,27 @@
 
 
   <div class="tab-pane fade" id="annonces" role="tabpanel" aria-labelledby="annonces-tab">
-    <div class="aa-me-annonce-container">
+
+
+<div class="aa-search-annonce-container">
       <% if current_user.annonces.count > 0 %>
         <% current_user.annonces.each do |a| %>
 
-            <div class="aa-me-annonce-card">
-            <%= link_to a, class: "aa-me-annonce-card-image" do %>
-              <!-- <div class="aa-me-annonce-card-image"> -->
+            <div class="aa-search-annonce-card">
+            <%= link_to a, class: "aa-search-annonce-card-image" do %>
+              <!-- <div class="aa-search-annonce-card-image"> -->
                 <%= cl_image_tag a.photo %>
               <!-- </div> -->
             <% end %>
-            <%= link_to a, class: "aa-me-annonce-card-detail" do %>
-              <p><%= a.name.lines.first[0,30] %></p>
-              <p><%= a.prix %><%= "€" unless a.prix.nil? %></p>
-              <p><%= a.description.lines.first[0,30] %></p>
+            <%= link_to a, class: "aa-search-annonce-card-detail" do %>
+              <p class="aa-annonce-titre-search"><%= a.name.lines.first[0,30] %></p>
+              <p class="aa-annonce-prix-search"><%= a.prix %><%= "€" unless a.prix.nil? %></p>
+              <p class="aa-annonce-description-search"><!-- < a.description.lines.first[0,30] > -->
+               <%= a.description %>
+              </p>
             <% end %>
 
-              <div class="aa-me-annonce-card-control">
-                <p>
-                  <!-- < link_to a.name, "/annonces/#{a.id}" > -->
-                  <!-- < a.description > -->
-                  <%= link_to "Edit", "/annonces/#{a.id}/edit"%>
-                  <%= link_to 'Supprimer',  a ,  method: :delete, data: { confirm: 'Are you sure?' } %>
-                </p>
+              <div class="aa-search-annonce-card-control">
               </div>
 
 
@@ -49,7 +47,8 @@
       <% else %>
         <h1>Aucune annonce trouvee</h1>
       <% end %>
-    </div>
+</div>
+
   </div>
 
 

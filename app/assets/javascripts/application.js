@@ -5,6 +5,11 @@ window.onload = function () {
   window.scrollTo(0, 0);
 }
 
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
+
+
 window.SocialShareButton = {
   openUrl(url, width, height) {
     if (width == null) { width = 640; }
@@ -28,6 +33,8 @@ window.SocialShareButton = {
     const img = encodeURIComponent($parent.getAttribute("data-img") || '');
     let url = encodeURIComponent($parent.getAttribute("data-url") || '');
     const via = encodeURIComponent($parent.getAttribute("data-via") || el.getAttribute("data-via") || '');
+
+
     const desc = encodeURIComponent($parent.getAttribute("data-desc") || ' ');
 
 
