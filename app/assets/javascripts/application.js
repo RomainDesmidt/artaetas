@@ -1,5 +1,9 @@
 //= require rails-ujs
 //= require_tree .
+// window.onbeforeunload = function () {
+window.onload = function () {
+  window.scrollTo(0, 0);
+}
 
 window.SocialShareButton = {
   openUrl(url, width, height) {
@@ -147,9 +151,7 @@ window.SocialShareButton = {
 };
 
 
-window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-}
+
 
 
 window.onload = toggleMobile();
