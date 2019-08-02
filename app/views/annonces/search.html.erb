@@ -52,9 +52,11 @@
               <!-- </div> -->
             <% end %>
             <%= link_to a, class: "aa-search-annonce-card-detail" do %>
-              <p><%= a.name.lines.first[0,30] %></p>
-              <p><%= a.prix %><%= "€" unless a.prix.nil? %></p>
-              <p><%= a.description.lines.first[0,30] %></p>
+              <p class="aa-annonce-titre"><%= a.name.lines.first[0,30] %></p>
+              <p class="aa-annonce-prix"><%= a.prix %><%= "€" unless a.prix.nil? %></p>
+              <p class="aa-annonce-description"><!-- < a.description.lines.first[0,30] > -->
+               <%= a.description %>
+              </p>
             <% end %>
 
               <div class="aa-search-annonce-card-control">
