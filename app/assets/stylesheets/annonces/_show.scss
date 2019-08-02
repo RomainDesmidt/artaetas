@@ -117,12 +117,28 @@
 .aa-show-detailannonce-titre {
   background-color: white;
   margin-bottom: 50px;
+  min-height: 100px;
 }
 
+.aa-show-detailannonce-container {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 15px;
+  line-height: 20px;
+}
 .aa-show-detailannonce-header {
   -webkit-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
 -moz-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
 box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
+}
+
+.aa-show-price {
+ color: #252525;
+}
+
+.aa-me-tablematiere-item a {
+  color: darkgrey;
 }
 
 

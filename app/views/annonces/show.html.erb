@@ -5,11 +5,12 @@
         <div class="aa-show-detailannonce-photo" id="aa-show-nopaddingtop">
           <%= cl_image_tag @annonces.photo %>
         </div>
-        <div class="aa-show-detailannonce-titre aa-show-minheight aa-show-marginbottom">
-          <b><p class='aa-show-titre'><%= @annonces.name %></p></b>
-          <p class=''><%= @annonces.prix %>€</p>
-          <p class=''><%= @annonces.created_at.to_date %></p>
-
+        <div class="aa-show-detailannonce-titre aa-show-marginbottom">
+          <div class="aa-show-detailannonce-container">
+            <b><p class='aa-show-titre'><%= @annonces.name %></p></b>
+            <p class='aa-show-price'><%= @annonces.prix %>€</p>
+            <!-- <p class=''>< @annonces.created_at.to_date ></p> -->
+          </div>
         </div>
       </div>
 
