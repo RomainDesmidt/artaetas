@@ -1,9 +1,29 @@
+.aa-new-containerfield .form-control-label,
+.aa-new-containerfield .file,
+.aa-new-label  {
+
+color: #212121;
+
+}
+
+.aa-mobile-btn  {
+   background-color: #3A89C1 !important;
+}
+
+.aa-new-label-tags,
+.form-check {
+ font-size: 13px;
+ color: #595959;
+}
+
+
 .aa-textalignright {
   text-align: right;
 }
 
 .aa-new-bg {
   background-color: #FAFAFA;
+  margin-top: 50px;
 }
 
 .aa-new-label {
@@ -28,7 +48,8 @@
 }
 
 .aa-new-containerfield {
-  border: 1px solid;
+  // border: 1px solid;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   background-color: white;
 }
@@ -77,6 +98,7 @@ margin-bottom: 10px;
 
 .aa-mobile-btn {
   width: 100%;
+
 }
 
 }
