@@ -21,7 +21,11 @@
 <% if user_signed_in? %>
   <div class="nav-item dropdown nav-flex-14">
           <!-- < image_tag "http://lorempixel.com/25/25/cats/", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false > -->
-           <%= cl_image_tag current_user.photoprofil, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% if current_user.photoprofil?  %>
+            <%= cl_image_tag current_user.photoprofil, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+            <%= image_tag "http://lorempixel.com/25/25/cats/", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+           <% end %>
           <div class="dropdown-menu dropdown-menu-right aa-desktop-only" aria-labelledby="navbarDropdown">
             <%= link_to "Mon Profil", "/users/me", class: "dropdown-item" %>
             <!-- < link_to "Liste user", "/users/", class: "dropdown-item" > -->
