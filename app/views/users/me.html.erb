@@ -38,6 +38,10 @@
             <% end %>
 
               <div class="aa-search-annonce-card-control">
+                <p>
+                  <%= link_to "Edit", "/annonces/#{a.id}/edit"%>
+                  <%= link_to 'Supprimer',  a ,  method: :delete, data: { confirm: 'Are you sure?' } %>
+                </p>
               </div>
 
 
@@ -124,6 +128,8 @@
                 <%= f.input :masquepublication, hint: "masquer les annonces que vous avez cree", require: false %>
                 <%= f.input :photoprofil %>
                 <%= f.input :photoprofil_cache, as: :hidden %>
+                <%= f.input :photofond %>
+                <%= f.input :photofond_cache, as: :hidden %>
 
               </div>
 

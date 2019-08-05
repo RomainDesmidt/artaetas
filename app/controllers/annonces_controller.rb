@@ -13,20 +13,28 @@ class AnnoncesController < ApplicationController
     @annonce = current_user.annonces.new(annonce_params)
     @annonce_params = annonce_params
     if  @annonce.save
-      params[:annonce][:categorie_ids].each do |id|
-        categorie = Categorie.find(id)
-        categoriea = CategorieAnnonce.new( categorie: categorie, annonce_id: @annonce.id )
-        categoriea.save!
+      unless params[:annonce][:categorie_ids].nil?
+        params[:annonce][:categorie_ids].each do |id|
+          categorie = Categorie.find(id)
+          categoriea = CategorieAnnonce.new( categorie: categorie, annonce_id: @annonce.id )
+          categoriea.save!
+        end
       end
-      params[:annonce][:courant_ids].each do |id|
-        courant = Courant.find(id)
-        couranta = CourantAnnonce.new( courant: courant, annonce_id: @annonce.id )
-        couranta.save!
+
+      unless params[:annonce][:courant_ids].nil?
+        params[:annonce][:courant_ids].each do |id|
+          courant = Courant.find(id)
+          couranta = CourantAnnonce.new( courant: courant, annonce_id: @annonce.id )
+          couranta.save!
+        end
       end
-      params[:annonce][:couleur_ids].each do |id|
-        couleur = Couleur.find(id)
-        couleura = CouleurAnnonce.new( couleur: couleur, annonce_id: @annonce.id )
-        couleura.save!
+
+      unless params[:annonce][:couleur_ids].nil?
+        params[:annonce][:couleur_ids].each do |id|
+          couleur = Couleur.find(id)
+          couleura = CouleurAnnonce.new( couleur: couleur, annonce_id: @annonce.id )
+          couleura.save!
+        end
       end
 
       redirect_to @annonce
@@ -266,7 +274,7 @@ class AnnoncesController < ApplicationController
   private
 
   def annonce_params
-    params.require(:annonce).permit(:name, :description, :photo, :photo_cache, :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :categorie_ids => [], :courant_ids => [], :couleur_ids => [])
+    params.require(:annonce).permit(:name, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :categorie_ids => [], :courant_ids => [], :couleur_ids => [])
   end
 end
 
