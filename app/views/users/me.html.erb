@@ -122,6 +122,8 @@
                 <%= f.input :description, hint: "description de vous", require: false %>
                 <%= f.input :masquefavoris, hint: "masquer vos publications et users favoris", require: false %>
                 <%= f.input :masquepublication, hint: "masquer les annonces que vous avez cree", require: false %>
+                <%= f.input :photoprofil %>
+                <%= f.input :photoprofil_cache, as: :hidden %>
 
               </div>
 
@@ -172,3 +174,4 @@
 
 
 
+<%= render 'shared/footer' %>
