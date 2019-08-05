@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :courant_users
   has_many :courants, through: :courant_users
   has_many :orders
+
+  mount_uploader :photoprofil, PhotoUploader
 end
