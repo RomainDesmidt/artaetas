@@ -9,6 +9,8 @@ class Annonce < ApplicationRecord
   has_one  :order
 
   mount_uploader :photo, PhotoUploader
+  mount_uploader :photo_un, PhotoUploader
+  mount_uploader :photo_deux, PhotoUploader
 
   def categorie_ids=(ids)
   #   ids.each do |id|

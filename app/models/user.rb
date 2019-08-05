@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :orders
 
   mount_uploader :photoprofil, PhotoUploader
+  mount_uploader :photofond, PhotoUploader
 end

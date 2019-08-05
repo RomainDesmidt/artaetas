@@ -10,8 +10,18 @@
         <%= f.input :name %>
         <%= f.input :description, placeholder: "Seule la premiere ligne apparait dans l'index max 50 caracteres" %>
         <%= f.input :prix, placeholder: "€", input_html: { class: 'aa-textalignright' } %>
-        <%= f.input :photo %>
+        <%= f.input :photo, :input_html => { :onchange => "document.getElementById('previewPhoto').src = window.URL.createObjectURL(this.files[0])" } %>
+        <!-- <img class="aa-edit-thumbnail" id="previewPhoto"></img> -->
+        <%= cl_image_tag @annonce.photo, class: 'aa-edit-thumbnail' , id: "previewPhoto" %>
         <%= f.input :photo_cache, as: :hidden %>
+        <%= f.input :photo_un, :input_html => { :onchange => "document.getElementById('previewPhotoUn').src = window.URL.createObjectURL(this.files[0])" }  %>
+        <!-- <img class="aa-edit-thumbnail" id="previewPhotoUn"></img> -->
+        <%= cl_image_tag @annonce.photo_un, class: 'aa-edit-thumbnail' , id: "previewPhotoUn" %>
+        <%= f.input :photo_un_cache, as: :hidden %>
+        <%= f.input :photo_deux, :input_html => { :onchange => "document.getElementById('previewPhotoDeux').src = window.URL.createObjectURL(this.files[0])" }  %>
+        <%= cl_image_tag @annonce.photo_deux, class: 'aa-edit-thumbnail' , id: "previewPhotoDeux" %>
+        <!-- <img class="aa-edit-thumbnail" id="previewPhotoDeux"></img> -->
+        <%= f.input :photo_deux_cache, as: :hidden %>
         <!-- [...] -->
       </div>
     </div>
