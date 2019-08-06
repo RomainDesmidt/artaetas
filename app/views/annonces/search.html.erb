@@ -27,12 +27,12 @@
       <% if params[:pricemin] == '' || params[:pricemin].nil? %>
         <%= number_field_tag :pricemin, "", class: "aa-search-field-text-tag", placeholder: "Prix Min"  %>
       <% else %>
-        <%= number_field_tag :pricemin,  @pricemin, class: "aa-search-field-text-tag"  %>
+        <%= number_field_tag :pricemin,  @pricemin, class: "aa-search-field-text-tag", placeholder: "Prix Min"    %>
       <% end %>
       <% if params[:pricemax] == '' || params[:pricemax].nil?%>
         <%= number_field_tag :pricemax, "", class: "aa-search-field-text-tag", placeholder: "Prix Max" %>
       <% else %>
-        <%= number_field_tag :pricemax, @pricemax, class: "aa-search-field-text-tag"  %>
+        <%= number_field_tag :pricemax, @pricemax, class: "aa-search-field-text-tag", placeholder: "Prix Max"   %>
       <% end %>
 
       <%= submit_tag 'Rechercher', :class => "btn btn-primary aa-search-field-form-btn" %>
