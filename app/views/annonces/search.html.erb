@@ -1,6 +1,6 @@
 <div class='aa-search-field-bg' id="tabmobileform" >
   <div class='aa-search-field-form' id="tabmobileform2">
-    <%= form_tag('/searchannonce/', method: :get, :class => 'aa-search-form' ) do %>
+    <%= form_tag('/searchannonce/', method: :get, :class => 'aa-search-form' ) do  %>
       <% if params[:term] == '' || params[:term].nil? %>
         <div class="aa-search-textfieldwrap"><%= text_field_tag :term,  nil, :class => "aa-search-field-text", :placeholder => "Que Recherchez Vous ?" %></div>
       <% else %>
@@ -25,14 +25,14 @@
       <% end %>
 
       <% if params[:pricemin] == '' || params[:pricemin].nil? %>
-        <%= select_tag :pricemin,  options_for_select([[0, 0], [20, 20], [50, 50]], selected: @pricemin || nil), :class =>"aa-search-field-select", include_blank: "Prix min" %>
+        <%= number_field_tag :pricemin, "", class: "aa-search-field-text-tag", placeholder: "Prix Min"  %>
       <% else %>
-        <%= select_tag :pricemin,  options_for_select([[0, 0], [20, 20], [50, 50]], selected: @pricemin || nil), :class =>"aa-search-field-select", :selected_value => @pricemin %>
+        <%= number_field_tag :pricemin,  @pricemin, class: "aa-search-field-text-tag"  %>
       <% end %>
       <% if params[:pricemax] == '' || params[:pricemax].nil?%>
-        <%= select_tag :pricemax,  options_for_select([[20, 20], [50, 50], [100, 100]], selected: @pricemax || nil), :class =>"aa-search-field-select", include_blank: "Prix max"  %>
+        <%= number_field_tag :pricemax, "", class: "aa-search-field-text-tag", placeholder: "Prix Max" %>
       <% else %>
-        <%= select_tag :pricemax,  options_for_select([[20, 20], [50, 50], [100, 100 ]], selected: @pricemax || nil), :class =>"aa-search-field-select", include_blank: params[:pricemax]  %>
+        <%= number_field_tag :pricemax, @pricemax, class: "aa-search-field-text-tag"  %>
       <% end %>
 
       <%= submit_tag 'Rechercher', :class => "btn btn-primary aa-search-field-form-btn" %>

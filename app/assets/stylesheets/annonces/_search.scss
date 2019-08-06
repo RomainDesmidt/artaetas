@@ -208,6 +208,25 @@ overflow: hidden;
   font-style: italic;
 }
 
+.aa-search-field-text-tag {
+   // padding: 20px 10px;
+  width: 100px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 0px !important;
+  font-size: 11px;
+  color: #717679;
+  // background-color: #e0e3e5;
+  // background: image-url('br_down.png') no-repeat right 10px center;
+  background-color: #e0e3e5;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-left: 20px;
+  // border: solid 1px;
+  font-style: italic;
+}
+
 .aa-search-annonce-card:last-child {
   margin-bottom: 50px;
 
@@ -231,11 +250,11 @@ overflow: hidden;
   border-width: 0px 1px 0px 1px;
 }
 
-.aa-search-field-select:nth-of-type(4) {
+.aa-search-field-text-tag:nth-of-type(2) {
   margin-left: 50px;
 }
 
-.aa-search-field-select:nth-of-type(5) {
+.aa-search-field-text-tag:nth-of-type(3) {
   border-style: solid;
   border-width: 0px 0px 0px 1px;
 }
