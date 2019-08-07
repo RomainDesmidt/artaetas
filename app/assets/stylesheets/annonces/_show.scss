@@ -126,6 +126,8 @@
   margin-right: auto;
   padding-top: 15px;
   line-height: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 .aa-show-detailannonce-header {
   -webkit-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
@@ -137,7 +139,11 @@ box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
  color: #252525;
 }
 
-
+.aa-show-thumbnail {
+  border-radius: 40px;
+  height: 40px;
+  width: 40px;
+}
 
 
 .aa-show-detailannonce-photo img {
