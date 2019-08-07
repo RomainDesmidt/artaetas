@@ -3,13 +3,20 @@
     <div class="aa-show-detailannonce">
       <div class="aa-show-detailannonce-header">
         <div class="aa-show-detailannonce-photo" id="aa-show-nopaddingtop">
-          <%= cl_image_tag @annonces.photo %>
+          <%= cl_image_tag @annonces.photo, id: "bigPhoto" %>
         </div>
         <div class="aa-show-detailannonce-titre aa-show-marginbottom">
           <div class="aa-show-detailannonce-container">
-            <b><p class='aa-show-titre'><%= @annonces.name %></p></b>
-            <p class='aa-show-price'><%= @annonces.prix %>€</p>
-            <!-- <p class=''>< @annonces.created_at.to_date ></p> -->
+            <div class="aa-show-detail-container">
+              <b><p class='aa-show-titre'><%= @annonces.name %></p></b>
+              <p class='aa-show-price'><%= @annonces.prix %>€</p>
+              <!-- <p class=''>< @annonces.created_at.to_date ></p> -->
+            </div>
+            <div class="aa-show-thumbnail-container">
+            <%= cl_image_tag @annonces.photo_deux, class: 'aa-show-thumbnail' , id: "previewPhotoDeux", onclick: "document.getElementById('bigPhoto').src = this.src" %>
+            <%= cl_image_tag @annonces.photo_un, class: 'aa-show-thumbnail' , id: "previewPhotoUn", onclick: "document.getElementById('bigPhoto').src = this.src" %>
+            <%= cl_image_tag @annonces.photo, class: 'aa-show-thumbnail' , id: "previewPhoto", onclick: "document.getElementById('bigPhoto').src = this.src" %>
+            </div>
           </div>
         </div>
       </div>
