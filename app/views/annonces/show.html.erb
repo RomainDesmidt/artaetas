@@ -13,9 +13,15 @@
               <!-- <p class=''>< @annonces.created_at.to_date ></p> -->
             </div>
             <div class="aa-show-thumbnail-container">
-            <%= cl_image_tag @annonces.photo_deux, class: 'aa-show-thumbnail' , id: "previewPhotoDeux", onclick: "document.getElementById('bigPhoto').src = this.src" %>
-            <%= cl_image_tag @annonces.photo_un, class: 'aa-show-thumbnail' , id: "previewPhotoUn", onclick: "document.getElementById('bigPhoto').src = this.src" %>
-            <%= cl_image_tag @annonces.photo, class: 'aa-show-thumbnail' , id: "previewPhoto", onclick: "document.getElementById('bigPhoto').src = this.src" %>
+            <% if @annonces.photo_deux? %>
+              <%= cl_image_tag @annonces.photo_deux, class: 'aa-show-thumbnail' , id: "previewPhotoDeux", onclick: "document.getElementById('bigPhoto').src = this.src" %>
+            <% end %>
+            <% if @annonces.photo_un? %>
+              <%= cl_image_tag @annonces.photo_un, class: 'aa-show-thumbnail' , id: "previewPhotoUn", onclick: "document.getElementById('bigPhoto').src = this.src" %>
+            <% end %>
+            <% if (@annonces.photo? && @annonces.photo_un?) || (@annonces.photo? && @annonces.photo_un?) %>
+              <%= cl_image_tag @annonces.photo, class: 'aa-show-thumbnail' , id: "previewPhoto", onclick: "document.getElementById('bigPhoto').src = this.src" %>
+            <% end %>
             </div>
           </div>
         </div>
