@@ -210,6 +210,7 @@ document.getElementById('aa-deposer').onclick = function()
 document.getElementById('mobilesearch').onclick = function()
 {
   document.getElementById("navbar-lewagon").classList.toggle("aa-nowrap");
+  document.getElementById("Calque_1").classList.toggle("hidden");
   document.getElementById("aa-nav-search-input-mobile").classList.toggle("toggled-search-mobile");
   // document.getElementById('aa-nav-decouvrir').classList.toggle("hidden");
   // document.getElementById('aa-nav-deposer').classList.toggle("hidden");
@@ -225,6 +226,7 @@ searchFocus.addEventListener("focusout", searchContractMobile);
 
 function searchContractMobile() {
   document.getElementById("aa-nav-search-input-mobile").classList.toggle("toggled-search-mobile");
+  document.getElementById("Calque_1").classList.toggle("hidden");
   document.getElementById("navbar-lewagon").classList.toggle("aa-nowrap");
   // document.getElementById('aa-nav-decouvrir').classList.toggle("hidden");
   // document.getElementById('aa-nav-deposer').classList.toggle("hidden");
