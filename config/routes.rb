@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'annonces#index'
-  resources :annonces
+  resources :annonces do
+    member do
+        put "like", to: "annonces#like"
+        put "dislike", to: "annonces#dislike"
+    end
+end
+  # resources :annonces
   get 'social', to: 'pages#social'
   # get 'annonces', to: 'annonces#index'
   # get 'annonces/new', to: 'annonces#new'
@@ -11,7 +17,13 @@ Rails.application.routes.draw do
   get 'users/me', to: 'users#me'
   get 'users/:id', to: 'users#show'
   get 'users', to: 'users#index'
+  # put "like", to: "annonces#like"
+  # put "dislike", to: "annonces#dislike"
+
   # get "annonces/:id/edit", to: "annonces#edit"
   # patch "annonces/:id", to: "annonces#update"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+   # static pages
+  get 'styleguide', to: 'pages#styleguide'
 end

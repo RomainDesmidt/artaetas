@@ -1,4 +1,5 @@
 class Annonce < ApplicationRecord
+  acts_as_votable
   belongs_to :user
   has_many :categorie_annonces
   has_many :categories, through: :categorie_annonces
@@ -11,6 +12,8 @@ class Annonce < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   mount_uploader :photo_un, PhotoUploader
   mount_uploader :photo_deux, PhotoUploader
+
+  acts_as_votable
 
   def categorie_ids=(ids)
   #   ids.each do |id|

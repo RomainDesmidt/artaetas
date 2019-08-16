@@ -271,6 +271,19 @@ class AnnoncesController < ApplicationController
   redirect_to '/users/me'
   end
 
+
+  def like
+    @annonce = Annonce.find(params[:id])
+    @annonce.liked_by current_user
+    redirect_to @annonce
+end
+
+def dislike
+    @annonce = Annonce.find(params[:id])
+    @annonce.disliked_by current_user
+    redirect_to @annonce
+end
+
   private
 
   def annonce_params

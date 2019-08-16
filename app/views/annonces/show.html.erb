@@ -80,6 +80,17 @@
           <p>Partager cette Annonce</p>
            <%= social_share_button_tag("Cette annonce est super venez la decouvrir sur http:\/\/artaetasv1.herokuapp.com\/annonces\/#{@annonces.id}", :image => "#{@annonces.photo.url}", :'data-twitter-hashtags' => "art,artaetas", :'via' => "artaetas", :'data-type' => 'photo', :url => "#{@annonces.photo.url}", desc: "Venez Vite!", :'data-quote' => "Une plaforme d\'achat et vente d\'oeuvres d\'art de toutes catégories, dédiée aux artistes, amateurs et collectionneurs", :'data-summary' => "Une plaforme d\'achat et vente d\'oeuvres d\'art de toutes catégories, dédiée aux artistes, amateurs et collectionneurs") %>
         </p>
+
+<% if user_signed_in? %>
+  <% if current_user.liked? @annonces %>
+      <%= link_to "Dislike", dislike_annonce_path(@annonces), class: 'vote', method: :put %>
+  <% else %>
+      <%= link_to "Like", like_annonce_path(@annonces) , class: 'vote', method: :put %>
+  <% end %>
+<% end %>
+
+<%= @annonces.get_likes.size %> personnes aiment ca!
+
       </div>
     </div>
   </div>
