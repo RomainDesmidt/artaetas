@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     member do
         put "like", to: "annonces#like"
         put "dislike", to: "annonces#dislike"
+        put "likeuser", to: "annonces#likeuser"
+        put "dislikeuser", to: "annonces#dislikeuser"
+        put "follow", to: "annonces#follow"
+        put "unfollow", to: "annonces#unfollow"
     end
 end
   # resources :annonces
