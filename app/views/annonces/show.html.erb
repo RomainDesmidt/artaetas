@@ -10,6 +10,17 @@
             <div class="aa-show-detail-container">
               <b><p class='aa-show-titre'><%= @annonces.name %></p></b>
               <p class='aa-show-price'><%= @annonces.prix %>€</p>
+              <% if user_signed_in? %>
+                <% if current_user.liked? @annonces %>
+                    <%= link_to "Dislike", dislike_annonce_path(@annonces), class: 'vote', method: :put %>
+                <% else %>
+                    <%= link_to "Like", like_annonce_path(@annonces) , class: 'vote', method: :put %>
+                <% end %>
+              <% end %>
+              <br>
+              <%= @annonces.get_likes.size %> personnes aiment cette annonce!
+
+
               <!-- <p class=''>< @annonces.created_at.to_date ></p> -->
             </div>
             <div class="aa-show-thumbnail-container">
@@ -81,15 +92,28 @@
            <%= social_share_button_tag("Cette annonce est super venez la decouvrir sur http:\/\/artaetasv1.herokuapp.com\/annonces\/#{@annonces.id}", :image => "#{@annonces.photo.url}", :'data-twitter-hashtags' => "art,artaetas", :'via' => "artaetas", :'data-type' => 'photo', :url => "#{@annonces.photo.url}", desc: "Venez Vite!", :'data-quote' => "Une plaforme d\'achat et vente d\'oeuvres d\'art de toutes catégories, dédiée aux artistes, amateurs et collectionneurs", :'data-summary' => "Une plaforme d\'achat et vente d\'oeuvres d\'art de toutes catégories, dédiée aux artistes, amateurs et collectionneurs") %>
         </p>
 
-<% if user_signed_in? %>
-  <% if current_user.liked? @annonces %>
-      <%= link_to "Dislike", dislike_annonce_path(@annonces), class: 'vote', method: :put %>
-  <% else %>
-      <%= link_to "Like", like_annonce_path(@annonces) , class: 'vote', method: :put %>
-  <% end %>
-<% end %>
+              <% if user_signed_in? %>
+                <% if current_user.liked? @user %>
+                  <%= link_to "Dislike", dislikeuser_annonce_path(@annonces), class: 'vote', method: :put %>
+                <% else %>
+                  <%= link_to "Like", likeuser_annonce_path(@annonces) , class: 'vote', method: :put %>
+                <% end %>
+              <% end %>
+              <%= @user.get_likes.size %> personnes aiment cet user!
 
-<%= @annonces.get_likes.size %> personnes aiment ca!
+              <% if user_signed_in? %>
+                <% if current_user.followees.include?(@user) %>
+                  <%= link_to "Unfollow", unfollow_annonce_path(@annonces), method: :put %>
+                <% else %>
+                  <%= link_to "Follow", follow_annonce_path(@annonces), method: :put %>
+                <% end %>
+              <% end %>
+              <% @user.followers.each do |u| %>
+                <%= u.email %>
+              <% end %>
+
+
+
 
       </div>
     </div>
