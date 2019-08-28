@@ -1,0 +1,18 @@
+current directory: /home/ec2-user/environment/artaetas/vendor/cache/ruby/2.3.0/gems/unf_ext-0.0.7.6/ext/unf_ext
+/home/ec2-user/.rvm/rubies/ruby-2.3.3/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-2.3.3/lib/ruby/site_ruby/2.3.0 -r ./siteconf20190826-24681-eayn5o.rb extconf.rb
+checking for main() in -lstdc++... yes
+creating Makefile
+
+current directory: /home/ec2-user/environment/artaetas/vendor/cache/ruby/2.3.0/gems/unf_ext-0.0.7.6/ext/unf_ext
+make "DESTDIR=" clean
+
+current directory: /home/ec2-user/environment/artaetas/vendor/cache/ruby/2.3.0/gems/unf_ext-0.0.7.6/ext/unf_ext
+make "DESTDIR="
+compiling unf.cc
+cc1plus: warning: command line option ‘-Wdeclaration-after-statement’ is valid for C/ObjC but not for C++ [enabled by default]
+cc1plus: warning: command line option ‘-Wimplicit-function-declaration’ is valid for C/ObjC but not for C++ [enabled by default]
+linking shared-object unf_ext.so
+
+current directory: /home/ec2-user/environment/artaetas/vendor/cache/ruby/2.3.0/gems/unf_ext-0.0.7.6/ext/unf_ext
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 unf_ext.so ./.gem.20190826-24681-axykes
