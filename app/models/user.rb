@@ -19,4 +19,5 @@ class User < ApplicationRecord
   mount_uploader :photofond, PhotoUploader
   acts_as_voter
   acts_as_votable
+  act_as_bookmarker
 end

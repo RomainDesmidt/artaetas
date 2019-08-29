@@ -273,6 +273,20 @@ class AnnoncesController < ApplicationController
   end
 
 
+  
+  def bookmark
+    @annonce = Annonce.find(params[:id])
+    current_user.bookmark(@annonce)
+    redirect_to @annonce
+  end
+  
+  def unbookmark
+    @annonce = Annonce.find(params[:id])
+    current_user.unbookmark(@annonce)
+    redirect_to @annonce
+  end
+  
+  
   def like
     @annonce = Annonce.find(params[:id])
     @annonce.liked_by current_user
