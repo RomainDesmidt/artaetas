@@ -19,6 +19,18 @@
               <% end %>
               <br>
               <%= @annonces.get_likes.size %> personnes aiment cette annonce!
+              
+               <% if user_signed_in? %>
+                <% if current_user.bookmarks?(@annonces) %>
+                  <%= link_to "Unbookmark", unbookmark_annonce_path(@annonces), method: :put %>
+                <% else %>
+                  <%= link_to "Bookmark", bookmark_annonce_path(@annonces) , method: :put %>
+                <% end %>
+              <% end %>
+              
+              <% if current_user.bookmarks?(@annonces) %>
+                Vous avez Bookmarker cette annonce !
+              <% end %>
 
 
               <!-- <p class=''>< @annonces.created_at.to_date ></p> -->
@@ -101,14 +113,6 @@
               <% end %>
               <%= @user.get_likes.size %> personnes aiment cet user!
               
-              
-              <% if user_signed_in? %>
-                <% if current_user.bookmarks?(@annonces) %>
-                  <%= link_to "Unbookmark", unbookmark_annonce_path(@annonces), method: :put %>
-                <% else %>
-                  <%= link_to "Bookmark", bookmark_annonce_path(@annonces) , method: :put %>
-                <% end %>
-              <% end %>
 
               <% if user_signed_in? %>
                 <% if current_user.followees.include?(@user) %>
