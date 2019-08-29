@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_19_075852) do
+ActiveRecord::Schema.define(version: 2019_08_29_061039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,20 @@ ActiveRecord::Schema.define(version: 2019_08_19_075852) do
     t.string "photo_un"
     t.string "photo_deux"
     t.index ["user_id"], name: "index_annonces_on_user_id"
+  end
+
+  create_table "bookmarks", id: :serial, force: :cascade do |t|
+    t.string "bookmarkee_type"
+    t.integer "bookmarkee_id"
+    t.string "bookmarker_type"
+    t.integer "bookmarker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bookmarkee_id", "bookmarkee_type", "bookmarker_id", "bookmarker_type"], name: "bookmarks_bookmarkee_bookmarker_idx", unique: true
+    t.index ["bookmarkee_id", "bookmarkee_type"], name: "bookmarks_bookmarkee_idx"
+    t.index ["bookmarkee_type", "bookmarkee_id"], name: "index_bookmarks_on_bookmarkee_type_and_bookmarkee_id"
+    t.index ["bookmarker_id", "bookmarker_type"], name: "bookmarks_bookmarker_idx"
+    t.index ["bookmarker_type", "bookmarker_id"], name: "index_bookmarks_on_bookmarker_type_and_bookmarker_id"
   end
 
   create_table "categorie_annonces", force: :cascade do |t|

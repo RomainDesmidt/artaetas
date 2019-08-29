@@ -14,6 +14,7 @@ class Annonce < ApplicationRecord
   mount_uploader :photo_deux, PhotoUploader
 
   acts_as_votable
+  act_as_bookmarkee
 
   def categorie_ids=(ids)
   #   ids.each do |id|

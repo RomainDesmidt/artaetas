@@ -9,6 +9,8 @@ Rails.application.routes.draw do
         put "dislikeuser", to: "annonces#dislikeuser"
         put "follow", to: "annonces#follow"
         put "unfollow", to: "annonces#unfollow"
+        put "bookmark", to: "annonces#bookmark"
+        put "unbookmark", to: "annonces#unbookmark"
     end
 end
   # resources :annonces
