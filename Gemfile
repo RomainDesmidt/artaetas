@@ -20,6 +20,7 @@ gem 'carrierwave', '~> 1.2'
 gem 'inline_svg'
 gem 'social-share-button'
 gem 'acts_as_votable', '~> 0.12.0'
+gem 'bookmark_system'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
