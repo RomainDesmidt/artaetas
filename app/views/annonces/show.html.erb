@@ -19,7 +19,7 @@
               <% end %>
               <br>
               <%= @annonces.get_likes.size %> personnes aiment cette annonce!
-              
+              <br>
                <% if user_signed_in? %>
                 <% if current_user.bookmarks?(@annonces) %>
                   <%= link_to "Unbookmark", unbookmark_annonce_path(@annonces), method: :put %>
