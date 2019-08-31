@@ -109,9 +109,6 @@
   position: relative;
 }
 
-#bigPhoto {
-  position: relative;
-}
 
 .aa-show-favlike {
   width: 40px;
@@ -230,7 +227,8 @@ box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
   margin-right: auto;
   display: block;
   // max-height: 300px;
-  max-width: 90%;
+  // max-width: 90%;
+  width: 90%;
 }
 
 .aa-show-description {
