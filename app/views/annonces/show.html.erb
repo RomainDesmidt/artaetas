@@ -4,6 +4,23 @@
       <div class="aa-show-detailannonce-header">
         <div class="aa-show-detailannonce-photo" id="aa-show-nopaddingtop">
           <%= cl_image_tag @annonces.photo, id: "bigPhoto" %>
+          <div class="aa-show-favlike">
+            <div class="aa-show-like">
+              <div class="aa-show-like-svg-container" id="aa-show-likefunc">
+                <%= link_to like_annonce_path(@annonces) , class: 'vote', method: :put do %>
+                 <%= inline_svg "like.svg", class: "aa-show-like-svg" %>
+                <% end %>
+              </div>
+              <div class="aa-show-like-counter">
+                <%= @annonces.get_likes.size %>
+              </div>
+            </div>
+            <div class="aa-show-fav-svg-container" id="aa-show-favfunc">
+              <%= link_to bookmark_annonce_path(@annonces) , method: :put do %>
+                <%= inline_svg "fav.svg", class: "aa-show-fav-svg" %>
+              <% end %>
+            </div>
+          </div>
         </div>
         <div class="aa-show-detailannonce-titre aa-show-marginbottom">
           <div class="aa-show-detailannonce-container">
