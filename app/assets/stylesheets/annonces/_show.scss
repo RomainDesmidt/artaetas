@@ -160,7 +160,8 @@
 .aa-show-fav-svg-container {
   align-self: center;
 }
-.aa-show-fav-svg {
+.aa-show-fav-svg,
+.aa-show-unfav-svg{
   height: 25px;
   width: 25px;
 }
@@ -169,15 +170,24 @@
   fill: #478BBA ; 
 }
 
-.aa-show-like-svg {
+.aa-show-unfav-svg path {
+  fill: #ffd400 ; 
+}
+
+
+.aa-show-dislike-svg,
+.aa-show-like-svg{
   height: 25px;
   width: 25px;
 }
 
-.aa-show-like-svg path {
+.aa-show-dislike-svg path {
   fill: white;
 }
 
+.aa-show-like-svg path {
+  fill: white ; 
+}
 
 
 .aa-show-minheight {
