@@ -35,7 +35,9 @@
         <%= link_to "annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
         <p class='p-titre'><%= t.name.lines.first[0,20] %></p>
         <% end %>
-        <p class='p-description'><%= t.description.lines.first[0,30] %></p>
+        <% unless t.description.lines.first.nil? %>
+          <p class='p-description'><%= t.description.lines.first[0,30] %></p>
+        <% end %>
         </div>
       </div>
 

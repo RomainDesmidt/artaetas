@@ -190,12 +190,16 @@ function triggerEvent( elem, event ) {
   elem.dispatchEvent( clickEvent );    // Dispatch the event.
 }
 
-
+// document.getElementById('aa-show-likefunc').onclick = function()
+// {
+//   window.location = this.querySelector("a").click();
+// }
 
 document.getElementById('aa-decouvrir').onclick = function()
 {
   window.location = this.querySelector("a").href;
 }
+
 
 document.getElementById('aa-deposer').onclick = function()
 {
