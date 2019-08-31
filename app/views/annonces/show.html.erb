@@ -7,8 +7,16 @@
           <div class="aa-show-favlike">
             <div class="aa-show-like">
               <div class="aa-show-like-svg-container" id="aa-show-likefunc">
-                <%= link_to like_annonce_path(@annonces) , class: 'vote', method: :put do %>
-                 <%= inline_svg "like.svg", class: "aa-show-like-svg" %>
+                <% if user_signed_in? %>
+                  <% if current_user.liked? @annonces %>
+                    <%= link_to dislike_annonce_path(@annonces), class: 'vote', method: :put do %>
+                      <%= inline_svg "dislike.svg", class: "aa-show-dislike-svg" %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to like_annonce_path(@annonces) , class: 'vote', method: :put do %>
+                      <%= inline_svg "like.svg", class: "aa-show-like-svg" %>
+                    <% end %>
+                  <% end %>
                 <% end %>
               </div>
               <div class="aa-show-like-counter">
@@ -16,9 +24,18 @@
               </div>
             </div>
             <div class="aa-show-fav-svg-container" id="aa-show-favfunc">
-              <%= link_to bookmark_annonce_path(@annonces) , method: :put do %>
-                <%= inline_svg "fav.svg", class: "aa-show-fav-svg" %>
+              <% if user_signed_in? %>
+                <% if current_user.bookmarks?(@annonces) %>
+                  <%= link_to unbookmark_annonce_path(@annonces), method: :put do %>
+                    <%= inline_svg "faved.svg", class: "aa-show-unfav-svg" %>
+                  <% end %>
+                <% else %>
+                  <%= link_to bookmark_annonce_path(@annonces) , method: :put do %>
+                    <%= inline_svg "fav.svg", class: "aa-show-fav-svg" %>
+                  <% end %>
+                <% end %>
               <% end %>
+              
             </div>
           </div>
         </div>
@@ -27,27 +44,7 @@
             <div class="aa-show-detail-container">
               <b><p class='aa-show-titre'><%= @annonces.name %></p></b>
               <p class='aa-show-price'><%= @annonces.prix %>€</p>
-              <% if user_signed_in? %>
-                <% if current_user.liked? @annonces %>
-                    <%= link_to "Dislike", dislike_annonce_path(@annonces), class: 'vote', method: :put %>
-                <% else %>
-                    <%= link_to "Like", like_annonce_path(@annonces) , class: 'vote', method: :put %>
-                <% end %>
-              <% end %>
-              <br>
-              <%= @annonces.get_likes.size %> personnes aiment cette annonce!
-              <br>
-               <% if user_signed_in? %>
-                <% if current_user.bookmarks?(@annonces) %>
-                  <%= link_to "Unbookmark", unbookmark_annonce_path(@annonces), method: :put %>
-                <% else %>
-                  <%= link_to "Bookmark", bookmark_annonce_path(@annonces) , method: :put %>
-                <% end %>
-              <% end %>
               
-              <% if current_user.bookmarks?(@annonces) %>
-                Vous avez Bookmarker cette annonce !
-              <% end %>
 
 
               <!-- <p class=''>< @annonces.created_at.to_date ></p> -->
