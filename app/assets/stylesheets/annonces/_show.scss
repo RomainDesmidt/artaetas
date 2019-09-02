@@ -64,6 +64,89 @@
 
 }
 
+.aa-show-contact-profil-photo a {
+  display: flex;
+  justify-content: center;
+}
+
+.aa-show-contact-profil-photo a svg {
+  align-self: center;
+}
+
+.aa-show-detailuser-contact-btn {
+  padding: 5px 10px;
+  width: 100%;
+  height: 30px;
+  background-color: #3F7FAD;
+  color: white!important;
+}
+
+.aa-show-detailuser-followbtn {
+  padding: 5px 10px;
+  height: 35px;
+  background-color: white;
+  border-style: solid;
+  border-color: #3F7FAD;
+  border-width: 1px;
+  margin-bottom: 2px;
+  width: fit-content;
+}
+
+.aa-show-detailuser-followbtn b {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 30px;
+  padding: 0px 5px;
+}
+
+.aa-show-contact-svg {
+  height: 50px;
+  width: 50px;
+}
+
+.aa-show-detailuser-contact-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  border-color: lightgray;
+  padding-bottom: 20px;
+}
+
+.aa-show-detailuser-contact-email,
+.aa-show-detailuser-contact-tel {
+  text-align: center; 
+  align-self: center;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+
+
+
+.aa-show-contact-profil-photo {
+  flex: 0 0 40%;
+  display: flex;
+  justify-content: center;
+}
+
+.aa-show-contact-profil-detail {
+  flex: 1 1 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.aa-show-detailuser-contact-profil {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 15px;
+}
 
 .aa-show-bg {
  background-color: #FAFAFA;
@@ -255,6 +338,8 @@ box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
 display: flex;
 flex-direction: column;
 align-items: center;
+padding-left: 25px;
+padding-right: 25px;
 }
 
 @media (max-width: 768px) {

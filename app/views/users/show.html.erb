@@ -37,7 +37,9 @@
             <%= link_to a, class: "aa-me-annonce-card-detail" do %>
               <p><%= a.name.lines.first[0,30] %></p>
               <p><%= a.prix %><%= "€" unless a.prix.nil? %></p>
-              <p><%= a.description.lines.first[0,30] %></p>
+              <% unless a.description.lines.first.nil? %>
+                <p><%= a.description.lines.first[0,30] %></p>
+              <% end %>
             <% end %>
 
 
