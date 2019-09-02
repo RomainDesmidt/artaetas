@@ -15,3 +15,4 @@ yarn-error.log
 .env*
 vendor/
 config/cloudinary.yml
+pg.sh

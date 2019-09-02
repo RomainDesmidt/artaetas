@@ -101,22 +101,58 @@
     </div>
     <div class="aa-show-detailuser">
       <div class="aa-show-detailuser-contact aa-show-minheight">
-        <p>
+        
+        <div class="aa-show-detailuser-contact-container">
+          <div class="aa-show-detailuser-contact-profil">
+            <div class="aa-show-contact-profil-photo">
+              <%= link_to "/users/#{@annonces.user.id}" do %>
+                <%= inline_svg "profil.svg", class: "aa-show-contact-svg" %>
+              <% end %>
+            </div>
+            <div class="aa-show-contact-profil-detail">
+              <% if @annonces.user.afficher_identite %>
+                <p><%= "#{@annonces.user.surname} #{@annonces.user.lastname}" %></p>
+              <% end %>
+              
+                <%= link_to "Profil Auteur", "/users/#{@annonces.user.id}" %>
+                <div><%= @annonces.user.annonces.count %> annonces en ligne</div>
+                <% if user_signed_in? %>
+                  <% if current_user.followees.include?(@user) %>
+                  <div class="aa-show-detailuser-followbtn"><%= link_to "Suivre", unfollow_annonce_path(@annonces), method: :put %> <b>-</b></div>
+                  <% else %>
+                    <div class="aa-show-detailuser-followbtn"><%= link_to "Suivre", follow_annonce_path(@annonces), method: :put %> <b>+</b></div>
+                  <% end %>
+                <% end %>
+                <% @user.followers.each do |u| %>
+                  <%= u.email %>
+                <% end %>
+            </div>
+          </div>
+      
+          <div class="aa-show-detailuser-contact-email">
+            <% if @annonces.user.afficher_email %>
+              <p><%= "#{@annonces.user.email}" %></p>
+            <% end %>
+            <div class="aa-show-detailuser-contact-btn">
+              <a>Envoyer un Mail</a>
+            </div>
+          </div>
+          <div class="aa-show-detailuser-contact-tel">
+            <% if @annonces.user.afficher_tel %>
+              <p><%= "#{@annonces.user.tel}" %></p>
+              <% end %>
+            <div class="aa-show-detailuser-contact-btn">
+              <a>Contacter</a>
+            </div>
+          </div>
+        </div>
+        
 
-          <% if @annonces.user.afficher_identite %>
-            <p><%= "#{@annonces.user.surname} #{@annonces.user.lastname}" %></p>
-          <% end %>
-          <% if @annonces.user.afficher_tel %>
-            <p><%= "#{@annonces.user.tel}" %></p>
-          <% end %>
-          <% if @annonces.user.afficher_email %>
-            <%= link_to "#{@annonces.user.email}", "/users/#{@annonces.user.id}" %>
-          <% else %>
-            <%= link_to "Profil Auteur", "/users/#{@annonces.user.id}" %>
-          <% end %>
+         
+          
           <p>Partager cette Annonce</p>
            <%= social_share_button_tag("Cette annonce est super venez la decouvrir sur http:\/\/artaetasv1.herokuapp.com\/annonces\/#{@annonces.id}", :image => "#{@annonces.photo.url}", :'data-twitter-hashtags' => "art,artaetas", :'via' => "artaetas", :'data-type' => 'photo', :url => "#{@annonces.photo.url}", desc: "Venez Vite!", :'data-quote' => "Une plaforme d\'achat et vente d\'oeuvres d\'art de toutes catégories, dédiée aux artistes, amateurs et collectionneurs", :'data-summary' => "Une plaforme d\'achat et vente d\'oeuvres d\'art de toutes catégories, dédiée aux artistes, amateurs et collectionneurs") %>
-        </p>
+        
 
               <% if user_signed_in? %>
                 <% if current_user.liked? @user %>
@@ -128,16 +164,7 @@
               <%= @user.get_likes.size %> personnes aiment cet user!
               
 
-              <% if user_signed_in? %>
-                <% if current_user.followees.include?(@user) %>
-                  <%= link_to "Unfollow", unfollow_annonce_path(@annonces), method: :put %>
-                <% else %>
-                  <%= link_to "Follow", follow_annonce_path(@annonces), method: :put %>
-                <% end %>
-              <% end %>
-              <% @user.followers.each do |u| %>
-                <%= u.email %>
-              <% end %>
+              
 
 
 
