@@ -118,9 +118,9 @@
                 <div><%= @annonces.user.annonces.count %> annonces en ligne</div>
                 <% if user_signed_in? %>
                   <% if current_user.followees.include?(@user) %>
-                  <div class="aa-show-detailuser-followbtn"><%= link_to "Suivre", unfollow_annonce_path(@annonces), method: :put %> <b>-</b></div>
+                  <div class="aa-show-detailuser-followbtn"><%= link_to "Suivre", unfollow_annonce_path(@annonces), method: :put %> <%= inline_svg "enlever.svg", class: "aa-show-follow-svg aa-show-standard-svg" %></div>
                   <% else %>
-                    <div class="aa-show-detailuser-followbtn"><%= link_to "Suivre", follow_annonce_path(@annonces), method: :put %> <b>+</b></div>
+                    <div class="aa-show-detailuser-followbtn"><%= link_to "Suivre", follow_annonce_path(@annonces), method: :put %> <%= inline_svg "ajouter.svg", class: "aa-show-follow-svg aa-show-standard-svg" %></div>
                   <% end %>
                 <% end %>
                 <% @user.followers.each do |u| %>
@@ -134,7 +134,7 @@
               <p><%= "#{@annonces.user.email}" %></p>
             <% end %>
             <div class="aa-show-detailuser-contact-btn">
-              <a>Envoyer un Mail</a>
+              <%= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %><a>Envoyer un Mail</a>
             </div>
           </div>
           <div class="aa-show-detailuser-contact-tel">
@@ -142,7 +142,7 @@
               <p><%= "#{@annonces.user.tel}" %></p>
               <% end %>
             <div class="aa-show-detailuser-contact-btn">
-              <a>Contacter</a>
+              <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg" %><a>Contacter</a>
             </div>
           </div>
         </div>

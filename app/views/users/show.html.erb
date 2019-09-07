@@ -6,8 +6,12 @@
 <p>< link_to a.name, "/annonces/#{a.id}" >
 < a.description ></p>
 < end > -->
-<div class="aa-me-annonce-container">
+<div class="aa-me-annonce-container aa-me-container-top">
+  <div class="aa-me-show-fondprofil"></div>
   <div class="aa-me-show-details">
+    <div class="aa-me-show-profil">
+      <%= inline_svg "profil.svg", class: "aa-show-contact-svg" %>
+    </div>
     <div class="aa-me-show-details-encart">
         <% if @user.afficher_email %>
             <%=  "#{@user.email}" %>
@@ -22,32 +26,69 @@
           <% end %>
     </div>
   </div>
-</div>
-<div class="aa-me-annonce-container">
-      <% if @user.annonces.count > 0 %>
-      <h2><%= "#{@user.annonces.count} annonces en ligne" %></h2>
-        <% @user.annonces.each do |a| %>
+  <div class="aa-me-show-details-secondaires">
+  <div>
 
-            <div class="aa-me-annonce-card">
-            <%= link_to a, class: "aa-me-annonce-card-image" do %>
-              <!-- <div class="aa-me-annonce-card-image"> -->
-                <%= cl_image_tag a.photo %>
-              <!-- </div> -->
-            <% end %>
-            <%= link_to a, class: "aa-me-annonce-card-detail" do %>
-              <p><%= a.name.lines.first[0,30] %></p>
-              <p><%= a.prix %><%= "€" unless a.prix.nil? %></p>
-              <% unless a.description.lines.first.nil? %>
-                <p><%= a.description.lines.first[0,30] %></p>
-              <% end %>
-            <% end %>
-
-
-            </div>
-
-        <% end %>
-      <% else %>
-        <h1>Aucune annonce trouvee</h1>
-      <% end %>
-    </div>
+   <% unless @user.get_likes == [] %>
+  Nb de like de cet user => 
+    <%= "#{@user.get_likes.count}" %>
+   <% end %>
   </div>
+  <div>
+    Description
+    <%=  "#{@user.description}" %>
+  </div>
+  <div>
+    Reseaux Sociaux
+  </div>
+  <div>
+    Favoris<br>
+    <% @user.bookmarkees_by(Annonce).each do |a| %>
+      <% favannonce = Annonce.find(a.bookmarkee_id) %>
+       <%= link_to "#{favannonce.name}", "/annonces/#{favannonce.id}" ,class: "aa-me-annonce-fav" %>
+      <br>
+    <% end %>
+  </div>
+  
+  <div>
+    Annonces Likes
+  </div>
+  </div>
+  Annonces Publiees:
+  <div class="aa-search-annonce-container">
+        <% if @user.annonces.count > 0 %>
+          <% @user.annonces.each do |a| %>
+  
+              <div class="aa-search-annonce-card">
+              <%= link_to a, class: "aa-search-annonce-card-image" do %>
+                <!-- <div class="aa-search-annonce-card-image"> -->
+                  <%= cl_image_tag a.photo %>
+                <!-- </div> -->
+              <% end %>
+              <%= link_to a, class: "aa-search-annonce-card-detail" do %>
+                <p class="aa-annonce-titre-search"><%= a.name.lines.first[0,30] %></p>
+                <p class="aa-annonce-prix-search"><%= a.prix %><%= "€" unless a.prix.nil? %></p>
+                <p class="aa-annonce-description-search"><!-- < a.description.lines.first[0,30] > -->
+                 <%= a.description %>
+                </p>
+              <% end %>
+  
+                <div class="aa-search-annonce-card-control">
+                </div>
+  
+  
+              </div>
+  
+          <% end %>
+        <% else %>
+          <h1>Aucune annonce trouvee</h1>
+        <% end %>
+  </div>
+
+</div>
+
+</div>
+
+
+
+
