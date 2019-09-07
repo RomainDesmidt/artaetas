@@ -1,11 +1,27 @@
 .aa-me-show-details {
   margin-top: 25px;
   margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
 
 }
 
 .aa-me-show-details-encart {
-  margin-left: 15%;
-  margin-right: 15%;
+  // margin-left: 15%;
+  // margin-right: 15%;
   background-color: white;
+  flex: 1 1 auto;
 }
+
+.aa-me-container-top {
+  margin-top: 55px;
+}
+
+.aa-me-show-profil {
+  flex: 0 1 20%;
+  display: flex;
+  justify-content: center;
+}
+

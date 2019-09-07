@@ -244,7 +244,8 @@
   align-self: center;
 }
 .aa-show-fav-svg,
-.aa-show-unfav-svg{
+.aa-show-unfav-svg,
+.aa-show-standard-svg {
   height: 25px;
   width: 25px;
 }
@@ -257,6 +258,13 @@
   fill: #ffd400 ; 
 }
 
+.aa-show-follow-svg path {
+  fill: #3C8AC0;
+}
+
+.aa-show-call-svg path {
+  fill: white;
+}
 
 .aa-show-dislike-svg,
 .aa-show-like-svg{
