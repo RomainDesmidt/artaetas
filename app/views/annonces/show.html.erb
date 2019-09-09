@@ -65,6 +65,11 @@
       </div>
 
       <div class="aa-show-detailannonce-criteres aa-show-minheight aa-show-marginbottom">
+        
+      <div class="aa-show-detailannonce-description aa-show-border-topbottom aa-show-minheight aa-show-marginbottom">
+        <div class='aa-show-description'><b><p>Description</p></b><p><%= @annonces.description %></p></div>
+      </div>
+      <div class="aa-show-minheight">
         <b><p>Criteres</p></b>
         <p>Dimensions (h x l x p): <%= @annonces.hauteur %> X <%= @annonces.largeur %> X <%= @annonces.profondeur %></p>
         <p>Format: <%= @annonces.format %></p>
@@ -94,10 +99,10 @@
           <p><%= Couleur.find(coul.couleur_id).couleur_dominante %></p>
           <% end %>
         <% end %>
+        </div>  
+        <div class="aa-show-border-bottom aa-show-separator"></div>
       </div>
-      <div class="aa-show-detailannonce-description aa-show-border aa-show-minheight aa-show-marginbottom">
-      <div class='aa-show-description'><b><p>Description</p></b><p><%= @annonces.description %></p></div>
-      </div>
+      
     </div>
     <div class="aa-show-detailuser">
       <div class="aa-show-detailuser-contact aa-show-minheight">
@@ -114,9 +119,9 @@
             
             <div class="aa-show-contact-profil-detail">
               <% if @annonces.user.afficher_identite %>
-                <%= link_to "#{@annonces.user.surname} #{@annonces.user.lastname}", "/users/#{@annonces.user.id}", class: "aa-show-user-link" %>
+                <%= link_to "#{@annonces.user.surname} #{@annonces.user.lastname}", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
               <% else %>
-                 <%= link_to "Profil Auteur", "/users/#{@annonces.user.id}", class: "aa-show-user-link" %>
+                 <%= link_to "Profil Auteur", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
               <% end %>
               
                 <div class="aa-show-contact-profil-nbannonces"><%= @annonces.user.annonces.count %> annonces en ligne</div>
@@ -134,10 +139,10 @@
           <div class="aa-show-detailuser-contact-email">
             <div class="aa-show-detailuser-contact-btn">
               <% if @annonces.user.afficher_email %>
-                  <%= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;
-                  <%= link_to "Envoyer un Mail", "mailto:#{@annonces.user.email}", class: "aa-show-mailto" %>
+                  <%= inline_svg "conversation.svg", class: "aa-show-call-svg align-self-center" %>&nbsp;&nbsp;&nbsp;
+                  <%= link_to "Envoyer un Mail", "mailto:#{@annonces.user.email}", class: "aa-show-mailto align-self-center" %>
               <% else %>
-                <%= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto">Envoyer un Mail</a>
+                <%= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-center">Envoyer un Mail</a>
               <% end %>
               
               
@@ -146,10 +151,10 @@
           <div class="aa-show-detailuser-contact-tel">
             <div class="aa-show-detailuser-contact-btn">
                <% if @annonces.user.afficher_tel %>
-                <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;
-                 <%= link_to "Contacter", "tel:#{@annonces.user.tel}", class: "aa-show-mailto" %>
+                <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg align-self-center" %>&nbsp;&nbsp;&nbsp;
+                 <%= link_to "Contacter", "tel:#{@annonces.user.tel}", class: "aa-show-mailto align-self-center" %>
               <% else %>
-                <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto">Contacter</a>
+                <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-center">Contacter</a>
               <% end %>
             </div>
           </div>
