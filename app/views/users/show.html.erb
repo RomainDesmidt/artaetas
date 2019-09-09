@@ -51,8 +51,26 @@
   </div>
   
   <div>
+    Suivi Par:
+  </div>
+  <% @user.followers.each do |u| %>
+    <%= u.email %>
+  <% end %>
+  <div>
+    Suit:
+   <% @user.followees.each do |u| %>
+    <%= u.email %>
+  <% end %>
+  </div> 
+  
+  <div>
     Annonces Likes
   </div>
+  
+  <div>
+    Like User
+      <%= @user.get_likes.size %> personnes aiment cet user!
+    </div>
   </div>
   Annonces Publiees:
   <div class="aa-search-annonce-container">

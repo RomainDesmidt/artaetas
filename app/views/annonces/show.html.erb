@@ -105,44 +105,52 @@
         <div class="aa-show-detailuser-contact-container">
           <div class="aa-show-detailuser-contact-profil">
             <div class="aa-show-contact-profil-photo">
-              <%= link_to "/users/#{@annonces.user.id}" do %>
+              <% if @annonces.user.photoprofil?  %>
+                <%= cl_image_tag @annonces.user.photoprofil, class: "aa-show-contact-svg"  %>
+              <% else %>
                 <%= inline_svg "profil.svg", class: "aa-show-contact-svg" %>
               <% end %>
             </div>
+            
             <div class="aa-show-contact-profil-detail">
               <% if @annonces.user.afficher_identite %>
-                <p><%= "#{@annonces.user.surname} #{@annonces.user.lastname}" %></p>
+                <%= link_to "#{@annonces.user.surname} #{@annonces.user.lastname}", "/users/#{@annonces.user.id}", class: "aa-show-user-link" %>
+              <% else %>
+                 <%= link_to "Profil Auteur", "/users/#{@annonces.user.id}", class: "aa-show-user-link" %>
               <% end %>
               
-                <%= link_to "Profil Auteur", "/users/#{@annonces.user.id}" %>
-                <div><%= @annonces.user.annonces.count %> annonces en ligne</div>
+                <div class="aa-show-contact-profil-nbannonces"><%= @annonces.user.annonces.count %> annonces en ligne</div>
+                
                 <% if user_signed_in? %>
                   <% if current_user.followees.include?(@user) %>
-                  <div class="aa-show-detailuser-followbtn"><%= link_to "Suivre", unfollow_annonce_path(@annonces), method: :put %> <%= inline_svg "enlever.svg", class: "aa-show-follow-svg aa-show-standard-svg" %></div>
+                  <div class="aa-show-detailuser-followbtn"><%= link_to "SUIVRE", unfollow_annonce_path(@annonces), method: :put, class: "aa-show-suivre-link" %> <%= inline_svg "enlever.svg", class: "aa-show-follow-svg" %></div>
                   <% else %>
-                    <div class="aa-show-detailuser-followbtn"><%= link_to "Suivre", follow_annonce_path(@annonces), method: :put %> <%= inline_svg "ajouter.svg", class: "aa-show-follow-svg aa-show-standard-svg" %></div>
+                    <div class="aa-show-detailuser-followbtn"><%= link_to "SUIVRE", follow_annonce_path(@annonces), method: :put, class: "aa-show-suivre-link" %> <%= inline_svg "ajouter.svg", class: "aa-show-follow-svg" %></div>
                   <% end %>
-                <% end %>
-                <% @user.followers.each do |u| %>
-                  <%= u.email %>
                 <% end %>
             </div>
           </div>
       
           <div class="aa-show-detailuser-contact-email">
-            <% if @annonces.user.afficher_email %>
-              <p><%= "#{@annonces.user.email}" %></p>
-            <% end %>
             <div class="aa-show-detailuser-contact-btn">
-              <%= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %><a>Envoyer un Mail</a>
+              <% if @annonces.user.afficher_email %>
+                  <%= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;
+                  <%= link_to "Envoyer un Mail", "mailto:#{@annonces.user.email}", class: "aa-show-mailto" %>
+              <% else %>
+                <%= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto">Envoyer un Mail</a>
+              <% end %>
+              
+              
             </div>
           </div>
           <div class="aa-show-detailuser-contact-tel">
-            <% if @annonces.user.afficher_tel %>
-              <p><%= "#{@annonces.user.tel}" %></p>
-              <% end %>
             <div class="aa-show-detailuser-contact-btn">
-              <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg" %><a>Contacter</a>
+               <% if @annonces.user.afficher_tel %>
+                <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;
+                 <%= link_to "Contacter", "tel:#{@annonces.user.tel}", class: "aa-show-mailto" %>
+              <% else %>
+                <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto">Contacter</a>
+              <% end %>
             </div>
           </div>
         </div>
@@ -150,24 +158,9 @@
 
          
           
-          <p>Partager cette Annonce</p>
+          <p class="aa-show-share-title">Partager cette annonce</p>
            <%= social_share_button_tag("Cette annonce est super venez la decouvrir sur http:\/\/artaetasv1.herokuapp.com\/annonces\/#{@annonces.id}", :image => "#{@annonces.photo.url}", :'data-twitter-hashtags' => "art,artaetas", :'via' => "artaetas", :'data-type' => 'photo', :url => "#{@annonces.photo.url}", desc: "Venez Vite!", :'data-quote' => "Une plaforme d\'achat et vente d\'oeuvres d\'art de toutes catégories, dédiée aux artistes, amateurs et collectionneurs", :'data-summary' => "Une plaforme d\'achat et vente d\'oeuvres d\'art de toutes catégories, dédiée aux artistes, amateurs et collectionneurs") %>
         
-
-              <% if user_signed_in? %>
-                <% if current_user.liked? @user %>
-                  <%= link_to "Dislike", dislikeuser_annonce_path(@annonces), class: 'vote', method: :put %>
-                <% else %>
-                  <%= link_to "Like", likeuser_annonce_path(@annonces) , class: 'vote', method: :put %>
-                <% end %>
-              <% end %>
-              <%= @user.get_likes.size %> personnes aiment cet user!
-              
-
-              
-
-
-
 
       </div>
     </div>
