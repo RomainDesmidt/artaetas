@@ -70,26 +70,45 @@
 }
 
 .aa-show-contact-profil-photo a svg {
-  align-self: center;
+  // align-self: center;
 }
+
+.aa-show-user-link {
+  font-size: 18px;
+  font-weight: 700;
+  color: black;
+}
+
+.aa-show-contact-profil-nbannonces {
+  font-style: italic;
+  font-weight: 700;
+  color: #818181;
+  font-size: 13px;
+}
+
+
 
 .aa-show-detailuser-contact-btn {
   padding: 5px 10px;
   width: 100%;
-  height: 30px;
+  height: 35px;
   background-color: #3F7FAD;
   color: white!important;
 }
 
 .aa-show-detailuser-followbtn {
-  padding: 5px 10px;
-  height: 35px;
+  padding: 2px 3px;
+  height: 29px;
   background-color: white;
   border-style: solid;
-  border-color: #3F7FAD;
+  border-color: lightgray;
   border-width: 1px;
   margin-bottom: 2px;
   width: fit-content;
+}
+
+.aa-show-suivre-link {
+  font-size: 11px;
 }
 
 .aa-show-detailuser-followbtn b {
@@ -100,9 +119,15 @@
 }
 
 .aa-show-contact-svg {
-  height: 50px;
-  width: 50px;
+  height: 75px;
+  width: 75px;
 }
+
+.aa-show-contact-svg path {
+  fill: #818181;
+}
+
+
 
 .aa-show-detailuser-contact-container {
   display: flex;
@@ -145,7 +170,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .aa-show-bg {
@@ -262,8 +287,25 @@
   fill: #3C8AC0;
 }
 
+.aa-show-follow-svg {
+  height: 15px;
+  width: 15px;
+}
+
+.aa-show-mailto {
+  color: white;
+  font-size: 15px;
+}
+
 .aa-show-call-svg path {
   fill: white;
+}
+
+.aa-show-share-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #818181;
+  margin-bottom: 20px;
 }
 
 .aa-show-dislike-svg,
@@ -314,9 +356,9 @@ box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
 }
 
 .aa-show-thumbnail {
-  border-radius: 40px;
-  height: 40px;
-  width: 40px;
+  // border-radius: 40px;
+  height: 70px;
+  width: 70px;
 }
 
 .aa-show-thumbnail-container {
