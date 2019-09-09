@@ -68,6 +68,10 @@
 
 }
 
+.aa-show-titre {
+  margin-bottom: 5px;
+}
+
 .aa-show-detailannonce-description {
   padding-bottom: 10px;
 }
@@ -366,6 +370,14 @@
   margin-bottom: 15px;
   min-height: 100px;
 }
+
+ .aa-show-detail-italic {
+   font-style: italic;
+   color: #585A59;
+   font-weight: 700;
+   font-size: 13px;
+   line-height: 13px;
+ }
 
 .aa-show-detailannonce-container {
   max-width: 90%;
