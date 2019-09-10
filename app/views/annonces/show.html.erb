@@ -151,10 +151,10 @@
           <div class="aa-show-detailuser-contact-email">
             <div class="aa-show-detailuser-contact-btn">
               <% if @annonces.user.afficher_email %>
-                  <%= inline_svg "conversation.svg", class: "aa-show-call-svg align-self-center" %>&nbsp;&nbsp;&nbsp;
-                  <%= link_to "Envoyer un Mail", "mailto:#{@annonces.user.email}", class: "aa-show-mailto align-self-center" %>
+                  <%= inline_svg "conversation.svg", class: "aa-show-call-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
+                  <%= link_to "Envoyer un Mail", "mailto:#{@annonces.user.email}", class: "aa-show-mailto align-self-centeraa" %>
               <% else %>
-                <%= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-center">Envoyer un Mail</a>
+                <%= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Envoyer un Mail</a>
               <% end %>
               
               
@@ -163,10 +163,10 @@
           <div class="aa-show-detailuser-contact-tel">
             <div class="aa-show-detailuser-contact-btn">
                <% if @annonces.user.afficher_tel %>
-                <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg align-self-center" %>&nbsp;&nbsp;&nbsp;
-                 <%= link_to "Contacter", "tel:#{@annonces.user.tel}", class: "aa-show-mailto align-self-center" %>
+                <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
+                 <%= link_to "Contacter", "tel:#{@annonces.user.tel}", class: "aa-show-mailto align-self-centeraa" %>
               <% else %>
-                <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-center">Contacter</a>
+                <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Contacter</a>
               <% end %>
             </div>
           </div>
