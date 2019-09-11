@@ -20,7 +20,7 @@
 }
 
 .aa-footer {
-  background-color: #717171;
+  background-color: $footer;
   width: 100%;
   height: 15%;
   display: flex;
@@ -107,7 +107,8 @@ body {
   width: 100%;
   height: 100%;
   font-family: 'Roboto', sans-serif;
-  background-color: #ECECEC;
+  // background-color: #ECECEC;
+  background-color: transparent;
 }
 
 a { text-decoration: none}
@@ -124,7 +125,8 @@ a:focus { text-decoration: none}
   position: relative;
   margin-top: 50px;
   height: 10%;
-  background-color: #ececec;
+  // background-color: #ececec;
+  background-color: $backgroundaa;
 }
 
 .aa-accroche-button {
@@ -141,7 +143,8 @@ a:focus { text-decoration: none}
   border-radius: 5px;
   width: 100px;
   text-align: center;
-  background-color: white;
+  // background-color: white;
+  background-color: $buttonaa;
   color: black;
   position: absolute;
   left: 50%;
@@ -174,7 +177,8 @@ a:focus { text-decoration: none}
   align-self: flex-end;
   display: flex;
   // justify-content: flex-end;
-  background-color: white;
+  // background-color: white;
+  background-color: $buttonaa;
   color: #3A89C1;
   padding: 10px 5px;
   margin-left:10px;
@@ -197,7 +201,8 @@ a:focus { text-decoration: none}
   // border: solid 1px;
   padding: 10px 5px;
   color: white;
-  background-color: #3A89C1;
+  // background-color: #3A89C1;
+  background-color: $brandcolor;
   margin-right: 10px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -281,18 +286,20 @@ a:focus { text-decoration: none}
 }
 
 .aa-deposer {
- background-color: #4787B6;
+// background-color: #4787B6;
+ background-color: $brandcolor;
  color: white;
 }
 
 .aa-decouvrir {
-  background-color: white;
+  background-color: $buttonaa;
   color: #4787B6;
 }
 
 .aa-who {
   height: 150px;
-  background-color: white;
+  // background-color: white;
+  background-color: $buttonaa;
   height: 28%;
   font-size: 11px;
 }
@@ -374,7 +381,7 @@ a:focus { text-decoration: none}
   height: 34vw;
   max-height: 100vh;
   transform: translate(calc(var(--i, 0)/var(--n)*-100%));
-  background-color: #ECECEC;
+  background-color: $backgroundaa;
   height: 55%;
 
 
@@ -463,7 +470,8 @@ p {
   display: flex;
   flex-direction: column;
   padding: 5px;
-  background-color: white;
+  // background-color: white;
+  background-color: $bloc;
 }
 
 
@@ -489,7 +497,8 @@ p {
 
 .aa-annonce-card-texte {
   flex: 0 0 25px;
-  background-color: white;
+  // background-color: white;
+  background-color: $bloc;
   z-index: 1;
   width: 100%;
   overflow: hidden;
@@ -588,7 +597,7 @@ p {
 
     min-height: 300px;
     transform: translate(calc(var(--i, 0)/var(--n)*-100%));
-    background-color: #ECECEC;
+    background-color: $backgroundaa;
     height: 60%;
    }
 
@@ -681,7 +690,7 @@ p {
     border-radius: 2px;
     width: 100px;
     text-align: center;
-    background-color: white;
+    background-color: $buttonaa;
     color: black;
     position: absolute;
     left: 50%;
