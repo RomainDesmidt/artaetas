@@ -10,6 +10,8 @@
         <%= f.input :name %>
         <%= f.input :description, placeholder: "Seule la premiere ligne apparait dans l'index max 50 caracteres" %>
         <%= f.input :prix, placeholder: "€", input_html: { class: 'aa-textalignright' } %>
+        <%= f.input :anneecreation, label: "Annee de creation" %>
+        <%= f.input :nom_artiste %>
         <%= f.input :photo, :input_html => { :onchange => "document.getElementById('previewPhoto').src = window.URL.createObjectURL(this.files[0])" } %>
         <!-- <img class="aa-edit-thumbnail" id="previewPhoto"></img> -->
         <%= cl_image_tag @annonce.photo, class: 'aa-edit-thumbnail' , id: "previewPhoto" %>

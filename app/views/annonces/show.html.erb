@@ -43,13 +43,12 @@
           <div class="aa-show-detailannonce-container">
             <div class="aa-show-detail-container">
               <b><p class='aa-show-titre'><%= @annonces.name %></p></b>
-              <p class="aa-show-detail-italic">Fait en 2019</p>
-              <% if @annonces.user.afficher_identite %>
-                <p class="aa-show-detail-italic">Par <%= "#{@annonces.user.surname} #{@annonces.user.lastname}"  %> </p>
-              <% else %>
-                <% if @annonces.user.afficher_email %>
-                  <p class="aa-show-detail-italic">Par <%= "#{@annonces.user.email}"  %> </p>
-                <% end %>
+              
+              <% if @annonces.anneecreation %>
+                <p class="aa-show-detail-italic">Fait en <%= "#{@annonces.anneecreation}" %></p>
+              <% end %>
+              <% if @annonces.nom_artiste %>
+                <p class="aa-show-detail-italic">Par <%= "#{@annonces.nom_artiste}"  %>
               <% end %>
               <% if @annonces.prix   %>
                 <p class="aa-show-price  aa-show-detail-italic"><%= @annonces.prix %>€</p>
