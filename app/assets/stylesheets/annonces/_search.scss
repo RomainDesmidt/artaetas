@@ -19,6 +19,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 30px;
+  background-color: $backgroundaa;
 
 }
 
@@ -96,13 +97,13 @@ overflow: hidden;
   justify-content: center;
   align-items : center;
   height: 200px;
-  background-color: #CAD1D9;
+  background-color: $tourimage;
 }
 
 .aa-search-annonce-card-detail {
   flex: 1 1 auto;
   align-items: start;
-  background-color: white;
+  background-color: $bloc;
   padding: 20px;
   overflow: hidden !important;
   // height: 190px;
@@ -129,7 +130,7 @@ overflow: hidden;
 
 .aa-search-field-bg {
 
-  background-color: #ECECEC;
+  background-color: $backgroundaa;
   margin-top: 75px;
   height: 200px;
   display: flex;
@@ -140,7 +141,7 @@ overflow: hidden;
 
 .aa-search-field-bg2 {
 
-  background-color: #E6EBEF;
+ background-color: $backgroundaa;
   margin-top: 50px;
 }
 
@@ -156,7 +157,7 @@ overflow: hidden;
   -webkit-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
   -moz-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
   box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
-  background-color: #F4F5F7;
+  background-color: $bloc;
 }
 
 
@@ -174,7 +175,7 @@ overflow: hidden;
   border: none;
   border-radius: 0px;
   padding: 10px 15px;
-  background-color: #E2E3E7 !important;
+  background-color: $champs !important;
   margin-bottom: 10px;
   margin-top: 20px;
 }
@@ -186,7 +187,7 @@ overflow: hidden;
   left: 50%;
   transform: translate(-50%, 0%);
   padding: 5px 70px;
-  background-color: #3A89C1 !important;
+  background-color: $brandcolor !important;
 }
 
 .aa-search-field-select {
@@ -197,9 +198,8 @@ overflow: hidden;
   border-radius: 0px !important;
   font-size: 11px;
   color: #717679;
-  // background-color: #e0e3e5;
   background: image-url('br_down.png') no-repeat right 10px center;
-  background-color: #e0e3e5;
+  background-color: $champs;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -216,9 +216,8 @@ overflow: hidden;
   border-radius: 0px !important;
   font-size: 11px;
   color: #717679;
-  // background-color: #e0e3e5;
   // background: image-url('br_down.png') no-repeat right 10px center;
-  background-color: #e0e3e5;
+  background-color: $champs;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -236,13 +235,7 @@ overflow: hidden;
   flex: 0 1 20%;
 }
 
-// .aa-search-field-select:first-of-type  {
-//   margin-right: 20px;
-// }
 
-// .aa-search-field-select {
-//   background-color: #ececec;
-// }
 
 .aa-search-field-select:nth-of-type(2) {
   // margin-left: 20px;
@@ -289,7 +282,7 @@ overflow: hidden;
   top: 50px;
   height: 100%;
   width: 100%;
-  background-color: #E6EBEF;
+  background-color: $champs;
   overflow-y: hidden;
 }
 

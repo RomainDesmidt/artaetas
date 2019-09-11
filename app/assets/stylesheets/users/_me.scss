@@ -10,11 +10,11 @@
 }
 
 .aa-signin-btn {
- background-color: #3A89C1;
+ background-color: $brandcolor;
 }
 
 .aa-me-infocivil .form-control-label,
-.aa-me-infocivil label,
+.aa-me-infocivil label,  
 .aa-me-psw .form-control-label {
   color: #595959;
 }
@@ -45,7 +45,7 @@
 
 .aa-me-nav-item .active {
   border: none !important ;
-  background-color: #F4F5F7 !important;
+  background-color: $bloc !important;
 }
 
 .aa-me-nav-item:nth-of-type(1) {
@@ -79,12 +79,11 @@ box-shadow: 0px 1px 6px 0px rgba(0,0,0,0.1), 0px -1px 6px 0px rgba(0,0,0,0.1), 1
   height: 100px;
   justify-content: center;
   align-items: center;
-  // background-color: #E5EAEE;
-  background-color: #ECECEC;
+  background-color: $backgroundaa;
 }
 
 .aa-me-nav-item {
-  background-color: #F4F5F7;
+  background-color: $bloc;
 //     -webkit-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
 // -moz-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
 // box-shadow: 0px 0px 2px 1px  rgba(0,0,0,0.2);
@@ -104,7 +103,7 @@ input[type="email"],
 input[type="password"],
 textarea {
 
-  background-color : #E0E3E5   !important;
+  background-color : $champs   !important;
   font-size: 11px;
   color: #717679;
 
@@ -123,7 +122,7 @@ textarea {
   -webkit-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
 -moz-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
 box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
-background-color: #F4F5F7;
+background-color: $bloc;
 height: 200px;
 line-height: 50px;
 position: fixed;
@@ -148,19 +147,19 @@ padding: 5px 20px;
   flex: 0 0 240px;
   display: flex;
   justify-content: center;
-  background-color: #CAD1D9;
+  background-color: $tourimage;
 }
 
 .aa-me-annonce-card-detail {
   flex: 1 1 auto;
   align-items: start;
-  background-color: white;
+  background-color: $bloc;
 }
 
 .aa-me-annonce-card-control {
   flex: 0 1 20px;
   align-items: end;
-  background-color: white;
+  background-color: $bloc;
 }
 
 
@@ -220,13 +219,13 @@ padding: 5px 20px;
 .aa-me-email,
 .aa-me-psw {
 margin-bottom: 10px;
-background-color: #ECECEC;
+background-color: $backgroundaa;
 padding: 20px 0px;
 }
 
 .aa-me-infocivil {
 margin-bottom: 10px;
-background-color: #ECECEC;
+background-color: $backgroundaa;
 padding: 0px 0px 20px 0px;
 }
 
