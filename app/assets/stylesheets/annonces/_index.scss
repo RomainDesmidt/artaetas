@@ -107,8 +107,7 @@ body {
   width: 100%;
   height: 100%;
   font-family: 'Roboto', sans-serif;
-  // background-color: #ECECEC;
-  background-color: transparent;
+  background-color: $backgroundaa;
 }
 
 a { text-decoration: none}
@@ -125,7 +124,6 @@ a:focus { text-decoration: none}
   position: relative;
   margin-top: 50px;
   height: 10%;
-  // background-color: #ececec;
   background-color: $backgroundaa;
 }
 
@@ -143,7 +141,6 @@ a:focus { text-decoration: none}
   border-radius: 5px;
   width: 100px;
   text-align: center;
-  // background-color: white;
   background-color: $buttonaa;
   color: black;
   position: absolute;
@@ -177,7 +174,6 @@ a:focus { text-decoration: none}
   align-self: flex-end;
   display: flex;
   // justify-content: flex-end;
-  // background-color: white;
   background-color: $buttonaa;
   color: #3A89C1;
   padding: 10px 5px;
@@ -201,7 +197,6 @@ a:focus { text-decoration: none}
   // border: solid 1px;
   padding: 10px 5px;
   color: white;
-  // background-color: #3A89C1;
   background-color: $brandcolor;
   margin-right: 10px;
   border-top-right-radius: 5px;
@@ -286,7 +281,6 @@ a:focus { text-decoration: none}
 }
 
 .aa-deposer {
-// background-color: #4787B6;
  background-color: $brandcolor;
  color: white;
 }
@@ -298,7 +292,6 @@ a:focus { text-decoration: none}
 
 .aa-who {
   height: 150px;
-  // background-color: white;
   background-color: $buttonaa;
   height: 28%;
   font-size: 11px;
@@ -464,13 +457,11 @@ p {
 }
 
 .aa-annonce-card {
-  // background-color: #ececec;
   // max-height: 70%;
   width: 100%;
   display: flex;
   flex-direction: column;
   padding: 5px;
-  // background-color: white;
   background-color: $bloc;
 }
 
@@ -497,7 +488,6 @@ p {
 
 .aa-annonce-card-texte {
   flex: 0 0 25px;
-  // background-color: white;
   background-color: $bloc;
   z-index: 1;
   width: 100%;
