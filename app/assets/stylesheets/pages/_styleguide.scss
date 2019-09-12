@@ -35,10 +35,27 @@
   .aa-tourimage { background-color: $tourimage; }
   .aa-fieldchamp { background-color: $champs; }
   
+  .aa-titrefont { color: $titrefont; font-size: $titresize; font-weight: $artaetasbold}
+  .aa-descfont { color: $descfont; font-size: $titresize; font-weight: $artaetasbold; font-style: italic; }
+  .aa-normfont { color: $normfont; font-size: $titresize; font-weight: $artaetasnormal }
+  .aa-navbarfont { color: $navbarfont; font-size: $navbarsize; font-weight: $artaetasmedium }
+  .aa-diapotitre { color: $diapotitre; font-size: $diaposize; font-weight: $artaetasbold }
+  .aa-diapodesc { color: $diapodesc; font-size: $diaposize; font-weight: $artaetasnormal }
+  .aa-buttonbrand { color: $buttonbrand; font-size: $buttonsize; font-weight: $artaetasbold }
+  .aa-buttonwhite { color: $buttonwhite; font-size: $buttonsize; font-weight: $artaetasbold; background-color: black; }
+  
+  
+  
+  
 }
 
 .style-guide--sidebar {
   a {
     color: $light-gray;
   }
+}
+
+
+.btn-artaetas {
+  background-color: $brandcolor !important;
 }
