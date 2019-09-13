@@ -46,12 +46,12 @@
       
       
       <div class="aa-me-show-details-description">
-        <p class="aa-ilotprofil-show">Description:</p>
+        <div class="aa-me-show-entete"><%= inline_svg "aide.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Description:</p></div>
         <p class="aa-ilotprofil-corpus"><%=  "#{@user.description}" %></p>
       </div>
       
       <div class="aa-me-show-details-rsociaux">
-        <p class="aa-ilotprofil-show">Reseaux Sociaux:</p>
+        <div class="aa-me-show-entete"><%= inline_svg "visibilite.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Reseaux Sociaux:</p></div>
         <div class="aa-ilotprofil-corpus">
           <p>Instagram</p>
           <p>Facebook</p>
@@ -62,7 +62,7 @@
       </div>
       
       <div class="aa-me-show-details-fav">
-        <p class="aa-ilotprofil-show">Favoris:</p>
+        <div class="aa-me-show-entete"><%= inline_svg "pin.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Favoris:</p></div>
         <br>
         <div class="aa-ilotprofil-corpus">
           <% @user.bookmarkees_by(Annonce).each do |a| %>
@@ -75,7 +75,7 @@
       
       <div class="aa-me-show-details-follow">
         <div>
-          <p class="aa-ilotprofil-show">Suivi Par:</p>
+          <div class="aa-me-show-entete"><%= inline_svg "nav-ouvrir.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Suivi Par:</p></div>
         </div>
         <div class="aa-ilotprofil-corpus">
           <% @user.followers.each do |u| %>
@@ -83,7 +83,7 @@
           <% end %>
         </div>
         <div>
-          <p class="aa-ilotprofil-show">Suit:</p>
+          <div class="aa-me-show-entete"><%= inline_svg "nav-fermer.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Suit:</p></div>
           <div class="aa-ilotprofil-corpus">
             <% @user.followees.each do |u| %>
               <%= u.email %>
@@ -94,11 +94,11 @@
       
       <div class="aa-me-show-details-like">
         <div class="aa-me-show-details-likeannonce">
-          <p class="aa-ilotprofil-show">Annonces Likes:</p>
+          <div class="aa-me-show-entete"><%= inline_svg "like.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Annonces Likes:</p></div>
         </div>
       
         <div class="aa-me-show-details-likeuser">
-          <p class="aa-ilotprofil-show">Like User:</p>
+          <div class="aa-me-show-entete"><%= inline_svg "like-plein.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Like User:</p></div>
           <p class="aa-ilotprofil-corpus"><%= @user.get_likes.size %> personnes aiment cet user!</p>
         </div>
       </div>
