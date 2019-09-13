@@ -17,25 +17,28 @@
       <div class="aa-me-show-details">
         <div class="aa-me-show-profil">
           
-          <% if @user.photoprofil %>
+          <% if @user.photoprofil? %>
             <%= cl_image_tag @user.photoprofil, class: "aa-me-show-profilphoto" %>
           <% else %>
             <%= inline_svg "profil.svg", class: "aa-me-show-profilphoto" %>
           <% end %>
         </div>
         <div class="aa-me-show-details-encart">
+            <% if @user.afficher_identite %>
+              <p><%= "#{@user.surname} #{@user.lastname}" %></p>
+            <% end %>
+            <% if @user.afficher_tel %>
+              <p><%= "#{@user.tel}" %></p>
+            <% end %>
             <% if @user.afficher_email %>
-                <%=  "#{@user.email}" %>
-              <% else %>
-                <%= "User_#{@user.created_at.to_i}" %>
-              <% end %>
-              <% if @user.afficher_identite %>
-                <p><%= "#{@user.surname} #{@user.lastname}" %></p>
-              <% end %>
-              <p>Ville / Pays</p>
-              <%# if @user.afficher_tel %>
-                <!--<p><%#= "#{@user.tel}" %></p>-->
-              <%# end %>
+              <%=  "#{@user.email}" %>
+            <% else %>
+              <%= "User_#{@user.created_at.to_i}" %>
+            <% end %>
+            <% if (@user.villeresidence? & @user.paysresidence?) %>
+            <p><%= "#{@user.villeresidence} \/ #{@user.paysresidence}" %></p>
+            <% end %>
+            
         </div>
       </div>
       <div class="aa-me-show-details-userlike">
@@ -48,11 +51,12 @@
     <div class="aa-me-show-details-secondaires">
       
       
-      
-      <div class="aa-me-show-details-description">
-        <div class="aa-me-show-entete"><%= inline_svg "aide.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Description:</p></div>
-        <p class="aa-ilotprofil-corpus"><%=  "#{@user.description}" %></p>
-      </div>
+     <% if @user.description? %> 
+        <div class="aa-me-show-details-description">
+          <div class="aa-me-show-entete"><%= inline_svg "aide.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Description:</p></div>
+          <p class="aa-ilotprofil-corpus"><%=  "#{@user.description}" %></p>
+        </div>
+      <% end %>
       
       <div class="aa-me-show-details-rsociaux">
         <div class="aa-me-show-entete"><%= inline_svg "visibilite.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Reseaux Sociaux:</p></div>
