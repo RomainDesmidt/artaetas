@@ -53,24 +53,31 @@
       
      <% if @user.description? %> 
         <div class="aa-me-show-details-description">
-          <div class="aa-me-show-entete"><%= inline_svg "aide.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Description:</p></div>
+          <div class="aa-me-show-entete"><%= inline_svg "aide.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Description:</p></div><br>
           <p class="aa-ilotprofil-corpus"><%=  "#{@user.description}" %></p>
         </div>
       <% end %>
       
-      <div class="aa-me-show-details-rsociaux">
-        <div class="aa-me-show-entete"><%= inline_svg "visibilite.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Reseaux Sociaux:</p></div>
-        <div class="aa-ilotprofil-corpus">
-          <p>Instagram</p>
-          <p>Facebook</p>
-          <p>Twitter</p>
-          <p>Pinterest</p>
-          <p>Etc</p>
+      <% if (@user.instagram? || @user.facebook? || @user.website?) %> 
+        <div class="aa-me-show-details-rsociaux">
+          <div class="aa-me-show-entete"><%= inline_svg "visibilite.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Reseaux Sociaux:</p></div><br>
+          <div class="aa-ilotprofil-corpus">
+            
+            <% if @user.instagram? %>
+              <p><%= "#{@user.instagram}" %>&nbsp;<%= image_tag "insta2.png", class: "aa-me-show-smallersvg aa-me-show-svg-filter" %></p>
+            <% end %>
+            <% if @user.facebook? %>
+              <p><%= "#{@user.facebook}" %>&nbsp;<%= image_tag "fb2.png", class: "aa-me-show-smallersvg aa-me-show-svg-filter" %></p>
+            <% end %>
+            <% if @user.website? %>
+              <p><%= "#{@user.website}" %>&nbsp;<%= image_tag "www.jpg", class: "aa-me-show-smallersvg aa-me-show-svg-filter" %></p>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
       
       <div class="aa-me-show-details-fav">
-        <div class="aa-me-show-entete"><%= inline_svg "pin.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Favoris:</p></div>
+        <div class="aa-me-show-entete"><%= inline_svg "pin.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Favoris:</p></div><br>
         <br>
         <div class="aa-ilotprofil-corpus">
           <% @user.bookmarkees_by(Annonce).each do |a| %>
@@ -83,7 +90,7 @@
       
       <div class="aa-me-show-details-follow">
         <div>
-          <div class="aa-me-show-entete"><%= inline_svg "nav-ouvrir.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Suivi Par:</p></div>
+          <div class="aa-me-show-entete"><%= inline_svg "nav-ouvrir.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Suivi Par:</p></div><br>
         </div>
         <div class="aa-ilotprofil-corpus">
           <% @user.followers.each do |u| %>
@@ -91,7 +98,7 @@
           <% end %>
         </div>
         <div>
-          <div class="aa-me-show-entete"><%= inline_svg "nav-fermer.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Suit:</p></div>
+          <br><div class="aa-me-show-entete"><%= inline_svg "nav-fermer.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Suit:</p></div><br>
           <div class="aa-ilotprofil-corpus">
             <% @user.followees.each do |u| %>
               <%= u.email %>
@@ -102,11 +109,11 @@
       
       <div class="aa-me-show-details-like">
         <div class="aa-me-show-details-likeannonce">
-          <div class="aa-me-show-entete"><%= inline_svg "like.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Annonces Likes:</p></div>
+          <div class="aa-me-show-entete"><%= inline_svg "like.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Annonces Likes:</p></div><br>
         </div>
       
         <div class="aa-me-show-details-likeuser">
-          <div class="aa-me-show-entete"><%= inline_svg "like-plein.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Like User:</p></div>
+          <br><div class="aa-me-show-entete"><%= inline_svg "like-plein.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Like User:</p></div><br>
           <p class="aa-ilotprofil-corpus"><%= @user.get_likes.size %> personnes aiment cet user!</p>
         </div>
       </div>

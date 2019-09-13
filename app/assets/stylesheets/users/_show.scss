@@ -114,3 +114,14 @@
 .aa-me-show-profilblank path {
   fill: $entete;
 }
+
+.aa-me-show-svg-filter {
+ -webkit-filter: invert(.8);
+  filter: invert(.8);
+}
+
+.aa-me-show-smallersvg {
+  height: 15px;
+  width: 15px;
+  align-self: flex-end
+}
