@@ -8,7 +8,11 @@
 < end > -->
 <div class="aa-me-container-top aa-user-show-bg"> 
   <div class="aa-me-annonce-container aa-me-container-top">
-    <div class="aa-me-show-fondprofil" style="background-image: url('<%= "#{@user.photofond.url}" %>')  ;">
+    <% if @user.photofond %>
+      <div class="aa-me-show-fondprofil" style="background-image: url('<%= "#{@user.photofond.url}" %>')  ;">
+    <% else %>
+      <div class="aa-me-show-fondprofil" style="background-color: black  ;">
+    <% end %>
       
       <div class="aa-me-show-details">
         <div class="aa-me-show-profil">
@@ -16,7 +20,7 @@
           <% if @user.photoprofil %>
             <%= cl_image_tag @user.photoprofil, class: "aa-me-show-profilphoto" %>
           <% else %>
-            <%= inline_svg "profil.svg", class: "aa-show-contact-svg" %>
+            <%= inline_svg "profil.svg", class: "aa-me-show-profilphoto" %>
           <% end %>
         </div>
         <div class="aa-me-show-details-encart">
