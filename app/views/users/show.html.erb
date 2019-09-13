@@ -94,14 +94,14 @@
         </div>
         <div class="aa-ilotprofil-corpus">
           <% @user.followers.each do |u| %>
-            <%= u.email %>
+            <%= u.email %><br>
           <% end %>
         </div>
         <div>
           <br><div class="aa-me-show-entete"><%= inline_svg "nav-fermer.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Suit:</p></div><br>
           <div class="aa-ilotprofil-corpus">
             <% @user.followees.each do |u| %>
-              <%= u.email %>
+              <%= u.email %><br>
             <% end %>
           </div>
         </div> 
