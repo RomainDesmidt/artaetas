@@ -8,7 +8,7 @@
 < end > -->
 <div class="aa-me-container-top aa-user-show-bg"> 
   <div class="aa-me-annonce-container aa-me-container-top">
-    <% if @user.photofond %>
+    <% if @user.photofond? %>
       <div class="aa-me-show-fondprofil" style="background-image: url('<%= "#{@user.photofond.url}" %>')  ;">
     <% else %>
       <div class="aa-me-show-fondprofil" style="background-color: black  ;">
