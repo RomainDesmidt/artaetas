@@ -6,107 +6,139 @@
 <p>< link_to a.name, "/annonces/#{a.id}" >
 < a.description ></p>
 < end > -->
-<div class="aa-me-annonce-container aa-me-container-top">
-  <div class="aa-me-show-fondprofil"></div>
-  <div class="aa-me-show-details">
-    <div class="aa-me-show-profil">
-      <%= inline_svg "profil.svg", class: "aa-show-contact-svg" %>
-    </div>
-    <div class="aa-me-show-details-encart">
-        <% if @user.afficher_email %>
-            <%=  "#{@user.email}" %>
+<div class="aa-me-container-top aa-user-show-bg"> 
+  <div class="aa-me-annonce-container aa-me-container-top">
+    <div class="aa-me-show-fondprofil" style="background-image: url('<%= "#{@user.photofond.url}" %>')  ;">
+      
+      <div class="aa-me-show-details">
+        <div class="aa-me-show-profil">
+          
+          <% if @user.photoprofil %>
+            <%= cl_image_tag @user.photoprofil, class: "aa-me-show-profilphoto" %>
           <% else %>
-            <%= "User_#{@user.created_at.to_i}" %>
+            <%= inline_svg "profil.svg", class: "aa-show-contact-svg" %>
           <% end %>
-          <% if @user.afficher_identite %>
-            <p><%= "#{@user.surname} #{@user.lastname}" %></p>
-          <% end %>
-          <% if @user.afficher_tel %>
-            <p><%= "#{@user.tel}" %></p>
-          <% end %>
-    </div>
-  </div>
-  <div class="aa-me-show-details-secondaires">
-  <div>
-
-   <% unless @user.get_likes == [] %>
-  Nb de like de cet user => 
-    <%= "#{@user.get_likes.count}" %>
-   <% end %>
-  </div>
-  <div>
-    Description
-    <%=  "#{@user.description}" %>
-  </div>
-  <div>
-    Reseaux Sociaux
-  </div>
-  <div>
-    Favoris<br>
-    <% @user.bookmarkees_by(Annonce).each do |a| %>
-      <% favannonce = Annonce.find(a.bookmarkee_id) %>
-       <%= link_to "#{favannonce.name}", "/annonces/#{favannonce.id}" ,class: "aa-me-annonce-fav" %>
-      <br>
-    <% end %>
-  </div>
-  
-  <div>
-    Suivi Par:
-  </div>
-  <% @user.followers.each do |u| %>
-    <%= u.email %>
-  <% end %>
-  <div>
-    Suit:
-   <% @user.followees.each do |u| %>
-    <%= u.email %>
-  <% end %>
-  </div> 
-  
-  <div>
-    Annonces Likes
-  </div>
-  
-  <div>
-    Like User
-      <%= @user.get_likes.size %> personnes aiment cet user!
-    </div>
-  </div>
-  Annonces Publiees:
-  <div class="aa-search-annonce-container">
-        <% if @user.annonces.count > 0 %>
-          <% @user.annonces.each do |a| %>
-  
-              <div class="aa-search-annonce-card">
-              <%= link_to a, class: "aa-search-annonce-card-image" do %>
-                <!-- <div class="aa-search-annonce-card-image"> -->
-                  <%= cl_image_tag a.photo %>
-                <!-- </div> -->
+        </div>
+        <div class="aa-me-show-details-encart">
+            <% if @user.afficher_email %>
+                <%=  "#{@user.email}" %>
+              <% else %>
+                <%= "User_#{@user.created_at.to_i}" %>
               <% end %>
-              <%= link_to a, class: "aa-search-annonce-card-detail" do %>
-                <p class="aa-annonce-titre-search"><%= a.name.lines.first[0,30] %></p>
-                <p class="aa-annonce-prix-search"><%= a.prix %><%= "€" unless a.prix.nil? %></p>
-                <p class="aa-annonce-description-search"><!-- < a.description.lines.first[0,30] > -->
-                 <%= a.description %>
-                </p>
+              <% if @user.afficher_identite %>
+                <p><%= "#{@user.surname} #{@user.lastname}" %></p>
               <% end %>
-  
-                <div class="aa-search-annonce-card-control">
-                </div>
-  
-  
-              </div>
-  
-          <% end %>
-        <% else %>
-          <h1>Aucune annonce trouvee</h1>
+              <p>Ville / Pays</p>
+              <%# if @user.afficher_tel %>
+                <!--<p><%#= "#{@user.tel}" %></p>-->
+              <%# end %>
+        </div>
+      </div>
+      <div class="aa-me-show-details-userlike">
+        <% unless @user.get_likes == [] %>
+          Like:<%= " #{@user.get_likes.count}" %>
         <% end %>
+      </div>
+    </div>
+    
+    <div class="aa-me-show-details-secondaires">
+      
+      
+      
+      <div class="aa-me-show-details-description">
+        <p class="aa-ilotprofil-show">Description:</p>
+        <p class="aa-ilotprofil-corpus"><%=  "#{@user.description}" %></p>
+      </div>
+      
+      <div class="aa-me-show-details-rsociaux">
+        <p class="aa-ilotprofil-show">Reseaux Sociaux:</p>
+        <div class="aa-ilotprofil-corpus">
+          <p>Instagram</p>
+          <p>Facebook</p>
+          <p>Twitter</p>
+          <p>Pinterest</p>
+          <p>Etc</p>
+        </div>
+      </div>
+      
+      <div class="aa-me-show-details-fav">
+        <p class="aa-ilotprofil-show">Favoris:</p>
+        <br>
+        <div class="aa-ilotprofil-corpus">
+          <% @user.bookmarkees_by(Annonce).each do |a| %>
+            <% favannonce = Annonce.find(a.bookmarkee_id) %>
+             <%= link_to "#{favannonce.name}", "/annonces/#{favannonce.id}" ,class: "aa-me-annonce-fav" %>
+            <br>
+          <% end %>
+        </div>
+      </div>
+      
+      <div class="aa-me-show-details-follow">
+        <div>
+          <p class="aa-ilotprofil-show">Suivi Par:</p>
+        </div>
+        <div class="aa-ilotprofil-corpus">
+          <% @user.followers.each do |u| %>
+            <%= u.email %>
+          <% end %>
+        </div>
+        <div>
+          <p class="aa-ilotprofil-show">Suit:</p>
+          <div class="aa-ilotprofil-corpus">
+            <% @user.followees.each do |u| %>
+              <%= u.email %>
+            <% end %>
+          </div>
+        </div> 
+      </div>
+      
+      <div class="aa-me-show-details-like">
+        <div class="aa-me-show-details-likeannonce">
+          <p class="aa-ilotprofil-show">Annonces Likes:</p>
+        </div>
+      
+        <div class="aa-me-show-details-likeuser">
+          <p class="aa-ilotprofil-show">Like User:</p>
+          <p class="aa-ilotprofil-corpus"><%= @user.get_likes.size %> personnes aiment cet user!</p>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="aa-search-annonce-container">
+          <% if @user.annonces.count > 0 %>
+            <% @user.annonces.each do |a| %>
+    
+                <div class="aa-search-annonce-card">
+                <%= link_to a, class: "aa-search-annonce-card-image" do %>
+                  <!-- <div class="aa-search-annonce-card-image"> -->
+                    <%= cl_image_tag a.photo %>
+                  <!-- </div> -->
+                <% end %>
+                <%= link_to a, class: "aa-search-annonce-card-detail" do %>
+                  <p class="aa-annonce-titre-search"><%= a.name.lines.first[0,30] %></p>
+                  <p class="aa-annonce-prix-search"><%= a.prix %><%= "€" unless a.prix.nil? %></p>
+                  <p class="aa-annonce-description-search"><!-- < a.description.lines.first[0,30] > -->
+                   <%= a.description %>
+                  </p>
+                <% end %>
+    
+                  <div class="aa-search-annonce-card-control">
+                  </div>
+    
+    
+                </div>
+    
+            <% end %>
+          <% else %>
+            <h1>Aucune annonce trouvee</h1>
+          <% end %>
+    </div>
+  
+  </div>
+  
   </div>
 
 </div>
-
-</div>
-
-
 
 
