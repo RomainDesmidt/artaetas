@@ -1,6 +1,12 @@
 //= require rails-ujs
 //= require_tree .
 // window.onbeforeunload = function () {
+new SlimSelect({
+  select: '#multiple'
+})
+
+
+
 window.onload = function () {
   window.scrollTo(0, 0);
 }
@@ -412,6 +418,5 @@ _C.addEventListener('touchend', move, false);
 // appendCat('photos13');
 // appendCat('photos14');
 // appendCat('photos15');
-
 
 
