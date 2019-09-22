@@ -1,24 +1,6 @@
 //= require rails-ujs
 //= require_tree .
 // window.onbeforeunload = function () {
-var select = new SlimSelect({
-  select: document.querySelector('.multiple-dd')
-  
-})
-
-var select2 = new SlimSelect({
-  select: document.querySelector('.multiple-dd2')
-  
-})
-
-var select3 = new SlimSelect({
-  select: document.querySelector('.multiple-dd3')
-  
-})
-
-
-
-
 
 window.onload = function () {
   window.scrollTo(0, 0);
