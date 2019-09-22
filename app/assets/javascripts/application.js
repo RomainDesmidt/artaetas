@@ -1,5 +1,4 @@
 //= require rails-ujs
-//= require_tree .
 // window.onbeforeunload = function () {
 
 window.onload = function () {
@@ -380,6 +379,8 @@ _C.addEventListener('touchmove', drag, false);
 
 _C.addEventListener('mouseup', move, false);
 _C.addEventListener('touchend', move, false);
+
+//= require_tree .
 
 
 // function getRandomSize(min, max) {
