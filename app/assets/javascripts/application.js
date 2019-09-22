@@ -1,5 +1,25 @@
 //= require rails-ujs
+//= require_tree .
 // window.onbeforeunload = function () {
+
+var selection = document.querySelector('.multiple-dd') !== null;
+if (selection) {
+   var select = new SlimSelect({
+  select: document.querySelector('.multiple-dd')
+  
+})
+
+}
+
+var selection2 = document.querySelector('.multiple-dd2') !== null;
+if (selection2) {
+   var select2 = new SlimSelect({
+  select: document.querySelector('.multiple-dd2')
+  
+})
+
+}
+
 
 window.onload = function () {
   window.scrollTo(0, 0);
@@ -380,7 +400,7 @@ _C.addEventListener('touchmove', drag, false);
 _C.addEventListener('mouseup', move, false);
 _C.addEventListener('touchend', move, false);
 
-//= require_tree .
+
 
 
 // function getRandomSize(min, max) {
