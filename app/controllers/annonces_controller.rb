@@ -178,9 +178,11 @@ class AnnoncesController < ApplicationController
     unless params[:annonce][:courant_ids].nil?
       params[:annonce][:courant_ids].each do |id|
         unless @courantsbdd.include?(id)
-          courant = Courant.find(id)
-          couranta = CourantAnnonce.new( courant: courant, annonce_id: @annonce.id )
-          couranta.save!
+          unless id==""
+            courant = Courant.find(id)
+            couranta = CourantAnnonce.new( courant: courant, annonce_id: @annonce.id )
+            couranta.save!
+          end
         end
       end
     end
@@ -208,9 +210,12 @@ class AnnoncesController < ApplicationController
     unless params[:annonce][:couleur_ids].nil?
       params[:annonce][:couleur_ids].each do |id|
         unless @couleursbdd.include?(id)
-          couleur = Couleur.find(id)
-          couleura = CouleurAnnonce.new( couleur: couleur, annonce_id: @annonce.id )
-          couleura.save!
+          unless id==""
+            couleur = Couleur.find(id)
+            couleura = CouleurAnnonce.new( couleur: couleur, annonce_id: @annonce.id )
+            couleura.save!
+          end
+          
         end
       end
     end
@@ -330,7 +335,7 @@ class AnnoncesController < ApplicationController
   private
 
   def annonce_params
-    params.require(:annonce).permit(:name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :categorie_ids => [], :courant_ids => [], :couleur_ids => [])
+    params.require(:annonce).permit(:name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :categorie_ids => [], :courant_ids => [], :couleur_ids => [], :cat_ids => [])
   end
 end
 

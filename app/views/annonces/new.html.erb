@@ -31,23 +31,35 @@
       <div class="aa-new-titrefield">Vos Tags</div>
       <div class="aa-new-vafield">
         <p class="aa-new-label">Categories</p>
+         <%#= f.select :categorie_ids , options_for_select(Categorie.all.collect {|u| [u.name, u.id]}), {:include_blank => false}, {:multiple => true, :class => 'multiple-dd'}  %>
+         
         <% for categorie in Categorie.all %>
           <label class="aa-new-label-tags">
           <%= check_box_tag "annonce[categorie_ids][]", categorie.id %>
-          <%=h categorie.name %></label><br />
+          <%=h categorie.name %>
+          </label><br />
          <% end %>
+         
+         
         <p class="aa-new-label">Courants</p>
-        <% for courant in Courant.all %>
-        <label class="aa-new-label-tags">
-          <%= check_box_tag "annonce[courant_ids][]", courant.id %>
-          <%=h courant.name %></label><br />
-         <% end %>
+        <%= f.select :courant_ids , options_for_select(Courant.all.collect {|u| [u.name, u.id]}), {:include_blank => false}, {:multiple => true, :class => 'multiple-dd'}  %>
+        <%# for courant in Courant.all %>
+        <!--<label class="aa-new-label-tags">-->
+          <%#= check_box_tag "annonce[courant_ids][]", courant.id %>
+          <%#=h courant.name %>
+          <!--</label><br />-->
+         <%# end %>
+         
         <p class="aa-new-label">Couleurs</p>
-        <% for couleur in Couleur.all %>
-        <label class="aa-new-label-tags">
-          <%= check_box_tag "annonce[couleur_ids][]", couleur.id %>
-          <%=h couleur.couleur_dominante %></label><br />
-         <% end %>
+        <%= f.select :couleur_ids , options_for_select(Couleur.all.collect {|u| [u.couleur_dominante, u.id]}), {:include_blank => false}, {:multiple => true, :class => 'multiple-dd2'}  %>
+        <%# for couleur in Couleur.all %>
+        <!--<label class="aa-new-label-tags">-->
+          <%#= check_box_tag "annonce[couleur_ids][]", couleur.id %>
+          <%#=h couleur.couleur_dominante %>
+          <!--</label><br />-->
+         <%# end %>
+        <%#= f.select :couleur_ids , options_for_select(Couleur.all), {:include_blank => true}, {:multiple => true, :size =>10, :class => 'multiple-dd'}  %>
+         
       </div>
     </div>
 
