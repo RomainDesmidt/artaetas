@@ -30,7 +30,11 @@
               <!-- </div> -->
             <% end %>
             <%= link_to a, class: "aa-search-annonce-card-detail" do %>
-              <p class="aa-annonce-titre-search"><%= a.name.lines.first[0,30] %></p>
+              <p class="aa-annonce-titre-search">
+              <% unless a.name.lines.first.nil? %>
+                <%= a.name.lines.first[0,30] %>
+              <% end %>
+                </p>
               <p class="aa-annonce-prix-search"><%= a.prix %><%= "€" unless a.prix.nil? %></p>
               <p class="aa-annonce-description-search"><!-- < a.description.lines.first[0,30] > -->
                <%= a.description %>

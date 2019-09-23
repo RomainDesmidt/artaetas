@@ -145,12 +145,14 @@ class AnnoncesController < ApplicationController
       @couleursbdd << a.couleur_id
     end
 
-    unless params[:annonce][:categorie_ids].nil?
-      params[:annonce][:categorie_ids].each do |id|
+    unless params[:annonce][:categorie_annonces].nil?
+      params[:annonce][:categorie_annonces].each do |id|
         unless @categoriesbdd.include?(id.to_i)
-          categorie = Categorie.find(id)
-          categoriea = CategorieAnnonce.new( categorie: categorie, annonce_id: @annonce.id )
-          categoriea.save!
+          unless id==""
+            categorie = Categorie.find(id)
+            categoriea = CategorieAnnonce.new( categorie: categorie, annonce_id: @annonce.id )
+            categoriea.save!
+          end
         end
       end
     end
@@ -158,14 +160,14 @@ class AnnoncesController < ApplicationController
 
     unless @categoriesbdd.nil?
 
-      if params[:annonce][:categorie_ids].nil?
+      if params[:annonce][:categorie_annonces].nil?
         categoriedelall = CategorieAnnonce.where(annonce_id: @annonce.id)
         categoriedelall.each do |cat|
           cat.destroy
         end
       else
         @categoriesbdd.each do |id_db|
-          unless params[:annonce][:categorie_ids].include?(id_db.to_s)
+          unless params[:annonce][:categorie_annonces].include?(id_db.to_s)
             categoriedel = CategorieAnnonce.where(annonce_id: @annonce.id).where(categorie_id: id_db)
             categoriedel.each do |cat|
               cat.destroy

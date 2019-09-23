@@ -33,7 +33,11 @@
           <%= cl_image_tag t.photo, { class: "aa-annonce-card-image"} %>
         <div class="aa-annonce-card-texte">
         <%= link_to "annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
-        <p class='p-titre'><%= t.name.lines.first[0,20] %></p>
+        <p class='p-titre'>
+        <% unless t.name.lines.first.nil? %>
+          <%= t.name.lines.first[0,20] %>
+        <% end %>
+        </p>
         <% end %>
         <% unless t.description.lines.first.nil? %>
           <p class='p-description'><%= t.description.lines.first[0,30] %></p>
