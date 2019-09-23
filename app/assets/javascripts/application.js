@@ -20,6 +20,15 @@ if (selection2) {
 
 }
 
+var selection3 = document.querySelector('.multiple-dd3') !== null;
+if (selection3) {
+   var select3 = new SlimSelect({
+  select: document.querySelector('.multiple-dd3')
+  
+})
+
+}
+
 
 window.onload = function () {
   window.scrollTo(0, 0);

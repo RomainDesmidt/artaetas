@@ -20,10 +20,13 @@ class Annonce < ApplicationRecord
   def couleur_ids=(ids)
   end
 
-  def courant_ids=(ids)
-  end
+  # def courant_ids=(ids)
+  # end
   
-  def categorie_ids=(ids)
+  # def categorie_ids=(ids)
+  # end
+  
+  def cat_ids=(ids)
   end
   
 end
