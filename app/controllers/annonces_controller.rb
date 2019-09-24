@@ -135,7 +135,7 @@ class AnnoncesController < ApplicationController
 
   def update
     @annonce = Annonce.find(params[:id])
-    @annonce.update(annonce_params)
+    # @annonce.update(annonce_params)
 
     @categoriesbdd = []
     @couleursbdd = []
@@ -183,71 +183,73 @@ class AnnoncesController < ApplicationController
       end
     end
 
-    unless params[:annonce][:courant_ids].nil?
-      params[:annonce][:courant_ids].each do |id|
-        unless @courantsbdd.include?(id)
-          unless id==""
-            courant = Courant.find(id)
-            couranta = CourantAnnonce.new( courant: courant, annonce_id: @annonce.id )
-            couranta.save!
-          end
-        end
-      end
-    end
+    # unless params[:annonce][:courant_ids].nil?
+    #   params[:annonce][:courant_ids].each do |id|
+    #     unless @courantsbdd.include?(id)
+    #       unless id==""
+    #         courant = Courant.find(id)
+    #         couranta = CourantAnnonce.new( courant: courant, annonce_id: @annonce.id )
+    #         couranta.save!
+    #       end
+    #     end
+    #   end
+    # end
 
 
-    unless @courantsbdd.nil?
+    # unless @courantsbdd.nil?
 
-      if params[:annonce][:courant_ids].nil?
-        courantdelall = CourantAnnonce.where(annonce_id: @annonce.id)
-        courantdelall.each do |cour|
-          cour.destroy
-        end
-      else
-        @courantsbdd.each do |id_db|
-          unless params[:annonce][:courant_ids].include?(id_db)
-            courantdel = CourantAnnonce.where(annonce_id: @annonce.id).where(courant_id: id_db)
-            courantdel.each do |cour|
-              cour.destroy
-            end
-          end
-        end
-      end
-    end
+    #   if params[:annonce][:courant_ids].nil?
+    #     courantdelall = CourantAnnonce.where(annonce_id: @annonce.id)
+    #     courantdelall.each do |cour|
+    #       cour.destroy
+    #     end
+    #   else
+    #     @courantsbdd.each do |id_db|
+    #       unless params[:annonce][:courant_ids].include?(id_db)
+    #         courantdel = CourantAnnonce.where(annonce_id: @annonce.id).where(courant_id: id_db)
+    #         courantdel.each do |cour|
+    #           cour.destroy
+    #         end
+    #       end
+    #     end
+    #   end
+    # end
 
-    unless params[:annonce][:couleur_ids].nil?
-      params[:annonce][:couleur_ids].each do |id|
-        unless @couleursbdd.include?(id)
-          unless id==""
-            couleur = Couleur.find(id)
-            couleura = CouleurAnnonce.new( couleur: couleur, annonce_id: @annonce.id )
-            couleura.save!
-          end
+    # unless params[:annonce][:couleur_ids].nil?
+    #   params[:annonce][:couleur_ids].each do |id|
+    #     unless @couleursbdd.include?(id)
+    #       unless id==""
+    #         couleur = Couleur.find(id)
+    #         couleura = CouleurAnnonce.new( couleur: couleur, annonce_id: @annonce.id )
+    #         couleura.save!
+    #       end
           
-        end
-      end
-    end
+    #     end
+    #   end
+    # end
 
 
-    unless @couleursbdd.nil?
+    # unless @couleursbdd.nil?
 
-      if params[:annonce][:couleur_ids].nil?
-        couleurdelall = CouleurAnnonce.where(annonce_id: @annonce.id)
-        couleurdelall.each do |coul|
-          coul.destroy
-        end
-      else
-        @couleursbdd.each do |id_db|
-          unless params[:annonce][:couleur_ids].include?(id_db)
-            couleurdel = CouleurAnnonce.where(annonce_id: @annonce.id).where(couleur_id: id_db)
-            couleurdel.each do |coul|
-              coul.destroy
-            end
-          end
-        end
-      end
-    end
-
+    #   if params[:annonce][:couleur_ids].nil?
+    #     couleurdelall = CouleurAnnonce.where(annonce_id: @annonce.id)
+    #     couleurdelall.each do |coul|
+    #       coul.destroy
+    #     end
+    #   else
+    #     @couleursbdd.each do |id_db|
+    #       unless params[:annonce][:couleur_ids].include?(id_db)
+    #         couleurdel = CouleurAnnonce.where(annonce_id: @annonce.id).where(couleur_id: id_db)
+    #         couleurdel.each do |coul|
+    #           coul.destroy
+    #         end
+    #       end
+    #     end
+    #   end
+    # end
+    
+    
+    @annonce.update(annonce_params)
     # need to destroy CategorieAnnonce, CourantAnnonce, CouleurAnnonce unchecked
     # need to create new
 

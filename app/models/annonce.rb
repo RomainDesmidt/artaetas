@@ -17,8 +17,8 @@ class Annonce < ApplicationRecord
   act_as_bookmarkee
 
 
-  def couleur_ids=(ids)
-  end
+  # def couleur_ids=(ids)
+  # end
 
   # def courant_ids=(ids)
   # end
