@@ -13,27 +13,33 @@ class AnnoncesController < ApplicationController
     @annonce = current_user.annonces.new(annonce_params)
     @annonce_params = annonce_params
     if  @annonce.save
-      unless params[:annonce][:categorie_ids].nil?
-        params[:annonce][:categorie_ids].each do |id|
-          categorie = Categorie.find(id)
-          categoriea = CategorieAnnonce.new( categorie: categorie, annonce_id: @annonce.id )
-          categoriea.save!
+      unless params[:annonce][:categorie_annonces].nil?
+        params[:annonce][:categorie_annonces].each do |id|
+          unless id==""
+            categorie = Categorie.find(id)
+            categoriea = CategorieAnnonce.new( categorie: categorie, annonce_id: @annonce.id )
+            categoriea.save!
+          end
         end
       end
 
       unless params[:annonce][:courant_ids].nil?
         params[:annonce][:courant_ids].each do |id|
-          courant = Courant.find(id)
-          couranta = CourantAnnonce.new( courant: courant, annonce_id: @annonce.id )
-          couranta.save!
+          unless id==""
+            courant = Courant.find(id)
+            couranta = CourantAnnonce.new( courant: courant, annonce_id: @annonce.id )
+            couranta.save!
+          end
         end
       end
 
       unless params[:annonce][:couleur_ids].nil?
         params[:annonce][:couleur_ids].each do |id|
-          couleur = Couleur.find(id)
-          couleura = CouleurAnnonce.new( couleur: couleur, annonce_id: @annonce.id )
-          couleura.save!
+          unless id==""
+            couleur = Couleur.find(id)
+            couleura = CouleurAnnonce.new( couleur: couleur, annonce_id: @annonce.id )
+            couleura.save!
+          end
         end
       end
 
