@@ -6,22 +6,22 @@
       <% else %>
         <div class="aa-search-textfieldwrap"><%= text_field_tag :term,  params[:term] , :class => "aa-search-field-text" %></div>
       <% end %>
-      <% if params[:categorie_search] == '' || params[:categorie_search].nil?%>
-        <%= select_tag :categorie_search,  options_from_collection_for_select(Categorie.all, "id", "name", selected: @categorie_search || nil), :class =>"aa-search-field-select aa-search-field-select-tag aa-search-field-basis", include_blank: "Categorie"  %>
+      <% if params[:categorie_search2] == '' || params[:categorie_search2].nil? %>
+        <%= select_tag :categorie_search2 , options_from_collection_for_select(Categorie.all, "id", "name", selected: @categorie_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd"  %>
       <% else %>
-        <%= select_tag :categorie_search,  options_from_collection_for_select(Categorie.all, "id", "name", selected: @categorie_search || nil), :class =>"aa-search-field-select aa-search-field-select-tag aa-search-field-basis", include_blank: params[:categorie_search]  %>
+        <%= select_tag :categorie_search2 ,   options_from_collection_for_select(Categorie.all, "id", "name", selected: @categorie_search2 || nil ), include_blank: false, :multiple => true, :class =>"aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd"  %>
       <% end %>
 
-      <% if params[:courant_search] == '' || params[:courant_search].nil?%>
-        <%= select_tag :courant_search,  options_from_collection_for_select(Courant.all, "id", "name", selected: @courant_search || nil), :class =>"aa-search-field-select aa-search-field-select-tag aa-search-field-basis", include_blank: "Courant"  %>
+      <% if params[:courant_search2] == '' || params[:courant_search2].nil?%>
+        <%= select_tag :courant_search2 , options_from_collection_for_select(Courant.all, "id", "name", selected: @courant_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd2"  %>
       <% else %>
-        <%= select_tag :courant_search,  options_from_collection_for_select(Courant.all, "id", "name", selected: @courant_search || nil), :class =>"aa-search-field-select aa-search-field-select-tag aa-search-field-basis", include_blank: params[:courant_search]  %>
+        <%= select_tag :courant_search2 , options_from_collection_for_select(Courant.all, "id", "name", selected: @courant_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd2"  %>      
       <% end %>
 
-      <% if params[:couleur_search] == '' || params[:couleur_search].nil?%>
-        <%= select_tag :couleur_search,  options_from_collection_for_select(Couleur.all, "id", "couleur_dominante", selected: @couleur_search || nil), :class =>"aa-search-field-select aa-search-field-select-tag aa-search-field-basis", include_blank: "Couleur"  %>
+      <% if params[:couleur_search2] == '' || params[:couleur_search2].nil?%>
+        <%= select_tag :couleur_search2 , options_from_collection_for_select(Couleur.all, "id", "couleur_dominante", selected: @couleur_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd3"  %>  
       <% else %>
-        <%= select_tag :couleur_search,  options_from_collection_for_select(Couleur.all, "id", "couleur_dominante", selected: @couleur_search || nil), :class =>"aa-search-field-select aa-search-field-select-tag aa-search-field-basis", include_blank: params[:couleur_search]  %>
+        <%= select_tag :couleur_search2 , options_from_collection_for_select(Couleur.all, "id", "couleur_dominante", selected: @couleur_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd3"  %>  
       <% end %>
 
       <% if params[:pricemin] == '' || params[:pricemin].nil? %>
