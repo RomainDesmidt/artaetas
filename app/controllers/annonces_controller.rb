@@ -53,12 +53,26 @@ class AnnoncesController < ApplicationController
   def search
     @pricemin = params[:pricemin]
     @pricemax = params[:pricemax]
-    @categorie_search = params[:categorie_search]
+    
+    # Params Get
+    @categorie_search2 = params[:categorie_search2]
+    @courant_search2 = params[:courant_search2]
+    @couleur_search2 = params[:couleur_search2]
+    
+    # List of id to use to filter search results
     @categorie_idarray = []
-    @courant_search = params[:courant_search]
     @courant_idarray = []
-    @couleur_search = params[:couleur_search]
     @couleur_idarray = []
+    
+    # Array to compare with params[]
+    categories_annonceunitaire = []
+    categories_choisies = []
+    courants_annonceunitaire = []
+    courants_choisis = []
+    couleurs_annonceunitaire = []
+    couleurs_choisies = []
+    
+    # Shown Annonces
     @annonces = Annonce.all
     unless params[:term] == "Que recherchez-vous?"
       if params[:term]
@@ -78,33 +92,42 @@ class AnnoncesController < ApplicationController
       end
     end
 
-    unless params[:categorie_search] == ''
-      if params[:categorie_search]
-        CategorieAnnonce.where(categorie_id: params[:categorie_search].to_i).each do |cat|
-          @categorie_idarray << cat.annonce_id
+    unless params[:categorie_search2] == ''
+      if params[:categorie_search2]
+        Annonce.all.each do |annonce_unitaire|
+          categories_annonceunitaire = annonce_unitaire.categorie_annonces.collect {|u| u.categorie_id}
+          params[:categorie_search2].each { |u| categories_choisies << u.to_i }
+          if categories_choisies - categories_annonceunitaire == []
+            @categorie_idarray << annonce_unitaire.id
+          end
         end
         @annonces = @annonces.where(id: @categorie_idarray)
-        # @annonces = @annonces.where("prix < ?", params[:pricemax])
       end
     end
 
-    unless params[:courant_search] == ''
-      if params[:courant_search]
-        CourantAnnonce.where(courant_id: params[:courant_search].to_i).each do |cour|
-          @courant_idarray << cour.annonce_id
+    unless params[:courant_search2] == ''
+      if params[:courant_search2]
+        Annonce.all.each do |annonce_unitaire|
+          courants_annonceunitaire = annonce_unitaire.courant_ids
+          params[:courant_search2].each { |u| courants_choisis << u.to_i }
+          if courants_choisis - courants_annonceunitaire == []
+            @courant_idarray << annonce_unitaire.id
+          end
         end
         @annonces = @annonces.where(id: @courant_idarray)
-        # @annonces = @annonces.where("prix < ?", params[:pricemax])
       end
     end
 
-    unless params[:couleur_search] == ''
-      if params[:couleur_search]
-        CouleurAnnonce.where(couleur_id: params[:couleur_search].to_i).each do |coul|
-          @couleur_idarray << coul.annonce_id
+    unless params[:couleur_search2] == ''
+      if params[:couleur_search2]
+        Annonce.all.each do |annonce_unitaire|
+          couleurs_annonceunitaire = annonce_unitaire.couleur_ids
+          params[:couleur_search2].each { |u| couleurs_choisies << u.to_i }
+          if couleurs_choisies - couleurs_annonceunitaire == []
+            @couleur_idarray << annonce_unitaire.id
+          end
         end
         @annonces = @annonces.where(id: @couleur_idarray)
-        # @annonces = @annonces.where("prix < ?", params[:pricemax])
       end
     end
 
@@ -151,7 +174,7 @@ class AnnoncesController < ApplicationController
       @couleursbdd << a.couleur_id
     end
 
-    unless params[:annonce][:categorie_annonces].nil?
+      unless params[:annonce][:categorie_annonces].nil?
       params[:annonce][:categorie_annonces].each do |id|
         unless @categoriesbdd.include?(id.to_i)
           unless id==""
@@ -315,7 +338,7 @@ class AnnoncesController < ApplicationController
     redirect_to @annonce
   end
 
-  def dislike
+  def dislike   
     @annonce = Annonce.find(params[:id])
     @annonce.disliked_by current_user
     redirect_to @annonce
@@ -345,7 +368,7 @@ class AnnoncesController < ApplicationController
   private
 
   def annonce_params
-    params.require(:annonce).permit(:name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :categorie_ids => [], :courant_ids => [], :couleur_ids => [], :cat_ids => [])
+    params.require(:annonce).permit(:name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :categorie_search2 => [], :courant_search2 => [], :couleur_search2 => [], :categorie_ids => [], :courant_ids => [], :couleur_ids => [], :cat_ids => [])
   end
 end
 
