@@ -67,8 +67,10 @@ class AnnoncesController < ApplicationController
     @categorie_search2 = params[:categorie_search2]
     @courant_search2 = params[:courant_search2]
     @couleur_search2 = params[:couleur_search2]
-    @pricemin = params[:prix_slider].split(",",2)[0].to_i
-    @pricemax = params[:prix_slider].split(",",2)[1].to_i
+    unless params[:prix_slider].nil?
+      @pricemin = params[:prix_slider].split(",",2)[0].to_i
+      @pricemax = params[:prix_slider].split(",",2)[1].to_i
+    end
     
     # List of id to use to filter search results
     @categorie_idarray = []
