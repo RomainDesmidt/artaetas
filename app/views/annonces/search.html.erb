@@ -24,16 +24,33 @@
         <%= select_tag :couleur_search2 , options_from_collection_for_select(Couleur.all, "id", "couleur_dominante", selected: @couleur_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd3"  %>  
       <% end %>
 
-      <% if params[:pricemin] == '' || params[:pricemin].nil? %>
-        <%= number_field_tag :pricemin, "", class: "aa-search-field-text-tag", placeholder: "Prix Min"  %>
-      <% else %>
-        <%= number_field_tag :pricemin,  @pricemin, class: "aa-search-field-text-tag", placeholder: "Prix Min"    %>
-      <% end %>
-      <% if params[:pricemax] == '' || params[:pricemax].nil?%>
-        <%= number_field_tag :pricemax, "", class: "aa-search-field-text-tag", placeholder: "Prix Max" %>
-      <% else %>
-        <%= number_field_tag :pricemax, @pricemax, class: "aa-search-field-text-tag", placeholder: "Prix Max"   %>
-      <% end %>
+      <%#= range_field_tag :pricemin, 0 , min: 0, max: 500, step: 1 %>
+      <%#= range_field_tag :pricemax , 500,  min: 0, max: 500, step: 1 %>
+      
+      <!--<div data-role="rangeslider">-->
+      <!--  <label for="range-1a">Rangeslider:</label>-->
+      <!--  <input name="range-1a" id="range-1a" min="0" max="100" value="0" type="range" />-->
+      <!--  <label for="range-1b">Rangeslider:</label>-->
+      <!--  <input name="range-1b" id="range-1b" min="0" max="100" value="100" type="range" />-->
+      <!--</div>-->
+     <!--<input id="ex6" type="text" data-slider-min="0" data-slider-max="2000" data-slider-step="1" data-slider-value="3"/>-->
+     <!--<span id="ex6CurrentSliderValLabel">Prix Min: <span id="ex6SliderVal">0</span></span>-->
+     
+    <% if params[:prix_slider] == '' || params[:prix_slider].nil?%>
+      <input name="prix_slider" id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="<%= "#{@slider_max}" %>" data-slider-step="5" data-slider-value="[0,<%= "#{@slider_max}" %>]"/>
+    <% else %>
+      <input name="prix_slider" id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="<%= "#{@slider_max}" %>" data-slider-step="5" data-slider-value="[<%= "#{@pricemin}" %>,<%= "#{@pricemax}" %>]"/>
+    <% end %>
+      <%# if params[:pricemin] == '' || params[:pricemin].nil? %>
+        <%#= number_field_tag :pricemin, "", class: "aa-search-field-text-tag", placeholder: "Prix Min"  %>
+      <%# else %>
+        <%#= number_field_tag :pricemin,  @pricemin, class: "aa-search-field-text-tag", placeholder: "Prix Min"    %>
+      <%# end %>
+      <%# if params[:pricemax] == '' || params[:pricemax].nil?%>
+        <%#= number_field_tag :pricemax, "", class: "aa-search-field-text-tag", placeholder: "Prix Max" %>
+      <%# else %>
+        <%#= number_field_tag :pricemax, @pricemax, class: "aa-search-field-text-tag", placeholder: "Prix Max"   %>
+      <%# end %>
 
       <%= submit_tag 'Rechercher', :class => "btn btn-primary aa-search-field-form-btn" %>
 
