@@ -427,7 +427,7 @@ _C.addEventListener('touchmove', drag, false);
 _C.addEventListener('mouseup', move, false);
 _C.addEventListener('touchend', move, false);
 
-$( "div#range-slider" ).rangeslider();
+
 
 
 // function getRandomSize(min, max) {
