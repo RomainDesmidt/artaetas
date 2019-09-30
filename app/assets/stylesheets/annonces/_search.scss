@@ -11,6 +11,19 @@
    font-style: italic;
 }
 
+.in {
+  opacity: 1;
+}
+
+.slider-horizontal .slider-selection {
+  background-color: #e0e3e5 !important;
+  background-image: none!important;
+}
+
+.slider-horizontal {
+  align-self: center;
+  margin-left: 30px;
+}
 
 .aa-search-annonce-container {
   max-width: 1066px ;

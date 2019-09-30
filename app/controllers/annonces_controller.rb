@@ -51,13 +51,24 @@ class AnnoncesController < ApplicationController
   end
 
   def search
-    @pricemin = params[:pricemin]
-    @pricemax = params[:pricemax]
+    # @pricemin = params[:pricemin]
+    # @pricemax = params[:pricemax]
+    price_all = []
+    Annonce.all.each do |u|
+      price_all << u.prix.to_i
+    end
+    @slider_max = price_all.map(&:to_i).max + 1
+    if @slider_max < 100
+      @slider_max = 1000
+    end
+    
     
     # Params Get
     @categorie_search2 = params[:categorie_search2]
     @courant_search2 = params[:courant_search2]
     @couleur_search2 = params[:couleur_search2]
+    @pricemin = params[:prix_slider].split(",",2)[0].to_i
+    @pricemax = params[:prix_slider].split(",",2)[1].to_i
     
     # List of id to use to filter search results
     @categorie_idarray = []
@@ -79,16 +90,16 @@ class AnnoncesController < ApplicationController
         @annonces = Annonce.where('name ILIKE ? OR description ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%")
       end
     end
-    unless params[:pricemin] == ''
-      if params[:pricemin]
-        @annonces = @annonces.where("prix > ?", params[:pricemin])
+    unless params[:prix_slider] == ''
+      if params[:prix_slider]
+        @annonces = @annonces.where("prix > ?", @pricemin)
       end
     end
 
 
-    unless params[:pricemax] == ''
-      if params[:pricemax]
-        @annonces = @annonces.where("prix < ?", params[:pricemax])
+    unless params[:prix_slider] == ''
+      if params[:prix_slider]
+        @annonces = @annonces.where("prix < ?", @pricemax)
       end
     end
 
@@ -368,7 +379,7 @@ class AnnoncesController < ApplicationController
   private
 
   def annonce_params
-    params.require(:annonce).permit(:name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :categorie_search2 => [], :courant_search2 => [], :couleur_search2 => [], :categorie_ids => [], :courant_ids => [], :couleur_ids => [], :cat_ids => [])
+    params.require(:annonce).permit(:name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider,  :categorie_search2 => [], :courant_search2 => [], :couleur_search2 => [], :categorie_ids => [], :courant_ids => [], :couleur_ids => [], :cat_ids => [])
   end
 end
 

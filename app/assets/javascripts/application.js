@@ -1,6 +1,16 @@
 //= require rails-ujs
 //= require_tree .
 // window.onbeforeunload = function () {
+// var slider = new Slider("#ex6");
+// slider.on("slide", function(sliderValue) {
+// 	document.getElementById("ex6SliderVal").textContent = sliderValue;
+// });
+
+var slider = new Slider('#ex2', {
+  formatter: function(value) {
+		return 'Prix: ' + value;
+	},
+});
 
 var selection = document.querySelector('.multiple-dd') !== null;
 if (selection) {
@@ -409,7 +419,7 @@ _C.addEventListener('touchmove', drag, false);
 _C.addEventListener('mouseup', move, false);
 _C.addEventListener('touchend', move, false);
 
-
+$( "div#range-slider" ).rangeslider();
 
 
 // function getRandomSize(min, max) {
