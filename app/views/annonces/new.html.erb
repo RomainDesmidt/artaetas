@@ -7,12 +7,12 @@
       <div class="aa-new-titrefield">Votre Annonce</div>
       <div class="aa-new-vafield">
         <!-- [...] -->
-        <%= f.input :name %>
+        <%= f.input :name, label: "Nom de l'oeuvre"  %>
         <%= f.input :description, placeholder: "Seule la premiere ligne apparait dans l'index max 50 caracteres" %>
         <%= f.input :prix, placeholder: "€", input_html: { class: 'aa-textalignright' } %>
         <!-- < f.collection_check_boxes :categorie_ids, Categorie.all, :id, :name  > -->
-        <%= f.input :anneecreation, label: "Annee de creation" %>
-        <%= f.input :nom_artiste %>
+        <%= f.input :anneecreation, label: "Année de création" %>
+        <%= f.input :nom_artiste, label: "nom de l'artiste" %>
         <%= f.input :photo, :input_html => { :onchange => "document.getElementById('previewPhoto').src = window.URL.createObjectURL(this.files[0])" } %>
         <img class="aa-edit-thumbnail" id="previewPhoto"></img>
         <%= f.input :photo_cache, as: :hidden %>
@@ -67,15 +67,15 @@
       <div class="aa-new-titrefield">Vos Criteres</div>
       <div class="aa-new-vafield">
       <%#= f.input :format , placeholder: "" %>
-      <%= f.input :disposition,  :collection => ["Portrait","Paysage", "Carre"] %>
+      <%= f.input :disposition, prompt: 'Portrait, Paysage ou Carre' , :collection => ["Portrait","Paysage", "Carre"] %>
       <%= f.input :hauteur, placeholder: "cm", input_html: { class: 'aa-textalignright' } %>
       <%= f.input :largeur, placeholder: "cm", input_html: { class: 'aa-textalignright' } %>
       <%= f.input :profondeur, placeholder: "cm", input_html: { class: 'aa-textalignright' } %>
-      <%= f.input :oeuvre_limite, :collection => ["Oeuvre Unique","Oeuvre Limite", "Oeuvre Illimite"]%>
-      <%= f.input :certificat_authenticite %>
-      <%= f.input :facture_achat %>
-      <%= f.input :encadrement %>
-      <%= f.input :etat_neuf %>
+      <%= f.input :oeuvre_limite, label: "Qualité de l'oeuvre", prompt: 'Unique, Limite ou Illimite', :collection => ["Oeuvre Unique","Oeuvre Limite", "Oeuvre Illimite"]%>
+      <%= f.input :certificat_authenticite, label: "certificat d'authenticité" %>
+      <%= f.input :facture_achat, label: "facture d'achat de l'oeuvre" %>
+      <%= f.input :encadrement  %>
+      <%= f.input :etat_neuf  %>
       </div>
     </div>
     <%= f.submit "Nouvelle Annonce", class: "btn btn-primary aa-mobile-btn" %>
