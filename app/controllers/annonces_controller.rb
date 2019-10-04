@@ -151,6 +151,23 @@ class AnnoncesController < ApplicationController
   def show
     @annonces = Annonce.find(params[:id])
     @user = User.find(@annonces.user_id)
+    if @annonces.hauteur.nil?
+      @hauteur = 1
+    else
+      @hauteur = @annonces.hauteur
+    end
+    if @annonces.profondeur.nil?
+      @profondeur = 1
+    else
+      @profondeur = @annonces.profondeur
+    end
+    if @annonces.largeur.nil?
+      @largeur = 1
+    else
+      @largeur = @annonces.largeur
+    end
+    
+    @volume = @largeur * @hauteur * @profondeur / 1000000
   end
 
   def edit

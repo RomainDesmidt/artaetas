@@ -1,6 +1,7 @@
 class Annonce < ApplicationRecord
   
   validates :photo, :prix, :name, :description,  presence: true
+  validates :anneecreation, length: {maximum: 4}
   acts_as_votable
   belongs_to :user
   

@@ -82,14 +82,33 @@
       </div>
       <div class="aa-show-minheight">
         <b><p>Criteres</p></b>
-        <p>Dimensions (h x l x p): <%= @annonces.hauteur %> X <%= @annonces.largeur %> X <%= @annonces.profondeur %></p>
-        <p>Format: <%= @annonces.format %></p>
-        <p>disposition: <%= @annonces.disposition %></p>
-        <p>disponibilite:<%= @annonces.oeuvre_limite %></p>
-        <p>certificat d'authenticite:<%= @annonces.certificat_authenticite ? "OUI" : "NON" %></p>
-        <p>facture d'achat:<%= @annonces.facture_achat ? "OUI" : "NON" %></p>
-        <p>encadrement:<%= @annonces.encadrement ? "OUI" : "NON" %></p>
-        <p>etat neuf:<%= @annonces.etat_neuf ? "OUI" : "NON" %></p>
+        <p>Dimensions (h x l x p): <%= @hauteur %> X <%= @largeur %> X <%= @profondeur %></p>
+        <p>Format: 
+        <% if @volume > 0.25 %>
+          <% if @volume > 1 %>
+            <%= "Grand" %>
+          <% else %>
+            <%= "Moyen" %>
+          <% end %>
+        <% else %>
+          <%= "Petit" %>
+        <% end %>
+        </p>
+        <p>Disposition: <%= @annonces.disposition %></p>
+        <p>Qualité de l'oeuvre:<%= @annonces.oeuvre_limite %></p>
+        
+        <% if @annonces.certificat_authenticite %>
+          <p>certificat d'authenticite:<%= "OUI" %></p>
+        <% end %>
+        <% if @annonces.facture_achat %>
+          <p>facture d'achat:<%= "OUI"%></p>
+        <% end %>
+        <% if @annonces.encadrement %>
+          <p>encadrement:<%= "OUI"%></p>
+        <% end %>
+        <% if @annonces.etat_neuf %>
+          <p>etat_neuf:<%= "OUI"%></p>
+        <% end %>
 
         <b><p>Tags</p></b>
         <% unless CategorieAnnonce.all.where(annonce_id: @annonces.id).nil? %>
