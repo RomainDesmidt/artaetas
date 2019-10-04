@@ -28,7 +28,7 @@
     </div>
 
     <div class="aa-new-containerfield">
-      <div class="aa-new-titrefield">Vos Tags</div>
+      <div class="aa-new-titrefield">Tags</div>
       <div class="aa-new-vafield">
         <p class="aa-new-label">Categories</p>
          <%= f.select :categorie_annonces , options_for_select(Categorie.all.collect {|u| [u.name, u.id]}), {:include_blank => false}, {:multiple => true, :class => 'multiple-dd form-group'}  %>
@@ -64,7 +64,7 @@
     </div>
 
     <div class="aa-new-containerfield">
-      <div class="aa-new-titrefield">Vos Criteres</div>
+      <div class="aa-new-titrefield">Critères</div>
       <div class="aa-new-vafield">
       <%#= f.input :format , placeholder: "" %>
       <%= f.input :disposition, :collection => ["Portrait","Paysage", "Carre"]%>
