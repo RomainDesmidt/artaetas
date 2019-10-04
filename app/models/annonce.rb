@@ -1,4 +1,6 @@
 class Annonce < ApplicationRecord
+  
+  validates :photo, :prix, :name, :description,  presence: true
   acts_as_votable
   belongs_to :user
   

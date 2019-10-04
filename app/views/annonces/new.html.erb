@@ -66,14 +66,12 @@
     <div class="aa-new-containerfield">
       <div class="aa-new-titrefield">Vos Criteres</div>
       <div class="aa-new-vafield">
-      <%= f.input :format , placeholder: "" %>
-      <%= f.input :disposition, placeholder: "Portrait, Paysage" %>
+      <%#= f.input :format , placeholder: "" %>
+      <%= f.input :disposition,  :collection => ["Portrait","Paysage", "Carre"] %>
       <%= f.input :hauteur, placeholder: "cm", input_html: { class: 'aa-textalignright' } %>
       <%= f.input :largeur, placeholder: "cm", input_html: { class: 'aa-textalignright' } %>
       <%= f.input :profondeur, placeholder: "cm", input_html: { class: 'aa-textalignright' } %>
-      <%= f.input :oeuvre_limite, placeholder: "nombre d'oeuvre editee" %>
-      <%= f.input :oeuvre_unique %>
-      <%= f.input :oeuvre_illimite %>
+      <%= f.input :oeuvre_limite, :collection => ["Oeuvre Unique","Oeuvre Limite", "Oeuvre Illimite"]%>
       <%= f.input :certificat_authenticite %>
       <%= f.input :facture_achat %>
       <%= f.input :encadrement %>

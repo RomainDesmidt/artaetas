@@ -21,6 +21,8 @@ gem 'inline_svg'
 gem 'social-share-button'
 gem 'acts_as_votable', '~> 0.12.0'
 gem 'bookmark_system'
+gem 'figaro'
+gem 'omniauth-facebook'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
