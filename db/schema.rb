@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_29_061039) do
+ActiveRecord::Schema.define(version: 2019_10_04_132242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,9 +29,7 @@ ActiveRecord::Schema.define(version: 2019_08_29_061039) do
     t.integer "hauteur"
     t.integer "largeur"
     t.integer "profondeur"
-    t.boolean "oeuvre_unique"
-    t.integer "oeuvre_limite"
-    t.boolean "oeuvre_illimite"
+    t.string "oeuvre_limite"
     t.boolean "certificat_authenticite"
     t.boolean "facture_achat"
     t.boolean "encadrement"
@@ -160,8 +158,12 @@ ActiveRecord::Schema.define(version: 2019_08_29_061039) do
     t.boolean "confirmation_webmaster"
     t.string "photoprofil"
     t.string "photofond"
+    t.string "provider"
+    t.string "uid"
+    t.string "username", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   create_table "votes", id: :serial, force: :cascade do |t|

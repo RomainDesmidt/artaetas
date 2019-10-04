@@ -14,9 +14,7 @@ class CreateAnnonces < ActiveRecord::Migration[5.2]
       t.integer :hauteur
       t.integer :largeur
       t.integer :profondeur
-      t.boolean :oeuvre_unique
-      t.integer :oeuvre_limite
-      t.boolean :oeuvre_illimite
+      t.string :oeuvre_limite
       t.boolean :certificat_authenticite
       t.boolean :facture_achat
       t.boolean :encadrement
