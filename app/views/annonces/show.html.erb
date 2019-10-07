@@ -45,13 +45,13 @@
               <b><p class='aa-show-titre'><%= @annonces.name %></p></b>
               
               <% if @annonces.anneecreation %>
-                <p class="aa-show-detail-italic">Fait en <%= "#{@annonces.anneecreation}" %></p>
+                <p class="aa-show-detail-italic"><%= "#{@annonces.anneecreation}" %></p>
               <% end %>
               <% if @annonces.nom_artiste %>
                 <p class="aa-show-detail-italic">Par <%= "#{@annonces.nom_artiste}"  %>
               <% end %>
               <% if @annonces.prix   %>
-                <p class="aa-show-price  aa-show-detail-italic"><%= @annonces.prix %>€</p>
+                <p class="aa-show-price  aa-show-detail-italic"><%= number_with_delimiter(@annonces.prix.to_s, delimiter: " " ) %>€</p>
               <% else %>
                 <p class="aa-show-price  aa-show-detail-italic"></p>
               <% end %>
