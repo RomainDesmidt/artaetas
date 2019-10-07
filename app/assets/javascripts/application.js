@@ -16,7 +16,7 @@ if (slidons) {
   	},
   });
 
-}
+};
 
 
 
@@ -27,7 +27,7 @@ if (selection) {
   
 })
 
-}
+};
 
 var selection2 = document.querySelector('.multiple-dd2') !== null;
 if (selection2) {
@@ -36,7 +36,7 @@ if (selection2) {
   
 })
 
-}
+};
 
 var selection3 = document.querySelector('.multiple-dd3') !== null;
 if (selection3) {
@@ -45,7 +45,57 @@ if (selection3) {
   
 })
 
+};
+
+var btnDecouvrir = document.querySelector('#aa-decouvrir') !== null;
+if (btnDecouvrir) {
+document.getElementById('aa-decouvrir').onclick = function()
+{
+  window.location = this.querySelector("a").href;
 }
+
+};
+
+var btnDeposer = document.querySelector('#aa-deposer') !== null;
+if (btnDeposer) {
+document.getElementById('aa-deposer').onclick = function()
+{
+  window.location = this.querySelector("a").href;
+}
+
+};
+
+var btnUploadUn = document.querySelector('#previewPhoto') !== null;
+if (btnUploadUn) {
+  document.getElementById('previewPhoto').onclick = function()
+{
+  this.parentNode.querySelector("label").click();
+}
+
+};
+
+var btnUploadDeux = document.querySelector('#previewPhotoUn') !== null;
+if (btnUploadDeux) {
+  document.getElementById('previewPhotoUn').onclick = function()
+{
+  this.parentNode.querySelector("label").click();
+}
+
+};
+
+var btnUploadTrois = document.querySelector('#previewPhotoDeux') !== null;
+if (btnUploadTrois) {
+  document.getElementById('previewPhotoDeux').onclick = function()
+{
+  this.parentNode.querySelector("label").click();
+}
+
+};
+
+
+
+
+
 
 
 window.onload = function () {
@@ -242,16 +292,7 @@ function triggerEvent( elem, event ) {
 //   window.location = this.querySelector("a").click();
 // }
 
-document.getElementById('aa-decouvrir').onclick = function()
-{
-  window.location = this.querySelector("a").href;
-}
 
-
-document.getElementById('aa-deposer').onclick = function()
-{
-  window.location = this.querySelector("a").href;
-}
 
 // document.getElementById('aa-nav-search-form').onclick = function()
 // {
