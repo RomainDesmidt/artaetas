@@ -112,21 +112,27 @@
 
         <b><p>Tags</p></b>
         <% unless CategorieAnnonce.all.where(annonce_id: @annonces.id).nil? %>
-          <% CategorieAnnonce.all.where(annonce_id: @annonces.id).each do |cat| %>
-          <p><%= Categorie.find(cat.categorie_id).name %></p>
-          <% end %>
+          <div class="aa-show-categorie-list">
+            <% CategorieAnnonce.all.where(annonce_id: @annonces.id).each do |cat| %>
+            <div class="aa-show-categorie-indivi"><p class="aa-show-categorie-txt"><%= Categorie.find(cat.categorie_id).name %></p></div>
+            <% end %>
+          </div>
         <% end %>
         <b><p>Courants</p></b>
         <% unless CourantAnnonce.all.where(annonce_id: @annonces.id).nil? %>
+        <div class="aa-show-categorie-list">
           <% CourantAnnonce.all.where(annonce_id: @annonces.id).each do |cour| %>
-          <p><%= Courant.find(cour.courant_id).name %></p>
+          <div class="aa-show-categorie-indivi"><p><%= Courant.find(cour.courant_id).name %></p></div>
           <% end %>
+        </div>
         <% end %>
         <b><p>Couleurs</p></b>
         <% unless CouleurAnnonce.all.where(annonce_id: @annonces.id).nil? %>
+        <div class="aa-show-categorie-list">
           <% CouleurAnnonce.all.where(annonce_id: @annonces.id).each do |coul| %>
-          <p><%= Couleur.find(coul.couleur_id).couleur_dominante %></p>
+          <div class="aa-show-categorie-indivi"><p><%= Couleur.find(coul.couleur_id).couleur_dominante %></p></div>
           <% end %>
+        </div>
         <% end %>
         </div>  
         <div class="aa-show-border-bottom aa-show-separator"></div>
