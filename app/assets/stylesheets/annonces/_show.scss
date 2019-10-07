@@ -2,6 +2,20 @@
   align-self: center;
 }
 
+.aa-show-categorie-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.aa-show-categorie-indivi {
+  height: 30px;
+  padding: 5px 15px;
+  color: white;
+  background-color: $secondaryaa;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
 .ssb-facebook {
  background-image: image-url('fb-g.png') !important;
 }

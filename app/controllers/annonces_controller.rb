@@ -23,25 +23,25 @@ class AnnoncesController < ApplicationController
         end
       end
 
-      unless params[:annonce][:courant_ids].nil?
-        params[:annonce][:courant_ids].each do |id|
-          unless id==""
-            courant = Courant.find(id)
-            couranta = CourantAnnonce.new( courant: courant, annonce_id: @annonce.id )
-            couranta.save!
-          end
-        end
-      end
+      # unless params[:annonce][:courant_ids].nil?
+      #   params[:annonce][:courant_ids].each do |id|
+      #     unless id==""
+      #       courant = Courant.find(id)
+      #       couranta = CourantAnnonce.new( courant: courant, annonce_id: @annonce.id )
+      #       couranta.save!
+      #     end
+      #   end
+      # end
 
-      unless params[:annonce][:couleur_ids].nil?
-        params[:annonce][:couleur_ids].each do |id|
-          unless id==""
-            couleur = Couleur.find(id)
-            couleura = CouleurAnnonce.new( couleur: couleur, annonce_id: @annonce.id )
-            couleura.save!
-          end
-        end
-      end
+      # unless params[:annonce][:couleur_ids].nil?
+      #   params[:annonce][:couleur_ids].each do |id|
+      #     unless id==""
+      #       couleur = Couleur.find(id)
+      #       couleura = CouleurAnnonce.new( couleur: couleur, annonce_id: @annonce.id )
+      #       couleura.save!
+      #     end
+      #   end
+      # end
 
       redirect_to @annonce
       flash[:error] = "it worked"
