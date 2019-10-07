@@ -2,7 +2,19 @@
   font-style: italic;
 }
 
+.aa-new-photo-field {
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+}
 
+.hide-photo-btn {
+  display: none;
+}
+
+.aa-new-photo-field-indivi {
+  flex: 1 1 30%;
+}
 
 .aa-new-containerfield .form-control-label,
 .aa-new-containerfield .file,
@@ -17,8 +29,20 @@ color: #212121;
 }
 
 .aa-edit-thumbnail {
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
+  background-image: image-url('img-fond.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 9px;
+}
+
+.annonce_photo_un label {
+  color: transparent!important;
+}
+
+.annonce_photo_deux label {
+  color: transparent!important;
 }
 
 .aa-new-label-tags,
