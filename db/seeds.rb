@@ -33,7 +33,7 @@ Courant.new(name: "Nature").save
 Courant.new(name: "Nus").save
 Courant.new(name: "Scenes de vie").save
 Courant.new(name: "Nature morte").save
-Courant.new(name: "Classiuqe").save
+Courant.new(name: "Classique").save
 Courant.new(name: "Ville").save
 Courant.new(name: "Street Art").save
 Courant.new(name: "Pop Art").save
