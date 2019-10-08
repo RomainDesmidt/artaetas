@@ -1,6 +1,7 @@
 class Annonce < ApplicationRecord
   
-  validates :photo, :prix, :name, :description,  presence: true
+  validates :photo, :name, :description,  presence: true
+  validates :prix, format: {with: /\A\d+(?:\.\d{0,2})?\z/}, numericality: {less_than: 1000000}, presence: true
   validates :anneecreation, length: {maximum: 4}
   acts_as_votable
   belongs_to :user
