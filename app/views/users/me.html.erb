@@ -127,7 +127,7 @@
                 <%= f.input :instagram, hint: "compte instagram", require: false %>
                 <%= f.input :facebook, hint: "compte facebook", require: false %>
                 <%= f.input :website, hint: "site web", require: false %>
-                <%= f.input :statut, hint: "statut de votre profil", require: false %>
+                <%= f.input :statut, hint: "statut de votre profil", :collection => ["Artiste","Gallerie", "Particulier"], require: false %>
                 <%= f.input :description, hint: "description de vous", require: false %>
                 <%= f.input :masquefavoris, hint: "masquer vos publications et users favoris", require: false %>
                 <%= f.input :masquepublication, hint: "masquer les annonces que vous avez cree", require: false %>
