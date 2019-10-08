@@ -12,18 +12,54 @@
         <%= f.input :prix, placeholder: "€", input_html: { class: 'aa-textalignright' } %>
         <%= f.input :anneecreation, label: "Année de création" %>
         <%= f.input :nom_artiste, label: "Nom de l'artiste" %>
-        <%= f.input :photo, :input_html => { :onchange => "document.getElementById('previewPhoto').src = window.URL.createObjectURL(this.files[0])" } %>
+        
+        <!-- [...] -->
+        
+        <div class="aa-new-photo-field">
+          <div class="aa-new-photo-field-indivi">
+            <%= f.input :photo, :input_html => { :onchange => "document.getElementById('previewPhoto').src = window.URL.createObjectURL(this.files[0])", class: 'hide-photo-btn' } %>
+            <% if @annonce.photo? %>
+              <%= cl_image_tag @annonce.photo, class: "aa-edit-thumbnail", id: "previewPhoto" %>
+            <% else %>
+              <img class="aa-edit-thumbnail" id="previewPhoto"></img>
+            <% end %>
+            <%= f.input :photo_cache, as: :hidden %>
+          </div>
+          <div class="aa-new-photo-field-indivi">
+            <%= f.input :photo_un, :input_html => { :onchange => "document.getElementById('previewPhotoUn').src = window.URL.createObjectURL(this.files[0])", class: 'hide-photo-btn' }  %>
+            <% if @annonce.photo_un %>
+              <%= cl_image_tag @annonce.photo_un, class: "aa-edit-thumbnail", id: "previewPhotoUn" %>
+            <% else %>
+              <img class="aa-edit-thumbnail" id="previewPhotoUn"></img>
+            <% end %>
+            <%= f.input :photo_un_cache, as: :hidden %>
+          </div>
+          <div class="aa-new-photo-field-indivi">
+            <%= f.input :photo_deux, :input_html => { :onchange => "document.getElementById('previewPhotoDeux').src = window.URL.createObjectURL(this.files[0])", class: 'hide-photo-btn' }  %>
+            <% if @annonce.photo_deux %>
+              <%= cl_image_tag @annonce.photo_deux, class: "aa-edit-thumbnail", id: "previewPhotoDeux" %>
+            <% else %>
+              <img class="aa-edit-thumbnail" id="previewPhotoDeux"></img>
+            <% end %>
+            
+
+            <%= f.input :photo_deux_cache, as: :hidden %>
+          </div>
+        </div>
+        <%# f.input :photo, :input_html => { :onchange => "document.getElementById('previewPhoto').src = window.URL.createObjectURL(this.files[0])" } %>
         <!-- <img class="aa-edit-thumbnail" id="previewPhoto"></img> -->
-        <%= cl_image_tag @annonce.photo, class: 'aa-edit-thumbnail' , id: "previewPhoto" %>
-        <%= f.input :photo_cache, as: :hidden %>
-        <%= f.input :photo_un, :input_html => { :onchange => "document.getElementById('previewPhotoUn').src = window.URL.createObjectURL(this.files[0])" }  %>
+        <%#= cl_image_tag @annonce.photo, class: 'aa-edit-thumbnail' , id: "previewPhoto" %>
+        <%#= f.input :photo_cache, as: :hidden %>
+        <%#= f.input :photo_un, :input_html => { :onchange => "document.getElementById('previewPhotoUn').src = window.URL.createObjectURL(this.files[0])" }  %>
         <!-- <img class="aa-edit-thumbnail" id="previewPhotoUn"></img> -->
-        <%= cl_image_tag @annonce.photo_un, class: 'aa-edit-thumbnail' , id: "previewPhotoUn" %>
-        <%= f.input :photo_un_cache, as: :hidden %>
-        <%= f.input :photo_deux, :input_html => { :onchange => "document.getElementById('previewPhotoDeux').src = window.URL.createObjectURL(this.files[0])" }  %>
-        <%= cl_image_tag @annonce.photo_deux, class: 'aa-edit-thumbnail' , id: "previewPhotoDeux" %>
+        <%#= cl_image_tag @annonce.photo_un, class: 'aa-edit-thumbnail' , id: "previewPhotoUn" %>
+        <%#= f.input :photo_un_cache, as: :hidden %>
+        <%#= f.input :photo_deux, :input_html => { :onchange => "document.getElementById('previewPhotoDeux').src = window.URL.createObjectURL(this.files[0])" }  %>
+        <%#= cl_image_tag @annonce.photo_deux, class: 'aa-edit-thumbnail' , id: "previewPhotoDeux" %>
         <!-- <img class="aa-edit-thumbnail" id="previewPhotoDeux"></img> -->
-        <%= f.input :photo_deux_cache, as: :hidden %>
+        <%#= f.input :photo_deux_cache, as: :hidden %>
+        
+        
         <!-- [...] -->
       </div>
     </div>
