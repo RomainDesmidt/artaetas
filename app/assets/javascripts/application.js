@@ -469,6 +469,7 @@ if (carouselAnnonces) {
   
   _C.addEventListener('mouseup', move, false);
   _C.addEventListener('touchend', move, false);
+  
 
 };
 
