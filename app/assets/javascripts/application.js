@@ -6,6 +6,11 @@
 // 	document.getElementById("ex6SliderVal").textContent = sliderValue;
 // });
 
+document.addEventListener("DOMContentLoaded", function(event) {
+   document.querySelectorAll('img').forEach(function(img){
+  	img.onerror = function(){this.style.display='none';};
+   })
+});
 
 
 var slidons = document.querySelector('#ex2') !== null;

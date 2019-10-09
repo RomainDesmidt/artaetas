@@ -11,6 +11,8 @@ Rails.application.routes.draw do
         put "unfollow", to: "annonces#unfollow"
         put "bookmark", to: "annonces#bookmark"
         put "unbookmark", to: "annonces#unbookmark"
+        put "destroy_photo_un", to: "annonces#destroy_photo_un"
+        put "destroy_photo_deux", to: "annonces#destroy_photo_deux"
     end
 end
   # resources :annonces
