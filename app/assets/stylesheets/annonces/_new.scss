@@ -2,6 +2,8 @@
   font-style: italic;
 }
 
+img{border:0 !important;}
+
 .aa-new-photo-field {
   display: flex;
   flex-direction: row;
@@ -14,6 +16,13 @@
 
 .aa-new-photo-field-indivi {
   flex: 1 1 30%;
+  position: relative;
+}
+
+.aa-show-topright {
+  position: absolute;
+  right: 40px;
+  top: 20px;
 }
 
 input[type="number"] {
