@@ -48,7 +48,7 @@
                 <p class="aa-show-detail-italic"><%= "#{@annonces.anneecreation}" %></p>
               <% end %>
               <% if @annonces.nom_artiste %>
-                <p class="aa-show-detail-italic">Par <%= "#{@annonces.nom_artiste}"  %>
+                <p class="aa-show-detail-italic"><%= "#{@annonces.nom_artiste}"  %>
               <% end %>
               <% if @annonces.prix   %>
                 <p class="aa-show-price  aa-show-detail-italic"><%= number_with_delimiter(@annonces.prix.to_s, delimiter: " " ) %>€</p>
@@ -84,7 +84,7 @@
         
         <div class="aa-show-minheight">
           <b><p>Criteres</p></b>
-          <p>Dimensions (h x l x p): <%= @hauteur %> X <%= @largeur %> X <%= @profondeur %></p>
+          <p>Dimensions en cm (h x l x p): <%= @hauteur %> cm x <%= @largeur %> cm x <%= @profondeur %> cm</p>
           <p>Format: 
           <% if @volume > 0.25 %>
             <% if @volume > 1 %>
@@ -165,8 +165,11 @@
                   <%= link_to "Profil Auteur", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
                 <% end %>
               <% end %>
+              <% if @annonces.user.statut %>
+                <div class="aa-show-contact-profil-statut"><%= @annonces.user.statut %></div>
+              <% end %>
+              <div class="aa-show-contact-profil-nbannonces"><%= @annonces.user.annonces.count %> annonces en ligne</div>
               
-                <div class="aa-show-contact-profil-nbannonces"><%= @annonces.user.annonces.count %> annonces en ligne</div>
                 
                 <% if user_signed_in? %>
                   <% if current_user.followees.include?(@user) %>

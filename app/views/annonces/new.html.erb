@@ -13,23 +13,38 @@
         <!-- < f.collection_check_boxes :categorie_ids, Categorie.all, :id, :name  > -->
         <%= f.input :anneecreation, label: "Année de création" %>
         <%= f.input :nom_artiste, label: "Nom de l'artiste" %>
+        
         <div class="aa-new-photo-field">
           <div class="aa-new-photo-field-indivi">
             <%= f.input :photo, :input_html => { :onchange => "document.getElementById('previewPhoto').src = window.URL.createObjectURL(this.files[0])", class: 'hide-photo-btn' } %>
-            <img class="aa-edit-thumbnail" id="previewPhoto"></img>
+            <% if @annonce.photo? %>
+              <%= cl_image_tag @annonce.photo, class: "aa-edit-thumbnail", id: "previewPhoto" %>
+            <% else %>
+              <img class="aa-edit-thumbnail" id="previewPhoto" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png"></img>
+            <% end %>
             <%= f.input :photo_cache, as: :hidden %>
           </div>
           <div class="aa-new-photo-field-indivi">
             <%= f.input :photo_un, :input_html => { :onchange => "document.getElementById('previewPhotoUn').src = window.URL.createObjectURL(this.files[0])", class: 'hide-photo-btn' }  %>
-            <img class="aa-edit-thumbnail" id="previewPhotoUn"></img>
+            <% if @annonce.photo_un? %>
+              <%= cl_image_tag @annonce.photo_un, class: "aa-edit-thumbnail", id: "previewPhotoUn" %>
+            <% else %>
+              <img class="aa-edit-thumbnail" id="previewPhotoUn" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png"></img>
+            <% end %>
             <%= f.input :photo_un_cache, as: :hidden %>
           </div>
           <div class="aa-new-photo-field-indivi">
             <%= f.input :photo_deux, :input_html => { :onchange => "document.getElementById('previewPhotoDeux').src = window.URL.createObjectURL(this.files[0])", class: 'hide-photo-btn' }  %>
-            <img class="aa-edit-thumbnail" id="previewPhotoDeux"></img>
+            <% if @annonce.photo_deux? %>
+              <%= cl_image_tag @annonce.photo_deux, class: "aa-edit-thumbnail", id: "previewPhotoDeux" %>
+            <% else %>
+              <img class="aa-edit-thumbnail" id="previewPhotoDeux" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png"></img>
+            <% end %>
+
             <%= f.input :photo_deux_cache, as: :hidden %>
           </div>
         </div>
+        
         
         <!-- [...] -->
       </div>
@@ -79,7 +94,7 @@
       <%= f.input :hauteur, placeholder: "cm", input_html: { class: 'aa-textalignright' } %>
       <%= f.input :largeur, placeholder: "cm", input_html: { class: 'aa-textalignright' } %>
       <%= f.input :profondeur, placeholder: "cm", input_html: { class: 'aa-textalignright' } %>
-      <%= f.input :oeuvre_limite, label: "Qualité de l'oeuvre", :collection => ["Oeuvre Unique","Édition limitée", "Édition illimitée"]%>
+      <%= f.input :oeuvre_limite, label: "Tirage", :collection => ["Oeuvre Unique","Édition limitée", "Édition illimitée"]%>
       <%= f.input :certificat_authenticite, label: "certificat d'authenticité" %>
       <%= f.input :facture_achat, label: "facture d'achat de l'oeuvre" %>
       <%= f.input :encadrement  %>
