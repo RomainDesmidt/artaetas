@@ -6,11 +6,11 @@
 // 	document.getElementById("ex6SliderVal").textContent = sliderValue;
 // });
 
-document.addEventListener("DOMContentLoaded", function(event) {
-   document.querySelectorAll('img').forEach(function(img){
-  	img.onerror = function(){this.style.display='none';};
-   })
-});
+// document.addEventListener("DOMContentLoaded", function(event) {
+//   document.querySelectorAll('img').forEach(function(img){
+//   	img.onerror = function(){this.style.display='none';};
+//   })
+// });
 
 
 var slidons = document.querySelector('#ex2') !== null;
@@ -97,6 +97,24 @@ if (btnUploadTrois) {
 
 };
 
+
+var btnUploadQuatre = document.querySelector('#previewPhotoProfil') !== null;
+if (btnUploadQuatre) {
+  document.getElementById('previewPhotoProfil').onclick = function()
+{
+  this.parentNode.querySelector("label").click();
+}
+
+};
+
+var btnUploadCinq = document.querySelector('#previewPhotoFond') !== null;
+if (btnUploadCinq) {
+  document.getElementById('previewPhotoFond').onclick = function()
+{
+  this.parentNode.querySelector("label").click();
+}
+
+};
 
 
 
