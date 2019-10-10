@@ -50,11 +50,15 @@
               <% if @annonces.nom_artiste %>
                 <p class="aa-show-detail-italic"><%= "#{@annonces.nom_artiste}"  %>
               <% end %>
+              <p class="aa-show-price  aa-show-detail-italic">
               <% if @annonces.prix   %>
-                <p class="aa-show-price  aa-show-detail-italic"><%= number_with_delimiter(@annonces.prix.to_s, delimiter: " " ) %>€</p>
-              <% else %>
-                <p class="aa-show-price  aa-show-detail-italic"></p>
+                <% if (@annonces.prix.to_i - @annonces.prix) > 0 %>
+                  <%= number_with_delimiter(@annonces.prix.to_s, delimiter: " " ) %>€
+                <% else %>
+                  <%= number_with_delimiter(@annonces.prix.to_i.to_s, delimiter: " " ) %>€
+                <% end %>
               <% end %>
+              </p>
               
 
 

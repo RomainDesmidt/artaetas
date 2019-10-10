@@ -95,20 +95,20 @@
               <%= f.error_notification %>
 
               <div class="form-inputs">
-                <%= f.input :username, autofocus: true, required: false %>
+                <%= f.input :username, label: "Pseudonyme", hint: "votre nom d'utilisateur", autofocus: true, required: false %>
                 <%#= f.input :email, required: true %>
 
                 <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                   <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
                 <% end %>
-                <%= f.label :surname, "Prenom" %>
-                <%= f.input :surname, hint: "votre prenom", require: false, label: false %>
+                <%= f.label :surname, "Prénom" %>
+                <%= f.input :surname, hint: "votre prénom", require: false, label: false %>
 
                 <%= f.label :lastname, "Nom de famille" %>
                 <%= f.input :lastname, hint: "votre nom de famille", require: false, label: false %>
 
                 <%= f.input :afficher_identite,
-                            hint: "cocher pour que vos noms et prenoms apparaissent dans votre profil",
+                            hint: "cocher pour que vos noms et prénoms apparaissent dans votre profil",
                             require: false
                             %>
                 <%= f.input :afficher_email,
@@ -116,21 +116,21 @@
                             require: false, default: 'false'
                             %>
 
-                <%= f.input :tel, hint: "numero pour vous contacter", require: false %>
-                <%= f.input :afficher_tel, hint: "afficher ce numero sur votre profil", require: false %>
+                <%= f.input :tel, label: "Numéro de téléphone", hint: "numéro pour vous contacter", require: false %>
+                <%= f.input :afficher_tel, label: "Afficher le numéro de téléphone", hint: "afficher ce numéro sur votre profil", require: false %>
 
 
-                <%= f.input :paysresidence, hint: "pays de residence", require: false %>
-                <%= f.input :villeresidence, hint: "ville de residence", require: false %>
-                <%= f.input :codepostal, hint: "codepostal", require: false %>
+                <%= f.input :paysresidence, label: "Pays", hint: "pays de résidence", require: false %>
+                <%= f.input :villeresidence, label: "Ville", hint: "ville de résidence", require: false %>
+                <%= f.input :codepostal, label: "Code Postal", hint: "code postal de la ville de résidence", require: false %>
 
                 <%= f.input :instagram, hint: "compte instagram", require: false %>
                 <%= f.input :facebook, hint: "compte facebook", require: false %>
                 <%= f.input :website, hint: "site web", require: false %>
                 <%= f.input :statut, hint: "statut de votre profil", :collection => ["Artiste","Gallerie", "Particulier"], require: false %>
                 <%= f.input :description, hint: "description de vous", require: false %>
-                <%= f.input :masquefavoris, hint: "masquer vos publications et users favoris", require: false %>
-                <%= f.input :masquepublication, hint: "masquer les annonces que vous avez cree", require: false %>
+                <%= f.input :masquefavoris, label: "Masquer vos favoris", hint: "masquer vos publications et users favoris", require: false %>
+                <%= f.input :masquepublication, label: "Masquer vos Publications", hint: "masquer les annonces que vous avez créé", require: false %>
                 
                 
         <div class="aa-new-photo-field">
@@ -164,7 +164,7 @@
 
             <p>Unhappy? < link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete ></p> -->
 
-            <%= link_to "Back", :back %>
+            <%#= link_to "Back", :back %>
 
         </div>
         <!--<div class="aa-me-email">-->
