@@ -13,7 +13,8 @@
 
 .aa-new-label-chkbox:hover, 
 input:focus + label {
-  box-shadow: 0 0 20px rgba(0, 0, 0, .6);
+  // box-shadow: 0 0 20px rgba(0, 0, 0, .6);
+  box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
 }
 
 .aa-new-label-chkbox-first {
@@ -32,7 +33,7 @@ input:focus + label {
   color: $footer;
   background-color: $champs;
   // box-shadow: 0 0 20px rgba(0, 0, 0, .2);
-  box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
+  // box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
   white-space: nowrap;
   cursor: pointer;
   user-select: none;
