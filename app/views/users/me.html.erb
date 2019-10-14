@@ -102,35 +102,77 @@
                   <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
                 <% end %>
                 <%= f.label :surname, "Prénom" %>
-                <%= f.input :surname, hint: "votre prénom", require: false, label: false %>
+                <%= f.input :surname, require: false, label: false %>
+                <%#= f.input :surname, hint: "votre prénom", require: false, label: false %>
 
                 <%= f.label :lastname, "Nom de famille" %>
-                <%= f.input :lastname, hint: "votre nom de famille", require: false, label: false %>
+                <%= f.input :lastname, require: false, label: false %>
 
                 <%= f.input :afficher_identite,
-                            hint: "cocher pour que vos noms et prénoms apparaissent dans votre profil",
-                            require: false
+                            hint: "cocher pour faire apparaitre dans votre profil et dans les annonces",
+                            label: "Afficher vos nom et prenoms",
+                            require: false,
+                            input_html: { class: 'aa-new-hide-chkbox' }, 
+                            label_html: { class: "aa-new-label-chkbox" } 
                             %>
                 <%= f.input :afficher_email,
-                            hint: "cocher pour que votre email apparaisse dans votre profil",
-                            require: false, default: 'false'
+                            hint: "cocher pour que votre email apparaisse dans votre profil et dans les annonces",
+                            label: "Afficher votre email",
+                            require: false, default: 'false',
+                            input_html: { class: 'aa-new-hide-chkbox' }, 
+                            label_html: { class: "aa-new-label-chkbox" } 
                             %>
 
-                <%= f.input :tel, label: "Numéro de téléphone", hint: "numéro pour vous contacter", require: false %>
-                <%= f.input :afficher_tel, label: "Afficher le numéro de téléphone", hint: "afficher ce numéro sur votre profil", require: false %>
+                <%= f.input :tel, label: "Numéro de téléphone", hint: "ce numéro pourra etre utiliser pour vous contacter", require: false %>
+                <%= f.input :afficher_tel, 
+                            label: "Afficher le numéro de téléphone",
+                            hint: "cocher pour que votre numéro apparaisse dans votre profil et dans les annonces",
+                            require: false,
+                            input_html: { class: 'aa-new-hide-chkbox' }, 
+                            label_html: { class: "aa-new-label-chkbox" } 
+                            %>
 
 
-                <%= f.input :paysresidence, label: "Pays", hint: "pays de résidence", require: false %>
-                <%= f.input :villeresidence, label: "Ville", hint: "ville de résidence", require: false %>
-                <%= f.input :codepostal, label: "Code Postal", hint: "code postal de la ville de résidence", require: false %>
+                <%= f.input :paysresidence, 
+                            label: "Pays de résidence", 
+                            # hint: "pays de résidence", 
+                            require: false %>
+                <%= f.input :villeresidence, 
+                            label: "Ville de résidence", 
+                            # hint: "ville de résidence", 
+                            require: false %>
+                <%= f.input :codepostal, 
+                            label: "Code Postal", 
+                            # hint: "code postal de la ville de résidence", 
+                            require: false %>
 
-                <%= f.input :instagram, hint: "compte instagram", require: false %>
-                <%= f.input :facebook, hint: "compte facebook", require: false %>
+                <%= f.input :instagram,
+                    label: "Compte Instagram",
+                    hint: "identifiez votre compte instagram dans l'URL instagram.com/VOTRECOMPTE/", 
+                    require: false %>
+                <%= f.input :facebook, 
+                    label: "Compte Facebook",
+                    hint: "identifiez votre identifiant facebook dans l'URL facebook.com/VOTRECOMPTE/", 
+                    require: false %>
                 <%= f.input :website, hint: "site web", require: false %>
                 <%= f.input :statut, hint: "statut de votre profil", :collection => ["Artiste","Gallerie", "Particulier"], require: false %>
-                <%= f.input :description, hint: "description de vous", require: false %>
-                <%= f.input :masquefavoris, label: "Masquer vos favoris", hint: "masquer vos publications et users favoris", require: false %>
-                <%= f.input :masquepublication, label: "Masquer vos Publications", hint: "masquer les annonces que vous avez créé", require: false %>
+                <%= f.input :description, 
+                            hint: "décrivez-vous en quelques mots", 
+                            require: false %>
+                <%= f.input :masquefavoris, 
+                            label: "Masquer vos favoris", 
+                            hint: "masquer vos annonces et users favoris", 
+                            require: false,
+                            input_html: { class: 'aa-new-hide-chkbox' }, 
+                            label_html: { class: "aa-new-label-chkbox" }  
+                            %>
+                <%= f.input :masquepublication, 
+                            label: "Masquer vos Publications", 
+                            hint: "masquer les annonces que vous avez créé", 
+                            require: false,
+                            input_html: { class: 'aa-new-hide-chkbox' }, 
+                            label_html: { class: "aa-new-label-chkbox" } 
+                            %>
                 
                 
         <div class="aa-new-photo-field">
