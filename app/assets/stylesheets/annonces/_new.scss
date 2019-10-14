@@ -1,3 +1,68 @@
+.form-check-label {
+  margin-left: 0px!important;
+}
+
+.form-check {
+  padding-left: 0px;
+}
+
+
+.aa-new-hide-chkbox {
+  display: none;
+}
+
+.aa-new-label-chkbox:hover, 
+input:focus + label {
+  box-shadow: 0 0 20px rgba(0, 0, 0, .6);
+}
+
+.aa-new-label-chkbox-first {
+  margin-top: 25px;
+}
+
+
+.aa-new-label-chkbox {
+  display: block;
+  position: relative;
+  // margin: 20px;
+  // padding: 15px 30px 15px 62px;
+  padding: 10px 30px 10px 62px;
+  border: 1px solid #fff;
+  // border-radius: 100px;
+  color: $footer;
+  background-color: $champs;
+  // box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+  box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color .2s, box-shadow .2s;
+}
+
+.aa-new-label-chkbox::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 10px;
+  width: 25px;
+  border: 3px solid #fff;
+  border-radius: 100px;
+  transition: background-color .2s;
+}
+
+input:checked + label {
+  background-color: $secondaryaa;
+  color: white;
+}
+
+input:checked + label::before {
+  background-color: #fff;
+}
+
+
+
 .aa-new-select-choice option:first-child {
   font-style: italic;
 }
@@ -47,7 +112,7 @@ color: #212121;
 }
 
 .aa-mobile-btn  {
-   background-color: $brandcolor;
+   background-color: $brandcolor!important;
 }
 
 .aa-edit-thumbnail {
