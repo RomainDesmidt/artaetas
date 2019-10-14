@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 end
   # resources :annonces
   get 'social', to: 'pages#social'
+  get 'cgu', to: 'pages#cgu'
   # get 'annonces', to: 'annonces#index'
   # get 'annonces/new', to: 'annonces#new'
   # post 'annonces', to: 'annonces#create'

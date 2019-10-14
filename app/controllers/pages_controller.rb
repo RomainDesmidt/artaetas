@@ -3,6 +3,9 @@ class PagesController < ApplicationController
 
   def home
   end
+  
+  def cgu
+  end
 
   def styleguide
     @base_font   = "Roboto"
