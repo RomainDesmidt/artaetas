@@ -154,7 +154,10 @@
                     label: "Compte Facebook",
                     hint: "identifiez votre identifiant facebook dans l'URL facebook.com/VOTRECOMPTE/", 
                     require: false %>
-                <%= f.input :website, hint: "site web", require: false %>
+                <%= f.input :website, 
+                    label: "Site Web",
+                    #hint: "site web", 
+                    require: false %>
                 <%= f.input :statut, hint: "statut de votre profil", :collection => ["Artiste","Gallerie", "Particulier"], require: false %>
                 <%= f.input :description, 
                             hint: "décrivez-vous en quelques mots", 
