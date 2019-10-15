@@ -85,7 +85,8 @@
 }
 
 .aa-show-titre {
-  margin-bottom: 5px;
+  margin-bottom: 1px;
+  font-size: 1.1rem;
 }
 
 .aa-show-detailannonce-description {
@@ -422,8 +423,10 @@ box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
 }
 
 .aa-show-price {
- color: #252525;
-  margin-bottom: 15px;
+// color: #252525;
+ color: $brandcolor;
+  margin-top: 15px;
+  font-size: 1rem !important;
 }
 
 .aa-show-thumbnail {

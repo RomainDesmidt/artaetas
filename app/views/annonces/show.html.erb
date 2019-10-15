@@ -42,14 +42,15 @@
         <div class="aa-show-detailannonce-titre aa-show-marginbottom">
           <div class="aa-show-detailannonce-container">
             <div class="aa-show-detail-container">
-              <b><p class='aa-show-titre'><%= @annonces.name %></p></b>
-              
-              <% if @annonces.anneecreation %>
-                <p class="aa-show-detail-italic"><%= "#{@annonces.anneecreation}" %></p>
-              <% end %>
+              <b><p class='aa-show-titre'><%= @annonces.name.capitalize %></p></b>
+              <p class="aa-show-detail-italic">
               <% if @annonces.nom_artiste %>
-                <p class="aa-show-detail-italic"><%= "#{@annonces.nom_artiste}"  %>
+               <%= "#{@annonces.nom_artiste} - "  %>
               <% end %>
+              <% if @annonces.anneecreation %>
+                <%= "#{@annonces.anneecreation}" %>
+              <% end %>
+              </p>
               <p class="aa-show-price  aa-show-detail-italic">
               <% if @annonces.prix   %>
                 <% if (@annonces.prix.to_i - @annonces.prix) > 0 %>
