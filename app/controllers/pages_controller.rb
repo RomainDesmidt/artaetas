@@ -7,6 +7,9 @@ class PagesController < ApplicationController
   def cgu
   end
 
+  def politiquedeconfidentialite
+  end
+
   def styleguide
     @base_font   = "Roboto"
     @header_font = "Raleway"
