@@ -5,6 +5,23 @@
 @import "show";
 @import "search";
 
+h1[class="aa-legal-titre"] {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  
+}
+
+h2[class="aa-legal-titre"] {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  
+}
+
+h3[class="aa-legal-titre"] {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .aa-cgu {
   margin-top: 50px;
   margin-left: auto;
@@ -19,6 +36,7 @@
 .aa-legal-p {
   text-align: justify;
   text-justify: inter-word;
+  margin-bottom: 2rem;
 }
 
 #myModal {
