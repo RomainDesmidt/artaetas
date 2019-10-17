@@ -89,7 +89,7 @@
         
         <div class="aa-show-minheight">
           <b><p>Criteres</p></b>
-          <p>Dimensions en cm (h x l x p): <%= @hauteur %> cm x <%= @largeur %> cm x <%= @profondeur %> cm</p>
+          <p>Dimensions (h x l x p): <%= @hauteur %> cm x <%= @largeur %> cm x <%= @profondeur %> cm</p>
           <p>Format: 
           <% if @volume > 0.25 %>
             <% if @volume > 1 %>
@@ -101,7 +101,9 @@
             <%= "Petit" %>
           <% end %>
           </p>
-          <p>Disposition: <%= @annonces.disposition %></p>
+          <!--<p>Disposition: -->
+          <%#= @annonces.disposition %>
+          <!--</p>-->
           <p><%= @annonces.oeuvre_limite %></p>
           
           <% if @annonces.certificat_authenticite %>
@@ -222,4 +224,4 @@
   </div>
 </div>
 
-<%= render 'shared/footer' %>
+

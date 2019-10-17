@@ -1,20 +1,25 @@
 <style>
   body { position: fixed; }
 </style>
+
+<%# ###################################### Accroche ####################################################### %>
+
 <div class='aa-accroche'>
-<div class='aa-accroche-texture'>
-  <div class='p-accroche-desktop'>
-    <p class='p-titre'>La plateforme Artaetas, c’est la simplicité d'une plateforme dédiée mobile, c’est le choix&nbsp;</p>
-    <p class='p-titre'>en oeuvres d'arts de toutes catégories, c’est la liberté de vendre et d'acheter, pour tous, artistes, amateurs et collectionneurs.</p>
+  <div class='aa-accroche-texture'>
+    <div class='p-accroche-desktop'>
+      <p class='p-titre'>La plateforme Artaetas, c’est la simplicité d'une plateforme dédiée mobile, c’est le choix&nbsp;</p>
+      <p class='p-titre'>en oeuvres d'arts de toutes catégories, c’est la liberté de vendre et d'acheter, pour tous, artistes, amateurs et collectionneurs.</p>
+    </div>
+    <div class='p-accroche-mobile'>
+      <p class="p-titre">Artaetas, c’est la simplicité, c’est le choix, c’est la liberté, </p>
+      <p class="p-titre">pour tous, artistes, amateurs et collectionneurs.</p>
+    </div>
+    <a href="" class="aa-accroche-button" data-toggle="modal" data-target="#infosmodal">Artaetas c'est quoi?</a>
   </div>
-  <div class='p-accroche-mobile'>
-    <p class="p-titre">Artaetas, c’est la simplicité, c’est le choix, c’est la liberté, </p>
-    <p class="p-titre">pour tous, artistes, amateurs et collectionneurs.</p>
-  </div>
-  <a href="" class="aa-accroche-button" data-toggle="modal" data-target="#infosmodal">Artaetas c'est quoi?</a>
 </div>
 
-</div>
+<%# ###################################### Carousel ####################################################### %>
+
 <div class='container-annonces'>
 
   <% annonces_count = @annonces.count %>
@@ -83,7 +88,10 @@
   </div>
 </div>
 
+<%# ###################################### Boutons ####################################################### %>
+
 <div class="aa-button">
+  
   <div class="aa-button-decouvrir" id="aa-decouvrir">
     <div class="aa-button-symb-blue">
       <a href="/searchannonce"><%= svg 'attribut' %></a>
@@ -96,10 +104,10 @@
         <p>une oeuvre</p>
       </div>
     </div>
-   <!-- link_to "Decouvrir une oeuvre", { :controller => "annonces", :action => :search }, :method => :get, :class => "aa-button-link aa-decouvrir"  >
-     -->
+   <%#= link_to "Decouvrir une oeuvre", { :controller => "annonces", :action => :search }, :method => :get, :class => "aa-button-link aa-decouvrir"  %>
      <a href="/searchannonce" class="aa-surcouche"></a>
   </div>
+  
   <div class="aa-button-deposer" id="aa-deposer">
     <div class="aa-button-symb-white">
       <a href="/annonces/new" ><%= svg 'archiver2' %></a>
@@ -112,110 +120,116 @@
         <p>une oeuvre</p>
       </div>
     </div>
-
-<!-- < link_to "Deposer une oeuvre", { :controller => "annonces", :action => :new }, :method => :get, :class => "aa-button-link aa-deposer"  > -->
+  <%# link_to "Deposer une oeuvre", { :controller => "annonces", :action => :new }, :method => :get, :class => "aa-button-link aa-deposer"  %>
   </div>
+  
 </div>
+
+<%# ###################################### Artaetas c'est quoi ? ####################################################### %>
 
 <div class="aa-who">
-<a name="cestquoi"></a>
- <%= svg 'artaetas_noir2' %>
-  <!-- <p class="aa-who-p-title">Le passage de Lorem Ipsum standard, utilisé depuis 1500</p> -->
-<p class="aa-who-p">Artaetas veut être le maillon qui facilitera l'accès à l’art pour tous.
-« Artes Aetas », le temps de l’art en latin.</p>
-<h6>LE TEMPS...</h6>
-<!-- <p class="aa-who-p-title">Section 1.10.32 du "De Finibus Bonorum et Malorum" de Ciceron (45 av. J.-C.)</p> -->
-<p class="aa-who-p">...de rendre l’art accessible à tous, que chaque amateur d’art puisse profiter d’un large choix avec un accès direct aux artistes et aux collectionneurs.</p>
-
-<p class="aa-who-p">...pour chaque talent artistique de rayonner sur une plateforme qui leur est dédiée, simple, totalement gratuite, construite pour un usage mobile.</p>
-
-<p class="aa-who-p">...pour les particuliers de pouvoir facilement renouveler leurs collections, vendre ou acheter leurs oeuvres en totale liberté.   </p>
-<p class="aa-who-footer">Artaetas, c’est la simplicité, c’est le choix, c’est la liberté, pour tous, artistes, amateurs et collectionneurs.</p>
+  <a name="cestquoi"></a>
+   <%= svg 'artaetas_noir2' %>
+    <!-- <p class="aa-who-p-title">Le passage de Lorem Ipsum standard, utilisé depuis 1500</p> -->
+  <p class="aa-who-p">Artaetas veut être le maillon qui facilitera l'accès à l’art pour tous.
+  « Artes Aetas », le temps de l’art en latin.</p>
+  <h6>LE TEMPS...</h6>
+  <!-- <p class="aa-who-p-title">Section 1.10.32 du "De Finibus Bonorum et Malorum" de Ciceron (45 av. J.-C.)</p> -->
+  <p class="aa-who-p">...de rendre l’art accessible à tous, que chaque amateur d’art puisse profiter d’un large choix avec un accès direct aux artistes et aux collectionneurs.</p>
+  
+  <p class="aa-who-p">...pour chaque talent artistique de rayonner sur une plateforme qui leur est dédiée, simple, totalement gratuite, construite pour un usage mobile.</p>
+  
+  <p class="aa-who-p">...pour les particuliers de pouvoir facilement renouveler leurs collections, vendre ou acheter leurs oeuvres en totale liberté.   </p>
+  <p class="aa-who-footer">Artaetas, c’est la simplicité, c’est le choix, c’est la liberté, pour tous, artistes, amateurs et collectionneurs.</p>
 </div>
 
 
 
-<div class="aa-footer">
-  <div class="aa-footer-artaetas aa-footer-item">
-    <%= inline_svg "ae_noir.svg", class: "aa-footer-ae" %>
-  </div>
-  <div class="aa-share-container aa-footer-item">
-    <p class="p-footer-share text-center">Suivre Artaetas</p>
-    <div class="aa-share">
-        <div class="social-share-button" data-title="" data-img="" data-url="" data-desc="" data-via="artaetas">
-          <a rel="nofollow " data-site="twitter" class="ssb-icon ssb-icon2 ssb-twitter2" onclick="return SocialShareButton.share(this);" title="Share to Twitter" data-twitter-hashtags="" href="#"></a>
-          <a rel="nofollow " data-site="facebook" class="ssb-icon ssb-icon2 ssb-facebook2" onclick="return SocialShareButton.share(this);" title="Share to Facebook" href="#"></a>
-          <a rel="nofollow " data-site="tumblr" class="ssb-icon ssb-icon2 ssb-tumblr2" onclick="return SocialShareButton.share(this);" title="Share to Tumblr" data-twitter-hashtags="" data-type="photo" data-quote="" data-summary="" href="#"></a>
-          <a rel="nofollow " data-site="pinterest" class="ssb-icon ssb-icon2 ssb-pinterest2" onclick="return SocialShareButton.share(this);" title="Share to Pinterest" data-twitter-hashtags="" data-type="photo" data-quote="" data-summary="" href="#"></a>
-          <a rel="nofollow " data-site="linkedin" class="ssb-icon ssb-icon2 ssb-linkedin2" onclick="return SocialShareButton.share(this);" title="Share to Linkedin" data-twitter-hashtags="" data-type="photo" data-quote="" data-summary="" href="#"></a>
-          <a rel="nofollow " data-site="instagram" class="ssb-icon ssb-icon2 ssb-insta2" onclick="" title="Instagram Artaetas" data-twitter-hashtags="" data-type="" data-quote="" data-summary="" href="#"></a>
-        </div>
-    </div>
-  </div>
-  <div class="aa-footer-column aa-footer-item">
-    <p class="p-footer-titre">Infos</p>
-    <p class="p-footer-link"><%= link_to "CGU", cgu_path, class: "aa-index-link" %></p>
-    <p class="p-footer-link">CGV</p>
-    <p class="p-footer-link">Contact</p>
-    <p class="p-footer-link">Autres Mentions Legales</p>
-  </div>
-</div>
+<!--<div class="aa-footer">-->
+<!--  <div class="aa-footer-artaetas aa-footer-item">-->
+<!--    <%#= inline_svg "ae_noir.svg", class: "aa-footer-ae" %>-->
+<!--  </div>-->
+<!--  <div class="aa-share-container aa-footer-item">-->
+<!--    <p class="p-footer-share text-center">Suivre Artaetas</p>-->
+<!--    <div class="aa-share">-->
+<!--        <div class="social-share-button" data-title="" data-img="" data-url="" data-desc="" data-via="artaetas">-->
+<!--          <a rel="nofollow " data-site="twitter" class="ssb-icon ssb-icon2 ssb-twitter2" onclick="return SocialShareButton.share(this);" title="Share to Twitter" data-twitter-hashtags="" href="#"></a>-->
+<!--          <a rel="nofollow " data-site="facebook" class="ssb-icon ssb-icon2 ssb-facebook2" onclick="return SocialShareButton.share(this);" title="Share to Facebook" href="#"></a>-->
+<!--          <a rel="nofollow " data-site="tumblr" class="ssb-icon ssb-icon2 ssb-tumblr2" onclick="return SocialShareButton.share(this);" title="Share to Tumblr" data-twitter-hashtags="" data-type="photo" data-quote="" data-summary="" href="#"></a>-->
+<!--          <a rel="nofollow " data-site="pinterest" class="ssb-icon ssb-icon2 ssb-pinterest2" onclick="return SocialShareButton.share(this);" title="Share to Pinterest" data-twitter-hashtags="" data-type="photo" data-quote="" data-summary="" href="#"></a>-->
+<!--          <a rel="nofollow " data-site="linkedin" class="ssb-icon ssb-icon2 ssb-linkedin2" onclick="return SocialShareButton.share(this);" title="Share to Linkedin" data-twitter-hashtags="" data-type="photo" data-quote="" data-summary="" href="#"></a>-->
+<!--          <a rel="nofollow " data-site="instagram" class="ssb-icon ssb-icon2 ssb-insta2" onclick="" title="Instagram Artaetas" data-twitter-hashtags="" data-type="" data-quote="" data-summary="" href="#"></a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="aa-footer-column aa-footer-item">-->
+<!--    <p class="p-footer-titre">Infos</p>-->
+<!--    <p class="p-footer-link"><%#= link_to "CGU", cgu_path, class: "aa-index-link" %></p>-->
+<!--    <p class="p-footer-link">CGV</p>-->
+<!--    <p class="p-footer-link">Contact</p>-->
+<!--    <p class="p-footer-link">Autres Mentions Legales</p>-->
+<!--  </div>-->
+<!--</div>-->
 
-</div>
-<div class="aa-search-field-mobile aa-search-hidden" id="tabmobilesearch">
-<div class='aa-search-field-bg' id="tabmobileform" >
-  <div class='aa-search-field-form' id="tabmobileform2">
-  <%= form_tag('/searchannonce/', method: :get) do %>
-  <% if params[:term] == '' || params[:term].nil? %>
-    <%= text_field_tag :term,  "Que recherchez-vous?", :class => "aa-search-field-text", readonly: true, id: "aa-textfield-on" %>
-  <% else %>
-    <%= text_field_tag :term,  params[:term] , :class => "aa-search-field-text", readonly: true, id: "aa-textfield-on" %>
-  <% end %>
-  <%= submit_tag 'Rechercher', :class => "btn btn-primary aa-search-field-form-btn" %>
-<label class="aa-search-field-label-begin">Prix entre :</label>
-  <% if params[:pricemin] == '' || params[:pricemin].nil? %>
-    <%= select_tag :pricemin,  options_for_select([[0, 0], [20, 20], [50, 50]], selected: @pricemin || nil), :class =>"aa-search-field-select", include_blank: "Prix min" %>
-  <% else %>
-    <%= select_tag :pricemin,  options_for_select([[0, 0], [20, 20], [50, 50]], selected: @pricemin || nil), :class =>"aa-search-field-select", :selected_value => @pricemin %>
-  <% end %>
-<label class="aa-search-field-label-end">et</label>
-<% if params[:pricemax] == '' || params[:pricemax].nil?%>
-   <%= select_tag :pricemax,  options_for_select([[20, 20], [50, 50], [100, 100]], selected: @pricemax || nil), :class =>"aa-search-field-select", include_blank: "Prix max"  %>
-<% else %>
-   <%= select_tag :pricemax,  options_for_select([[20, 20], [50, 50], [100, 100 ]], selected: @pricemax || nil), :class =>"aa-search-field-select", include_blank: params[:pricemax]  %>
-<% end %>
+<!--</div>-->
 
 
-  <% end %>
+<!--<div class="aa-search-field-mobile aa-search-hidden" id="tabmobilesearch">-->
+<!--<div class='aa-search-field-bg' id="tabmobileform" >-->
+<!--  <div class='aa-search-field-form' id="tabmobileform2">-->
+<!--  <%#= form_tag('/searchannonce/', method: :get) do %>-->
+<!--  <%# if params[:term] == '' || params[:term].nil? %>-->
+<!--    <%#= text_field_tag :term,  "Que recherchez-vous?", :class => "aa-search-field-text", readonly: true, id: "aa-textfield-on" %>-->
+<!--  <%# else %>-->
+<!--    <%#= text_field_tag :term,  params[:term] , :class => "aa-search-field-text", readonly: true, id: "aa-textfield-on" %>-->
+<!--  <%# end %>-->
+<!--  <%#= submit_tag 'Rechercher', :class => "btn btn-primary aa-search-field-form-btn" %>-->
+<!--<label class="aa-search-field-label-begin">Prix entre :</label>-->
+<!--  <%# if params[:pricemin] == '' || params[:pricemin].nil? %>-->
+<!--    <%#= select_tag :pricemin,  options_for_select([[0, 0], [20, 20], [50, 50]], selected: @pricemin || nil), :class =>"aa-search-field-select", include_blank: "Prix min" %>-->
+<!--  <%# else %>-->
+<!--    <%#= select_tag :pricemin,  options_for_select([[0, 0], [20, 20], [50, 50]], selected: @pricemin || nil), :class =>"aa-search-field-select", :selected_value => @pricemin %>-->
+<!--  <%# end %>-->
+<!--<label class="aa-search-field-label-end">et</label>-->
+<!--<%# if params[:pricemax] == '' || params[:pricemax].nil?%>-->
+<!--   <%#= select_tag :pricemax,  options_for_select([[20, 20], [50, 50], [100, 100]], selected: @pricemax || nil), :class =>"aa-search-field-select", include_blank: "Prix max"  %>-->
+<!--<%# else %>-->
+<!--   <%#= select_tag :pricemax,  options_for_select([[20, 20], [50, 50], [100, 100 ]], selected: @pricemax || nil), :class =>"aa-search-field-select", include_blank: params[:pricemax]  %>-->
+<!--<%# end %>-->
 
-  </div>
-</div>
-</div>
-<div class="modal fade" id="infosmodal" tabindex="-1" role="dialog" aria-labelledby="infosModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header aa-who-modal-header">
-        <%= svg 'artaetas_noir2' %>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 10px">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="aa-who-modal">
+
+<!--  <%# end %>-->
+
+<!--  </div>-->
+<!--</div>-->
+<!--</div>-->
+
+
+<!--<div class="modal fade" id="infosmodal" tabindex="-1" role="dialog" aria-labelledby="infosModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header aa-who-modal-header">-->
+<!--        <%= svg 'artaetas_noir2' %>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 10px">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <div class="aa-who-modal">-->
             <!-- <p class="aa-who-p-title">Le passage de Lorem Ipsum standard, utilisé depuis 1500</p> -->
-          <p class="aa-who-p-modal">Artaetas veut être le maillon qui facilitera l'accès à l’art pour tous.
-          « Artes Aetas », le temps de l’art en latin.</p>
-          <h6>LE TEMPS...</h6>
+<!--          <p class="aa-who-p-modal">Artaetas veut être le maillon qui facilitera l'accès à l’art pour tous.-->
+<!--          « Artes Aetas », le temps de l’art en latin.</p>-->
+<!--          <h6>LE TEMPS...</h6>-->
           <!-- <p class="aa-who-p-title">Section 1.10.32 du "De Finibus Bonorum et Malorum" de Ciceron (45 av. J.-C.)</p> -->
-          <p class="aa-who-p-modal">...de rendre l’art accessible à tous, que chaque amateur d’art puisse profiter d’un large choix avec un accès direct aux artistes et aux collectionneurs.</p>
+<!--          <p class="aa-who-p-modal">...de rendre l’art accessible à tous, que chaque amateur d’art puisse profiter d’un large choix avec un accès direct aux artistes et aux collectionneurs.</p>-->
 
-          <p class="aa-who-p-modal">...pour chaque talent artistique de rayonner sur une plateforme qui leur est dédiée, simple, totalement gratuite, construite pour un usage mobile.</p>
+<!--          <p class="aa-who-p-modal">...pour chaque talent artistique de rayonner sur une plateforme qui leur est dédiée, simple, totalement gratuite, construite pour un usage mobile.</p>-->
 
-          <p class="aa-who-p-modal">...pour les particuliers de pouvoir facilement renouveler leurs collections, vendre ou acheter leurs oeuvres en totale liberté.   </p>
-          <br>
-          <p class="aa-whoo-footer-modal">Artaetas, c’est la simplicité, c’est le choix, c’est la liberté, pour tous, artistes, amateurs et collectionneurs.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<!--          <p class="aa-who-p-modal">...pour les particuliers de pouvoir facilement renouveler leurs collections, vendre ou acheter leurs oeuvres en totale liberté.   </p>-->
+<!--          <br>-->
+<!--          <p class="aa-whoo-footer-modal">Artaetas, c’est la simplicité, c’est le choix, c’est la liberté, pour tous, artistes, amateurs et collectionneurs.</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
