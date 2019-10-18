@@ -1,125 +1,67 @@
-<!-- < link_to "Liste Users", users_path > -->
-<!-- <br>
-< @user.email >
-<br>
-< @user.annonces.each do |a| >
-<p>< link_to a.name, "/annonces/#{a.id}" >
-< a.description ></p>
-< end > -->
-<div class="aa-me-container-top aa-user-show-bg"> 
-  <div class="aa-me-annonce-container aa-me-container-top">
-    <% if @user.photofond? %>
-      <div class="aa-me-show-fondprofil" style="background-image: url('<%= "#{@user.photofond.url}" %>')  ;">
-    <% else %>
-      <div class="aa-me-show-fondprofil" style="background-color: black  ;">
-    <% end %>
-      
-      <div class="aa-me-show-details">
-        <div class="aa-me-show-profil">
-          
+<% if @user.photofond? %>
+      <div class="aa-me-show-fondprofilcontainer" style="background-image: url('<%= "#{@user.photofond.url}" %>')  ;"></div>
+<% else %>
+      <div class="aa-me-show-fondprofilcontainer" style="background-color: black  ;"></div>
+<% end %>
+<div class="aa-me-container2">
+  <div class="aa-me-descriptionuser">
+    <div class="aa-me-descriptionuser-top">
+      <div class="aa-me-descriptionuser-portrait">
+        <div class="aa-me-descriptionuser-portraitfond">
           <% if @user.photoprofil? %>
-            <%= cl_image_tag @user.photoprofil, class: "aa-me-show-profilphoto" %>
+            <%= cl_image_tag @user.photoprofil, class: "aa-me-show-portraitphoto" %>
           <% else %>
-            <%= inline_svg "profil.svg", class: "aa-me-show-profilphoto aa-me-show-profilblank" %>
+            <%= inline_svg "profil.svg", class: "aa-me-show-portraitphoto aa-me-show-profilblank" %>
           <% end %>
         </div>
-        <div class="aa-me-show-details-encart">
-            <% if @user.afficher_identite %>
-              <p><%= "#{@user.surname} #{@user.lastname}" %></p>
-            <% end %>
-            <% if @user.afficher_tel %>
-              <p><%= "#{@user.tel}" %></p>
-            <% end %>
-            <% if @user.afficher_email %>
-              <%=  "#{@user.email}" %>
-            <% else %>
-              <%= "User_#{@user.created_at.to_i}" %>
-            <% end %>
-            <% if (@user.villeresidence? & @user.paysresidence?) %>
-            <p><%= "#{@user.villeresidence} \/ #{@user.paysresidence}" %></p>
-            <% end %>
-            
-        </div>
       </div>
-      <div class="aa-me-show-details-userlike">
-        <% unless @user.get_likes == [] %>
-          Like:<%= " #{@user.get_likes.count}" %>
+      <div class="aa-me-descriptionuser-caracteristiques">
+        
+          <% if @user.afficher_identite %>
+            <%= link_to "#{@user.surname} #{@user.lastname}", "/users/#{@user.id}", class: "aa-show-user-link"  %>
+          <% else %>
+            <% if @user.username %>
+              <%= link_to "#{@user.username}", "/users/#{@user.id}", class: "aa-show-user-link"  %>
+              <% else %>
+                <%= link_to "Profil Auteur", "/users/#{@user.id}", class: "aa-show-user-link"  %>
+              <% end %>
+            <% end %>
+            <% if @user.statut %>
+              <div class="aa-show-contact-profil-statut"><%= @user.statut %></div>
+            <% end %>
+          <div class="aa-show-contact-profil-nbannonces"><%= @user.annonces.count %> annonces en ligne</div>
+              
+        <% if user_signed_in? %>
+          <% if current_user.followees.include?(@user) %>
+            <div class="aa-show-detailuser-followbtn"><%= link_to "SUIVRE", unfollow_annonce_path(@user), method: :put, class: "aa-show-suivre-link" %> <%= inline_svg "enlever.svg", class: "aa-show-follow-svg" %></div>
+          <% else %>
+            <div class="aa-show-detailuser-followbtn"><%= link_to "SUIVRE", follow_annonce_path(@user), method: :put, class: "aa-show-suivre-link" %> <%= inline_svg "ajouter.svg", class: "aa-show-follow-svg" %></div>
+          <% end %>
+        <% end %>
+        
+        
+      </div>
+      <div class="aa-me-descriptionuser-stats">PLEIN DE STATS</div>
+    </div>
+    <div class="aa-me-descriptionuser-bottom">
+      <div class="aa-me-descriptionuser-descr">
+        <% if @user.description %>
+          <%= "#{@user.description}" %>
         <% end %>
       </div>
+      <div class="aa-me-descriptionuser-stats2">ENCORE PLUS DE STATS</div>
     </div>
+  </div>
+  
+  <p class="text-center">FAVORI</p>
+  <div class="aa-me-favoriuser">
     
-    <div class="aa-me-show-details-secondaires">
-      
-      
-     <% if @user.description? %> 
-        <div class="aa-me-show-details-description">
-          <div class="aa-me-show-entete"><%= inline_svg "aide.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Description:</p></div><br>
-          <p class="aa-ilotprofil-corpus"><%=  "#{@user.description}" %></p>
-        </div>
-      <% end %>
-      
-      <% if (@user.instagram? || @user.facebook? || @user.website?) %> 
-        <div class="aa-me-show-details-rsociaux">
-          <div class="aa-me-show-entete"><%= inline_svg "visibilite.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Reseaux Sociaux:</p></div><br>
-          <div class="aa-ilotprofil-corpus aa-ilotprofil-rs">
-            
-            <% if @user.instagram? %>
-              <p><%= image_tag "insta2.png", class: "aa-me-show-smallersvg aa-me-show-svg-filter" %>&nbsp;&nbsp;&nbsp;&nbsp;<%= "#{@user.instagram}" %></p>
-            <% end %>
-            <% if @user.facebook? %>
-              <p><%= image_tag "fb2.png", class: "aa-me-show-smallersvg aa-me-show-svg-filter" %>&nbsp;&nbsp;&nbsp;&nbsp;<%= "#{@user.facebook}" %></p>
-            <% end %>
-            <% if @user.website? %>
-              <p><%= image_tag "www.png", class: "aa-me-show-smallersvg" %>&nbsp;&nbsp;&nbsp;&nbsp;<%= "#{@user.website}" %></p>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-      
-      <div class="aa-me-show-details-fav">
-        <div class="aa-me-show-entete"><%= inline_svg "pin.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Favoris:</p></div><br>
-        <br>
-        <div class="aa-ilotprofil-corpus">
-          <% @user.bookmarkees_by(Annonce).each do |a| %>
-            <% favannonce = Annonce.find(a.bookmarkee_id) %>
-             <%= link_to "#{favannonce.name}", "/annonces/#{favannonce.id}" ,class: "aa-me-annonce-fav" %>
-            <br>
-          <% end %>
-        </div>
-      </div>
-      
-      <div class="aa-me-show-details-follow">
-        <div>
-          <div class="aa-me-show-entete"><%= inline_svg "nav-ouvrir.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Suivi Par:</p></div><br>
-        </div>
-        <div class="aa-ilotprofil-corpus">
-          <% @user.followers.each do |u| %>
-            <%= u.email %><br>
-          <% end %>
-        </div>
-        <div>
-          <br><div class="aa-me-show-entete"><%= inline_svg "nav-fermer.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Suit:</p></div><br>
-          <div class="aa-ilotprofil-corpus">
-            <% @user.followees.each do |u| %>
-              <%= u.email %><br>
-            <% end %>
-          </div>
-        </div> 
-      </div>
-      
-      <div class="aa-me-show-details-like">
-        <div class="aa-me-show-details-likeannonce">
-          <div class="aa-me-show-entete"><%= inline_svg "like.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Annonces Likes:</p></div><br>
-        </div>
-      
-        <div class="aa-me-show-details-likeuser">
-          <br><div class="aa-me-show-entete"><%= inline_svg "like-plein.svg", class: "aa-me-show-minisvg" %><p class="aa-ilotprofil-show">Like User:</p></div><br>
-          <p class="aa-ilotprofil-corpus"><%= @user.get_likes.size %> personnes aiment cet user!</p>
-        </div>
-      </div>
-      
-    </div>
-    
+  </div>
+  
+  
+  
+  <div class="aa-me-annonceuser">
+    <p class="text-center">ANNONCE MEMBRE</p>
     <div class="aa-search-annonce-container">
           <% if @user.annonces.count > 0 %>
             <% @user.annonces.each do |a| %>
@@ -149,11 +91,5 @@
             <h1>Aucune annonce trouvee</h1>
           <% end %>
     </div>
-  
   </div>
-  
-  </div>
-
-</div>
-
-
+</div>      
