@@ -109,9 +109,9 @@
         </div>
       </div>
       <div class="aa-me-descriptionuser-stats2">
-        <p>inscrit depuis: <%= @user.created_at.strftime("%d-%m-%Y") %></p>
-        <p>derniere connexion: 5 av JC</p>
-        <p>total annonce: <%= @user.annonces.count %></p>
+        <p>inscrit depuis: <b><%= @user.created_at.strftime("%d-%m-%Y") %></b></p>
+        <p>derniere connexion: <b>5 av JC</b></p>
+        <p>total annonce: <b><%= @user.annonces.count %></b></p>
         <br>
         <% if @user.instagram? %>
           <p>Instagram : <%= link_to "@#{@user.instagram}", "https://www.instagram.com/#{@user.instagram}/" %></p>
