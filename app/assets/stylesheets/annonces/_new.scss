@@ -51,6 +51,7 @@ input:focus + label {
   border: 3px solid #fff;
   border-radius: 100px;
   transition: background-color .2s;
+  background-color: #fff;
 }
 
 input:checked + label {
@@ -60,6 +61,7 @@ input:checked + label {
 
 input:checked + label::before {
   // background-color: $secondaryaa;
+  background-color: transparent;
 }
 
 
