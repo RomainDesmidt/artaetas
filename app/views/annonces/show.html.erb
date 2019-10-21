@@ -44,10 +44,10 @@
             <div class="aa-show-detail-container">
               <b><p class='aa-show-titre'><%= @annonces.name %></p></b>
               <p class="aa-show-detail-italic">
-              <% if @annonces.nom_artiste %>
+              <% if @annonces.nom_artiste? %>
                <%= "#{@annonces.nom_artiste} - "  %>
               <% end %>
-              <% if @annonces.anneecreation %>
+              <% if @annonces.anneecreation? %>
                 <%= "#{@annonces.anneecreation}" %>
               <% end %>
               </p>
@@ -120,24 +120,24 @@
           <% end %>
           <br>
           <br>
+          <% unless CategorieAnnonce.all.where(annonce_id: @annonces.id).nil? || CategorieAnnonce.all.where(annonce_id: @annonces.id) == [] %>
           <b><p>Tags</p></b>
-          <% unless CategorieAnnonce.all.where(annonce_id: @annonces.id).nil? %>
-            <div class="aa-show-categorie-list">
+          <div class="aa-show-categorie-list">  
               <% CategorieAnnonce.all.where(annonce_id: @annonces.id).each do |cat| %>
-              <div class="aa-show-categorie-indivi"><p class="aa-show-categorie-txt"><%= Categorie.find(cat.categorie_id).name %></p></div>
+                <div class="aa-show-categorie-indivi"><p class="aa-show-categorie-txt"><%= Categorie.find(cat.categorie_id).name %></p></div>
               <% end %>
             </div>
           <% end %>
-          <b><p>Courants</p></b>
-          <% unless CourantAnnonce.all.where(annonce_id: @annonces.id).nil? %>
+          <% unless CourantAnnonce.all.where(annonce_id: @annonces.id).nil? || CourantAnnonce.all.where(annonce_id: @annonces.id) == []  %>
+            <b><p>Courants</p></b>
           <div class="aa-show-categorie-list">
             <% CourantAnnonce.all.where(annonce_id: @annonces.id).each do |cour| %>
             <div class="aa-show-categorie-indivi"><p><%= Courant.find(cour.courant_id).name %></p></div>
             <% end %>
           </div>
           <% end %>
+          <% unless CouleurAnnonce.all.where(annonce_id: @annonces.id).nil? || CouleurAnnonce.all.where(annonce_id: @annonces.id) == [] %>
           <b><p>Couleurs</p></b>
-          <% unless CouleurAnnonce.all.where(annonce_id: @annonces.id).nil? %>
           <div class="aa-show-categorie-list">
             <% CouleurAnnonce.all.where(annonce_id: @annonces.id).each do |coul| %>
             <div class="aa-show-categorie-indivi"><p><%= Couleur.find(coul.couleur_id).couleur_dominante %></p></div>

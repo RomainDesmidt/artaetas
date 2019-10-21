@@ -59,7 +59,7 @@ input:checked + label {
 }
 
 input:checked + label::before {
-  background-color: #fff;
+  // background-color: $secondaryaa;
 }
 
 
