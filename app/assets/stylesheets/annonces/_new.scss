@@ -2,6 +2,18 @@
   margin-left: 0px!important;
 }
 
+.nav-tabs .nav-link {
+  border: 0 !important;
+}
+
+.aa-me-nav-item:nth-of-type(1) {
+  transform: translateX(-1px);
+}
+
+.aa-me-nav-item:nth-of-type(3){
+  transform: translateX(1px);
+}
+
 .form-check {
   padding-left: 0px;
 }
