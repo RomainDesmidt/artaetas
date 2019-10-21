@@ -10,6 +10,10 @@ html {
 
 }
 
+body {
+  position: relative;
+}
+
 h1[class="aa-legal-titre"] {
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -441,6 +445,8 @@ p {
   // text-overflow: ellipsis;
    // overflow: hidden;
 }
+
+
 .p-accroche-desktop {
   display: flex;
   flex-direction: row;
@@ -453,9 +459,21 @@ p {
   font-size: 13px;
   font-weight: 500;
   flex: 0 1 auto;
-  align-self: center;
+  // align-self: center;
   // white-space: nowrap;
 }
+
+.p-titre-end {
+  align-self: center;
+}
+
+.p-titre-start {
+  align-self: center;
+}
+.p-titre-center {
+  align-self: center;
+}
+
 
 .p-accroche-desktop p:last-child {
 
@@ -582,7 +600,15 @@ p {
   // padding: 10px 0px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1233px) {
+  
+  .p-titre-end {
+    align-self: flex-end;
+  }
+
+  .p-titre-start {
+    align-self: flex-start;
+  }
   // .container-annonces div {
   //   width: 33%; // fallback
   //   width: calc(33%/var(--n));
