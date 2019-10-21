@@ -194,7 +194,8 @@
   fill: #585a59 !important;
 }
 
-.aa-me-descriptionuser-statsblue > .aa-show-detailuser-contact-email > .aa-show-detailuser-contact-btn  {
+.aa-me-descriptionuser-statsblue > .aa-show-detailuser-contact-email > .aa-show-detailuser-contact-btn,
+.aa-me-descriptionuser-statsblue > .aa-show-detailuser-contact-email > .aa-show-detailuser-contact-btn > .aa-show-mailto {
   background-color: $bloc !important;
   color: #585a59 !important;
   
