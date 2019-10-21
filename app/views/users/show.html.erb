@@ -5,51 +5,124 @@
 <% end %>
 <div class="aa-me-container2">
   <div class="aa-me-descriptionuser">
-    <div class="aa-me-descriptionuser-top">
-      <div class="aa-me-descriptionuser-portrait">
-        <div class="aa-me-descriptionuser-portraitfond">
-          <% if @user.photoprofil? %>
-            <%= cl_image_tag @user.photoprofil, class: "aa-me-show-portraitphoto" %>
-          <% else %>
-            <%= inline_svg "profil.svg", class: "aa-me-show-portraitphoto aa-me-show-profilblank" %>
+    <div class="aa-me-descriptionuser-left">
+      
+      <div class="aa-me-descriptionuser-topleft">
+        <div class="aa-me-descriptionuser-portrait">
+          <div class="aa-me-descriptionuser-portraitfond">
+            <% if @user.photoprofil? %>
+              <%= cl_image_tag @user.photoprofil, class: "aa-me-show-portraitphoto" %>
+            <% else %>
+              <%= inline_svg "profil.svg", class: "aa-me-show-portraitphoto aa-me-show-profilblank" %>
+            <% end %>
+          </div>
+        </div>
+        
+        <div class="aa-me-descriptionuser-caracteristiques">
+            <% if @user.afficher_identite %>
+              <%= link_to "#{@user.surname} #{@user.lastname}", "/users/#{@user.id}", class: "aa-show-user-link"  %>
+            <% else %>
+              <% if @user.username %>
+                <%= link_to "#{@user.username}", "/users/#{@user.id}", class: "aa-show-user-link"  %>
+                <% else %>
+                  <%= link_to "Profil Auteur", "/users/#{@user.id}", class: "aa-show-user-link"  %>
+                <% end %>
+              <% end %>
+              <% if @user.statut %>
+                <div class="aa-show-contact-profil-statut"><%= @user.statut %></div>
+              <% end %>
+            <div class="aa-show-contact-profil-nbannonces"><%= @user.annonces.count %> annonces en ligne</div>
+                
+          <% if user_signed_in? %>
+            <% if current_user.followees.include?(@user) %>
+              <div class="aa-show-detailuser-followbtn"><%= link_to "SUIVRE", unfollow_annonce_path(@user), method: :put, class: "aa-show-suivre-link" %> <%= inline_svg "enlever.svg", class: "aa-show-follow-svg" %></div>
+            <% else %>
+              <div class="aa-show-detailuser-followbtn"><%= link_to "SUIVRE", follow_annonce_path(@user), method: :put, class: "aa-show-suivre-link" %> <%= inline_svg "ajouter.svg", class: "aa-show-follow-svg" %></div>
+            <% end %>
           <% end %>
         </div>
       </div>
-      <div class="aa-me-descriptionuser-caracteristiques">
-        
-          <% if @user.afficher_identite %>
-            <%= link_to "#{@user.surname} #{@user.lastname}", "/users/#{@user.id}", class: "aa-show-user-link"  %>
-          <% else %>
-            <% if @user.username %>
-              <%= link_to "#{@user.username}", "/users/#{@user.id}", class: "aa-show-user-link"  %>
-              <% else %>
-                <%= link_to "Profil Auteur", "/users/#{@user.id}", class: "aa-show-user-link"  %>
-              <% end %>
-            <% end %>
-            <% if @user.statut %>
-              <div class="aa-show-contact-profil-statut"><%= @user.statut %></div>
-            <% end %>
-          <div class="aa-show-contact-profil-nbannonces"><%= @user.annonces.count %> annonces en ligne</div>
-              
-        <% if user_signed_in? %>
-          <% if current_user.followees.include?(@user) %>
-            <div class="aa-show-detailuser-followbtn"><%= link_to "SUIVRE", unfollow_annonce_path(@user), method: :put, class: "aa-show-suivre-link" %> <%= inline_svg "enlever.svg", class: "aa-show-follow-svg" %></div>
-          <% else %>
-            <div class="aa-show-detailuser-followbtn"><%= link_to "SUIVRE", follow_annonce_path(@user), method: :put, class: "aa-show-suivre-link" %> <%= inline_svg "ajouter.svg", class: "aa-show-follow-svg" %></div>
-          <% end %>
-        <% end %>
-        
-        
-      </div>
-      <div class="aa-me-descriptionuser-stats">PLEIN DE STATS</div>
-    </div>
-    <div class="aa-me-descriptionuser-bottom">
+      
       <div class="aa-me-descriptionuser-descr">
         <% if @user.description %>
           <p><%= "#{@user.description}" %></p>
         <% end %>
       </div>
-      <div class="aa-me-descriptionuser-stats2">ENCORE PLUS DE STATS</div>
+      
+      
+    </div>
+    <div class="aa-me-descriptionuser-right">
+      <div class="aa-me-descriptionuser-stats">
+        <div class="aa-me-descriptionuser-statsblue">
+          
+          <div class="aa-statsblue-stats">
+            <div class="aa-statsblue-stats-likecount">
+              <p>Like</p>
+              <% count_likes = 0 %>
+                <% @user.annonces.each do |annonce| %>
+                <% count_likes += annonce.get_likes.count %>
+                <% end %>
+              <p class="aa-statsblue-whitep">
+                <%= count_likes %>
+              </p>
+            </div>
+            <div class="aa-statsblue-stats-followerscount">
+              <p>Suivi par</p>
+              <p class="aa-statsblue-whitep">
+                <%= @user.followers.count %>
+              </p>
+            </div>
+            <div class="aa-statsblue-stats-followeecount">
+              <p>Suit</p>
+              <p class="aa-statsblue-whitep">
+                <%= @user.followees.count %>
+              </p>
+            </div>
+          </div>
+          
+          
+          <div class="aa-show-detailuser-contact-email">
+            <div class="aa-show-detailuser-contact-btn">
+              <% if @user.afficher_email %>
+                  <%= inline_svg "conversation.svg", class: "aa-show-call-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
+                  <%= link_to "Envoyer un Mail", "mailto:#{@user.email}", class: "aa-show-mailto align-self-centeraa" %>
+              <% else %>
+                <%= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Envoyer un Mail</a>
+              <% end %>
+              
+              
+            </div>
+          </div>
+          
+          <div class="aa-show-detailuser-contact-tel">
+            <div class="aa-show-detailuser-contact-btn">
+               <% if @user.afficher_tel %>
+                <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
+                 <%= link_to "Contacter", "tel:#{@user.tel}", class: "aa-show-mailto align-self-centeraa" %>
+              <% else %>
+                <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Contacter</a>
+              <% end %>
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+      <div class="aa-me-descriptionuser-stats2">
+        <p>inscrit depuis: <%= @user.created_at.strftime("%d-%m-%Y") %></p>
+        <p>derniere connexion: 5 av JC</p>
+        <p>total annonce: <%= @user.annonces.count %></p>
+        <br>
+        <% if @user.instagram? %>
+          <p>Instagram : <%= link_to "@#{@user.instagram}", "https://www.instagram.com/#{@user.instagram}/" %></p>
+        <% end %>
+        <% if @user.facebook? %>
+          <p>Facebook : <%= link_to "#{@user.facebook}", "https://www.facebook.com/#{@user.facebook}/" %></p>
+        <% end %>
+        <% if @user.website? %>
+          <p>Site Web : <%= link_to "#{@user.website}", "#{@user.website}" %></p>
+        <% end %>
+      </div>
     </div>
   </div>
   
@@ -59,7 +132,9 @@
     <% @bmlist.each do |bml| %>
       <% if i < 5 %>
         <div class="aa-me-favoriuseritem">
-          <%= cl_image_tag Annonce.find(@bmlist[i]).photo, class: "aa-me-favoriuser-image" %>
+          <%= link_to "/annonces/#{@bmlist[i]}" do %>
+            <%= cl_image_tag Annonce.find(@bmlist[i]).photo, class: "aa-me-favoriuser-image" %>
+          <% end %>
         </div>
       <% end %>
       <% i += 1 %>
