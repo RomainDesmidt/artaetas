@@ -57,7 +57,7 @@
           
           <div class="aa-statsblue-stats">
             <div class="aa-statsblue-stats-likecount">
-              <p>Like</p>
+              <p class="aa-statsblue-greyp">LIKE</p>
               <% count_likes = 0 %>
                 <% @user.annonces.each do |annonce| %>
                 <% count_likes += annonce.get_likes.count %>
@@ -67,13 +67,13 @@
               </p>
             </div>
             <div class="aa-statsblue-stats-followerscount">
-              <p>Suivi par</p>
+              <p class="aa-statsblue-greyp">SUIVI PAR</p>
               <p class="aa-statsblue-whitep">
                 <%= @user.followers.count %>
               </p>
             </div>
             <div class="aa-statsblue-stats-followeecount">
-              <p>Suit</p>
+              <p class="aa-statsblue-greyp">SUIT</p>
               <p class="aa-statsblue-whitep">
                 <%= @user.followees.count %>
               </p>
