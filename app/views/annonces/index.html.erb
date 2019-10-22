@@ -35,7 +35,11 @@
       <div class='annonce-column'>
     <% end %>
       <div class="aa-annonce-card">
+        <% if i == 0 %>
+          <%= cl_image_tag t.photo, { class: "aa-annonce-card-image-first"} %>
+        <% else %>
           <%= cl_image_tag t.photo, { class: "aa-annonce-card-image"} %>
+        <% end %>
         <div class="aa-annonce-card-texte">
         <%= link_to "annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
         <p class='p-titre'>
