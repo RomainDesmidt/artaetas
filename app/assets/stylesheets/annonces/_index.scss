@@ -857,6 +857,7 @@ p {
 
 }
 
+// CAS PARTICULIERS
 
 @media only screen 
   and (min-width: 1024px) 
@@ -868,5 +869,30 @@ p {
     width: 50%; // fallback
     width: calc(50%/var(--n));
   }
+  
+  .aa-button-decouvrir {
+    flex : 0 0 30%;
+    height: 75px;
+  }
+  .aa-button-deposer {
+    flex : 0 0 30%;
+    height: 75px;
+  }
+  
+  p {
+    font-size: 1em;
+  }
+  
     
+}
+
+@media only screen 
+and (max-width: 600px) 
+and (orientation : portrait)
+and (-webkit-min-device-pixel-ratio: 1){
+    .container-annonces-div {
+    width: 100%; // fallback
+    width: calc(100%/var(--n));
+  }
+  
 }
