@@ -23,6 +23,7 @@ class User < ApplicationRecord
   acts_as_voter
   acts_as_votable
   act_as_bookmarker
+  after_create :send_welcome_email
   
   def self.new_with_session(params, session)
     super.tap do |user|
@@ -49,5 +50,10 @@ class User < ApplicationRecord
       where(conditions.to_hash).first
     end
   end
+  
+  def send_welcome_email
+    UserMailer.with(user: self).welcome.deliver_now
+  end
+  
   
 end
