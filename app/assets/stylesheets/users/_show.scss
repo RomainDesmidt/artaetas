@@ -21,7 +21,8 @@
   box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
 }
 
-.aa-me-container2 > .aa-me-annonceuser > .aa-search-annonce-container > .aa-search-annonce-card > .aa-search-annonce-card-detail > .aa-p-description {
+.aa-me-container2 > .aa-me-annonceuser > .aa-search-annonce-container > .aa-search-annonce-card > .aa-search-annonce-card-detail > .aa-p-description,
+#annonces > .aa-search-annonce-container > .aa-search-annonce-card > .aa-search-annonce-card-detail > .aa-p-description {
   margin-top: 12px !important;
   // line-height: 25px !important;
   height: 85px;

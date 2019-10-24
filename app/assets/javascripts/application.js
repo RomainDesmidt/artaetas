@@ -13,6 +13,17 @@
 // });
 
 
+// var active = document.querySelector('.active') !== null;
+// if (active) {
+// document.getElementsByClassName("active")[0].onclick = function()
+// document.getElementById("compte-tab").onclick = function()
+// {
+//   document.getElementsByClassName("active")[0].parentElement.classList.toggle("active-shadow")
+// }
+
+// };
+
+
 var slidons = document.querySelector('#ex2') !== null;
 if (slidons) {
   var slider = new Slider('#ex2', {
