@@ -1,5 +1,14 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: "http://artaetasv1.herokuapp.com" }
+  config.action_mailer.smtp_settings = {
+    address: "SSL0.OVH.NET",
+    port: 587,
+    user_name: "contact@artaetas.com",
+    password: "",
+    authentification: :login,
+    enable_starttls_auto: true
+  }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

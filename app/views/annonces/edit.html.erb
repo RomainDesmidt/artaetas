@@ -27,7 +27,7 @@
           </div>
           <div class="aa-new-photo-field-indivi">
             <%= link_to destroy_photo_un_annonce_path(@annonce), method: :put,  :onclick => "document.getElementById('previewPhotoUn').src ='https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png'" do %>
-              <%= inline_svg "erreur.svg", class: "aa-show-standard-svg aa-show-topright" %>
+              <%= inline_svg "supprimer.svg", class: "aa-show-standard-svg aa-show-topright aa-edit-suppr" %>
             <% end %>
             <%= f.input :photo_un, :input_html => { :onchange => "document.getElementById('previewPhotoUn').src = window.URL.createObjectURL(this.files[0])", class: 'hide-photo-btn' }  %>
             <% if @annonce.photo_un? %>
@@ -39,7 +39,7 @@
           </div>
           <div class="aa-new-photo-field-indivi">
             <%= link_to destroy_photo_deux_annonce_path(@annonce), method: :put,  :onclick => "document.getElementById('previewPhotoDeux').src ='https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png'" do %>
-              <%= inline_svg "erreur.svg", class: "aa-show-standard-svg aa-show-topright" %>
+              <%= inline_svg "supprimer.svg", class: "aa-show-standard-svg aa-show-topright aa-edit-suppr" %>
             <% end %>
             <%= f.input :photo_deux, :input_html => { :onchange => "document.getElementById('previewPhotoDeux').src = window.URL.createObjectURL(this.files[0])", class: 'hide-photo-btn' }  %>
             <% if @annonce.photo_deux? %>

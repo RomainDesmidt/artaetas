@@ -15,6 +15,10 @@ body {
   min-height: 95vh;
 }
 
+.aa-edit-suppr path {
+  fill: $brandcolor;
+}
+
 h1[class="aa-legal-titre"] {
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -56,8 +60,8 @@ h3[class="aa-legal-titre"] {
 }
 
 .aa-footer-ae {
-  width: 90px;
-  height: 90px;
+  width: 75px;
+  height: 75px;
   align-self: center;
 }
 
@@ -68,7 +72,7 @@ h3[class="aa-legal-titre"] {
 .aa-footer {
   background-color: $footer;
   width: 100%;
-  height: 110px;
+  height: 100px;
   display: flex;
   flex-direction: row;
   justify-content: center;
