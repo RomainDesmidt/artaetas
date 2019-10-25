@@ -2,7 +2,7 @@
   <div class='aa-search-field-form' id="tabmobileform2">
     <%= form_tag('/searchannonce/', method: :get, :class => 'aa-search-form' ) do  %>
       <% if params[:term] == '' || params[:term].nil? %>
-        <div class="aa-search-textfieldwrap"><%= text_field_tag :term,  nil, :class => "aa-search-field-text", :placeholder => "Que Recherchez Vous ?" %></div>
+        <div class="aa-search-textfieldwrap"><%= text_field_tag :term,  nil, :class => "aa-search-field-text", :placeholder => "Que recherchez vous ?" %></div>
       <% else %>
         <div class="aa-search-textfieldwrap"><%= text_field_tag :term,  params[:term] , :class => "aa-search-field-text" %></div>
       <% end %>
