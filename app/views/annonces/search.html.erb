@@ -48,11 +48,32 @@
               <!-- </div> -->
             <% end %>
             <%= link_to a, class: "aa-search-annonce-card-detail" do %>
-              <p class="aa-annonce-titre-search"><%= a.name.lines.first[0,30] %></p>
-              <p class="aa-annonce-prix-search"><%= a.prix %><%= "€" unless a.prix.nil? %></p>
-              <p class="aa-annonce-description-search"><!-- < a.description.lines.first[0,30] > -->
-               <%= a.description %>
-              </p>
+            
+               <b><p class='aa-show-titre'><%= a.name %></p></b>
+                  <p class="aa-show-detail-italic">
+                  <% if a.nom_artiste? %>
+                   <%= "#{a.nom_artiste} - "  %>
+                  <% end %>
+                  <% if a.anneecreation %>
+                    <%= "#{a.anneecreation}" %>
+                  <% end %>
+                  </p>
+                  <p class="aa-show-price  aa-show-detail-italic">
+                    <% if a.prix?   %>
+                      <% if (a.prix.to_i - a.prix) > 0 %>
+                        <%= number_with_delimiter(a.prix.to_s, delimiter: " " ) %>€
+                      <% else %>
+                        <%= number_with_delimiter(a.prix.to_i.to_s, delimiter: " " ) %>€
+                      <% end %>
+                    <% end %>
+                  </p>
+                  
+                  
+                  
+                  <p class="aa-p-description">
+                   <%= a.description %>
+                  </p>
+              
             <% end %>
 
               <div class="aa-search-annonce-card-control">
