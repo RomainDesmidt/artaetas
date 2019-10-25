@@ -1,3 +1,37 @@
+.aa-show-retour {
+  position: absolute;
+  top: 5px;
+  right: 50%;
+  transform: translateX(50%);
+  max-width: 300px;
+  height: 40px;
+  background-color: $bloc;
+  padding: 0px 20px 0px 20px;
+}
+
+.aa-show-retour-svg {
+  height: 20px;
+  width: 20px;
+}
+
+.aa-show-retour-svg path {
+  fill: #585a59;
+}
+
+.aa-show-retour > a {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  color: #585a59;
+}
+
+
+.aa-show-retour > a > span,
+.aa-show-retour-svg{
+  align-self: center;
+}
+
 .user_remember_me {
   padding-left: 19px;
 }
@@ -22,7 +56,7 @@
 }
 
 .aa-me-container2 > .aa-me-annonceuser > .aa-search-annonce-container > .aa-search-annonce-card > .aa-search-annonce-card-detail > .aa-p-description,
-#annonces > .aa-search-annonce-container > .aa-search-annonce-card > .aa-search-annonce-card-detail > .aa-p-description {
+#annonces >.aa-search-annonce-container > .aa-search-annonce-card > .aa-search-annonce-card-detail > .aa-p-description {
   margin-top: 12px !important;
   // line-height: 25px !important;
   height: 85px;
