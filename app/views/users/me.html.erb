@@ -11,6 +11,10 @@
   <%= inline_svg "prix-composant.svg", class: "aa-me-navsvg"  %>
     <a class="nav-link" id="transactions-tab" data-toggle="tab" href="#transactions" role="tab" aria-controls="transactions" aria-selected="false">Mes transactions</a>
   </li>
+    <li class="nav-item aa-me-nav-item">
+  <%= inline_svg "profil.svg", class: "aa-me-navsvg"  %>
+    <a class="nav-link" id="profil-tab" href="/users/<%= current_user.id %>"  aria-selected="false">Profil public</a>
+  </li>
 </ul>
 <div class="tab-content" id="myTabContent">
 
@@ -86,23 +90,26 @@
 
   <div class="tab-pane fade show active" id="compte" role="tabpanel" aria-labelledby="compte-tab">
     <div class="aa-me-moncompte-container">
-      <div class="aa-me-tablematiere">
-        <div class="aa-me-tablematiere-ilot">
-          <div class="aa-me-tablematiere-item">
-            <a href="#infoperso">Infos personnelles</a><br>
-          </div>
-          <div class="aa-me-tablematiere-item">
-            <a href="#email"> Email </a><br>
-          </div>
-          <div class="aa-me-tablematiere-item">
-            <a href="#psw"> Mot de passe </a><br>
-          </div>
-          <div class="aa-me-tablematiere-item">
-            <%= link_to "Profil Public", "/users/#{current_user.id}" %>
-          </div>
-        </div>
-      </div>
+      <!--<div class="aa-me-tablematiere">-->
+      <!--  <div class="aa-me-tablematiere-ilot">-->
+      <!--    <div class="aa-me-tablematiere-item">-->
+      <!--      <a href="#infoperso">Infos personnelles</a><br>-->
+      <!--    </div>-->
+      <!--    <div class="aa-me-tablematiere-item">-->
+      <!--      <a href="#email"> Email </a><br>-->
+      <!--    </div>-->
+      <!--    <div class="aa-me-tablematiere-item">-->
+      <!--      <a href="#psw"> Mot de passe </a><br>-->
+      <!--    </div>-->
+      <!--    <div class="aa-me-tablematiere-item">-->
+            <%#= link_to "Profil Public", "/users/#{current_user.id}" %>
+      <!--    </div>-->
+      <!--  </div>-->
+      <!--</div>-->
+      
+      
       <div class="aa-me-infoperso">
+        
         <div class="aa-me-infocivil">
           <a name="infoperso"></a>
           <h2>Mes informations personnelles</h2>
@@ -173,7 +180,7 @@
                     label: "Site Web",
                     #hint: "site web", 
                     require: false %>
-                <%= f.input :statut, hint: "statut de votre profil", :collection => ["Artiste","Gallerie", "Particulier"], require: false %>
+                <%= f.input :statut, hint: "statut de votre profil", :collection => ["Artiste","Gallerie", "Amateur", "Collectionneur", "Association"], require: false %>
                 <%= f.input :description, 
                             hint: "décrivez-vous en quelques mots", 
                             require: false %>
@@ -195,7 +202,10 @@
                 
         <div class="aa-new-photo-field">
           <div class="aa-new-photo-field-indivi2">
-            <%= f.input :photoprofil, :input_html => { :onchange => "document.getElementById('previewPhotoProfil').src = window.URL.createObjectURL(this.files[0])", class: 'hide-photo-btn' } %>
+            <%= f.input :photoprofil,
+             label: "Avatar",
+            :input_html => { :onchange => "document.getElementById('previewPhotoProfil').src = window.URL.createObjectURL(this.files[0])", 
+            class: 'hide-photo-btn' } %>
             <% if current_user.photoprofil? %>
               <%= cl_image_tag current_user.photoprofil, class: "aa-edit-thumbnail", id: "previewPhotoProfil" %>
             <% else %>
@@ -205,7 +215,10 @@
           </div>
           
           <div class="aa-new-photo-field-indivi">
-            <%= f.input :photofond, :input_html => { :onchange => "document.getElementById('previewPhotoFond').src = window.URL.createObjectURL(this.files[0])", class: 'hide-photo-btn' }  %>
+            <%= f.input :photofond,
+             label: "Bruce Banner",
+            :input_html => { :onchange => "document.getElementById('previewPhotoFond').src = window.URL.createObjectURL(this.files[0])", 
+            class: 'hide-photo-btn' }  %>
             <% if current_user.photofond? %>
               <%= cl_image_tag current_user.photofond, class: "aa-edit-thumbnail", id: "previewPhotoFond" %>
             <% else %>
@@ -227,32 +240,32 @@
             <%#= link_to "Back", :back %>
 
         </div>
-        <!--<div class="aa-me-email">-->
-        <!--<a name="email"></a>-->
-        <!--<h2>Mon email</h2>-->
+        <div class="aa-me-email">
+        <a name="email"></a>
+        <h2>Mon email</h2>
 
-        <!--  <div class="form-inputs">-->
-            <%#= f.input :email, required: false, autofocus: true %>
-        <!--  </div>-->
-        <!--</div>-->
+          <div class="form-inputs">
+            <%= f.input :email, required: false, autofocus: true %>
+          </div>
+        </div>
         
-      <!--<div class="aa-me-psw">-->
-      <!--  <a name="psw"></a>-->
-      <!--  <h2>Mon mot de passe</h2>-->
-      <!--   <div class="form-inputs">-->
-           <%#= f.input :password,
+      <div class="aa-me-psw">
+        <a name="psw"></a>
+        <h2>Mon mot de passe</h2>
+         <div class="form-inputs">
+           <%= f.input :password,
                               hint: "leave it blank if you don't want to change it",
                               required: false,
                               input_html: { autocomplete: "new-password" } %>
-                  <%#= f.input :password_confirmation,
+                  <%= f.input :password_confirmation,
                               required: false,
                               input_html: { autocomplete: "new-password" } %>
                   <%#= f.input :current_password,
                               hint: "we need your current password to confirm your changes",
                               required: false,
                               input_html: { autocomplete: "current-password" } %>
-        <!--  </div>-->
-        <!--</div>-->
+          </div>
+        </div>
         
         <div class="aa-me-submit">
           <div class="form-actions">

@@ -1,7 +1,7 @@
 <div class="aa-new-bg">
   <div class="aa-new-container">
     <%= simple_form_for(@annonce) do |f| %>
-    <div class="aa-new-accroche">Deposer une annonce</div>
+    <div class="aa-new-accroche"></div>
 
     <div class="aa-new-containerfield">
       <div class="aa-new-titrefield">Votre Annonce</div>
@@ -9,7 +9,7 @@
         <!-- [...] -->
         <%= f.input :name, label: "Nom de l'oeuvre"  %>
         <%= f.input :description, placeholder: "Seule la premiere ligne apparait dans l'index max 50 caracteres" %>
-        <%= f.input :prix, placeholder: "€", input_html: { class: 'aa-textalignright' } %>
+        <%= f.input :prix, placeholder: "€" %>
         <%= f.input :anneecreation, label: "Année de création" %>
         <%= f.input :nom_artiste, label: "Nom de l'artiste" %>
         
@@ -139,7 +139,7 @@
       <%= f.input :etat_neuf , input_html: { class: 'aa-new-hide-chkbox' }, label_html: { class: "aa-new-label-chkbox" } %>
       </div>
     </div>
-    <%= f.submit "Modifier l'annonce", class: "btn btn-primary aa-mobile-btn" %>
+    <%= f.submit "Modifier l'annonce", class: "btn btn-primary aa-mobile-btn aa-new-publierannonce" %>
     <% end %>
   </div>
 </div>
