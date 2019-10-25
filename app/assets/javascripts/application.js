@@ -42,8 +42,8 @@ if (selection) {
   select: document.querySelector('.multiple-dd')
   
 })
-  // document.querySelector('div.multiple-dd>div.ss-multi-selected>div.ss-values>span.ss-disabled').innerText = "Catégorie"
-  // document.querySelector('div.multiple-dd>div.ss-content>div.ss-search>input').placeholder = "Saisie"
+  document.querySelector('div.multiple-dd>div.ss-multi-selected>div.ss-values>span.ss-disabled').innerText = "Choisissez une catégorie..."
+  document.querySelector('div.multiple-dd>div.ss-content>div.ss-search>input').placeholder = "Saisie"
 
 };
 
@@ -53,8 +53,8 @@ if (selection2) {
   select: document.querySelector('.multiple-dd2')
   
 })
-  // document.querySelector('div.multiple-dd2>div.ss-multi-selected>div.ss-values>span.ss-disabled').innerText = "Courant"
-  // document.querySelector('div.multiple-dd2>div.ss-content>div.ss-search>input').placeholder = "Saisie"
+  document.querySelector('div.multiple-dd2>div.ss-multi-selected>div.ss-values>span.ss-disabled').innerText = "Choisissez un courant..."
+  document.querySelector('div.multiple-dd2>div.ss-content>div.ss-search>input').placeholder = "Saisie"
 };
 
 var selection3 = document.querySelector('.multiple-dd3') !== null;
@@ -63,8 +63,8 @@ if (selection3) {
   select: document.querySelector('.multiple-dd3')
   
 })
-  // document.querySelector('div.multiple-dd3>div.ss-multi-selected>div.ss-values>span.ss-disabled').innerText = "Couleur"
-  // document.querySelector('div.multiple-dd3>div.ss-content>div.ss-search>input').placeholder = "Saisie"
+  document.querySelector('div.multiple-dd3>div.ss-multi-selected>div.ss-values>span.ss-disabled').innerText = "Choisissez une couleur..."
+  document.querySelector('div.multiple-dd3>div.ss-content>div.ss-search>input').placeholder = "Saisie"
 };
 
 
