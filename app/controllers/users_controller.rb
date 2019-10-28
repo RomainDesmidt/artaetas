@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @bookmark = @user.bookmarkees_by(Annonce)
     @bmlist = []
     @bookmark.each do |bm|
-      @bmlist << bm.bookmarkee_id
+    @bmlist << bm.bookmarkee_id
     end
   end
 

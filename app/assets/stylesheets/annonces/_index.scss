@@ -38,7 +38,19 @@ h3[class="aa-legal-titre"] {
 
 .ss-main .ss-multi-selected .ss-values .ss-disabled {
   color: #8f8f8f !important;
+  font-style: italic;
+  font-size: 11px;
 }
+
+.form-control.is-valid {
+  background-position: center right 2rem;
+}
+
+textarea.form-control.is-valid {
+  background-position: top calc(0.375em + 0.1875rem) right 2rem;
+}
+
+
 
 .aa-cgu {
   margin-top: 50px;

@@ -1,4 +1,13 @@
 // MES ANNONCES
+#previewPhotoFond {
+  width: 300px;
+  background-size: 300px 100px;
+  object-fit: cover;
+}
+#previewPhotoProfil {
+  object-fit: cover;
+}
+
 .aa-me-infocivil h2,
 .aa-me-email h2,
 .aa-me-psw h2 {
