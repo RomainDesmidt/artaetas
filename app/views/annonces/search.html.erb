@@ -26,8 +26,10 @@
 
      
     <% if params[:prix_slider] == '' || params[:prix_slider].nil?%>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="prix_slider" class="aa-label-prix-slider">Prix</label>
       <input name="prix_slider" id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="<%= "#{@slider_max}" %>" data-slider-step="5" data-slider-value="[0,<%= "#{@slider_max}" %>]"/>
     <% else %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="prix_slider" class="aa-label-prix-slider">Prix</label>
       <input name="prix_slider" id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="<%= "#{@slider_max}" %>" data-slider-step="5" data-slider-value="[<%= "#{@pricemin}" %>,<%= "#{@pricemax}" %>]"/>
     <% end %>
 
