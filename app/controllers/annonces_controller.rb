@@ -17,6 +17,10 @@ class AnnoncesController < ApplicationController
   def index
     @annonces = Annonce.all
   end
+  
+  def index2
+    @annonces = Annonce.all
+  end
 
   def new
     @annonce = current_user.annonces.new
