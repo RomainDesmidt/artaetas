@@ -1,0 +1,21 @@
+.grid { 
+  background: #DDD;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 75px;
+}
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.grid-sizer,
+.grid-item { width: 30%; }
+.grid-item { 
+    float: left; 
+    margin-bottom: 40px;
+}
+.grid-item img {
+  display: block;
+  width: 100%;
+}

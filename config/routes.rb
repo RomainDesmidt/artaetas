@@ -30,6 +30,7 @@ end
   get 'users/me', to: 'users#me'
   get 'users/:id', to: 'users#show'
   get 'users', to: 'users#index'
+  get 'testindex', to: 'annonces#index2'
   # put "like", to: "annonces#like"
   # put "dislike", to: "annonces#dislike"
 
