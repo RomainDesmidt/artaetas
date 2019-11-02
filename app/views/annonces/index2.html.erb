@@ -1,9 +1,10 @@
 <div class="grid">
   <div class="grid-sizer"></div>
   <% i = 1 %>
-    <% 50.times do %>
+  <%#= asset_path("artsy/1.jpg") %>
+    <% 56.times do %>
         <div class="grid-item">
-            <%= image_tag("artsy/#{i}.jpg") %>
+            <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: asset_path("artsy/#{i}.jpg") }) %>
             <p>Lorem Ipsum <%= i %></p>
         </div>
         <% i += 1 %>
