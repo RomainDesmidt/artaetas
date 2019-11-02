@@ -23,17 +23,43 @@
 
 // };
 
-var grid = document.querySelector('.grid');
-var msnry = new Masonry( grid, {
-  itemSelector: '.grid-item',
-  columnWidth: '.grid-sizer',
-  percentPosition: true,
-  gutter: 40
+var $container = $('.grid');
+$container.imagesLoaded(function(){
+    $container.masonry({
+        itemSelector: '.grid-item',
+        // columnWidth: function(containerWidth){
+        //     return containerWidth / 12;
+        // }
+          columnWidth: '.grid-sizer',
+          percentPosition: true,
+          gutter: 40
+        
+    });
+    $('.grid-item img').addClass('not-loaded');
+    $('.grid-item img.not-loaded').lazyload({
+        effect: 'fadeIn',
+        load: function() {
+            // Disable trigger on this image
+            $(this).removeClass("not-loaded");
+            $container.masonry('layout');
+        }
+    });
+    $('.grid-item img.not-loaded').trigger('scroll');
 });
-imagesLoaded( grid ).on( 'progress', function() {
-  // layout Masonry after each image loads
-  msnry.layout();
-});
+
+
+
+// var grid = document.querySelector('.grid');
+// var msnry = new Masonry( grid, {
+//   itemSelector: '.grid-item',
+//   columnWidth: '.grid-sizer',
+//   percentPosition: true,
+//   gutter: 40
+// });
+// imagesLoaded( grid ).on( 'progress', function() {
+//   // layout Masonry after each image loads
+//   msnry.layout();
+// });
 
 
 
