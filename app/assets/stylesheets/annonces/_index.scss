@@ -51,6 +51,43 @@ textarea.form-control.is-valid {
 }
 
 
+// GRID CAROUSEL
+
+.grid-container {
+  max-width: 1066px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid { 
+  background: #DDD;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 15px;
+  margin-bottom: 50px;
+}
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.grid-sizer,
+.grid-item { width: 32%; }
+.grid-item { 
+    float: left; 
+    margin-bottom: 1.75%;
+    background-color: $bloc;
+    padding: 5px;
+}
+.grid-item img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.gutter-sizer { width: 2%; }
+
+// FIN GRID CAROUSEL
 
 .aa-cgu {
   margin-top: 50px;
@@ -473,7 +510,9 @@ p {
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  height: 100%;
+  // height: 100%;
+  margin-top: 50px;
+  height: 50px;
 }
 
 .p-accroche-desktop p {
@@ -703,6 +742,8 @@ p {
     height: 50px;
     flex-wrap: nowrap;
     height: 15%;
+    position: absolute;
+    bottom: 50px;
    }
 
    .aa-button-deposer {
