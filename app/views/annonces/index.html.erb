@@ -1,6 +1,4 @@
-<style>
-  body { position: fixed; }
-</style>
+
 
 <%# ###################################### Accroche ####################################################### %>
 
@@ -19,76 +17,34 @@
 </div>
 
 <%# ###################################### Carousel ####################################################### %>
+<div class="grid-container">
+  <div class="grid">
+    <div class="grid-sizer"></div>
+    <div class="gutter-sizer"></div>
+    <%# i = 1 %>
+    <%#= asset_path("artsy/1.jpg") %>
+      <%# 56.times do %>
+          <!--<div class="grid-item">-->
+              <%#= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: asset_path("artsy/#{i}.jpg") }) %>
+              <!--<p>Lorem Ipsum <%#= i %></p>-->
+          <!--</div>-->
+          <%# i += 1 %>
+      <%# end %>
+     <% @annonces.each do |t| %>
+       <div class="grid-item">
+              <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url }) %>
 
-<div class='container-annonces'>
-
-  <% annonces_count = @annonces.count %>
-  <% annonces_reste = annonces_count % 4 %>
-  <% annonces_blank = 4 - annonces_reste %>
-  <% i = 0 %>
-  <% j = 0 %>
-  <% @annonces.each do |t| %>
-    <% if j == 0 %>
-      <div class='container-annonces-div annonce-cont-4'>
-    <% end %>
-    <% if i == 0 %>
-      <div class='annonce-column'>
-    <% end %>
-      <div class="aa-annonce-card">
-        <% if i == 0 %>
-          <%= cl_image_tag t.photo, { class: "aa-annonce-card-image-first"} %>
-        <% else %>
-          <%= cl_image_tag t.photo, { class: "aa-annonce-card-image"} %>
-        <% end %>
-        <div class="aa-annonce-card-texte">
-        <%= link_to "annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
-        <p class='p-titre'>
-        <% unless t.name.lines.first.nil? %>
-          <%= t.name.lines.first[0,20] %>
-        <% end %>
-        </p>
-        <% end %>
-        <% unless t.description.lines.first.nil? %>
-          <p class='p-description'><%= t.description.lines.first[0,30] %></p>
-        <% end %>
-        </div>
-      </div>
-
-    <% if i == 0 %>
-      <div class="aa-separateur">&nbsp;</div>
-    <% end %>
-
-    <% i += 1 %>
-    <% j += 1 %>
-    <% if i == 2 %>
-      </div>
-      <% i = 0 %>
-    <% end %>
-    <% if j == 4 %>
-      </div>
-      <% j = 0 %>
-    <% end %>
-  <% end %>
-  <% case annonces_reste %>
-  <% when 1 %>
-    <div  class="aa-annonce-card"></div>
-    </div>
-    <div class='annonce-column'>
-      <div class="aa-annonce-card"></div>
-      <div class="aa-annonce-card"></div>
-    </div>
-    </div>
-  <% when 2 %>
-    <div class='annonce-column'>
-      <div class="aa-annonce-card"></div>
-      <div class="aa-annonce-card"></div>
-    </div>
-    </div>
-  <% when 3 %>
-    <div class="aa-annonce-card"></div>
-    </div>
-    </div>
-  <% end %>
+              <% unless t.name.lines.first.nil? %>
+                <p class='p-titre'><%= t.name.lines.first[0,20] %></p>
+              <% end %>
+              
+              
+              <% unless t.description.lines.first.nil? %>
+                <p class='p-description'><%= t.description.lines.first[0,30] %></p>
+              <% end %>
+              
+          </div>
+     <% end %>
   </div>
 </div>
 

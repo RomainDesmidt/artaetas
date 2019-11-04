@@ -32,7 +32,7 @@ $container.imagesLoaded(function(){
         // }
           columnWidth: '.grid-sizer',
           percentPosition: true,
-          gutter: 40
+          gutter: '.gutter-sizer'
         
     });
     $('.grid-item img').addClass('not-loaded');
