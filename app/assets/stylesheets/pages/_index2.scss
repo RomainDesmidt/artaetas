@@ -20,3 +20,42 @@
 //   width: 100%;
 //   object-fit: cover;
 // }
+
+
+.gridouille-container {
+    
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.gridouille { 
+  background: $backgroundaa;
+//   margin-left: auto;
+//   margin-right: auto;
+  margin-left: 50px;
+  margin-right: 50px;
+
+  margin-top: 15px;
+  margin-bottom: 50px;
+}
+.gridouille:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.gridouille-sizer,
+.gridouille-item { width: 300px; }
+.gridouille-item { 
+    float: left; 
+    margin-bottom: 1.75%;
+    background-color: $bloc;
+    padding: 5px;
+}
+.gridouille-item img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.gutterouille-sizer { width: 20px; }
