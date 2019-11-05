@@ -23,30 +23,63 @@
 
 // };
 
-var $container = $('.grid');
-$container.imagesLoaded(function(){
-    $container.masonry({
-        itemSelector: '.grid-item',
-        // columnWidth: function(containerWidth){
-        //     return containerWidth / 12;
-        // }
-          columnWidth: '.grid-sizer',
-          percentPosition: true,
-          gutter: '.gutter-sizer'
-        
-    });
-    $('.grid-item img').addClass('not-loaded');
-    $('.grid-item img.not-loaded').lazyload({
-        effect: 'fadeIn',
-        load: function() {
-            // Disable trigger on this image
-            $(this).removeClass("not-loaded");
-            $container.masonry('layout');
-        }
-    });
-    $('.grid-item img.not-loaded').trigger('scroll');
-});
+// ################################   INDEX
+if ( $('.grid').length ) {
+  var $container = $('.grid');
+  $container.imagesLoaded(function(){
+      $container.masonry({
+          itemSelector: '.grid-item',
+          // columnWidth: function(containerWidth){
+          //     return containerWidth / 12;
+          // }
+            columnWidth: '.grid-sizer',
+            percentPosition: true,
+            gutter: '.gutter-sizer'
+          
+      });
+      $('.grid-item img').addClass('not-loaded');
+      $('.grid-item img.not-loaded').lazyload({
+          effect: 'fadeIn',
+          load: function() {
+              // Disable trigger on this image
+              $(this).removeClass("not-loaded");
+              $container.masonry('layout');
+          }
+      });
+      $('.grid-item img.not-loaded').trigger('scroll');
+  });
+};
 
+
+// ################################ TEST INDEX
+
+
+if ( $('.gridouille').length ) {
+  var $container = $('.gridouille');
+  $container.imagesLoaded(function(){
+      $container.masonry({
+          itemSelector: '.gridouille-item',
+          // columnWidth: function(containerWidth){
+          //     return containerWidth / 12;
+          // }
+            columnWidth: '.gridouille-sizer',
+            percentPosition: true,
+            gutter: '.gutterouille-sizer',
+            fitWidth: true
+          
+      });
+      $('.gridouille-item img').addClass('not-loaded');
+      $('.gridouille-item img.not-loaded').lazyload({
+          effect: 'fadeIn',
+          load: function() {
+              // Disable trigger on this image
+              $(this).removeClass("not-loaded");
+              $container.masonry('layout');
+          }
+      });
+      $('.gridouille-item img.not-loaded').trigger('scroll');
+  });
+};
 
 
 // var grid = document.querySelector('.grid');
