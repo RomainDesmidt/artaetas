@@ -13,3 +13,38 @@
       <% end %>
   </div>
 </div>
+
+<div class="aa-button">
+  
+  <div class="aa-button-decouvrir" id="aa-decouvrir">
+    <div class="aa-button-symb-blue">
+      <a href="/searchannonce"><%= svg 'attribut' %></a>
+    </div>
+    <div class="aa-button-text">
+      <div class="aa-button-gros">
+        <p>Rechercher&nbsp;</p>
+      </div>
+      <div class="aa-button-petit">
+        <p>une oeuvre</p>
+      </div>
+    </div>
+   <%#= link_to "Decouvrir une oeuvre", { :controller => "annonces", :action => :search }, :method => :get, :class => "aa-button-link aa-decouvrir"  %>
+     <a href="/searchannonce" class="aa-surcouche"></a>
+  </div>
+  
+  <div class="aa-button-deposer" id="aa-deposer">
+    <div class="aa-button-symb-white">
+      <a href="/annonces/new" ><%= svg 'archiver2' %></a>
+    </div>
+    <div class="aa-button-text">
+      <div class="aa-button-gros">
+        <p>Deposer&nbsp;</p>
+      </div>
+      <div class="aa-button-petit">
+        <p>une oeuvre</p>
+      </div>
+    </div>
+  <%# link_to "Deposer une oeuvre", { :controller => "annonces", :action => :new }, :method => :get, :class => "aa-button-link aa-deposer"  %>
+  </div>
+  
+</div>
