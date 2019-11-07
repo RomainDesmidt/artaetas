@@ -34,7 +34,8 @@ if ( $('.grid').length ) {
           // }
             columnWidth: '.grid-sizer',
             percentPosition: true,
-            gutter: '.gutter-sizer'
+            gutter: '.gutter-sizer',
+            fitWidth: true
           
       });
       $('.grid-item img').addClass('not-loaded');
@@ -80,6 +81,9 @@ if ( $('.gridouille').length ) {
       $('.gridouille-item img.not-loaded').trigger('scroll');
   });
 };
+
+// ################################ BOTH
+
 
 $( window ).resize(function() {
   $container.delay(3000).masonry('layout');
