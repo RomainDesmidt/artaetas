@@ -16,6 +16,7 @@ class AnnoncesController < ApplicationController
   
   def index
     @annonces = Annonce.all
+    @landingp = 1
   end
   
   def index2
