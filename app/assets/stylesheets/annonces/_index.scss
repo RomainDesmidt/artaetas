@@ -277,8 +277,12 @@ a:focus { text-decoration: none}
   display: flex;
   flex-direction: row;
   // padding-top: 10px;
-  height: 13%;
+  // height: 13%;
+  height: 90px;
   justify-content: center;
+  bottom: 90px;
+  position: fixed;
+
 
 }
 .aa-button-decouvrir {
@@ -667,6 +671,9 @@ p {
   // padding: 10px 0px;
 }
 
+
+// ################################## MEDIA QUERIES
+
 @media (max-width: 1233px) {
   
   .p-titre-end {
@@ -744,9 +751,9 @@ p {
    .aa-button {
     height: 50px;
     flex-wrap: nowrap;
-    height: 15%;
-    position: absolute;
-    bottom: 50px;
+    // height: 15%;
+    // position: absolute;
+    bottom: 100px;
    }
 
    .aa-button-deposer {
@@ -873,13 +880,22 @@ p {
     border-bottom-right-radius: 0px;
     font-size: 16px;
   }
-  .aa-footer {
-    display: none;
-  }
+  // .aa-footer {
+  //   display: none;
+  // }
 
   .aa-share-container {
-    display: none;
+    // display: none;
+    margin: 0px 15px;
   }
+  
+  .ssb-icon2 {
+    border: 0px solid !important;
+    border-radius: 0px !important;
+    border-color: lightgray !important;
+    padding: 20px 13px !important;
+  }
+  
 }
 
 // body {

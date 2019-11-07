@@ -23,6 +23,8 @@
 
 // };
 
+var $container = false;
+
 // ################################   INDEX
 if ( $('.grid').length ) {
   var $container = $('.grid');
@@ -83,17 +85,27 @@ if ( $('.gridouille').length ) {
 };
 
 // ################################ BOTH
-
-
-$( window ).resize(function() {
-  $container.delay(3000).masonry('layout');
-  $container.masonry('layout');
+$( document ).ready(function() {
+   
+  $( window ).resize(function() {
+    if ( $container.length ) {
+      $container.delay(3000).masonry('layout');
+      $container.masonry('layout');
+      // console.log("hello");
+    }
+  });
+  
+  
+  $( window ).change(function() {
+    if ( $container.length ) {
+      $container.masonry('layout');
+    }
+  });
+   
+   
 });
 
 
-$( window ).change(function() {
-  $container.masonry('layout');
-});
 
 // var grid = document.querySelector('.grid');
 // var msnry = new Masonry( grid, {
