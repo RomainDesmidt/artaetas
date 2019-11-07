@@ -53,16 +53,11 @@ textarea.form-control.is-valid {
 
 // GRID CAROUSEL
 
-.grid-container {
-  max-width: 1066px;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 .grid { 
   background: $backgroundaa;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 15px;
   margin-bottom: 50px;
 }
@@ -72,7 +67,7 @@ textarea.form-control.is-valid {
   clear: both;
 }
 .grid-sizer,
-.grid-item { width: 32%; }
+.grid-item { width: 300px; }
 .grid-item { 
     float: left; 
     margin-bottom: 1.75%;
@@ -85,7 +80,15 @@ textarea.form-control.is-valid {
   object-fit: cover;
 }
 
-.gutter-sizer { width: 2%; }
+.gutter-sizer { width: 20px; }
+
+
+
+
+
+
+
+
 
 // FIN GRID CAROUSEL
 
