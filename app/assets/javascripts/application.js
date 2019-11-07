@@ -81,15 +81,15 @@ if ( $('.gridouille').length ) {
   });
 };
 
-// $( window ).resize(function() {
-//   $container.delay(3000).masonry('layout');
-//   $container.masonry('layout');
-// });
+$( window ).resize(function() {
+  $container.delay(3000).masonry('layout');
+  $container.masonry('layout');
+});
 
 
-// $( window ).change(function() {
-//   $container.masonry('layout');
-// });
+$( window ).change(function() {
+  $container.masonry('layout');
+});
 
 // var grid = document.querySelector('.grid');
 // var msnry = new Masonry( grid, {
