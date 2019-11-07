@@ -282,11 +282,11 @@ a:focus { text-decoration: none}
   justify-content: center;
   bottom: 90px;
   position: fixed;
-  background: rgb(236,236,236);
-  background: -webkit-linear-gradient(rgba(236,236,236,0.738532913165266) 0%, rgba(43,43,43,0.9037990196078431) 73%, rgba(43,43,43,1) 96%);
-  background: -moz-linear-gradient(rgba(236,236,236,0.738532913165266) 0%, rgba(43,43,43,0.9037990196078431) 73%, rgba(43,43,43,1) 96%);
-  background: -o-linear-gradient(rgba(236,236,236,0.738532913165266) 0%, rgba(43,43,43,0.9037990196078431) 73%, rgba(43,43,43,1) 96%);
-  background: linear-gradient(rgba(236,236,236,0.738532913165266) 0%, rgba(43,43,43,0.9037990196078431) 73%, rgba(43,43,43,1) 96%);
+  background: rgb(43,43,43);
+  background: -webkit-linear-gradient(rgba(43,43,43,0) 0%, rgba(43,43,43,1) 80%);
+  background: -moz-linear-gradient(rgba(43,43,43,0) 0%, rgba(43,43,43,1) 80%);
+  background: -o-linear-gradient(rgba(43,43,43,0) 0%, rgba(43,43,43,1) 80%);
+  background: linear-gradient(rgba(43,43,43,0) 0%, rgba(43,43,43,1) 80%);
   
       // background: linear-gradient(to top, #2b2b2b 0%, rgba(236,236,236,0.63209) 100%);
 
