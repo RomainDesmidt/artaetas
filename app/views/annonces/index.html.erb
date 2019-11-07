@@ -33,7 +33,7 @@
      <% @annonces.each do |t| %>
        <div class="grid-item">
          <%= link_to "annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
-              <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url }) %>
+              <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
 
               <% unless t.name.lines.first.nil? %>
                 <p class='p-titre'><%= t.name.lines.first[0,20] %></p>
