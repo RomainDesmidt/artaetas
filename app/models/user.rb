@@ -1,10 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  enum role: [:user, :reguser, :mods, :admin]
   attr_accessor :login
   
   validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A[a-zA-Z0-9 _\.]*\z/}
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :trackable,
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
   has_many :annonces
   has_many :courant_users
@@ -24,6 +25,7 @@ class User < ApplicationRecord
   acts_as_votable
   act_as_bookmarker
   after_create :send_welcome_email
+  after_initialize :set_default_role, :if => :new_record?
   
   def self.new_with_session(params, session)
     super.tap do |user|
@@ -54,6 +56,11 @@ class User < ApplicationRecord
   def send_welcome_email
     UserMailer.with(user: self).welcome.deliver_now
   end
+  
+  def set_default_role
+    self.role ||= :user
+  end
+  
   
   
 end

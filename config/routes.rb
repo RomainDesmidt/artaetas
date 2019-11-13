@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks", registrations: 'registrations' }
   as :user do
     get 'users/me', :to => 'users#me', :as => :user_root
@@ -21,6 +23,7 @@ end
   # resources :annonces
   get 'social', to: 'pages#social'
   get 'cgu', to: 'pages#cgu'
+  get 'admin2', to: 'pages#admin2'
   get 'politiquedeconfidentialite', to: 'pages#politiquedeconfidentialite'
   # get 'annonces', to: 'annonces#index'
   # get 'annonces/new', to: 'annonces#new'

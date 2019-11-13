@@ -14,4 +14,10 @@ class PagesController < ApplicationController
     @base_font   = "Roboto"
     @header_font = "Raleway"
   end
+  
+  def admin2
+    unless current_user.admin? || current_user.mods?
+      redirect_to root_path
+    end
+  end
 end
