@@ -6,12 +6,11 @@ ActiveAdmin.register User do
     index do
         selectable_column
         id_column
+        column "Confirmé", :confirmation_webmaster
         column :email
         column :created_at
-        column :confirmation_webmaster
         actions
     end
-    config.batch_actions = false
     batch_action :confirm do |ids|
         batch_action_collection.find(ids).each do |user|
             user.confirmation_webmaster = true
@@ -20,7 +19,7 @@ ActiveAdmin.register User do
         redirect_to collection_path, alert: "These users has been confirmed."
     end
 
- 
+    batch_action :destroy, false
 
     permit_params :login, :password, :password_confirmation, :email, :username, :confirmation_webmaster
 #

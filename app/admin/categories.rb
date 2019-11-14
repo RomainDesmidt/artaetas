@@ -2,6 +2,16 @@ ActiveAdmin.register Categorie do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
+
+    index do
+        selectable_column
+        id_column
+        column :name
+        column :created_at
+        actions
+    end
+
+
 permit_params :name, :description
 #
 # or
