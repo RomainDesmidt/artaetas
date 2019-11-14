@@ -2,7 +2,27 @@ ActiveAdmin.register User do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-# permit_params :list, :of, :attributes, :on, :model
+
+    index do
+        selectable_column
+        id_column
+        column :email
+        column :created_at
+        column :confirmation_webmaster
+        actions
+    end
+    config.batch_actions = false
+    batch_action :confirm do |ids|
+        batch_action_collection.find(ids).each do |user|
+            user.confirmation_webmaster = true
+            user.save!
+        end
+        redirect_to collection_path, alert: "These users has been confirmed."
+    end
+
+ 
+
+    permit_params :login, :password, :password_confirmation, :email, :username, :confirmation_webmaster
 #
 # or
 #
@@ -11,5 +31,36 @@ ActiveAdmin.register User do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+    form do |f|
+        f.inputs do
+            f.input :username
+            f.input :email
+            f.input :password
+            f.input :password_confirmation
+            f.input :surname
+            f.input :lastname
+            f.input :afficher_identite
+            f.input :afficher_email
+            f.input :tel
+            f.input :afficher_tel 
+            f.input :paysresidence 
+            f.input :villeresidence
+            f.input :codepostal
+            f.input :instagram 
+            f.input :facebook
+            f.input :website
+            f.input :description
+            f.input :masquefavoris
+            f.input :statut
+            f.input :masquepublication
+            f.input :nbvue_profil
+            f.input :confirmation_webmaster
+            f.input :provider
+            f.input :uid
+            f.input :photoprofil
+            f.input :photofond
+        end
+        f.actions
+    end
 
 end
