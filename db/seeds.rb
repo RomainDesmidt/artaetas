@@ -164,3 +164,4 @@ Couleur.new(couleur_dominante: "Violet").save
 # annonce_1.save!
 
 
+AdminUser.create!(email: 'admin@artaetas.fr', username: 'groot', password: 'groot1337', password_confirmation: 'groot1337') if Rails.env.development?

@@ -5,7 +5,7 @@ class User < ApplicationRecord
   
   validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A[a-zA-Z0-9 _\.]*\z/}
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+         :recoverable, :trackable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
   has_many :annonces
   has_many :courant_users
   has_many :courants, through: :courant_users
