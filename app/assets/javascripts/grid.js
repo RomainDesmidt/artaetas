@@ -1,6 +1,6 @@
-// require masonry.pkgd.min
-// require imagesloaded.pkgd.min
-// require jquery.lazyload
+//= require masonry.pkgd.min
+//= require imagesloaded.pkgd.min
+//= require jquery.lazyload
 
 var $container = false;
 

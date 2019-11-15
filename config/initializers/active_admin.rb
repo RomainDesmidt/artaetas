@@ -1,3 +1,7 @@
+class ActiveAdmin::BaseController
+  skip_before_action :authenticate_user!
+end
+
 ActiveAdmin.setup do |config|
   # == Site Title
   #
@@ -91,7 +95,8 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # (within the application controller) to return the currently logged in user.
-  config.current_user_method = :current_admin_user
+  #config.current_user_method = :current_admin_user
+  config.current_user_method   = false
 
   # == Logging Out
   #
