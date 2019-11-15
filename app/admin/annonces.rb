@@ -12,6 +12,17 @@ ActiveAdmin.register Annonce do
         actions
     end
 
+    batch_action :confirm do |ids|
+        batch_action_collection.find(ids).each do |annonce|
+            annonce.envente_yesno = true
+            annonce.save!
+        end
+        redirect_to collection_path, alert: "These annonces has been confirmed."
+    end
+
+    batch_action :destroy, false
+
+
 
 permit_params   :user_id_artiste, :envente_yesno, :name, :anneecreation, :nom_artiste, :description, :photo, 
                 :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format,
