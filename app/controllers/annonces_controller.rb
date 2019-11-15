@@ -417,7 +417,20 @@ class AnnoncesController < ApplicationController
   private
 
   def annonce_params
-    params.require(:annonce).permit(:name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider,  :categorie_search2 => [], :courant_search2 => [], :couleur_search2 => [], :categorie_ids => [], :courant_ids => [], :couleur_ids => [], :cat_ids => [])
+    params.require(:annonce).permit(:name, :anneecreation, :nom_artiste, :description, :photo, 
+                                    :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format,
+                                    :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, 
+                                    :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider,
+                                    { categorie_annonces: [:id] },
+                                    { courant_annonces: [:id] },
+                                    { couleur_annonces: [:id] },
+                                    { categorie_search2: [:id] },
+                                    { courant_search2: [:id] },
+                                    { couleur_search2: [:id] },
+                                    { categorie_ids: [:id] }, 
+                                    { courant_ids: [:id] },
+                                    { couleur_ids: [:id] },
+                                    { cat_ids: [:id] })
   end
 end
 
