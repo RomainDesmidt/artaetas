@@ -1,6 +1,6 @@
-#class ActiveAdmin::BaseController
-  #skip_before_action :authenticate_user!
-#end
+class ActiveAdmin::BaseController
+  skip_before_action :authenticate_user!
+end
 
 ActiveAdmin.setup do |config|
   # == Site Title
