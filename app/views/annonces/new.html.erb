@@ -54,7 +54,7 @@
       <div class="aa-new-titrefield">Tags</div>
       <div class="aa-new-vafield">
         <p class="aa-new-label">Categories</p>
-         <%= f.select :categorie_annonces , options_for_select(Categorie.all.collect {|u| [u.name, u.id]}), {:include_blank => false}, {:multiple => true, :class => 'multiple-dd form-group'}  %>
+         <%= f.select :cat_ids , options_for_select(Categorie.all.collect {|u| [u.name, u.id]}), {:include_blank => false}, {:multiple => true, :class => 'multiple-dd form-group'}  %>
          
         <%# for categorie in Categorie.all %>
           <!--<label class="aa-new-label-tags">-->
