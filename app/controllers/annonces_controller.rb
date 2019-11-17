@@ -32,15 +32,15 @@ class AnnoncesController < ApplicationController
     @annonce = current_user.annonces.new(annonce_params)
     @annonce_params = annonce_params
     if  @annonce.save
-      unless params[:annonce][:categorie_annonces].nil?
-        params[:annonce][:categorie_annonces].each do |id|
-          unless id==""
-            categorie = Categorie.find(id)
-            categoriea = CategorieAnnonce.new( categorie: categorie, annonce_id: @annonce.id )
-            categoriea.save!
-          end
-        end
-      end
+      # unless params[:annonce][:categorie_annonces].nil?
+      #   params[:annonce][:categorie_annonces].each do |id|
+      #     unless id==""
+      #       categorie = Categorie.find(id)
+      #       categoriea = CategorieAnnonce.new( categorie: categorie, annonce_id: @annonce.id )
+      #       categoriea.save!
+      #     end
+      #   end
+      # end
 
       # unless params[:annonce][:courant_ids].nil?
       #   params[:annonce][:courant_ids].each do |id|
@@ -207,53 +207,53 @@ class AnnoncesController < ApplicationController
 
   def update
     @annonce = Annonce.find(params[:id])
-    # @annonce.update(annonce_params)
+    @annonce.update(annonce_params)
+    
 
-    @categoriesbdd = []
-    @couleursbdd = []
-    @courantsbdd = []
+    # @categoriesbdd = []
+    # @couleursbdd = []
+    # @courantsbdd = []
 
-    CategorieAnnonce.where(annonce_id: @annonce.id).each do |a|
-      @categoriesbdd << a.categorie_id
-    end
-    CourantAnnonce.where(annonce_id: @annonce.id).each do |a|
-      @courantsbdd << a.courant_id
-    end
-    CouleurAnnonce.where(annonce_id: @annonce.id).each do |a|
-      @couleursbdd << a.couleur_id
-    end
+    # CategorieAnnonce.where(annonce_id: @annonce.id).each do |a|
+    #   @categoriesbdd << a.categorie_id
+    # end
+    # CourantAnnonce.where(annonce_id: @annonce.id).each do |a|
+    #   @courantsbdd << a.courant_id
+    # end
+    # CouleurAnnonce.where(annonce_id: @annonce.id).each do |a|
+    #   @couleursbdd << a.couleur_id
+    # end
 
-      unless params[:annonce][:categorie_annonces].nil?
-      params[:annonce][:categorie_annonces].each do |id|
-        unless @categoriesbdd.include?(id.to_i)
-          unless id==""
-            categorie = Categorie.find(id)
-            categoriea = CategorieAnnonce.new( categorie: categorie, annonce_id: @annonce.id )
-            categoriea.save!
-          end
-        end
-      end
-    end
+    # unless params[:annonce][:categorie_annonces].nil?
+    #   params[:annonce][:categorie_annonces].each do |id|
+    #     unless @categoriesbdd.include?(id.to_i)
+    #       unless id==""
+    #         categorie = Categorie.find(id)
+    #         categoriea = CategorieAnnonce.new( categorie: categorie, annonce_id: @annonce.id )
+    #         categoriea.save!
+    #       end
+    #     end
+    #   end
+    # end
 
 
-    unless @categoriesbdd.nil?
-
-      if params[:annonce][:categorie_annonces].nil?
-        categoriedelall = CategorieAnnonce.where(annonce_id: @annonce.id)
-        categoriedelall.each do |cat|
-          cat.destroy
-        end
-      else
-        @categoriesbdd.each do |id_db|
-          unless params[:annonce][:categorie_annonces].include?(id_db.to_s)
-            categoriedel = CategorieAnnonce.where(annonce_id: @annonce.id).where(categorie_id: id_db)
-            categoriedel.each do |cat|
-              cat.destroy
-            end
-          end
-        end
-      end
-    end
+    # unless @categoriesbdd.nil?
+    #   if params[:annonce][:categorie_annonces].nil?
+    #     categoriedelall = CategorieAnnonce.where(annonce_id: @annonce.id)
+    #     categoriedelall.each do |cat|
+    #       cat.destroy
+    #     end
+    #   else
+    #     @categoriesbdd.each do |id_db|
+    #       unless params[:annonce][:categorie_annonces].include?(id_db.to_s)
+    #         categoriedel = CategorieAnnonce.where(annonce_id: @annonce.id).where(categorie_id: id_db)
+    #         categoriedel.each do |cat|
+    #           cat.destroy
+    #         end
+    #       end
+    #     end
+    #   end
+    # end
 
     # unless params[:annonce][:courant_ids].nil?
     #   params[:annonce][:courant_ids].each do |id|
@@ -321,7 +321,7 @@ class AnnoncesController < ApplicationController
     # end
     
     
-    @annonce.update(annonce_params)
+    # @annonce.update(annonce_params)
     # need to destroy CategorieAnnonce, CourantAnnonce, CouleurAnnonce unchecked
     # need to create new
 
@@ -417,20 +417,7 @@ class AnnoncesController < ApplicationController
   private
 
   def annonce_params
-    params.require(:annonce).permit(:name, :anneecreation, :nom_artiste, :description, :photo, 
-                                    :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format,
-                                    :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, 
-                                    :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider,
-                                    { categorie_annonces: [:id] },
-                                    { courant_annonces: [:id] },
-                                    { couleur_annonces: [:id] },
-                                    { categorie_search2: [:id] },
-                                    { courant_search2: [:id] },
-                                    { couleur_search2: [:id] },
-                                    { categorie_ids: [:id] }, 
-                                    { courant_ids: [:id] },
-                                    { couleur_ids: [:id] },
-                                    { cat_ids: [:id] })
+    params.require(:annonce).permit(:name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider, categorie_annonces: [], courant_annonces: [], couleur_annonces: [], categorie_search2: [], courant_search2: [], couleur_search2: [], categories: [], courant_ids: [], couleur_ids: [], cat_ids: [])
   end
 end
 
