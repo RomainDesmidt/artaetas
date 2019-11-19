@@ -255,14 +255,19 @@
         <a name="psw"></a>
         <h2>Mon mot de passe</h2>
          <div class="form-inputs">
+           <%= f.input :current_password,
+                       hint: "Nécessaire pour changer de mot de passe ou d'email",
+                       required: true,
+                       label: "Mot de passe actuel",
+                       input_html: { autocomplete: "new-password", readonly: "readonly", onfocus: "this.removeAttribute('readonly');" } %>
            <%= f.input :password,
                        hint: "Laisser vide si pas de changement",
                        required: false,
-                       label: "Mot de passe",
+                       label: "Nouveau mot de passe",
                        input_html: { autocomplete: "new-password" } %>
             <%= f.input :password_confirmation,
                         required: false,
-                        label: "Confirmation mot de passe",
+                        label: "Confirmation nouveau mot de passe",
                         input_html: { autocomplete: "new-password" } %>
                   <%#= f.input :current_password,
                               hint: "we need your current password to confirm your changes",

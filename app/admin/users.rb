@@ -3,6 +3,14 @@ ActiveAdmin.register User do
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
 
+    controller do
+      def update_resource(object, attributes)
+        update_method = attributes.first[:password_confirmation].present? ? :update_attributes : :update_without_password
+        object.send(update_method, *attributes)
+      end
+    end
+
+
     index do
         selectable_column
         id_column
@@ -21,7 +29,7 @@ ActiveAdmin.register User do
 
     batch_action :destroy, false
 
-    permit_params :login, :password, :password_confirmation, :email, :username, :confirmation_webmaster
+    permit_params :login, :password, :password_confirmation, :email, :username, :confirmation_webmaster, :surname, :lastname, :afficher_email, :afficher_identite, :afficher_tel, :current_password
 #
 # or
 #
@@ -34,8 +42,6 @@ ActiveAdmin.register User do
         f.inputs do
             f.input :username
             f.input :email
-            f.input :password
-            f.input :password_confirmation
             f.input :surname
             f.input :lastname
             f.input :afficher_identite
