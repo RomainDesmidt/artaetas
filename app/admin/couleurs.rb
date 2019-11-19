@@ -6,13 +6,13 @@ ActiveAdmin.register Couleur do
     index do
         selectable_column
         id_column
-        column :couleur_dominante
+        column :name
         column :created_at
         actions
     end
 
 
-permit_params :name, :description
+permit_params :name, :description, :couleur_dominante
 #
 # or
 #

@@ -11,6 +11,14 @@ ActiveAdmin.register Annonce do
         column :created_at
         actions
     end
+    show do
+        default_main_content do
+            row :cats
+            row :courants
+            row :couleurs
+        end
+        
+    end 
 
     batch_action :confirm do |ids|
         batch_action_collection.find(ids).each do |annonce|
@@ -21,23 +29,21 @@ ActiveAdmin.register Annonce do
     end
 
     batch_action :destroy, false
+    
+form do |f|
+  f.semantic_errors # shows errors on :base
+  f.inputs
+  f.inputs "Tags" do         # builds an input field for every attribute
+      f.input :cats
+      f.input :courants
+    #   f.input :couleur_ids, :as => :select, :collection => Couleur.all.collect {|u| [u.couleur_dominante, u.id]}
+      f.input :couleurs
+  end
+  f.actions         # adds the 'Submit' and 'Cancel' buttons
+end
 
 
-
-permit_params   :user_id_artiste, :envente_yesno, :name, :anneecreation, :nom_artiste, :description, :photo, 
-                :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format,
-                :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, 
-                :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider,
-                { categorie_annonces: [:id] },
-                { courant_annonces: [:id] },
-                { couleur_annonces: [:id] },
-                { categorie_search2: [:id] },
-                { courant_search2: [:id] },
-                { couleur_search2: [:id] },
-                { categorie_ids: [:id] }, 
-                { courant_ids: [:id] },
-                { couleur_ids: [:id] },
-                { cat_ids: [:id] }
+permit_params   :user_id_artiste, :envente_yesno, :name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat,  :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider, categorie_annonces: [], courant_annonces: [], couleur_annonces: [] , categorie_search2: [], courant_search2: [], couleur_search2: [] , categorie_ids: [] , courant_ids: [] , couleur_ids: [], cat_ids: []
 #
 # or
 #
