@@ -22,24 +22,24 @@ ActiveAdmin.register_page "Dashboard" do
     #     end
     #   end
     
-    # columns do
-    #   column do
-    #     panel "Annonces nécessitant confirmation" do
-    #       ul do
-    #         Annonce.where(envente_yesno: false).map do |annonce|
-    #           li link_to(annonce.name, admin_annonce_path(annonce))
-    #         end
-    #       end
-    #     end
-    #     panel "Users nécessitant confirmation" do
-    #       ul do
-    #         User.where(confirmation_webmaster: false).map do |user|
-    #           li link_to(user.username, admin_user_path(user))
-    #         end
-    #       end
-    #     end
-    #   end
-    # end
+    columns do
+      column do
+        panel "Annonces nécessitant confirmation" do
+          ul do
+            Annonce.where(envente_yesno: false).map do |annonce|
+              li link_to(annonce.name, admin_annonce_path(annonce))
+            end
+          end
+        end
+        panel "Users nécessitant confirmation" do
+          ul do
+            User.where(confirmation_webmaster: false).map do |user|
+              li link_to(user.username, admin_user_path(user))
+            end
+          end
+        end
+      end
+    end
 
     #   column do
     #     panel "Info" do
