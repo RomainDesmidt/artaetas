@@ -12,6 +12,7 @@ ActiveAdmin.register Annonce do
         column :created_at
         actions
     end
+    
     show do
         attributes_table do
             row :envente_yesno
