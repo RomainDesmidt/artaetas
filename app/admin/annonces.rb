@@ -19,12 +19,16 @@ ActiveAdmin.register Annonce do
             row "Photo 1" do |image|
                 image_tag image.photo.url, style: "width: 50px; height: 50px;"
             end
-            # row "Photo 2" do |image|
-            #     image_tag image.photo_un.url, style: "width: 50px; height: 50px;"
-            # end
-            # row "Photo 3" do |image|
-            #     image_tag image.photo_deux.url, style: "width: 50px; height: 50px;"
-            # end
+            if Annonce.find(params[:id]).photo_un?
+              row "Photo 2" do |image|
+                  image_tag image.photo_un.url, style: "width: 50px; height: 50px;"
+              end
+            end
+            if Annonce.find(params[:id]).photo_deux?
+              row "Photo 3" do |image|
+                  image_tag image.photo_deux.url, style: "width: 50px; height: 50px;"
+              end
+            end
             row :name
             row :description
             row :prix
