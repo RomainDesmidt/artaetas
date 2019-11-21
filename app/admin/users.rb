@@ -3,12 +3,12 @@ ActiveAdmin.register User do
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
 
-    # controller do
-    #   def update_resource(object, attributes)
-    #     update_method = attributes.first[:password_confirmation].present? ? :update_attributes : :update_without_password
-    #     object.send(update_method, *attributes)
-    #   end
-    # end
+    controller do
+      def update_resource(object, attributes)
+        update_method = attributes.first[:password_confirmation].present? ? :update_attributes : :update_without_password
+        object.send(update_method, *attributes)
+      end
+    end
 
 
     index do
@@ -42,9 +42,9 @@ ActiveAdmin.register User do
         f.inputs do
             f.input :username
             f.input :email
-            f.input :current_password ## a delete
-            f.input :password ## a delete
-            f.input :password_confirmation ## a delete
+            #f.input :current_password ## a delete
+            #f.input :password ## a delete
+            #f.input :password_confirmation ## a delete
             f.input :surname
             f.input :lastname
             f.input :afficher_identite
