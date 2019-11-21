@@ -12,31 +12,31 @@ ActiveAdmin.register Annonce do
         column :created_at
         actions
     end
-    # show do
-    #     attributes_table do
-    #         row :envente_yesno
-    #         row "Photo 1" do |image|
-    #             image_tag image.photo.url, style: "width: 50px; height: 50px;"
-    #         end
-    #         row "Photo 2" do |image|
-    #             image_tag image.photo_un.url, style: "width: 50px; height: 50px;"
-    #         end
-    #         row "Photo 3" do |image|
-    #             image_tag image.photo_deux.url, style: "width: 50px; height: 50px;"
-    #         end
-    #         row :name
-    #         row :description
-    #         row :prix
-    #     end
-    #     default_main_content do
-    #         row :cats
-    #         row :courants
-    #         row :couleurs
-    #         row "images" do |image|
-    #             image_tag image.photo.url, style: "width: 50px; height: 50px;"
-    #         end
-    #     end
-    # end 
+    show do
+        attributes_table do
+            row :envente_yesno
+            row "Photo 1" do |image|
+                image_tag image.photo.url, style: "width: 50px; height: 50px;"
+            end
+            row "Photo 2" do |image|
+                image_tag image.photo_un.url, style: "width: 50px; height: 50px;"
+            end
+            row "Photo 3" do |image|
+                image_tag image.photo_deux.url, style: "width: 50px; height: 50px;"
+            end
+            row :name
+            row :description
+            row :prix
+        end
+        default_main_content do
+            row :cats
+            row :courants
+            row :couleurs
+            row "images" do |image|
+                image_tag image.photo.url, style: "width: 50px; height: 50px;"
+            end
+        end
+    end 
 
     batch_action :confirm do |ids|
         batch_action_collection.find(ids).each do |annonce|
@@ -85,15 +85,6 @@ action_item :next, only: [:show, :edit] do
     link_to 'Next', admin_annonce_path(id: id)
   end
 end
-
-# action_item :next, only: [:show, :edit] do
-#   id = Annonce.where('id > ?', params[:id]).order('id ASC').first
-#   if id.nil?
-#     link_to 'Next', admin_annonce_path(id: params[:id])
-#   else
-#     link_to 'Next', admin_annonce_path(id: id)
-#   end
-# end
 
 
 

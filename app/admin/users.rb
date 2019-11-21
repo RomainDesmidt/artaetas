@@ -59,6 +59,14 @@ action_item :next, only: [:show, :edit] do
 end
 
 
+# action_item :valider, only: [:show, :edit] do
+#     modif_user = User.find(params[:id])
+#     modif_user.confirmation_webmaster = true
+#     modif_user.save!
+#     link_to 'Confirm'
+# end
+
+
     form do |f|
         f.inputs do
             f.input :username
