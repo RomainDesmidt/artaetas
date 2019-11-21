@@ -38,6 +38,27 @@ ActiveAdmin.register User do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+
+
+action_item :previous, only: [:show, :edit] do
+  id = User.where('id < ?', params[:id]).order('id DESC').first
+  if id.nil?
+    link_to 'Previous', admin_user_path(id: params[:id])
+  else
+    link_to 'Previous', admin_user_path(id: id)
+  end
+end
+
+action_item :next, only: [:show, :edit] do
+  id = User.where('id > ?', params[:id]).order('id ASC').first
+  if id.nil?
+    link_to 'Next', admin_user_path(id: params[:id])
+  else
+    link_to 'Next', admin_user_path(id: id)
+  end
+end
+
+
     form do |f|
         f.inputs do
             f.input :username
