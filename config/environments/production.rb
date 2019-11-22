@@ -5,7 +5,7 @@ Rails.application.configure do
     address: "SSL0.OVH.NET",
     port: 587,
     user_name: "contact@artaetas.com",
-    password: "",
+    password: ENV['OVH_MAIL_PASSWORD'],
     authentification: :login,
     enable_starttls_auto: true
   }

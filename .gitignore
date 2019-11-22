@@ -19,3 +19,4 @@ config/cloudinary.yml
 pg.sh
 # Ignore application configuration
 /config/application.yml
+.env*
