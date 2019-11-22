@@ -65,12 +65,12 @@ form do |f|
   f.actions         # adds the 'Submit' and 'Cancel' buttons
 end
 
-# action_item :valider, only: [:show, :edit] do
-#     modif_annonce = Annonce.find(params[:id])
-#     modif_annonce.envente_yesno = true
-#     modif_annonce.save!
-#     link_to 'Confirm'
-# end
+action_item :valider, only: [:show, :edit] do
+    modif_annonce = Annonce.find(params[:id])
+    modif_annonce.envente_yesno = true
+    modif_annonce.save!
+    link_to 'Confirm'
+end
 
 
 action_item :previous, only: [:show, :edit] do
