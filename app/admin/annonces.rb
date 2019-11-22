@@ -63,20 +63,27 @@ ActiveAdmin.register Annonce do
     f.actions         # adds the 'Submit' and 'Cancel' buttons
   end
 
-  action_item :valider, only: [:show, :edit] do
-    if Annonce.find(params[:id]).envente_yesno
-      modif_annonce = Annonce.find(params[:id])
-      modif_annonce.envente_yesno = false
-      modif_annonce.save!
-      link_to 'Dépublier'
-    else
-      modif_annonce = Annonce.find(params[:id])
-      modif_annonce.envente_yesno = true
-      modif_annonce.save!
-      link_to 'Publier'
-    end
+  action_item :valider, only: [:show], if: proc { Annonce.find(params[:id]).envente_yesno == true }  do 
+    link_to 'Dépublier', depublier_admin_annonce_path, method: :put
   end
-
+  
+  action_item :invalider, only: [:show], if: proc { Annonce.find(params[:id]).envente_yesno == false }  do 
+    link_to 'Publier', publier_admin_annonce_path, method: :put
+  end
+  
+  member_action :publier, :method => :put do
+    modif_annonce = Annonce.find(params[:id])
+    modif_annonce.envente_yesno = true
+    modif_annonce.save!
+    redirect_to admin_annonce_path
+  end
+  
+  member_action :depublier, :method => :put do
+    modif_annonce = Annonce.find(params[:id])
+    modif_annonce.envente_yesno = false
+    modif_annonce.save!
+    redirect_to admin_annonce_path
+  end
 
   action_item :previous, only: [:show, :edit] do
     id = Annonce.where('id < ?', params[:id]).order('id DESC').first

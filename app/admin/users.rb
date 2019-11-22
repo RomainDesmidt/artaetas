@@ -59,19 +59,19 @@ ActiveAdmin.register User do
   end
 
 
-  action_item :valider, only: [:show, :edit] do
-    if User.find(params[:id]).confirmation_webmaster
-      modif_user = User.find(params[:id])
-      modif_user.confirmation_webmaster = false
-      modif_user.save!
-      link_to 'Suspendre'
-    else
-      modif_user = User.find(params[:id])
-      modif_user.confirmation_webmaster = true
-      modif_user.save!
-      link_to 'Confirmer'
-    end
-  end
+  # action_item :valider, only: [:show, :edit] do
+  #   if User.find(params[:id]).confirmation_webmaster
+  #     link_to 'Suspendre'
+  #     modif_user = User.find(params[:id])
+  #     modif_user.confirmation_webmaster = false
+  #     modif_user.save!
+  #   else
+  #     link_to 'Confirmer'
+  #     modif_user = User.find(params[:id])
+  #     modif_user.confirmation_webmaster = true
+  #     modif_user.save!
+  #   end
+  # end
 
 
   form do |f|
