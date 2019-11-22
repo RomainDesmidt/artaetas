@@ -64,10 +64,17 @@ ActiveAdmin.register Annonce do
   end
 
   action_item :valider, only: [:show, :edit] do
-    modif_annonce = Annonce.find(params[:id])
-    modif_annonce.envente_yesno = true
-    modif_annonce.save!
-    link_to 'Confirm'
+    if Annonce.find(params[:id]).envente_yesno
+      modif_annonce = Annonce.find(params[:id])
+      modif_annonce.envente_yesno = false
+      modif_annonce.save!
+      link_to 'Dépublier'
+    else
+      modif_annonce = Annonce.find(params[:id])
+      modif_annonce.envente_yesno = true
+      modif_annonce.save!
+      link_to 'Publier'
+    end
   end
 
 
