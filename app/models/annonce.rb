@@ -6,13 +6,13 @@ class Annonce < ApplicationRecord
   acts_as_votable
   belongs_to :user
   
-  has_many :categorie_annonces
+  has_many :categorie_annonces, :dependent => :destroy
   has_many :cats, through: :categorie_annonces, source: :categorie
   
-  has_many :couleur_annonces
+  has_many :couleur_annonces, :dependent => :destroy
   has_many :couleurs, through: :couleur_annonces
   
-  has_many :courant_annonces
+  has_many :courant_annonces, :dependent => :destroy
   has_many :courants, through: :courant_annonces
   
   has_one  :order
