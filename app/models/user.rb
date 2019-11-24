@@ -23,7 +23,7 @@ class User < ApplicationRecord
   acts_as_voter
   acts_as_votable
   act_as_bookmarker
-  #after_create :send_welcome_email
+  after_create :send_welcome_email
   
   def self.new_with_session(params, session)
     super.tap do |user|
