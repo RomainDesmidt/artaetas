@@ -120,7 +120,7 @@
           <p>Facebook : <%= link_to "#{@user.facebook}", "https://www.facebook.com/#{@user.facebook}/", target: :_blank %></p>
         <% end %>
         <% if @user.website? %>
-          <p>Site Web : <%= link_to "#{@user.website}", "#{@user.website}", target: :_blank %></p>
+          <p>Site Web : <%= link_to "#{@user.website}", "http://#{@user.website.downcase}", target: :_blank %></p>
         <% end %>
       </div>
     </div>
