@@ -114,13 +114,13 @@
         <p>nombre d'annonce: <b><%= @user.annonces.count %></b></p>
         <br>
         <% if @user.instagram? %>
-          <p>Instagram : <%= link_to "@#{@user.instagram}", "https://www.instagram.com/#{@user.instagram}/" %></p>
+          <p>Instagram : <%= link_to "@#{@user.instagram}", "https://www.instagram.com/#{@user.instagram}/", target: :_blank %></p>
         <% end %>
         <% if @user.facebook? %>
-          <p>Facebook : <%= link_to "#{@user.facebook}", "https://www.facebook.com/#{@user.facebook}/" %></p>
+          <p>Facebook : <%= link_to "#{@user.facebook}", "https://www.facebook.com/#{@user.facebook}/", target: :_blank %></p>
         <% end %>
         <% if @user.website? %>
-          <p>Site Web : <%= link_to "#{@user.website}", "#{@user.website}" %></p>
+          <p>Site Web : <%= link_to "#{@user.website}", "#{@user.website}", target: :_blank %></p>
         <% end %>
       </div>
     </div>
