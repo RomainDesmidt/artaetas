@@ -110,7 +110,7 @@
       </div>
       <div class="aa-me-descriptionuser-stats2">
         <p>inscrit depuis: <b><%= @user.created_at.strftime("%d-%m-%Y") %></b></p>
-        <p>derniere connexion: <b>5 av JC</b></p>
+        <p>derniere connexion: <b><%= @user.last_sign_in_at.strftime("%d-%m-%Y") %></b></p>
         <p>nombre d'annonce: <b><%= @user.annonces.count %></b></p>
         <br>
         <% if @user.instagram? %>
