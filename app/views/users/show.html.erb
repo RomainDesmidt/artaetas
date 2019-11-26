@@ -125,81 +125,82 @@
       </div>
     </div>
   </div>
-  
-  <p class="text-center"><b>FAVORIS</b></p>
-  <div class="aa-me-favoriuser">
-    <% i = 0 %>
-    <% @bmlist.each do |bml| %>
-      <% if i < 5 %>
-        <div class="aa-me-favoriuseritem">
-          <%= link_to "/annonces/#{@bmlist[i]}" do %>
-            <%= cl_image_tag Annonce.find(@bmlist[i]).photo, class: "aa-me-favoriuser-image" %>
-          <% end %>
-        </div>
+  <% unless @user.masquefavoris? %>
+    <p class="text-center"><b>FAVORIS</b></p>
+    <div class="aa-me-favoriuser">
+      <% i = 0 %>
+      <% @bmlist.each do |bml| %>
+        <% if i < 5 %>
+          <div class="aa-me-favoriuseritem">
+            <%= link_to "/annonces/#{@bmlist[i]}" do %>
+              <%= cl_image_tag Annonce.find(@bmlist[i]).photo, class: "aa-me-favoriuser-image" %>
+            <% end %>
+          </div>
+        <% end %>
+        <% i += 1 %>
       <% end %>
-      <% i += 1 %>
-    <% end %>
-  </div>
-  
+    </div>
+  <% end %>
   <style>
     .aa-search-annonce-container { margin-top : 0px; }
   </style>
-  
-  <div class="aa-me-annonceuser">
-    <p class="text-center"><b>ANNONCES MEMBRE</b></p>
-    <div class="aa-search-annonce-container">
-          <% if @user.annonces.count > 0 %>
-            <% @user.annonces.each do |a| %>
-    
-                <div class="aa-search-annonce-card">
-                <%= link_to a, class: "aa-search-annonce-card-image" do %>
-                  <!-- <div class="aa-search-annonce-card-image"> -->
-                    <%= cl_image_tag a.photo %>
-                  <!-- </div> -->
-                <% end %>
-                <%= link_to a, class: "aa-search-annonce-card-detail" do %>
-                
-                
-                
-                  <b><p class='aa-show-titre'><%= a.name %></p></b>
-                  <p class="aa-show-detail-italic">
-                  <% if a.nom_artiste? %>
-                   <%= "#{a.nom_artiste} - "  %>
+  <% unless @user.masquepublication? %>
+    <div class="aa-me-annonceuser">
+      <p class="text-center"><b>ANNONCES MEMBRE</b></p>
+      <div class="aa-search-annonce-container">
+            <% if @user.annonces.count > 0 %>
+              <% @user.annonces.each do |a| %>
+      
+                  <div class="aa-search-annonce-card">
+                  <%= link_to a, class: "aa-search-annonce-card-image" do %>
+                    <!-- <div class="aa-search-annonce-card-image"> -->
+                      <%= cl_image_tag a.photo %>
+                    <!-- </div> -->
                   <% end %>
-                  <% if a.anneecreation %>
-                    <%= "#{a.anneecreation}" %>
-                  <% end %>
-                  </p>
-                  <p class="aa-show-price  aa-show-detail-italic">
-                    <% if a.prix?   %>
-                      <% if (a.prix.to_i - a.prix) > 0 %>
-                        <%= number_with_delimiter(a.prix.to_s, delimiter: " " ) %>€
-                      <% else %>
-                        <%= number_with_delimiter(a.prix.to_i.to_s, delimiter: " " ) %>€
-                      <% end %>
+                  <%= link_to a, class: "aa-search-annonce-card-detail" do %>
+                  
+                  
+                  
+                    <b><p class='aa-show-titre'><%= a.name %></p></b>
+                    <p class="aa-show-detail-italic">
+                    <% if a.nom_artiste? %>
+                     <%= "#{a.nom_artiste} - "  %>
                     <% end %>
-                  </p>
-                  
-                  
-                  
-                  <p class="aa-p-description">
-                   <%= a.description %>
-                  </p>
-                  
-                <% end %>
-    
-                  <div class="aa-search-annonce-card-control">
+                    <% if a.anneecreation %>
+                      <%= "#{a.anneecreation}" %>
+                    <% end %>
+                    </p>
+                    <p class="aa-show-price  aa-show-detail-italic">
+                      <% if a.prix?   %>
+                        <% if (a.prix.to_i - a.prix) > 0 %>
+                          <%= number_with_delimiter(a.prix.to_s, delimiter: " " ) %>€
+                        <% else %>
+                          <%= number_with_delimiter(a.prix.to_i.to_s, delimiter: " " ) %>€
+                        <% end %>
+                      <% end %>
+                    </p>
+                    
+                    
+                    
+                    <p class="aa-p-description">
+                     <%= a.description %>
+                    </p>
+                    
+                  <% end %>
+      
+                    <div class="aa-search-annonce-card-control">
+                    </div>
+      
+      
                   </div>
-    
-    
-                </div>
-    
+      
+              <% end %>
+            <% else %>
+              <h1>Aucune annonce trouvee</h1>
             <% end %>
-          <% else %>
-            <h1>Aucune annonce trouvee</h1>
-          <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
 
 <% if current_user.id == params[:id].to_i %>
