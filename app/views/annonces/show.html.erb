@@ -4,40 +4,42 @@
       <div class="aa-show-detailannonce-header">
         <div class="aa-show-detailannonce-photo" id="aa-show-nopaddingtop">
           <%= cl_image_tag @annonces.photo, id: "bigPhoto" %>
-          <div class="aa-show-favlike">
-            <div class="aa-show-like">
-              <div class="aa-show-like-svg-container" id="aa-show-likefunc">
+          <% if user_signed_in? %>
+            <div class="aa-show-favlike">
+              <div class="aa-show-like">
+                <div class="aa-show-like-svg-container" id="aa-show-likefunc">
+                  <% if user_signed_in? %>
+                    <% if current_user.liked? @annonces %>
+                      <%= link_to dislike_annonce_path(@annonces), class: 'vote', method: :put do %>
+                        <%= inline_svg "dislike.svg", class: "aa-show-dislike-svg" %>
+                      <% end %>
+                    <% else %>
+                      <%= link_to like_annonce_path(@annonces) , class: 'vote', method: :put do %>
+                        <%= inline_svg "like.svg", class: "aa-show-like-svg" %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="aa-show-like-counter">
+                  <%= @annonces.get_likes.size %>
+                </div>
+              </div>
+              <div class="aa-show-fav-svg-container" id="aa-show-favfunc">
                 <% if user_signed_in? %>
-                  <% if current_user.liked? @annonces %>
-                    <%= link_to dislike_annonce_path(@annonces), class: 'vote', method: :put do %>
-                      <%= inline_svg "dislike.svg", class: "aa-show-dislike-svg" %>
+                  <% if current_user.bookmarks?(@annonces) %>
+                    <%= link_to unbookmark_annonce_path(@annonces), method: :put do %>
+                      <%= inline_svg "faved.svg", class: "aa-show-unfav-svg" %>
                     <% end %>
                   <% else %>
-                    <%= link_to like_annonce_path(@annonces) , class: 'vote', method: :put do %>
-                      <%= inline_svg "like.svg", class: "aa-show-like-svg" %>
+                    <%= link_to bookmark_annonce_path(@annonces) , method: :put do %>
+                      <%= inline_svg "fav.svg", class: "aa-show-fav-svg" %>
                     <% end %>
                   <% end %>
                 <% end %>
-              </div>
-              <div class="aa-show-like-counter">
-                <%= @annonces.get_likes.size %>
+                
               </div>
             </div>
-            <div class="aa-show-fav-svg-container" id="aa-show-favfunc">
-              <% if user_signed_in? %>
-                <% if current_user.bookmarks?(@annonces) %>
-                  <%= link_to unbookmark_annonce_path(@annonces), method: :put do %>
-                    <%= inline_svg "faved.svg", class: "aa-show-unfav-svg" %>
-                  <% end %>
-                <% else %>
-                  <%= link_to bookmark_annonce_path(@annonces) , method: :put do %>
-                    <%= inline_svg "fav.svg", class: "aa-show-fav-svg" %>
-                  <% end %>
-                <% end %>
-              <% end %>
-              
-            </div>
-          </div>
+          <% end %>
         </div>
         <div class="aa-show-detailannonce-titre aa-show-marginbottom">
           <div class="aa-show-detailannonce-container">
@@ -90,17 +92,17 @@
         <div class="aa-show-minheight">
           <b><p>Criteres</p></b>
           <p>Dimensions (h x l x p): <%= @hauteur %> cm x <%= @largeur %> cm x <%= @profondeur %> cm</p>
-          <p>Format: 
-          <% if @volume > 0.25 %>
-            <% if @volume > 1 %>
-              <%= "Grand" %>
-            <% else %>
-              <%= "Moyen" %>
-            <% end %>
-          <% else %>
-            <%= "Petit" %>
-          <% end %>
-          </p>
+          <!--<p>Format: -->
+          <%# if @volume > 0.25 %>
+            <%# if @volume > 1 %>
+              <%#= "Grand" %>
+            <%# else %>
+              <%#= "Moyen" %>
+            <%# end %>
+          <%# else %>
+            <%#= "Petit" %>
+          <%# end %>
+          <!--</p>-->
           <!--<p>Disposition: -->
           <%#= @annonces.disposition %>
           <!--</p>-->
@@ -152,9 +154,9 @@
     <div class="aa-show-detailuser">
       <div class="aa-show-detailuser-contact aa-show-minheight">
         
-        <div class="aa-show-detailuser-contact-container">
+        <div class="aa-show-detailuser-contact-container" <% unless user_signed_in? %> style="padding-bottom: 0px;" <% end %>  >
           <div class="aa-show-detailuser-contact-profil">
-            <div class="aa-show-contact-profil-photo">
+            <div class="aa-show-contact-profil-photo" id="profilAvatarShow">
               <% if @annonces.user.photoprofil?  %>
                 <%= cl_image_tag @annonces.user.photoprofil, class: "aa-show-contact-svg"  %>
               <% else %>
@@ -187,31 +189,31 @@
                 <% end %>
             </div>
           </div>
-      
-          <div class="aa-show-detailuser-contact-email">
-            <div class="aa-show-detailuser-contact-btn">
-              <% if @annonces.user.afficher_email %>
-                  <%= inline_svg "conversation.svg", class: "aa-show-call-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
-                  <%= link_to "Envoyer un Mail", "mailto:#{@annonces.user.email}", class: "aa-show-mailto align-self-centeraa" %>
-              <% else %>
-                <%= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Envoyer un Mail</a>
-              <% end %>
-              
-              
+          <% if user_signed_in? %>        
+            <div class="aa-show-detailuser-contact-email">
+              <div class="aa-show-detailuser-contact-btn">
+                <% if @annonces.user.afficher_email %>
+                    <%= inline_svg "conversation.svg", class: "aa-show-call-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
+                    <%= link_to "Envoyer un Mail", "mailto:#{@annonces.user.email}", class: "aa-show-mailto align-self-centeraa" %>
+                <% else %>
+                  <%= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Notifier l'utilisateur</a>
+                <% end %>
+                
+              </div>
             </div>
-          </div>
-          
-          <div class="aa-show-detailuser-contact-tel">
-            <div class="aa-show-detailuser-contact-btn">
-               <% if @annonces.user.afficher_tel %>
-                <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
-                 <%= link_to "Contacter", "tel:#{@annonces.user.tel}", class: "aa-show-mailto align-self-centeraa" %>
-              <% else %>
-                <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Contacter</a>
-              <% end %>
-            </div>
-          </div>
-          
+            <% if @annonces.user.afficher_tel %>
+              <div class="aa-show-detailuser-contact-tel">
+                <div class="aa-show-detailuser-contact-btn">
+                   <% if @annonces.user.afficher_tel %>
+                    <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
+                     <%= link_to "Contacter", "tel:#{@annonces.user.tel}", class: "aa-show-mailto align-self-centeraa" %>
+                  <%# else %>
+                    <%#= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Contacter</a>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %> 
         </div>
         
 

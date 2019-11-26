@@ -61,3 +61,12 @@ if (btnUploadCinq) {
 }
 
 };
+
+var profilAvatarShow = document.querySelector('#profilAvatarShow') !== null;
+if (profilAvatarShow) {
+  document.getElementById('profilAvatarShow').onclick = function()
+{
+  this.parentNode.querySelector("a").click();
+}
+
+};
