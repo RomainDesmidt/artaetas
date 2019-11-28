@@ -146,6 +146,15 @@
             <% end %>
           </div>
         <% end %>
+          <div class="aa-show-report">
+            <!--<a href="mailto:report@artaetas.com" class="aa-show-report-text">Signaler un abus</a>-->
+            <%#= inline_svg "obligatoire.svg", class: "aa-svg-report" %>
+            <%#= link_to 'Signaler un abus', "mailto:report@artaetas.com", 'data-popup' => true, class: "aa-show-report-a"  %>
+            <%= link_to "mailto:report@artaetas.com", 'data-popup' => true, class: "aa-show-report-a" do %>
+              <%= inline_svg "obligatoire.svg", class: "aa-svg-report" %>
+              <p>Signaler un abus</p>
+            <% end %>
+            </div>
         </div>  
         <div class="aa-show-border-bottom aa-show-separator"></div>
       </div>
