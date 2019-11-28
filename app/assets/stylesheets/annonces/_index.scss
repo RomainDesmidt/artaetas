@@ -315,6 +315,7 @@ a:focus { text-decoration: none}
   border-bottom-right-radius: 5px;
   height: 52px;
   font-size: 18px;
+  justify-content: center;
 }
 
 .aa-button-deposer {
@@ -336,18 +337,20 @@ a:focus { text-decoration: none}
   border-bottom-left-radius: 5px;
   height: 52px;
   font-size: 18px;
+  justify-content: center;
 }
 
 .aa-button-symb-blue,
 .aa-button-symb-white {
-  flex: 0 1 20%;
+  flex: 0 1 auto;
+  //flex: 0 1 20%;
   align-self: center;
   display: flex;
   align-items: flex-enda;
 }
 
 .aa-button-text {
-  flex: 0 0 66%;
+  flex: 0 0 auto;
   display: flex;
   flex-direction: row;
   text-align: center;
@@ -356,11 +359,12 @@ a:focus { text-decoration: none}
   line-height: 1.4em;
   white-space: nowrap;
   cursor: pointer;
+  margin-left: 15px;
 }
 
 .aa-button-symb-blue a svg {
-  width: 30px !important;
-  height: 30px !important;
+  width: 22px !important;
+  height: 22px !important;
   margin-left: auto;
 }
 .aa-button-symb-white a svg {
@@ -1043,4 +1047,13 @@ and (-webkit-min-device-pixel-ratio: 1){
   .p-footer-link {
     margin-right: 15px;
   }
+}
+
+@media (min-width: 576px) {
+  
+  .aa-button-deposer,
+  .aa-button-decouvrir {
+    margin-bottom: 15px;
+  }
+  
 }
