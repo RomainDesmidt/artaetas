@@ -25,7 +25,8 @@
           <% if current_user.photoprofil?  %>
             <%= cl_image_tag current_user.photoprofil, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% else %>
-            <%= image_tag "http://lorempixel.com/25/25/cats/", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%#= image_tag "http://lorempixel.com/25/25/cats/", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= inline_svg "tiers.svg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style: 'height: 50px;' %>
            <% end %>
           <div class="dropdown-menu dropdown-menu-right aa-desktop-only" aria-labelledby="navbarDropdown">
             <%= link_to "Mon Profil", "/users/me", class: "dropdown-item" %>
@@ -52,7 +53,7 @@
         </li>
         <li class="nav-item aa-nav-item" id="aa-nav-decouvrir">
           <div><%= svg 'aide' %></div>
-          <div><a href="" class="nav-link aa-menu-link" data-toggle="modal" data-target="#infosmodal">Découvrir Artaetas</a></div>
+          <div><a href="" class="nav-link aa-menu-link" data-toggle="modal" data-target="#infosmodal">Découvrir ARTAETAS</a></div>
           <!-- < link_to "Découvrir Artaetas", "#cestquoi", class: "nav-link aa-menu-link" > -->
         </li>
         <li class="nav-item aa-nav-item">

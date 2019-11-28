@@ -75,7 +75,7 @@ padding: 0px;
 
 .aa-nav-item div:last-child {
   flex: 1 1 auto;
-  margin-left: 60px;
+  margin-left: 48px;
 }
 
 .aa-mobile-only {
@@ -283,13 +283,19 @@ a:active {
   height: 50px;
 }
 
-.nav-flex-14 img{
+.nav-flex-14 img,
+.nav-flex-14 svg {
   display: block;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 15px;
   height: 50px;
   padding: 5px 0;
 }
+
+.nav-flex-14 svg path {
+ fill: #7d7d7d; 
+}
+
 
 .navbar-nav .aa-nav-item:first-child {
     display: none;
@@ -339,7 +345,8 @@ a:active {
   }
 
   .navbar-collapse {
-   margin-right: 4%;
+  // margin-right: 4%;
+   margin-right: 40px;
   }
 
   .navbar-nav .aa-nav-item:first-child {
