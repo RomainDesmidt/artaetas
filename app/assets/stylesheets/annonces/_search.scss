@@ -142,11 +142,12 @@ overflow: hidden;
 
 
 .aa-search-annonce-card-image img {
-  object-fit: cover;
+  object-fit: cover; // all in height 
+  //object-fit: contain; // adapt in height and width
   height: 100%;
-  // max-width: 95%;
+  max-width: 100%;
   // min-width: 50%;
-  width: 100%;
+  // width: 100%;
 }
 
 
