@@ -210,14 +210,15 @@
                 
               </div>
             </div>
-            <% if @annonces.user.afficher_tel %>
+            <% if @annonces.user.afficher_tel && @annonces.user.tel? %>
               <div class="aa-show-detailuser-contact-tel">
                 <div class="aa-show-detailuser-contact-btn">
-                   <% if @annonces.user.afficher_tel %>
+                   <% if @annonces.user.afficher_tel  %>
                     <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
-                     <%= link_to "Contacter", "tel:#{@annonces.user.tel}", class: "aa-show-mailto align-self-centeraa" %>
+                     <%= link_to "#{@annonces.user.tel}", "tel:#{@annonces.user.tel}", class: "aa-show-mailto align-self-centeraa" %>
                   <%# else %>
-                    <%#= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Contacter</a>
+                    <%#= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg" %>
+                    <!--&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Contacter</a>-->
                   <% end %>
                 </div>
               </div>
