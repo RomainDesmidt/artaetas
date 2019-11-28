@@ -70,3 +70,15 @@ if (profilAvatarShow) {
 }
 
 };
+
+
+var navDeposerPicto = document.querySelector('#aa-nav-deposer') !== null;
+if (navDeposerPicto) {
+  document.getElementById('aa-nav-deposer').onclick = function()
+{
+  // this.parentNode.querySelector("a").click();
+  window.location = $('#aa-nav-deposer').children('div:last-child').children('a').attr("href");
+  
+}
+
+};

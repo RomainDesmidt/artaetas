@@ -573,3 +573,17 @@ a:active {
 .aa-nowrap {
   flex-wrap : nowrap;
 }
+
+
+@media (max-width: 830px) and (min-width: 576px)  {
+  
+  .aa-menu-link {
+    display: none;
+  }
+  
+  .aa-nav-item div:last-child {
+    margin-right: 17px;
+  }
+  
+
+}
