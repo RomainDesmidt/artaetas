@@ -7,8 +7,8 @@
       <div class="aa-new-titrefield">Votre Annonce</div>
       <div class="aa-new-vafield">
         <!-- [...] -->
-        <%= f.input :name, label: "Nom de l'oeuvre"  %>
-        <%= f.input :description, placeholder: "Seule la premiere ligne apparait dans l'index max 50 caracteres" %>
+        <%= f.input :name, label: "Nom de l'oeuvre", hint: "max 70 caracteres dans l'index"  %>
+        <%= f.input :description, hint: "Seul 70 caracteres de la premiere ligne apparaissent dans l'index" %>
         <%= f.input :prix, placeholder: "€" %>
         <!-- < f.collection_check_boxes :categorie_ids, Categorie.all, :id, :name  > -->
         <%= f.input :anneecreation, label: "Année de création" %>
