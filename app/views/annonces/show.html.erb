@@ -10,12 +10,12 @@
                 <div class="aa-show-like-svg-container" id="aa-show-likefunc">
                   <% if user_signed_in? %>
                     <% if current_user.liked? @annonces %>
-                      <%= link_to dislike_annonce_path(@annonces), class: 'vote', method: :put, remote: true do %>
-                        <%= inline_svg "dislike.svg", class: "aa-show-dislike-svg" %>
+                      <%= link_to dislike_annonce_path(@annonces), class: 'vote', method: :put do %>
+                        <%= inline_svg "like.svg", class: "aa-show-dislike-svg" %>
                       <% end %>
                     <% else %>
-                      <%= link_to like_annonce_path(@annonces) , class: 'vote', method: :put, remote: true do %>
-                        <%= inline_svg "like.svg", class: "aa-show-like-svg" %>
+                      <%= link_to like_annonce_path(@annonces) , class: 'vote', method: :put do %>
+                        <%= inline_svg "dislike.svg", class: "aa-show-like-svg" %>
                       <% end %>
                     <% end %>
                   <% end %>
