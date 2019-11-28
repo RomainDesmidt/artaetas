@@ -36,12 +36,12 @@
               <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
 
               <% unless t.name.lines.first.nil? %>
-                <p class='p-titre'><%= t.name.lines.first[0,20] %></p>
+                <p class='p-titre'><%= t.name.lines.first[0,70] %></p>
               <% end %>
               
               
               <% unless t.description.lines.first.nil? %>
-                <p class='p-description'><%= t.description.lines.first[0,30] %></p>
+                <p class='p-description'><%= t.description.lines.first[0,70] %></p>
               <% end %>
           <% end %>
           </div>
