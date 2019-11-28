@@ -23,7 +23,7 @@ class User < ApplicationRecord
   acts_as_voter
   acts_as_votable
   act_as_bookmarker
-  after_create :send_welcome_email
+  after_create :warm_up_exercice
   
   def self.new_with_session(params, session)
     super.tap do |user|
@@ -53,6 +53,13 @@ class User < ApplicationRecord
   
   def send_welcome_email
     UserMailer.with(user: self).welcome.deliver_now
+  end
+  
+  def warm_up_exercice
+    self.masquefavoris = true
+    self.masquepublication = true
+    self.save!
+    send_welcome_email
   end
   
   
