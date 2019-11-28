@@ -26,7 +26,11 @@
     <!--<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>-->
     <!--<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>-->
     <script src="https://cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.js"></script>
-    <%= favicon_link_tag asset_path('AE_noir.png'), :rel => 'icon', :type =>  'image/png' %>
+    <% if Rails.env.development? %>
+      <%= favicon_link_tag asset_path('AE_blanc.png'), :rel => 'icon', :type =>  'image/png' %>
+    <% else %>
+      <%= favicon_link_tag asset_path('AE_noir.png'), :rel => 'icon', :type =>  'image/png' %>
+    <% end %>
     
     
     

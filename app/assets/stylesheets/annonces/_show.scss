@@ -1,3 +1,28 @@
+.aa-show-report {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.aa-svg-report {
+  height: 25px;
+  width: 25px;
+}
+
+.aa-svg-report path {
+ fill: #7d7d7d;
+}
+
+.aa-show-report-a {
+  display: flex;
+  flex-direction: row;
+}
+
+.aa-show-report-a p {
+  margin-left: 10px;
+  color: #7d7d7d;
+  align-self: center;
+}
+
 .align-self-centeraa {
   align-self: center;
 }
