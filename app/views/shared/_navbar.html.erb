@@ -107,8 +107,8 @@
           <a href="#" class="nav-link aa-menu-link"></a>
         </li>
         <li class="nav-item aa-nav-item">
-          <%= svg 'aide' %>
-          <a href="" class="nav-link aa-menu-link" data-toggle="modal" data-target="#infosmodal">Découvrir ARTAETAS</a>
+          <div data-toggle="modal" data-target="#infosmodal"><%= svg 'aide' %></div>
+          <div><a href="" class="nav-link aa-menu-link" data-toggle="modal" data-target="#infosmodal">Découvrir ARTAETAS</a></div>
           <!-- < link_to "Découvrir Artaetas", "#cestquoi", class: "nav-link aa-menu-link" > -->
         </li>
         <li class="nav-item aa-nav-item">
@@ -123,10 +123,10 @@
         <li class="nav-item aa-nav-item">
           <!-- < link_to "Se Connecter", new_user_session_path, class: "nav-link" > -->
           <!-- Button trigger modal -->
-          <%= svg 'tiers' %>
-          <a href="" class="nav-link aa-menu-link aa-menu-link-last" data-toggle="modal" data-target="#exampleModal">
+          <div><%= svg 'tiers' %></div>
+          <div><a href="" class="nav-link aa-menu-link aa-menu-link-last" data-toggle="modal" data-target="#exampleModal">
               S'inscrire/se connecter
-          </a>
+          </a></div>
         </li>
       <% end %>
     </ul>
