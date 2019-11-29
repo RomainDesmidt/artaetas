@@ -1,5 +1,10 @@
-<p>Welcome <%= @email %>!</p>
+<p>Bienvenue <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Vous recevez cet email car vous venez de créer un compte membre sur ARTAETAS.COM.</p>
+<p>Afin de valider celui ci, veuillez confirmer votre adresse email en cliquant sur le lien ci-dessous </p>
+<p><%= link_to 'Confirmer mon compte', confirmation_url(@resource, confirmation_token: @token) %></p>
+<br>
+<p>Bien cordialement</p>
+<p>L’équipe ARTAETAS</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
