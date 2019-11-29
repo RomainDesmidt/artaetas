@@ -15,7 +15,7 @@ class AnnoncesController < ApplicationController
 
   
   def index
-    @annonces = Annonce.all
+    @annonces = Annonce.where(envente_yesno: true)
     @landingp = 1
   end
   
