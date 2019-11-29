@@ -75,6 +75,7 @@ ActiveAdmin.register Annonce do
     modif_annonce = Annonce.find(params[:id])
     modif_annonce.envente_yesno = true
     modif_annonce.save!
+    AdminMailer.with(user: modif_annonce.user).confirm_user_annonce.deliver_now
     redirect_to admin_annonce_path
   end
   
@@ -82,6 +83,7 @@ ActiveAdmin.register Annonce do
     modif_annonce = Annonce.find(params[:id])
     modif_annonce.envente_yesno = false
     modif_annonce.save!
+    AdminMailer.with(user: modif_annonce.user).refuse_user_annonce.deliver_now
     redirect_to admin_annonce_path
   end
 
