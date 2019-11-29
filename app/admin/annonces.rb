@@ -63,11 +63,11 @@ ActiveAdmin.register Annonce do
     f.actions         # adds the 'Submit' and 'Cancel' buttons
   end
 
-  action_item :valider, only: [:show], if: proc { Annonce.find(params[:id]).envente_yesno == true }  do 
+  action_item :valider, only: [:show], if: proc { Annonce.find(params[:id]).envente_yesno == (true || nil) }  do 
     link_to 'Dépublier', depublier_admin_annonce_path, method: :put
   end
   
-  action_item :invalider, only: [:show], if: proc { Annonce.find(params[:id]).envente_yesno == false || nil }  do 
+  action_item :invalider, only: [:show], if: proc { Annonce.find(params[:id]).envente_yesno == (false || nil) }  do 
     link_to 'Publier', publier_admin_annonce_path, method: :put
   end
   
