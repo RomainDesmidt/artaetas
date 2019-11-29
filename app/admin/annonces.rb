@@ -63,19 +63,28 @@ ActiveAdmin.register Annonce do
     f.actions         # adds the 'Submit' and 'Cancel' buttons
   end
 
-  action_item :valider, only: [:show], if: proc { Annonce.find(params[:id]).envente_yesno == (true || nil) }  do 
+  action_item :valider, only: [:show], if: proc { Annonce.find(params[:id]).envente_yesno == true }  do 
     link_to 'Dépublier', depublier_admin_annonce_path, method: :put
   end
   
-  action_item :invalider, only: [:show], if: proc { Annonce.find(params[:id]).envente_yesno == (false || nil) }  do 
+  action_item :invalider, only: [:show], if: proc { Annonce.find(params[:id]).envente_yesno == false }  do 
     link_to 'Publier', publier_admin_annonce_path, method: :put
+  end
+  
+  action_item :invalidernil, only: [:show], if: proc { Annonce.find(params[:id]).envente_yesno == nil }  do 
+    link_to 'Publier', publier_admin_annonce_path, method: :put
+  end
+  
+  action_item :validernil, only: [:show], if: proc { Annonce.find(params[:id]).envente_yesno == nil }  do 
+    link_to 'Dépublier', depublier_admin_annonce_path, method: :put
   end
   
   member_action :publier, :method => :put do
     modif_annonce = Annonce.find(params[:id])
     modif_annonce.envente_yesno = true
     modif_annonce.save!
-    AdminMailer.with(user: modif_annonce.user).confirm_user_annonce.deliver_now
+    @modif_usertarget = modif_annonce.user
+    AdminMailer.with(user: @modif_usertarget).confirm_user_annonce.deliver_now
     redirect_to admin_annonce_path
   end
   
