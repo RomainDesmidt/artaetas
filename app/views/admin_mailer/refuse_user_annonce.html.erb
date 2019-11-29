@@ -1,4 +1,5 @@
-<p>Bonjour <%= Annonce.where(id: params[:id]).user.username %></p>
+<% annonce_conf = Annonce.where(id: params[:id]) %>
+<p>Bonjour <%= annonce_conf.user.username %></p>
 <br>
 <p>Votre annonce sur ARTAETAS n’est pas conforme à nos conditions générales d’utilisation.</p>
 <p>Nous vous invitons à modifier votre annonce si cela est possible et à consulter nos CGU en cliquant sur le lien suivant : </p>
