@@ -24,7 +24,6 @@ class User < ApplicationRecord
   acts_as_votable
   act_as_bookmarker
   after_create :warm_up_exercice
-  after_confirm :send_welcome_email
   
   
   
@@ -62,6 +61,10 @@ class User < ApplicationRecord
     self.masquefavoris = true
     self.masquepublication = true
     self.save!
+  end
+  
+  def after_confirmation
+    send_welcome_email
   end
   
   
