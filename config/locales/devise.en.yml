@@ -20,7 +20,7 @@ en:
       confirmation_instructions:
         subject: "Création de votre compte membre ARTAETAS : la dernière étape"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Demande de réinitialisation de votre mot de passe / compte membre ARTAETAS"
       unlock_instructions:
         subject: "Unlock instructions"
       email_changed:
