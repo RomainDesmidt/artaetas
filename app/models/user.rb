@@ -4,7 +4,7 @@ class User < ApplicationRecord
   attr_accessor :login, :current_password
   
   validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A[a-zA-Z0-9 _\.]*\z/}
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :trackable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
   has_many :annonces
   has_many :courant_users
