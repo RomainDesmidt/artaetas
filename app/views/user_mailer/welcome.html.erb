@@ -1,10 +1,24 @@
-Bonjour <%= @user.username %> <br>
-
-Vous recevez cet email car vous venez de créer un compte membre sur ARTAETAS.COM. <br>
-Afin de valider celui ci, veuillez confirmer votre adresse email en cliquant sur le lien ci dessous <br>
-lien…….<br> <br>
-Bien cordialement, <br>
-L’équipe ARTAETAS <br>
-
-Cet email est un email automatique, veuillez ne pas y répondre. 
-Nous vous invitons à écrire à contact@artaetas.com pour tout renseignement.
+<p>Bonjour <%= @user.username %>,</p>
+<br>
+<p>Votre compte membre ARTAETAS est créé !</p>
+<p>Nous vous souhaitons la bienvenue dans notre communauté, le première plateforme dédiée à l’art et organisée autour d’une totale liberté.</p>
+<p>Rejoindre ARTAETAS, c’est accéder à un choix large d’oeuvres d’art, à un réseau d’amateurs et d’artistes en forte croissance et dans un cadre simple, libre et dédié mobile. </p>
+<br>
+<p>Partagez votre compte membre sur vos réseaux sociaux en copiant le lien ci dessous ou en cliquant sur les icônes dédiées</p>
+<a href="http://artaetasv1.herokuapp.com/users/#{@user.id}"><%= "#{@user.username}" %></a>
+5 icones réseaux sociaux
+<br>
+<p>Découvrez notre présentation en vidéo : </p>
+<a href="http://www.artaetas.fr">www.artaetas.fr</a>
+<br>
+<p>Pour plus d’informations sur nos conditions générales d’utilisation, nous vous invitons à les consulter en cliquant sur le lien suivant :</p>
+<a href="http://artaetasv1.herokuapp.com/cgu">CGU</a>
+<br>
+<p>La confidentialité de vos données est notre priorité. Nous vous invitons à consulter notre politique de confidentialité en cliquant sur le lien suivant : </p>
+<a href="http://artaetasv1.herokuapp.com/politiquedeconfidentialite">Politique de confidentialité</a>
+<br>
+<p>Bien cordialement</p>
+<p>L’équipe ARTAETAS</p>
+<br>
+<p>Cet email est un email automatique, veuillez ne pas y répondre.</p>
+<p>Nous vous invitons à écrire à contact@artaetas.com pour tout renseignement.</p>
