@@ -80,20 +80,20 @@ ActiveAdmin.register Annonce do
   end
   
   member_action :publier, :method => :put do
-    modif_annonce = Annonce.find(params[:id])
-    modif_annonce.envente_yesno = true
-    modif_annonce.save!
-    @modif_usertarget = modif_annonce.user
-    AdminMailer.with(user: @modif_usertarget).confirm_user_annonce.deliver_now
+    @modif_annonce = Annonce.find(params[:id])
+    @modif_annonce.envente_yesno = true
+    @modif_annonce.save!
+    @modif_usertarget = @modif_annonce.user
+    AdminMailer.with(user: @modif_usertarget, annonce: @modif_annonce ).confirm_user_annonce.deliver_now
     redirect_to admin_annonce_path
   end
   
   member_action :depublier, :method => :put do
-    modif_annonce = Annonce.find(params[:id])
-    modif_annonce.envente_yesno = false
-    modif_annonce.save!
-    @modif_usertarget = modif_annonce.user
-    AdminMailer.with(user: @modif_usertarget).refuse_user_annonce.deliver_now
+    @modif_annonce = Annonce.find(params[:id])
+    @modif_annonce.envente_yesno = false
+    @modif_annonce.save!
+    @modif_usertarget = @modif_annonce.user
+    AdminMailer.with(user: @modif_usertarget, annonce: @modif_annonce).refuse_user_annonce.deliver_now
     redirect_to admin_annonce_path
   end
 

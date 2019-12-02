@@ -7,12 +7,14 @@ class AdminMailer < ApplicationMailer
   #
   def confirm_user_annonce
     @user = params[:user] # Instance variable => available in view
+    @annonce = params[:annonce]
     mail(to: @user.email, subject: 'Votre annonce sur ARTAETAS est en ligne !')
     # This will render a view in `app/views/user_mailer`!
   end
   
   def refuse_user_annonce
     @user = params[:user] # Instance variable => available in view
+    @annonce = params[:annonce]
     mail(to: @user.email, subject: 'Votre annonce sur ARTAETAS n’est pas conforme à nos CGU.')
     # This will render a view in `app/views/user_mailer`!
   end
