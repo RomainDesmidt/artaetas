@@ -208,6 +208,10 @@ class AnnoncesController < ApplicationController
   def update
     @annonce = Annonce.find(params[:id])
     @annonce.update(annonce_params)
+    unless @annonce.envente_yesno == false
+      @annonce.update(envente_yesno: false)
+      AnnonceMailer.with(user: @annonce.user, annonce: @annonce).confirm_edit_annonce.deliver_now
+    end
     
 
     # @categoriesbdd = []
