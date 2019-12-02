@@ -26,14 +26,20 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Annonces nécessitant confirmation" do
           ul do
-            Annonce.where(envente_yesno: false || nil ).map do |annonce|
+            Annonce.where(envente_yesno: false ).map do |annonce|
+              li link_to(annonce.name, admin_annonce_path(annonce))
+            end
+              Annonce.where(envente_yesno: nil ).map do |annonce|
               li link_to(annonce.name, admin_annonce_path(annonce))
             end
           end
         end
         panel "Users nécessitant confirmation" do
           ul do
-            User.where(confirmation_webmaster: false || nil).map do |user|
+            User.where(confirmation_webmaster: false ).map do |user|
+              li link_to(user.username, admin_user_path(user))
+            end
+            User.where(confirmation_webmaster: nil).map do |user|
               li link_to(user.username, admin_user_path(user))
             end
           end
