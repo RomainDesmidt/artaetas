@@ -35,7 +35,17 @@
             <% end %>
             <%= link_to a, class: "aa-search-annonce-card-detail" do %>
             
-              <b><p class='aa-show-titre'><%= a.name %></p></b>
+              <b><p class='aa-show-titre'>
+                <%= a.name %>
+                <% case a.envente_yesno %>
+                  <% when nil %>
+                    <p style="color: yellow;"> En attente de moderation</p>
+                  <% when true %>
+                    <p style="color: green;"> Confirmée</p>
+                  <% when false %>
+                    <p style="color: red;"> Refusée</p>
+                  <% end %>
+              </p></b>
                   <p class="aa-show-detail-italic">
                   <% if a.nom_artiste? %>
                    <%= "#{a.nom_artiste} - "  %>
@@ -63,7 +73,9 @@
               <div class="aa-search-annonce-card-control">
                 <p>
                   <%= link_to "Edit", "/annonces/#{a.id}/edit"%>
-                  <%= link_to 'Supprimer',  a ,  method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%#= link_to 'Supprimer',  a ,  method: :delete, data: { confirm: 'Are you sure?' } %>
+                  
+                  
                 </p>
               </div>
 
