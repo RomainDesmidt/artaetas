@@ -24,6 +24,12 @@ class Annonce < ApplicationRecord
   acts_as_votable
   act_as_bookmarkee
   accepts_nested_attributes_for :categorie_annonces, :courant_annonces, :couleur_annonces
+  after_update :retour_confirmation
+  
+  def retour_confirmation
+   self.envente_yesno = false
+   self.save!
+  end
 
   # def couleur_ids=(ids)
   # end

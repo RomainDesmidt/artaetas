@@ -14,4 +14,7 @@ class PagesController < ApplicationController
     @base_font   = "Roboto"
     @header_font = "Raleway"
   end
+  
+  def changelog
+  end
 end
