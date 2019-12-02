@@ -33,6 +33,7 @@ end
   get 'users/:id', to: 'users#show'
   get 'users', to: 'users#index'
   get 'testindex', to: 'annonces#index2'
+  get 'changelog', to: 'pages#changelog'
   # put "like", to: "annonces#like"
   # put "dislike", to: "annonces#dislike"
 

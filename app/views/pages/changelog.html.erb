@@ -1,0 +1,5 @@
+<%#= %x{git log HEAD}.strip %>
+<%#= %x{git log master --pretty=oneline}  %>
+<pre style="margin-top: 75px;">
+<%= %x{git log --pretty=format:"%h - %an, %ar : %s" --stat}  %>
+</pre>
