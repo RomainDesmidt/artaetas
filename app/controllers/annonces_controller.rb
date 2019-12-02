@@ -208,8 +208,8 @@ class AnnoncesController < ApplicationController
   def update
     @annonce = Annonce.find(params[:id])
     @annonce.update(annonce_params)
-    unless @annonce.envente_yesno == false
-      @annonce.update(envente_yesno: false)
+    unless @annonce.envente_yesno == nil
+      @annonce.update(envente_yesno: nil)
       AnnonceMailer.with(user: @annonce.user, annonce: @annonce).confirm_edit_annonce.deliver_now
     end
     
