@@ -34,9 +34,9 @@ ActiveAdmin.register_page "Dashboard" do
             end
           end
         end
-        panel "Users nécessitant confirmation" do
+        panel "Users nécessitant confirmation(mail)" do
           ul do
-            User.where(confirmation_webmaster: nil).map do |user|
+            User.where(confirmed_at: nil).map do |user|
               li link_to(user.username, admin_user_path(user))
             end
           end
