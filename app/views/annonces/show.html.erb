@@ -150,9 +150,9 @@
             <!--<a href="mailto:report@artaetas.com" class="aa-show-report-text">Signaler un abus</a>-->
             <%#= inline_svg "obligatoire.svg", class: "aa-svg-report" %>
             <%#= link_to 'Signaler un abus', "mailto:report@artaetas.com", 'data-popup' => true, class: "aa-show-report-a"  %>
-            <%= link_to "mailto:report@artaetas.com", 'data-popup' => true, class: "aa-show-report-a" do %>
+            <%= link_to "mailto:report@artaetas.com?subject=Signaler une annonce&body=“Vous êtes en train de signaler une annonce.%0A Veuillez préciser le nom de l’oeuvre et son auteur afin de faciliter le traitement de votre signalement et les raisons de ce signalement.%0A Nous vous prions de laisser aussi vos coordonnées (nom prénom et email) afin de vous donner un retour suite à votre signalement.%0A Tout signalement incomplet ne sera pas traité! %0A%0A", 'data-popup' => true, class: "aa-show-report-a" do %>
               <%= inline_svg "obligatoire.svg", class: "aa-svg-report" %>
-              <p>Signaler un abus</p>
+              <p>Signaler une annonce</p>
             <% end %>
             </div>
         </div>  
@@ -230,7 +230,7 @@
          
           
           <p class="aa-show-share-title">Partager cette annonce</p>
-           <%= social_share_button_tag( "Cette annonce est super venez la decouvrir sur http:\/\/artaetasv1.herokuapp.com\/annonces\/#{@annonces.id}", :image => "#{@annonces.photo.url}", :'data-twitter-hashtags' => "art,artaetas", :'via' => "artaetas", :'data-type' => 'photo', :url => "#{@annonces.photo.url}", desc: "Cette annonce est super venez la decouvrir sur http:\/\/artaetasv1.herokuapp.com\/annonces\/#{@annonces.id}", :'data-quote' => "Une plaforme d\'achat et vente d\'oeuvres d\'art de toutes catégories, dédiée aux artistes, amateurs et collectionneurs", :'data-summary' => "Une plaforme d\'achat et vente d\'oeuvres d\'art de toutes catégories, dédiée aux artistes, amateurs et collectionneurs") %>
+           <%= social_share_button_tag( "Venez découvrir cette oeuvre d’art sur ARTAETAS http:\/\/artaetasv1.herokuapp.com\/annonces\/#{@annonces.id}", :image => "#{@annonces.photo.url}", :'data-twitter-hashtags' => "art,artaetas", :'via' => "artaetas", :'data-type' => 'photo', :url => "#{@annonces.photo.url}", desc: "Venez découvrir cette oeuvre d’art sur ARTAETAS http:\/\/artaetasv1.herokuapp.com\/annonces\/#{@annonces.id}", :'data-quote' => "Une plaforme d\'achat et vente d\'oeuvres d\'art de toutes catégories, dédiée aux artistes, amateurs et collectionneurs", :'data-summary' => "Une plaforme d\'achat et vente d\'oeuvres d\'art de toutes catégories, dédiée aux artistes, amateurs et collectionneurs") %>
         
 
       </div>
