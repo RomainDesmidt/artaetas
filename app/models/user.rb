@@ -65,6 +65,7 @@ class User < ApplicationRecord
   
   def after_confirmation
     send_welcome_email
+    self.update(confirmation_webmaster: true)
   end
   
   

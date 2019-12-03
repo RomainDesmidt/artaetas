@@ -57,6 +57,62 @@ ActiveAdmin.register User do
       link_to 'Next', admin_user_path(id: id)
     end
   end
+  
+  action_item :valider, only: [:show], if: proc { User.find(params[:id]).confirmation_webmaster == true }  do 
+    link_to 'Censurer', depublier_admin_user_path, method: :put
+  end
+  
+  action_item :invalider, only: [:show], if: proc { User.find(params[:id]).confirmation_webmaster == false }  do 
+    link_to 'Approuver', publier_admin_user_path, method: :put
+  end
+  
+  action_item :invalidernil, only: [:show], if: proc { User.find(params[:id]).confirmation_webmaster == nil }  do 
+    link_to 'Approuver', publier_admin_user_path, method: :put
+  end
+  
+  action_item :validernil, only: [:show], if: proc { User.find(params[:id]).confirmation_webmaster == nil }  do 
+    link_to 'Censurer', depublier_admin_user_path, method: :put
+  end
+  
+  action_item :deconfirm, only: [:show], if: proc { User.find(params[:id]).confirmed? && User.find(params[:id]).confirmation_webmaster == false }  do 
+    link_to 'Bloquer', bloquer_admin_user_path, method: :put
+  end
+  
+  action_item :reconfirm, only: [:show], if: proc { User.find(params[:id]).confirmed_at == nil }  do 
+    link_to 'Débloquer', debloquer_admin_user_path, method: :put
+  end
+  
+    member_action :publier, :method => :put do
+    @modif_user = User.find(params[:id])
+    @modif_user.confirmation_webmaster = true
+    @modif_user.save!
+    #AdminMailer.with(user: @modif_user ).confirm_user.deliver_now
+    redirect_to admin_user_path
+  end
+  
+  member_action :depublier, :method => :put do
+    @modif_user = User.find(params[:id])
+    @modif_user.confirmation_webmaster = false
+    @modif_user.save!
+    #AdminMailer.with(user: @modif_user ).refuse_user.deliver_now
+    redirect_to admin_user_path
+  end
+  
+  member_action :bloquer, :method => :put do
+    @modif_user = User.find(params[:id])
+    @modif_user.update(confirmed_at: nil)
+    #AdminMailer.with(user: @modif_user ).refuse_user.deliver_now
+    redirect_to admin_user_path
+  end
+  
+  member_action :debloquer, :method => :put do
+    @modif_user = User.find(params[:id])
+    @modif_user.update(confirmed_at: Time.now)
+    #AdminMailer.with(user: @modif_user ).refuse_user.deliver_now
+    redirect_to admin_user_path
+  end
+  
+  
 
 
   # action_item :valider, only: [:show, :edit] do
