@@ -74,7 +74,7 @@ class AnnoncesController < ApplicationController
     # @pricemin = params[:pricemin]
     # @pricemax = params[:pricemax]
     price_all = []
-    Annonce.where(envente_yesno: true).each do |u|
+    Annonce.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true).each do |u|
       price_all << u.prix.to_i
     end
     @slider_max = price_all.map(&:to_i).max + 1
@@ -106,7 +106,7 @@ class AnnoncesController < ApplicationController
     couleurs_choisies = []
     
     # Shown Annonces
-    @annonces = Annonce.where(envente_yesno: true)
+    @annonces = Annonce.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true)
     unless params[:term] == "Que recherchez-vous?"
       if params[:term]
         @annonces = @annonces.where('name ILIKE ? OR description ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%")
@@ -127,7 +127,7 @@ class AnnoncesController < ApplicationController
 
     unless params[:categorie_search2] == ''
       if params[:categorie_search2]
-        Annonce.where(envente_yesno: true).each do |annonce_unitaire|
+        Annonce.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true).each do |annonce_unitaire|
           categories_annonceunitaire = annonce_unitaire.categorie_annonces.collect {|u| u.categorie_id}
           params[:categorie_search2].each { |u| categories_choisies << u.to_i }
           if categories_choisies - categories_annonceunitaire == []
@@ -140,7 +140,7 @@ class AnnoncesController < ApplicationController
 
     unless params[:courant_search2] == ''
       if params[:courant_search2]
-        Annonce.where(envente_yesno: true).each do |annonce_unitaire|
+        Annonce.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true).each do |annonce_unitaire|
           courants_annonceunitaire = annonce_unitaire.courant_ids
           params[:courant_search2].each { |u| courants_choisis << u.to_i }
           if courants_choisis - courants_annonceunitaire == []
@@ -153,7 +153,7 @@ class AnnoncesController < ApplicationController
 
     unless params[:couleur_search2] == ''
       if params[:couleur_search2]
-        Annonce.where(envente_yesno: true).each do |annonce_unitaire|
+        Annonce.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true).each do |annonce_unitaire|
           couleurs_annonceunitaire = annonce_unitaire.couleur_ids
           params[:couleur_search2].each { |u| couleurs_choisies << u.to_i }
           if couleurs_choisies - couleurs_annonceunitaire == []
