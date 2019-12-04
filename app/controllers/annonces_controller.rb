@@ -77,7 +77,13 @@ class AnnoncesController < ApplicationController
     Annonce.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true).each do |u|
       price_all << u.prix.to_i
     end
-    @slider_max = price_all.map(&:to_i).max + 1
+    
+    if price_all.nil?
+      price_all = 1
+    else
+      @slider_max = price_all.map(&:to_i).max + 1
+    end
+    
     if @slider_max < 100
       @slider_max = 1000
     end
@@ -109,7 +115,7 @@ class AnnoncesController < ApplicationController
     @annonces = Annonce.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true)
     unless params[:term] == "Que recherchez-vous?"
       if params[:term]
-        @annonces = @annonces.where('name ILIKE ? OR description ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%")
+        @annonces = @annonces.where('annonces.name ILIKE ? OR annonces.description ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%")
       end
     end
     unless params[:prix_slider] == ''

@@ -14,8 +14,9 @@ ActiveAdmin.register User do
   index do
     selectable_column
     id_column
-    column "Confirmé", :confirmation_webmaster
+    column "Censuré?", :confirmation_webmaster
     column :email
+    column :username
     column :created_at
     actions
   end
