@@ -174,14 +174,14 @@
             </div>
             
             <div class="aa-show-contact-profil-detail">
-              <% if @annonces.user.afficher_identite %>
-                <%= link_to "#{@annonces.user.surname} #{@annonces.user.lastname}", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
-              <% else %>
+              <%# if @annonces.user.afficher_identite %>
+                <%#= link_to "#{@annonces.user.surname} #{@annonces.user.lastname}", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
+              <%# else %>
                 <% if @annonces.user.username %>
                  <%= link_to "#{@annonces.user.username}", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
-                <% else %>
-                  <%= link_to "Profil Auteur", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
-                <% end %>
+                <%# else %>
+                  <%#= link_to "Profil Auteur", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
+                <%# end %>
               <% end %>
               <% if @annonces.user.statut %>
                 <div class="aa-show-contact-profil-statut"><%= @annonces.user.statut %></div>
