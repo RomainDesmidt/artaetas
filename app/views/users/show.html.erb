@@ -19,15 +19,15 @@
         </div>
         
         <div class="aa-me-descriptionuser-caracteristiques">
-            <% if @user.afficher_identite %>
-              <%= link_to "#{@user.surname} #{@user.lastname}", "/users/#{@user.id}", class: "aa-show-user-link"  %>
-            <% else %>
+            <%# if @user.afficher_identite %>
+              <%#= link_to "#{@user.surname} #{@user.lastname}", "/users/#{@user.id}", class: "aa-show-user-link"  %>
+            <%# else %>
               <% if @user.username %>
                 <%= link_to "#{@user.username}", "/users/#{@user.id}", class: "aa-show-user-link"  %>
-                <% else %>
-                  <%= link_to "Profil Auteur", "/users/#{@user.id}", class: "aa-show-user-link"  %>
-                <% end %>
+              <%# else %>
+                  <%#= link_to "Profil Auteur", "/users/#{@user.id}", class: "aa-show-user-link"  %>
               <% end %>
+            <%# end %>
               <% if @user.statut %>
                 <div class="aa-show-contact-profil-statut"><%= @user.statut %></div>
               <% end %>
@@ -109,6 +109,9 @@
         </div>
       </div>
       <div class="aa-me-descriptionuser-stats2">
+         <% if @user.afficher_identite? %>
+          <p>Identité : <%= "#{@user.surname} #{@user.lastname}" %></p>
+        <% end %>
         <p>inscrit depuis: <b><%= @user.created_at.strftime("%d-%m-%Y") %></b></p>
         <p>derniere connexion: <b><%= @user.last_sign_in_at.strftime("%d-%m-%Y") %></b></p>
         <p>nombre d'annonce: <b><%= @user.annonces.count %></b></p>

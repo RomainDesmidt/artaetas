@@ -28,7 +28,8 @@
             <%#= image_tag "http://lorempixel.com/25/25/cats/", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <%= inline_svg "tiers.svg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style: 'height: 50px;' %>
            <% end %>
-          <div class="dropdown-menu dropdown-menu-right aa-desktop-only" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <!--<div class="dropdown-menu dropdown-menu-right aa-desktop-only" aria-labelledby="navbarDropdown">-->
             <%= link_to "Mon Profil", "/users/me", class: "dropdown-item" %>
             <!-- < link_to "Liste user", "/users/", class: "dropdown-item" > -->
             <!-- < link_to "Edit Profile", edit_user_registration_path , class: "dropdown-item" > -->
