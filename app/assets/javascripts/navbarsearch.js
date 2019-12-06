@@ -45,25 +45,37 @@ function searchContractMobile() {
   // document.getElementById('aa-link-rechercher').classList.toggle("hidden");
 }
 
+// var rechercherLink = document.querySelector('#aa-link-rechercher') !== null;
+// if (rechercherLink) {
+  var navDeposer = document.querySelector('#aa-nav-deposer') !== null;
+  document.getElementById('aa-link-rechercher').onclick = function()
+  {
+    document.getElementById("aa-nav-search-input").classList.toggle("toggled-search");
+    document.getElementById('aa-nav-decouvrir').classList.toggle("hidden");
+    document.getElementById('aa-link-rechercher').classList.toggle("hidden");
+    document.getElementById("aa-nav-search-input").focus();
+    if (navDeposer) { 
+      document.getElementById('aa-nav-deposer').classList.toggle("hidden");
+    };
+  }
 
+// };
 
-document.getElementById('aa-link-rechercher').onclick = function()
-{
-  document.getElementById("aa-nav-search-input").classList.toggle("toggled-search");
-  document.getElementById('aa-nav-decouvrir').classList.toggle("hidden");
-  document.getElementById('aa-nav-deposer').classList.toggle("hidden");
-  document.getElementById('aa-link-rechercher').classList.toggle("hidden");
-  document.getElementById("aa-nav-search-input").focus();
-}
+// var rechercherPicto = document.querySelector('#aa-link-rechercher-picto') !== null;
+// if (rechercherPicto) {
 
-document.getElementById('aa-link-rechercher-picto').onclick = function()
-{
-  document.getElementById("aa-nav-search-input").classList.toggle("toggled-search");
-  document.getElementById('aa-nav-decouvrir').classList.toggle("hidden");
-  document.getElementById('aa-nav-deposer').classList.toggle("hidden");
-  document.getElementById('aa-link-rechercher').classList.toggle("hidden");
-  document.getElementById("aa-nav-search-input").focus();
-}
+  document.getElementById('aa-link-rechercher-picto').onclick = function()
+  {
+    document.getElementById("aa-nav-search-input").classList.toggle("toggled-search");
+    document.getElementById('aa-nav-decouvrir').classList.toggle("hidden");
+    document.getElementById('aa-link-rechercher').classList.toggle("hidden");
+    document.getElementById("aa-nav-search-input").focus();
+    if (navDeposer) { 
+      document.getElementById('aa-nav-deposer').classList.toggle("hidden");
+    };
+  }
+
+// };
 
 var searchFocus = document.getElementById("aa-nav-search-input");
 // searchFocus.addEventListener("focusin", searchExpand);
@@ -77,6 +89,8 @@ searchFocus.addEventListener("focusout", searchContract);
 function searchContract() {
   document.getElementById("aa-nav-search-input").classList.toggle("toggled-search");
   document.getElementById('aa-nav-decouvrir').classList.toggle("hidden");
-  document.getElementById('aa-nav-deposer').classList.toggle("hidden");
   document.getElementById('aa-link-rechercher').classList.toggle("hidden");
+  if (navDeposer) { 
+    document.getElementById('aa-nav-deposer').classList.toggle("hidden");
+  };
 }

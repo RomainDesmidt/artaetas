@@ -107,7 +107,7 @@
         <li class="nav-item aa-nav-item">
           <a href="#" class="nav-link aa-menu-link"></a>
         </li>
-        <li class="nav-item aa-nav-item">
+        <li class="nav-item aa-nav-item" id="aa-nav-decouvrir">
           <div data-toggle="modal" data-target="#infosmodal"><%= svg 'aide' %></div>
           <div><a href="" class="nav-link aa-menu-link" data-toggle="modal" data-target="#infosmodal">Découvrir ARTAETAS</a></div>
           <!-- < link_to "Découvrir Artaetas", "#cestquoi", class: "nav-link aa-menu-link" > -->
@@ -115,7 +115,7 @@
         <li class="nav-item aa-nav-item">
           <!-- < svg 'recherche' > -->
           <!-- <form action="/searchannonce/" method="get" id="aa-nav-search-form"><input name="term" class="aa-nav-search-input" placeholder="Rechercher" type="search"></form> -->
-          <div><%= svg 'recherche' %></div>
+          <div id="aa-link-rechercher-picto"><%= svg 'recherche' %></div>
           <form action="/searchannonce/" method="get" class="none" id="aa-nav-search-form"><input name="term" id="aa-nav-search-input" placeholder="Rechercher" type="search"></form>
           <div><%= link_to "Rechercher", "#", class: "nav-link aa-menu-link", id: "aa-link-rechercher" %></div>
 
