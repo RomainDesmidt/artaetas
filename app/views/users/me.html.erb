@@ -20,75 +20,85 @@
 
 
 
-  <div class="tab-pane fade" id="annonces" role="tabpanel" aria-labelledby="annonces-tab">
-
-
-<div class="aa-search-annonce-container">
-      <% if current_user.annonces.count > 0 %>
-        <% current_user.annonces.each do |a| %>
-
-            <div class="aa-search-annonce-card">
-            <%= link_to a, class: "aa-search-annonce-card-image" do %>
-              <!-- <div class="aa-search-annonce-card-image"> -->
-                <%= cl_image_tag a.photo %>
-              <!-- </div> -->
+<div class="tab-pane fade" id="annonces" role="tabpanel" aria-labelledby="annonces-tab">
+<%# --------------------------------------------------------------------------------------------- %>
+  <!--<div class="aa-search-annonce-container">-->
+  <!--  <%# if current_user.annonces.count > 0 %>-->
+  <!--    <%# current_user.annonces.each do |a| %>-->
+  <!--      <div class="aa-search-annonce-card">-->
+  <!--        <%#= link_to a, class: "aa-search-annonce-card-image" do %>-->
+  <!--          <%#= cl_image_tag a.photo %>-->
+  <!--        <%# end %>-->
+  <!--        <%#= link_to a, class: "aa-search-annonce-card-detail" do %>-->
+  <!--          <b><p class='aa-show-titre'>-->
+  <!--            <%#= a.name %>-->
+  <!--            <%# case a.envente_yesno %>-->
+  <!--              <%# when nil %>-->
+  <!--                <p>En attente de moderation</p>-->
+  <!--              <%# when true %>-->
+  <!--                <p> Confirmée</p>-->
+  <!--              <%# when false %>-->
+  <!--                <p> Refusée</p>-->
+  <!--            <%# end %>-->
+  <!--          </p></b>-->
+  <!--          <p class="aa-show-detail-italic">-->
+  <!--            <%# if a.nom_artiste? %>-->
+  <!--               <%#= "#{a.nom_artiste} - "  %>-->
+  <!--            <%# end %>-->
+  <!--            <%# if a.anneecreation %>-->
+  <!--              <%#= "#{a.anneecreation}" %>-->
+  <!--            <%# end %>-->
+  <!--          </p>-->
+  <!--          <p class="aa-show-price  aa-show-detail-italic">-->
+  <!--            <%# if a.prix?   %>-->
+  <!--              <%# if (a.prix.to_i - a.prix) > 0 %>-->
+  <!--                <%#= number_with_delimiter(a.prix.to_s, delimiter: " " ) %>€-->
+  <!--              <%# else %>-->
+  <!--                <%#= number_with_delimiter(a.prix.to_i.to_s, delimiter: " " ) %>€-->
+  <!--              <%# end %>-->
+  <!--            <%# end %>-->
+  <!--          </p>-->
+  <!--          <p class="aa-p-description">-->
+  <!--            <%#= a.description %>-->
+  <!--          </p>-->
+  <!--        <%# end %>-->
+  <!--        <div class="aa-search-annonce-card-control">-->
+  <!--          <p>-->
+  <!--            <%#= link_to "Edit", "/annonces/#{a.id}/edit"%>-->
+              <%#= link_to 'Supprimer',  a ,  method: :delete, data: { confirm: 'Are you sure?' } %>
+  <!--          </p>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    <%# end %>-->
+  <!--  <%# else %>-->
+  <!--    <h1>Aucune annonce trouvee</h1>-->
+  <!--  <%# end %>-->
+  <!--</div>-->
+  
+  <div class="grid-container aa-search-grid-container">
+    <div class="grid">
+      <div class="grid-sizer"></div>
+      <div class="gutter-sizer"></div>
+       <% @annonces.each do |t| %>
+         <div class="grid-item">
+           <%= link_to annonce_path(t) , { class: "aa-annonce-titre"} do %>
+                <%= image_tag(t.photo.url.insert(4, 's'))  %>
+  
+                <% unless t.name.lines.first.nil? %>
+                  <p class='p-titre'><%= t.name.lines.first[0,70] %></p>
+                <% end %>
+                
+                
+                <% unless t.description.lines.first.nil? %>
+                  <p class='p-description'><%= t.description.lines.first[0,70] %></p>
+                <% end %>
             <% end %>
-            <%= link_to a, class: "aa-search-annonce-card-detail" do %>
-            
-              <b><p class='aa-show-titre'>
-                <%= a.name %>
-                <% case a.envente_yesno %>
-                  <% when nil %>
-                    <p>En attente de moderation</p>
-                  <% when true %>
-                    <p> Confirmée</p>
-                  <% when false %>
-                    <p> Refusée</p>
-                  <% end %>
-              </p></b>
-                  <p class="aa-show-detail-italic">
-                  <% if a.nom_artiste? %>
-                   <%= "#{a.nom_artiste} - "  %>
-                  <% end %>
-                  <% if a.anneecreation %>
-                    <%= "#{a.anneecreation}" %>
-                  <% end %>
-                  </p>
-                  <p class="aa-show-price  aa-show-detail-italic">
-                    <% if a.prix?   %>
-                      <% if (a.prix.to_i - a.prix) > 0 %>
-                        <%= number_with_delimiter(a.prix.to_s, delimiter: " " ) %>€
-                      <% else %>
-                        <%= number_with_delimiter(a.prix.to_i.to_s, delimiter: " " ) %>€
-                      <% end %>
-                    <% end %>
-                  </p>
-              
-              
-             <p class="aa-p-description">
-                   <%= a.description %>
-                  </p>
-            <% end %>
-
-              <div class="aa-search-annonce-card-control">
-                <p>
-                  <%= link_to "Edit", "/annonces/#{a.id}/edit"%>
-                  <%#= link_to 'Supprimer',  a ,  method: :delete, data: { confirm: 'Are you sure?' } %>
-                  
-                  
-                </p>
-              </div>
-
-
             </div>
-
-        <% end %>
-      <% else %>
-        <h1>Aucune annonce trouvee</h1>
-      <% end %>
-</div>
-
+       <% end %>
+    </div>
   </div>
+<%# --------------------------------------------------------------------------------------------- %>
+</div>
 
 
 

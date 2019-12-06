@@ -12,6 +12,6 @@ class UsersController < ApplicationController
   end
 
   def me
-
+    @annonces = current_user.annonces
   end
 end

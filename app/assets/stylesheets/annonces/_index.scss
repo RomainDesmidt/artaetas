@@ -117,6 +117,7 @@ textarea.form-control.is-valid {
 
 #myModal {
   display: block !important;
+  top: 55px !important;
 }
 
 .aa-footer-ae {
@@ -918,6 +919,9 @@ p {
   
 }
 
+#modal-content-signin {
+  top: 350px;  
+}
 // body {
 //   margin: 0;
 //   padding: 0;
