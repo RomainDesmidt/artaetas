@@ -244,15 +244,10 @@ textarea.form-control.is-valid {
 
 }
 
-// .aa-me-submenu:nth-child(1):hover {
-//   width: 100px;
-//   // background-color: white;
-//   transform: translate(-67px, 0px);
-//   // transform: translate(-65px, 0px);
-//   justify-content: flex-end;
-// }
 
-.aa-me-submenu:nth-child(1)::before {
+// ------------------------------------------
+
+.aa-link-confirm-action::before {
   visibility: hidden;
   content: 'Statut';
   padding-right: 10px;
@@ -261,10 +256,12 @@ textarea.form-control.is-valid {
   color: $entete;
   position: absolute;
   left: -60px;
-
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  
 }
 
-.aa-me-submenu:nth-child(2)::before {
+.aa-edit-action::before {
   visibility: hidden;
   content: 'Editer';
   padding-right: 10px;
@@ -273,9 +270,11 @@ textarea.form-control.is-valid {
   color: $entete;
   position: absolute;
   left: -60px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
-.aa-me-submenu:nth-child(3)::before {
+.aa-delete-action::before {
   visibility: hidden;
   content: 'Supprimer';
   padding-right: 10px;
@@ -284,55 +283,23 @@ textarea.form-control.is-valid {
   color: $entete;
   position: absolute;
   left: -90px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
-// .aa-me-submenu:nth-child(2):hover {
-//   width: 100px;
-//   // background-color: white;
-//   transform: translate(-67px, 0px);
-//   // transform: translate(-65px, 0px);
-//   justify-content: flex-end;
-// }
 
-// .aa-me-submenu:nth-child(3):hover {
-//   width: 100px;
-//   // background-color: white;
-//   transform: translate(-68px, 0px);
-//   // transform: translate(-65px, 0px);
-//   justify-content: flex-end;
-// }
+.aa-link-confirm-action:hover::before { visibility: hidden; }
+.aa-edit-action:hover::before { visibility: visible; }
+.aa-delete-action:hover::before { visibility: visible; }
 
-.aa-me-submenu:nth-child(1):hover::before {
-  // content: 'Statut';
-  // padding-right: 10px;
-  // padding-left: 10px;
-  // background-color: rgba(255,255,255,0.6);
-  // color: black;
-  visibility: hidden;
-  // transition: visibility 2s ease-out;
- 
+.aa-edit-action:hover,
+.aa-delete-action:hover {
+  
+  .aa-suppr-svg path,
+  .aa-edit-svg path {
+    fill: $footer;
+  }
 }
-
-.aa-me-submenu:nth-child(2):hover::before {
-  // content: 'Editer';
-  // padding-right: 10px;
-  // padding-left: 10px;
-  // background-color: rgba(255,255,255,0.6);
-  // color: black;
-  visibility: visible;
-  // transition: visibility 2s ease-out;
-}
-
-.aa-me-submenu:nth-child(3):hover::before {
-  // content: 'Supprimer';
-  // padding-right: 10px;
-  // padding-left: 10px;
-  // background-color: rgba(255,255,255,0.6);
-  // color: black;
-  visibility: visible;
-  // transition: visibility 2s ease-out;
-}
-
 
 // FIN GRID CAROUSEL
 
