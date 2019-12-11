@@ -229,8 +229,8 @@ textarea.form-control.is-valid {
   flex-direction: column;
   justify-content: center;
   background-color: white;
-  top: 5px;
-  right: 5px;
+  top: 0px;
+  right: 0px;
   border-bottom-left-radius: 5px;
 }
 
@@ -240,38 +240,96 @@ textarea.form-control.is-valid {
   justify-content: center;
   margin-bottom: 5px;
 
+
 }
 
-.aa-me-submenu:hover {
-  width: 100px;
-  // background-color: white;
-  // transform: translate(-67.5px, 0px);
-  transform: translate(-65px, 0px);
-  justify-content: flex-end;
-}
+// .aa-me-submenu:nth-child(1):hover {
+//   width: 100px;
+//   // background-color: white;
+//   transform: translate(-67px, 0px);
+//   // transform: translate(-65px, 0px);
+//   justify-content: flex-end;
+// }
 
-.aa-me-submenu:nth-child(1):hover::before {
+.aa-me-submenu:nth-child(1)::before {
+  visibility: hidden;
   content: 'Statut';
   padding-right: 10px;
   padding-left: 10px;
   background-color: rgba(255,255,255,0.6);
   color: black;
+  position: absolute;
+  left: -60px;
+
 }
 
-.aa-me-submenu:nth-child(2):hover::before {
+.aa-me-submenu:nth-child(2)::before {
+  visibility: hidden;
   content: 'Editer';
   padding-right: 10px;
   padding-left: 10px;
   background-color: rgba(255,255,255,0.6);
   color: black;
+  position: absolute;
+  left: -60px;
 }
 
-.aa-me-submenu:nth-child(3):hover::before {
+.aa-me-submenu:nth-child(3)::before {
+  visibility: hidden;
   content: 'Supprimer';
   padding-right: 10px;
   padding-left: 10px;
   background-color: rgba(255,255,255,0.6);
   color: black;
+  position: absolute;
+  left: -90px;
+}
+
+// .aa-me-submenu:nth-child(2):hover {
+//   width: 100px;
+//   // background-color: white;
+//   transform: translate(-67px, 0px);
+//   // transform: translate(-65px, 0px);
+//   justify-content: flex-end;
+// }
+
+// .aa-me-submenu:nth-child(3):hover {
+//   width: 100px;
+//   // background-color: white;
+//   transform: translate(-68px, 0px);
+//   // transform: translate(-65px, 0px);
+//   justify-content: flex-end;
+// }
+
+.aa-me-submenu:nth-child(1):hover::before {
+  // content: 'Statut';
+  // padding-right: 10px;
+  // padding-left: 10px;
+  // background-color: rgba(255,255,255,0.6);
+  // color: black;
+  visibility: hidden;
+  // transition: visibility 2s ease-out;
+ 
+}
+
+.aa-me-submenu:nth-child(2):hover::before {
+  // content: 'Editer';
+  // padding-right: 10px;
+  // padding-left: 10px;
+  // background-color: rgba(255,255,255,0.6);
+  // color: black;
+  visibility: visible;
+  // transition: visibility 2s ease-out;
+}
+
+.aa-me-submenu:nth-child(3):hover::before {
+  // content: 'Supprimer';
+  // padding-right: 10px;
+  // padding-left: 10px;
+  // background-color: rgba(255,255,255,0.6);
+  // color: black;
+  visibility: visible;
+  // transition: visibility 2s ease-out;
 }
 
 

@@ -97,21 +97,21 @@
                 <div class="aa-me-submenu">
                   <% case t.envente_yesno %>
                     <% when nil %>
-                      <%= inline_svg "statut-waiting.svg", class: "aa-confirm-action aa-action-waiting" %>
+                      <%= inline_svg "attente.svg", class: "aa-confirm-action aa-action-waiting" %>
                     <% when true %>
-                      <%= inline_svg "statut-confirmed.svg", class: "aa-confirm-action aa-action-confirmed" %>
+                      <%= inline_svg "ok.svg", class: "aa-confirm-action aa-action-confirmed" %>
                     <% when false %>
-                      <%= inline_svg "statut-refused.svg", class: "aa-confirm-action aa-action-refused" %>
+                      <%= inline_svg "erreur.svg", class: "aa-confirm-action aa-action-refused" %>
                   <% end %>
                 </div>
                 <div class="aa-me-submenu">
                   <%= link_to edit_annonce_path(t), class: "aa-edit-action" do %>
-                    <%= inline_svg "editer.svg", class: "aa-edit-svg" %>
+                    <%= inline_svg "modifier.svg", class: "aa-edit-svg" %>
                   <% end %>
                 </div>
                 <div class="aa-me-submenu">
                   <%= link_to t , class: "aa-delete-action", method: :delete, data: { confirm: 'Are you sure?' } do %>
-                    <%= inline_svg "supprimer.svg", class: "aa-suppr-svg" %>
+                    <%= inline_svg "suppression.svg", class: "aa-suppr-svg" %>
                   <% end %>
                 </div>
 
