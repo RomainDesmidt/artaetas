@@ -1,3 +1,4 @@
+
 <ul class="nav nav-tabs aa-under-navbar" id="myTab" role="tablist">
   <li class="nav-item aa-me-nav-item">
     <%= inline_svg "administration.svg", class: "aa-me-navsvg"  %>
@@ -76,24 +77,48 @@
   <!--</div>-->
   
   <div class="grid-container aa-search-grid-container">
-    <div class="grid">
-      <div class="grid-sizer"></div>
-      <div class="gutter-sizer"></div>
+    <div class="grid-me">
+      <div class="grid-sizer-me"></div>
+      <div class="gutter-sizer-me"></div>
        <% @annonces.each do |t| %>
-         <div class="grid-item">
+         <div class="grid-item-me">
            <%= link_to annonce_path(t) , { class: "aa-annonce-titre"} do %>
-                <%= image_tag(t.photo.url.insert(4, 's'))  %>
-  
-                <% unless t.name.lines.first.nil? %>
-                  <p class='p-titre'><%= t.name.lines.first[0,70] %></p>
-                <% end %>
-                
-                
-                <% unless t.description.lines.first.nil? %>
-                  <p class='p-description'><%= t.description.lines.first[0,70] %></p>
-                <% end %>
+              <%= image_tag(t.photo.url.insert(4, 's'))  %>
+              <%#= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
+              <% unless t.name.lines.first.nil? %>
+                <p class='p-titre-me'><%= t.name.lines.first[0,70] %></p>
+              <% end %>
+              <% unless t.description.lines.first.nil? %>
+                <p class='p-description-me'><%= t.description.lines.first[0,70] %></p>
+              <% end %>
+              
+              <div class="aa-cache-button-me">
+
+                <div class="aa-me-submenu">
+                  <% case t.envente_yesno %>
+                    <% when nil %>
+                      <%= inline_svg "statut-waiting.svg", class: "aa-confirm-action aa-action-waiting" %>
+                    <% when true %>
+                      <%= inline_svg "statut-confirmed.svg", class: "aa-confirm-action aa-action-confirmed" %>
+                    <% when false %>
+                      <%= inline_svg "statut-refused.svg", class: "aa-confirm-action aa-action-refused" %>
+                  <% end %>
+                </div>
+                <div class="aa-me-submenu">
+                  <%= link_to edit_annonce_path(t), class: "aa-edit-action" do %>
+                    <%= inline_svg "editer.svg", class: "aa-edit-svg" %>
+                  <% end %>
+                </div>
+                <div class="aa-me-submenu">
+                  <%= link_to t , class: "aa-delete-action", method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <%= inline_svg "supprimer.svg", class: "aa-suppr-svg" %>
+                  <% end %>
+                </div>
+
+
+              </div>
             <% end %>
-            </div>
+          </div>
        <% end %>
     </div>
   </div>

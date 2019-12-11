@@ -4,7 +4,7 @@
 
 var $container = false;
 
-// ################################   INDEX
+// ################################   INDEX & SEARCH
 if ( $('.grid').length ) {
   var $container = $('.grid');
   $container.imagesLoaded(function(){
@@ -32,6 +32,39 @@ if ( $('.grid').length ) {
   });
 };
 
+// ################################ ME - USER
+
+
+      
+      // $containerme.delay(3000).masonry('layout');
+      // $containerme.masonry('layout');
+
+      
+  
+
+var $containerme = $('.grid-me');
+
+$( "#annonces-tab" ).click(function() {
+  if ( $('.grid-me').length ) {
+
+      $containerme.masonry({
+          itemSelector: '.grid-item-me',
+          // columnWidth: function(containerWidth){
+          //     return containerWidth / 12;
+          // }
+            columnWidth: '.grid-sizer-me',
+            percentPosition: true,
+            gutter: '.gutter-sizer-me',
+            fitWidth: true
+          
+      });
+      $containerme.masonry('layout');
+      setTimeout(function(){
+        $containerme.masonry('layout');
+        $containerme.delay(3000).masonry('layout');
+      },200); 
+  };
+});
 
 // ################################ TEST INDEX
 
@@ -71,6 +104,11 @@ $( document ).ready(function() {
       $container.delay(3000).masonry('layout');
       $container.masonry('layout');
       // console.log("hello");
+    };
+    if ( $containerme.length ) {
+      $containerme.delay(3000).masonry('layout');
+      $containerme.masonry('layout');
+      // console.log("hello");
     }
   });
   
@@ -78,6 +116,9 @@ $( document ).ready(function() {
   $( window ).change(function() {
     if ( $container.length ) {
       $container.masonry('layout');
+    };
+    if ( $containerme.length ) {
+      $containerme.masonry('layout');
     }
   });
    

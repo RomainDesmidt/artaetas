@@ -87,14 +87,39 @@
        <div class="grid-item">
          <%= link_to "annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
               <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
-
-              <% unless t.name.lines.first.nil? %>
-                <p class='p-titre'><%= t.name.lines.first[0,70] %></p>
+              
+              <% unless t.name.nil? %>
+                <p class='p-titre-search'><%= t.name[0,70] %></p>
               <% end %>
               
+              <div class="aa-search-artisteyearprice">
+                <p class="aa-show-detail-italic">
+                  <% if t.nom_artiste? %>
+                   <%= "#{t.nom_artiste} - "  %>
+                  <% end %>
+                  <% if t.anneecreation? %>
+                    <%= "#{t.anneecreation}" %>
+                  <% end %>
+                </p>
+                
+                <p class="aa-search-price  aa-show-detail-italic">
+                  <% if t.prix   %>
+                    <% if (t.prix.to_i - t.prix) > 0 %>
+                      <%= number_with_delimiter(t.prix.to_s, delimiter: " " ) %>€
+                    <% else %>
+                      <%= number_with_delimiter(t.prix.to_i.to_s, delimiter: " " ) %>€
+                    <% end %>
+                  <% end %>
+                </p>
+              </div>
+
               
-              <% unless t.description.lines.first.nil? %>
-                <p class='p-description'><%= t.description.lines.first[0,70] %></p>
+              
+              <% unless t.description.nil? %>
+                <p class='p-description-search'>
+                  <%= t.description[0,265] %>
+                  <%= "..." if t.description.size > 265 %>
+                </p>
               <% end %>
           <% end %>
           </div>

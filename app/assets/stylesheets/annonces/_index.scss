@@ -58,40 +58,221 @@ textarea.form-control.is-valid {
 // GRID CAROUSEL
 
 
-.grid { 
+.grid,
+.grid-me { 
   background: $backgroundaa;
   margin-left: auto;
   margin-right: auto;
   margin-top: 15px;
   margin-bottom: 35px;
 }
-.grid:after {
+.grid:after,
+.grid-me:after {
   content: '';
   display: block;
   clear: both;
 }
 .grid-sizer,
-.grid-item { width: 300px; }
-.grid-item { 
+.grid-sizer-me,
+.grid-item,
+.grid-item-me { 
+  width: 300px; 
+  
+}
+.grid-item,
+.grid-item-me { 
     float: left; 
     margin-bottom: 1.75%;
     background-color: $bloc;
     padding: 5px;
+    position: relative;
 }
-.grid-item img {
+.grid-item img,
+.grid-item-me img{
   display: block;
   width: 100%;
   object-fit: cover;
 }
 
 .gutter-sizer { width: 20px; }
+.gutter-sizer-me { width: 20px; }
+
+.aa-edit-action {
+  // position: absolute;
+  // top: 5px;
+  // right: 5px;
+  // bottom: 5px;
+  // right: 5px;
+}
+
+.aa-delete-action {
+  // position: absolute;
+  // bottom: 5px;
+  // right: 45px;
+}
+
+.aa-suppr-svg {
+  width: 25px;
+  height: 25px;
+}
+
+.aa-edit-svg {
+  width: 27px;
+  height: 27px;
+}
+
+
+.aa-suppr-svg path,
+.aa-edit-svg path {
+  fill: $entete;
+}
+
+.aa-confirm-action {
+  // position: absolute;
+  // top: 7px;
+  // left: 10px;
+  // bottom: 5px;
+  // right: 45px;
+  
+  height: 27px;
+  width: 27px;
+}
+
+.aa-action-waiting path { fill: #d6d626; }
+.aa-action-confirmed path { fill: #38bc38; }
+.aa-action-refused path { fill: red; }
 
 
 
+.p-titre-me {
+
+  font-size: xx-small;
+  color: black;
+  font-weight: bold;
+  // white-space: nowrap;
+  // text-overflow: ellipsis;
+   // overflow: hidden;
+}
+
+.p-titre-search {
+
+  font-size: 16px;
+  color: black;
+  font-weight: bold;
+  // white-space: nowrap;
+  // text-overflow: ellipsis;
+   // overflow: hidden;
+}
 
 
 
+.p-description-me {
+    font-size: 9px;
+    color: grey;
+    max-width: 40ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
+.p-description-search {
+    font-size: 9px;
+    color: grey;
+    // max-width: 55ch;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+    -moz-text-align-last: center; /* Code for Firefox */
+    text-align-last: center;
+}
+
+
+
+.aa-annonce-titre .p-titre-me {
+    max-width: 40ch;
+    white-space: nowrap;
+    padding-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.aa-annonce-titre .p-titre-search {
+    max-width: 55ch;
+    white-space: nowrap;
+    padding-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.aa-search-artisteyearprice {
+ display: flex; 
+ flex-direction: row;
+ justify-content: space-between;
+ margin-top: 7px;
+ margin-bottom: 10px;
+}
+
+
+.aa-search-price {
+// color: #252525;
+ color: $brandcolor;
+  // margin-top: 15px;
+  font-size: 1rem !important;
+}
+
+.aa-cache-button-me {
+  width: 40px;
+  height: 100px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  top: 5px;
+  right: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.aa-me-submenu {
+  align-item: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+
+}
+
+.aa-me-submenu:hover {
+  width: 100px;
+  // background-color: white;
+  // transform: translate(-67.5px, 0px);
+  transform: translate(-65px, 0px);
+  justify-content: flex-end;
+}
+
+.aa-me-submenu:nth-child(1):hover::before {
+  content: 'Statut';
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: rgba(255,255,255,0.6);
+  color: black;
+}
+
+.aa-me-submenu:nth-child(2):hover::before {
+  content: 'Editer';
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: rgba(255,255,255,0.6);
+  color: black;
+}
+
+.aa-me-submenu:nth-child(3):hover::before {
+  content: 'Supprimer';
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: rgba(255,255,255,0.6);
+  color: black;
+}
 
 
 // FIN GRID CAROUSEL
