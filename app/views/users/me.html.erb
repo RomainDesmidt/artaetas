@@ -95,20 +95,28 @@
               <div class="aa-cache-button-me">
 
                 <div class="aa-me-submenu">
-                  <% case t.envente_yesno %>
-                    <% when nil %>
-                      <%= inline_svg "attente.svg", class: "aa-confirm-action aa-action-waiting" %>
-                    <% when true %>
-                      <%= inline_svg "ok.svg", class: "aa-confirm-action aa-action-confirmed" %>
-                    <% when false %>
-                      <%= inline_svg "erreur.svg", class: "aa-confirm-action aa-action-refused" %>
-                  <% end %>
+                    <% case t.envente_yesno %>
+                      <% when nil %>
+                        <%= link_to "#", class: "aa-link-confirm-action" do %>
+                          <%= inline_svg "attente.svg", class: "aa-confirm-action aa-action-waiting" %>
+                        <% end %>
+                      <% when true %>
+                        <%= link_to "#", class: "aa-link-confirm-action" do %>
+                          <%= inline_svg "ok.svg", class: "aa-confirm-action aa-action-confirmed" %>
+                        <% end %>
+                      <% when false %>
+                        <%= link_to "#", class: "aa-link-confirm-action" do %>
+                          <%= inline_svg "erreur.svg", class: "aa-confirm-action aa-action-refused" %>
+                        <% end %>
+                    <% end %>
                 </div>
+                
                 <div class="aa-me-submenu">
                   <%= link_to edit_annonce_path(t), class: "aa-edit-action" do %>
                     <%= inline_svg "modifier.svg", class: "aa-edit-svg" %>
                   <% end %>
                 </div>
+                
                 <div class="aa-me-submenu">
                   <%= link_to t , class: "aa-delete-action", method: :delete, data: { confirm: 'Are you sure?' } do %>
                     <%= inline_svg "suppression.svg", class: "aa-suppr-svg" %>
