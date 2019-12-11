@@ -257,8 +257,8 @@ textarea.form-control.is-valid {
   content: 'Statut';
   padding-right: 10px;
   padding-left: 10px;
-  background-color: rgba(255,255,255,0.6);
-  color: black;
+  background-color: #fdfdfd;
+  color: $entete;
   position: absolute;
   left: -60px;
 
@@ -269,8 +269,8 @@ textarea.form-control.is-valid {
   content: 'Editer';
   padding-right: 10px;
   padding-left: 10px;
-  background-color: rgba(255,255,255,0.6);
-  color: black;
+  background-color: #fdfdfd;
+  color: $entete;
   position: absolute;
   left: -60px;
 }
@@ -280,8 +280,8 @@ textarea.form-control.is-valid {
   content: 'Supprimer';
   padding-right: 10px;
   padding-left: 10px;
-  background-color: rgba(255,255,255,0.6);
-  color: black;
+  background-color: #fdfdfd;
+  color: $entete;
   position: absolute;
   left: -90px;
 }
