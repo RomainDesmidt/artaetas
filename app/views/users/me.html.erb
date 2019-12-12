@@ -97,15 +97,15 @@
                 <div class="aa-me-submenu">
                     <% case t.envente_yesno %>
                       <% when nil %>
-                        <%= link_to "#", class: "aa-link-confirm-action" do %>
+                        <%= link_to "#", class: "aa-link-confirm-action aa-link-confirm-waiting" do %>
                           <%= inline_svg "attente.svg", class: "aa-confirm-action aa-action-waiting" %>
                         <% end %>
                       <% when true %>
-                        <%= link_to "#", class: "aa-link-confirm-action" do %>
+                        <%= link_to "#", class: "aa-link-confirm-action aa-link-confirm-confirmed" do %>
                           <%= inline_svg "ok.svg", class: "aa-confirm-action aa-action-confirmed" %>
                         <% end %>
                       <% when false %>
-                        <%= link_to "#", class: "aa-link-confirm-action" do %>
+                        <%= link_to "#", class: "aa-link-confirm-action aa-link-confirm-refused" do %>
                           <%= inline_svg "erreur.svg", class: "aa-confirm-action aa-action-refused" %>
                         <% end %>
                     <% end %>

@@ -247,18 +247,54 @@ textarea.form-control.is-valid {
 
 // ------------------------------------------
 
-.aa-link-confirm-action::before {
+// .aa-link-confirm-action::before {
+//   visibility: hidden;
+//   padding-right: 10px;
+//   padding-left: 10px;
+//   background-color: #fdfdfd;
+//   color: $entete;
+//   border-top-left-radius: 5px;
+//   border-bottom-left-radius: 5px;
+  
+// }
+
+.aa-link-confirm-waiting::before {
+  content: 'En Attente';
+  position: absolute;
+  left: -90px;
   visibility: hidden;
-  content: 'Statut';
   padding-right: 10px;
   padding-left: 10px;
   background-color: #fdfdfd;
   color: $entete;
-  position: absolute;
-  left: -60px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  
+}
+
+.aa-link-confirm-refused::before {
+  content: 'Refusé';
+  position: absolute;
+  left: -60px;
+  visibility: hidden;
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: #fdfdfd;
+  color: $entete;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.aa-link-confirm-confirmed::before {
+  content: 'Confirmé';
+  position: absolute;
+  left: -80px;
+  visibility: hidden;
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: #fdfdfd;
+  color: $entete;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .aa-edit-action::before {
@@ -288,7 +324,10 @@ textarea.form-control.is-valid {
 }
 
 
-.aa-link-confirm-action:hover::before { visibility: hidden; }
+.aa-link-confirm-waiting:hover::before { visibility: visible; }
+.aa-link-confirm-refused:hover::before { visibility: visible; }
+.aa-link-confirm-confirmed:hover::before { visibility: visible; }
+
 .aa-edit-action:hover::before { visibility: visible; }
 .aa-delete-action:hover::before { visibility: visible; }
 
