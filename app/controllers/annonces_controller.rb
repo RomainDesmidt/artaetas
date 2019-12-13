@@ -424,11 +424,21 @@ class AnnoncesController < ApplicationController
     Follow.where(follower_id: current_user.id, followee_id: @user.id).first.destroy!
     redirect_to @annonce
   end
+  
+  def edit_formule
+    @annonce = Annonce.find(params[:id])
+  end
+  
+  def update_formule
+    @annonce = Annonce.find(params[:id])
+    @annonce.update(annonce_params)
+    redirect_to users_me_path( :view_param => "annonce")
+  end
 
   private
 
   def annonce_params
-    params.require(:annonce).permit(:name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider, categorie_annonces: [], courant_annonces: [], couleur_annonces: [], categorie_search2: [], courant_search2: [], couleur_search2: [], categories: [], courant_ids: [], couleur_ids: [], cat_ids: [])
+    params.require(:annonce).permit(:formule, :name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider, categorie_annonces: [], courant_annonces: [], couleur_annonces: [], categorie_search2: [], courant_search2: [], couleur_search2: [], categories: [], courant_ids: [], couleur_ids: [], cat_ids: [])
   end
 end
 

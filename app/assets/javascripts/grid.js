@@ -44,28 +44,51 @@ if ( $('.grid').length ) {
 
 var $containerme = $('.grid-me');
 
-$( "#annonces-tab" ).click(function() {
+if ( $( "#annonces-tab" ).data("view") == "primary" ) {
+  
   if ( $('.grid-me').length ) {
-
-      $containerme.masonry({
-          itemSelector: '.grid-item-me',
-          // columnWidth: function(containerWidth){
-          //     return containerWidth / 12;
-          // }
-            columnWidth: '.grid-sizer-me',
-            percentPosition: true,
-            gutter: '.gutter-sizer-me',
-            fitWidth: true
-          
-      });
-      $containerme.masonry('layout');
-      setTimeout(function(){
+  
+        $containerme.masonry({
+            itemSelector: '.grid-item-me',
+            // columnWidth: function(containerWidth){
+            //     return containerWidth / 12;
+            // }
+              columnWidth: '.grid-sizer-me',
+              percentPosition: true,
+              gutter: '.gutter-sizer-me',
+              fitWidth: true
+            
+        });
         $containerme.masonry('layout');
-        $containerme.delay(3000).masonry('layout');
-      },200); 
-  };
-});
-
+        setTimeout(function(){
+          $containerme.masonry('layout');
+          $containerme.delay(3000).masonry('layout');
+        },200); 
+    };
+    
+} else {
+  $( "#annonces-tab" ).click(function() {
+    if ( $('.grid-me').length ) {
+  
+        $containerme.masonry({
+            itemSelector: '.grid-item-me',
+            // columnWidth: function(containerWidth){
+            //     return containerWidth / 12;
+            // }
+              columnWidth: '.grid-sizer-me',
+              percentPosition: true,
+              gutter: '.gutter-sizer-me',
+              fitWidth: true
+            
+        });
+        $containerme.masonry('layout');
+        setTimeout(function(){
+          $containerme.masonry('layout');
+          $containerme.delay(3000).masonry('layout');
+        },200); 
+    };
+  });
+};
 // ################################ TEST INDEX
 
 

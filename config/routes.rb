@@ -18,6 +18,8 @@ Rails.application.routes.draw do
         put "unbookmark", to: "annonces#unbookmark"
         put "destroy_photo_un", to: "annonces#destroy_photo_un"
         put "destroy_photo_deux", to: "annonces#destroy_photo_deux"
+        get "edit_formule", to: "annonces#edit_formule"
+        patch "update_formule", to: "annonces#update_formule"
     end
 end
   # resources :annonces
