@@ -1,27 +1,51 @@
 
-<ul class="nav nav-tabs aa-under-navbar" id="myTab" role="tablist">
-  <li class="nav-item aa-me-nav-item">
-    <%= inline_svg "administration.svg", class: "aa-me-navsvg"  %>
-    <a class="nav-link active" id="compte-tab" data-toggle="tab" href="#compte" role="tab" aria-controls="compte" aria-selected="true">Mon compte</a>
-  </li>
-  <li class="nav-item aa-me-nav-item">
-    <%= inline_svg "groupe.svg", class: "aa-me-navsvg" %>
-    <a class="nav-link" id="annonces-tab" data-toggle="tab" href="#annonces" role="tab" aria-controls="annonces" aria-selected="false">Mes annonces</a>
-  </li>
-  <li class="nav-item aa-me-nav-item">
-  <%= inline_svg "prix-composant.svg", class: "aa-me-navsvg"  %>
-    <a class="nav-link" id="transactions-tab" data-toggle="tab" href="#transactions" role="tab" aria-controls="transactions" aria-selected="false">Mes transactions</a>
-  </li>
+<% if params[:view_param] == "annonce" %>
+  <ul class="nav nav-tabs aa-under-navbar" id="myTab" role="tablist">
     <li class="nav-item aa-me-nav-item">
-  <%= inline_svg "profil.svg", class: "aa-me-navsvg"  %>
-    <a class="nav-link" id="profil-tab" href="/users/<%= current_user.id %>"  aria-selected="false">Profil public</a>
-  </li>
-</ul>
+      <%= inline_svg "administration.svg", class: "aa-me-navsvg"  %>
+      <a class="nav-link" id="compte-tab" data-toggle="tab" href="#compte" role="tab" aria-controls="compte" aria-selected="false">Mon compte</a>
+    </li>
+    <li class="nav-item aa-me-nav-item">
+      <%= inline_svg "groupe.svg", class: "aa-me-navsvg" %>
+      <a class="nav-link active" id="annonces-tab" data-toggle="tab" data-view="primary" href="#annonces" role="tab" aria-controls="annonces" aria-selected="true">Mes annonces</a>
+    </li>
+    <li class="nav-item aa-me-nav-item">
+    <%= inline_svg "prix-composant.svg", class: "aa-me-navsvg"  %>
+      <a class="nav-link" id="transactions-tab" data-toggle="tab" href="#transactions" role="tab" aria-controls="transactions" aria-selected="false">Mes transactions</a>
+    </li>
+      <li class="nav-item aa-me-nav-item">
+    <%= inline_svg "profil.svg", class: "aa-me-navsvg"  %>
+      <a class="nav-link" id="profil-tab" href="/users/<%= current_user.id %>"  aria-selected="false">Profil public</a>
+    </li>
+  </ul>
+<% else %>
+  <ul class="nav nav-tabs aa-under-navbar" id="myTab" role="tablist">
+    <li class="nav-item aa-me-nav-item">
+      <%= inline_svg "administration.svg", class: "aa-me-navsvg"  %>
+      <a class="nav-link active" id="compte-tab" data-toggle="tab" href="#compte" role="tab" aria-controls="compte" aria-selected="true">Mon compte</a>
+    </li>
+    <li class="nav-item aa-me-nav-item">
+      <%= inline_svg "groupe.svg", class: "aa-me-navsvg" %>
+      <a class="nav-link" id="annonces-tab" data-toggle="tab" href="#annonces" role="tab" aria-controls="annonces" aria-selected="false">Mes annonces</a>
+    </li>
+    <li class="nav-item aa-me-nav-item">
+    <%= inline_svg "prix-composant.svg", class: "aa-me-navsvg"  %>
+      <a class="nav-link" id="transactions-tab" data-toggle="tab" href="#transactions" role="tab" aria-controls="transactions" aria-selected="false">Mes transactions</a>
+    </li>
+      <li class="nav-item aa-me-nav-item">
+    <%= inline_svg "profil.svg", class: "aa-me-navsvg"  %>
+      <a class="nav-link" id="profil-tab" href="/users/<%= current_user.id %>"  aria-selected="false">Profil public</a>
+    </li>
+  </ul>
+<% end %>
 <div class="tab-content" id="myTabContent">
 
 
-
-<div class="tab-pane fade" id="annonces" role="tabpanel" aria-labelledby="annonces-tab">
+<% if params[:view_param] == "annonce" %>
+  <div class="tab-pane fade active show" id="annonces" role="tabpanel" aria-labelledby="annonces-tab">
+<% else %>
+  <div class="tab-pane fade" id="annonces" role="tabpanel" aria-labelledby="annonces-tab">
+<% end %>
 <%# --------------------------------------------------------------------------------------------- %>
   <!--<div class="aa-search-annonce-container">-->
   <!--  <%# if current_user.annonces.count > 0 %>-->
@@ -118,10 +142,18 @@
                 </div>
                 
                 <div class="aa-me-submenu">
+                  <%= link_to edit_formule_annonce_path(t) , class: "aa-dollar-action" do %>
+                    <%= inline_svg "prix-composant.svg", class: "aa-suppr-svg" %>
+                  <% end %>
+                </div>
+                
+                <div class="aa-me-submenu">
                   <%= link_to t , class: "aa-delete-action", method: :delete, data: { confirm: 'Are you sure?' } do %>
                     <%= inline_svg "suppression.svg", class: "aa-suppr-svg" %>
                   <% end %>
                 </div>
+                
+
 
 
               </div>
@@ -142,8 +174,11 @@
 
 
 
-
+<% if params[:view_param] == "annonce" %>
+  <div class="tab-pane fade" id="compte" role="tabpanel" aria-labelledby="compte-tab">
+<% else %>
   <div class="tab-pane fade show active" id="compte" role="tabpanel" aria-labelledby="compte-tab">
+<% end %>
     <div class="aa-me-moncompte-container">
       <!--<div class="aa-me-tablematiere">-->
       <!--  <div class="aa-me-tablematiere-ilot">-->

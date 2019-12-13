@@ -1,0 +1,7 @@
+<div style="margin-top: 55px;"></div>
+<div style="margin-left: 20%; margin-right: 20%;">
+    <%= simple_form_for @annonce, :url => update_formule_annonce_path do |f| %>
+        <%= f.input :formule, hint: "statut de votre annonce", :collection => ["Mise en Avant","Mise a la une", "standard"], require: false %>
+        <%= f.submit "Modifier l'annonce", class: "btn btn-primary aa-mobile-btn aa-new-publierannonce" %>
+    <% end %>
+</div>
