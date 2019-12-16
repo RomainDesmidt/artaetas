@@ -31,7 +31,14 @@
           <%# i += 1 %>
       <%# end %>
      <% @annonces.each do |t| %>
-       <div class="grid-item">
+      <% case t.formule %>
+      <% when "standard" %>
+        <div class="grid-item">
+      <% when "Mise en Avant" %>
+        <div class="grid-item aa-formule-mea">
+      <% when "Mise a la une" %>
+        <div class="grid-item aa-formule-malu">
+      <% end %>
          <%= link_to "annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
               <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
 

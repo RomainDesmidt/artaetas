@@ -13,7 +13,7 @@ ActiveAdmin.register Annonce do
     actions
   end
     
-  show do
+  show :title => :id do
     attributes_table do
       row :envente_yesno
       row "Photo 1" do |image|
@@ -79,6 +79,39 @@ ActiveAdmin.register Annonce do
     link_to 'Dépublier', depublier_admin_annonce_path, method: :put
   end
   
+  action_item :statutstandard, only: [:show], if: proc { Annonce.find(params[:id]).formule == "Mise a la une" || Annonce.find(params[:id]).formule == "Mise en Avant" || Annonce.find(params[:id]).formule == nil || Annonce.find(params[:id]).formule == "standard" }  do 
+    link_to 'Standard', standard_admin_annonce_path, method: :put
+  end
+  
+  action_item :statutmea, only: [:show], if: proc { Annonce.find(params[:id]).formule == "Standard" || Annonce.find(params[:id]).formule == "Mise a la une"  }  do 
+    link_to 'MEA', mea_admin_annonce_path, method: :put
+  end
+  
+  action_item :statutmalu, only: [:show], if: proc { Annonce.find(params[:id]).formule == "Standard" || Annonce.find(params[:id]).formule ==  "Mise en Avant"  }  do 
+    link_to 'MALU', malu_admin_annonce_path, method: :put
+  end
+  
+  member_action :standard, :method => :put do
+    @modif_annonce = Annonce.find(params[:id])
+    @modif_annonce.formule = "Standard"
+    @modif_annonce.save!
+    redirect_to admin_annonce_path
+  end
+  
+  member_action :mea, :method => :put do
+    @modif_annonce = Annonce.find(params[:id])
+    @modif_annonce.formule = "Mise en Avant"
+    @modif_annonce.save!
+    redirect_to admin_annonce_path
+  end
+  
+  member_action :malu, :method => :put do
+    @modif_annonce = Annonce.find(params[:id])
+    @modif_annonce.formule = "Mise a la une"
+    @modif_annonce.save!
+    redirect_to admin_annonce_path
+  end
+  
   member_action :publier, :method => :put do
     @modif_annonce = Annonce.find(params[:id])
     @modif_annonce.envente_yesno = true
@@ -117,7 +150,7 @@ ActiveAdmin.register Annonce do
 
 
 
-  permit_params   :user_id_artiste, :envente_yesno, :name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat,  :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider, categorie_annonces: [], courant_annonces: [], couleur_annonces: [] , categorie_search2: [], courant_search2: [], couleur_search2: [] , categorie_ids: [] , courant_ids: [] , couleur_ids: [], cat_ids: []
+  permit_params   :formule, :user_id_artiste, :envente_yesno, :name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat,  :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider, categorie_annonces: [], courant_annonces: [], couleur_annonces: [] , categorie_search2: [], courant_search2: [], couleur_search2: [] , categorie_ids: [] , courant_ids: [] , couleur_ids: [], cat_ids: []
   #
   # or
   #
