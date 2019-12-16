@@ -7,6 +7,7 @@ ActiveAdmin.register Annonce do
     selectable_column
     id_column
     column "Publiée", :envente_yesno
+    column :formule
     column :name
     column :user
     column :created_at
