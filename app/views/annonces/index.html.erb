@@ -21,6 +21,8 @@
   <div class="grid">
     <div class="grid-sizer"></div>
     <div class="gutter-sizer"></div>
+    
+<%# ###################################### Index2 ####################################################### %>
     <%# i = 1 %>
     <%#= asset_path("artsy/1.jpg") %>
       <%# 56.times do %>
@@ -30,6 +32,7 @@
           <!--</div>-->
           <%# i += 1 %>
       <%# end %>
+<%# ###################################### INIT ####################################################### %>
      <%# @annonces.each do |t| %>
       <%# case t.formule %>
       <%# when "Standard" %>
@@ -53,50 +56,99 @@
           <%# end %>
           <!--</div>-->
      <%# end %>
-     <% i = 2 %>
-     <% loop do %>
-      <% if i == 2 %>
-        <% unless @annonces_pre[0].nil? %>
-          <div class="grid-item aa-formule-malu">
-            <%= link_to "annonces/#{@annonces_pre[0].id}", { class: "aa-annonce-titre"} do %>
-              <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: @annonces_pre[0].photo.url.insert(4, 's') })  %>
-              <% unless @annonces_pre[0].name.lines.first.nil? %>
-                <p class='p-titre'><%= @annonces_pre[0].name.lines.first[0,70] %></p>
-              <% end %>
-              <% unless @annonces_pre[0].description.lines.first.nil? %>
-                <p class='p-description'><%= @annonces_pre[0].description.lines.first[0,70] %></p>
-              <% end %>
-            <% end %>
-          </div>
-          <% @annonces_pre.slice!(0) %>
-        <% end %>
-        <% i = 0 %>
-      <% else %>
-        <% unless @annonces[0].nil? %>
-          <div class="grid-item">
-            <%= link_to "annonces/#{@annonces[0].id}", { class: "aa-annonce-titre"} do %>
-              <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: @annonces[0].photo.url.insert(4, 's') })  %>
-              <% unless @annonces[0].name.lines.first.nil? %>
-                <p class='p-titre'><%= @annonces[0].name.lines.first[0,70] %></p>
-              <% end %>
-              <% unless @annonces[0].description.lines.first.nil? %>
-                <p class='p-description'><%= @annonces[0].description.lines.first[0,70] %></p>
-              <% end %>
-            <% end %>
-          </div>
-          <% @annonces.slice!(0) %>
-        <% end %>
-        <% i += 1 %>
-      <% end %>
+     
+<%# ###################################### LOOP ####################################################### %>
+     <%# i = 2 %>
+     <%# loop do %>
+      <%# if i == 2 %>
+        <%# unless @annonces_pre[0].nil? %>
+          <!--<div class="grid-item aa-formule-malu">-->
+            <%#= link_to "annonces/#{@annonces_pre[0].id}", { class: "aa-annonce-titre"} do %>
+              <%#= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: @annonces_pre[0].photo.url.insert(4, 's') })  %>
+              <%# unless @annonces_pre[0].name.lines.first.nil? %>
+                <!--<p class='p-titre'><%#= @annonces_pre[0].name.lines.first[0,70] %></p>-->
+              <%# end %>
+              <%# unless @annonces_pre[0].description.lines.first.nil? %>
+                <!--<p class='p-description'><%#= @annonces_pre[0].description.lines.first[0,70] %></p>-->
+              <%# end %>
+            <%# end %>
+          <!--</div>-->
+          <%# @annonces_pre.slice!(0) %>
+        <%# end %>
+        <%# i = 0 %>
+      <%# else %>
+        <%# unless @annonces[0].nil? %>
+          <!--<div class="grid-item">-->
+            <%#= link_to "annonces/#{@annonces[0].id}", { class: "aa-annonce-titre"} do %>
+              <%#= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: @annonces[0].photo.url.insert(4, 's') })  %>
+              <%# unless @annonces[0].name.lines.first.nil? %>
+                <!--<p class='p-titre'><%#= @annonces[0].name.lines.first[0,70] %></p>-->
+              <%# end %>
+              <%# unless @annonces[0].description.lines.first.nil? %>
+                <!--<p class='p-description'><%#= @annonces[0].description.lines.first[0,70] %></p>-->
+              <%# end %>
+            <%# end %>
+          <!--</div>-->
+          <%# @annonces.slice!(0) %>
+        <%# end %>
+        <%# i += 1 %>
+      <%# end %>
       
-      
-      <% if @annonces[0].nil? %>
-       <% break %>
+      <%# if @annonces[0].nil? %>
+       <%# break %>
+      <%# end %>
+     <%# end %>
+     
+<%# ###################################### EACH ON Standard ####################################################### %>
+
+<% a_pre = [] %>
+<% a_pre.replace(@annonces_pre) %>
+<% i = 1 %>
+     <% @annonces.each do |t| %>
+       <% if a_pre[0].nil? %>
+        <% a_pre = [] %>
+        <% a_pre.replace(@annonces_pre) %>
+       <% end %>
+       <% if i == 1 %>
+         <% unless a_pre[0].nil? %>
+           <div class="grid-item aa-formule-malu">
+             <%= link_to "annonces/#{a_pre[0].id}", { class: "aa-annonce-titre"} do %>
+                <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_pre[0].photo.url.insert(4, 's') })  %>
+                <% unless a_pre[0].name.lines.first.nil? %>
+                  <p class='p-titre'><%= a_pre[0].name.lines.first[0,70] %></p>
+                <% end %>
+                
+                
+                <% unless a_pre[0].description.lines.first.nil? %>
+                  <p class='p-description'><%= a_pre[0].description.lines.first[0,70] %></p>
+                <% end %>
+              <% end %>
+            </div>
+            <% a_pre.slice!(0) %>
+            <% i = 0 %>
+          <% end %>
+       <% end %>
+         
+       
+     
+        <div class="grid-item">
+          <%= link_to "annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
+            <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
+            <% unless t.name.lines.first.nil? %>
+              <p class='p-titre'><%= t.name.lines.first[0,70] %></p>
+            <% end %>
+              
+            <% unless t.description.lines.first.nil? %>
+              <p class='p-description'><%= t.description.lines.first[0,70] %></p>
+            <% end %>
+            
+          <% end %>
+        </div>
+        <% i += 1 %>  
       <% end %>
-     <% end %>
+     
   </div>
 </div>
-
 <%# ###################################### Boutons ####################################################### %>
 
 <div class="aa-button">
