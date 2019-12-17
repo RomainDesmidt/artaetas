@@ -16,8 +16,13 @@ class AnnoncesController < ApplicationController
   
   def index
     @annonces_confirmeduser = Annonce.joins(:user).where("users.confirmation_webmaster = true")
-    @annonces = @annonces_confirmeduser.where(envente_yesno: true)
+    @annonces_all = @annonces_confirmeduser.where(envente_yesno: true)
     @landingp = 1
+    @annonces_premium = @annonces_all.where(formule: "Mise en Avant").or(@annonces_all.where(formule: "Mise a la une"))
+    @annonces_standard = @annonces_all.where(formule: "Standard")
+    @annonces = @annonces_standard.to_a
+    @annonces_pre = @annonces_premium.to_a
+    
   end
   
   def index2
