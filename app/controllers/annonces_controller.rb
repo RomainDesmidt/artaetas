@@ -116,16 +116,26 @@ class AnnoncesController < ApplicationController
     couleurs_annonceunitaire = []
     couleurs_choisies = []
     
+    # Restrict
+    @annonces_all = Annonce.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true)
+    @annonces_premium = @annonces_all.where(formule: "Mise en Avant").or(@annonces_all.where(formule: "Mise a la une")).order('random()')
+    @annonces_standard = @annonces_all.where(formule: "Standard").order('random()')
+    @annonces = @annonces_standard
+    @annonces_pre = @annonces_premium
+
+    
     # Shown Annonces
-    @annonces = Annonce.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true)
+
     unless params[:term] == "Que recherchez-vous?"
       if params[:term]
         @annonces = @annonces.where('annonces.name ILIKE ? OR annonces.description ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%")
+        @annonces_pre = @annonces_pre.where('annonces.name ILIKE ? OR annonces.description ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%")
       end
     end
     unless params[:prix_slider] == ''
       if params[:prix_slider]
         @annonces = @annonces.where("prix > ?", @pricemin)
+        @annonces_pre = @annonces_pre.where("prix > ?", @pricemin)
       end
     end
 
@@ -133,6 +143,7 @@ class AnnoncesController < ApplicationController
     unless params[:prix_slider] == ''
       if params[:prix_slider]
         @annonces = @annonces.where("prix < ?", @pricemax)
+        @annonces_pre = @annonces_pre.where("prix < ?", @pricemax)
       end
     end
 
@@ -146,6 +157,7 @@ class AnnoncesController < ApplicationController
           end
         end
         @annonces = @annonces.where(id: @categorie_idarray)
+        @annonces_pre = @annonces_pre.where(id: @categorie_idarray)
       end
     end
 
@@ -159,6 +171,7 @@ class AnnoncesController < ApplicationController
           end
         end
         @annonces = @annonces.where(id: @courant_idarray)
+        @annonces_pre = @annonces_pre.where(id: @courant_idarray)
       end
     end
 
@@ -172,10 +185,12 @@ class AnnoncesController < ApplicationController
           end
         end
         @annonces = @annonces.where(id: @couleur_idarray)
+        @annonces_pre = @annonces_pre.where(id: @couleur_idarray)
       end
     end
 
-
+    @annonces = @annonces_standard.to_a
+    @annonces_pre = @annonces_premium.to_a
   end
 
 
