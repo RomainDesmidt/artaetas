@@ -18,7 +18,7 @@ class AnnoncesController < ApplicationController
     @annonces_confirmeduser = Annonce.joins(:user).where("users.confirmation_webmaster = true")
     @annonces_all = @annonces_confirmeduser.where(envente_yesno: true)
     @landingp = 1
-    @annonces_premium = @annonces_all.where(formule: "Mise en Avant").or(@annonces_all.where(formule: "Mise a la une")).order('random()')
+    @annonces_premium = @annonces_all.where(formule: "Mise a la une").order('random()')
     @annonces_standard = @annonces_all.where(formule: "Standard").order('random()')
     @annonces = @annonces_standard.to_a
     @annonces_pre = @annonces_premium.to_a
@@ -189,8 +189,8 @@ class AnnoncesController < ApplicationController
       end
     end
 
-    @annonces = @annonces_standard.to_a
-    @annonces_pre = @annonces_premium.to_a
+    @annonces = @annonces.to_a
+    @annonces_pre = @annonces_pre.to_a
   end
 
 
