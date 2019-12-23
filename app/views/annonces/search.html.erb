@@ -23,6 +23,9 @@
       <% else %>
         <%= select_tag :couleur_search2 , options_from_collection_for_select(Couleur.all, "id", "couleur_dominante", selected: @couleur_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd3"  %>  
       <% end %>
+      
+
+      
 
      
     <% if params[:prix_slider] == '' || params[:prix_slider].nil?%>
@@ -32,7 +35,25 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="prix_slider" class="aa-label-prix-slider">Prix</label>
       <input name="prix_slider" id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="<%= "#{@slider_max}" %>" data-slider-step="5" data-slider-value="[<%= "#{@pricemin}" %>,<%= "#{@pricemax}" %>]"/>
     <% end %>
-
+    
+    <% if params[:disposition] == '' || params[:disposition].nil?%>
+      <%= select_tag :disposition, options_for_select(["Portrait","Paysage"], @disposition), include_blank: true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+    <% else %>
+      <%= select_tag :disposition, options_for_select(["Portrait","Paysage"], @disposition), include_blank: true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+    <% end %>
+    
+    <% if params[:facture_achat] == '' || params[:facture_achat].nil?%>
+      <%= select_tag :facture_achat, options_for_select([["Pas de Facture d'achat",false],["Facture présente",true]], @facture_achat), include_blank: true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+    <% else %>
+      <%= select_tag :facture_achat, options_for_select([["Pas de Facture d'achat",false],["Facture présente",true]], @facture_achat), include_blank: true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+    <% end %>
+    
+    <% if params[:ordre_annonce] == '' || params[:ordre_annonce].nil?%>
+      <%= select_tag :ordre_annonce, options_for_select(["PRIX CROISSANT","PRIX DECROISSANT"], @ordre_annonce), include_blank: true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+    <% else %>
+      <%= select_tag :ordre_annonce, options_for_select(["PRIX CROISSANT","PRIX DECROISSANT"], @ordre_annonce), include_blank: true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+    <% end %>
+    <%= @probleme %>
       <%= submit_tag 'Rechercher', :class => "btn btn-primary aa-search-field-form-btn" %>
 
     <% end %>
