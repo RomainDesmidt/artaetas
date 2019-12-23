@@ -19,7 +19,7 @@ class AnnoncesController < ApplicationController
     @annonces_all = @annonces_confirmeduser.where(envente_yesno: true)
     @landingp = 1
     @annonces_premium = @annonces_all.where(formule: "Mise a la une").order('random()')
-    @annonces_standard = @annonces_all.where(formule: "Standard").order('random()')
+    @annonces_standard = @annonces_all.where(formule: "Standard").or(@annonces_all.where(formule: "Mise en Avant")).order('random()')
     @annonces = @annonces_standard.to_a
     @annonces_pre = @annonces_premium.to_a
     
@@ -98,6 +98,9 @@ class AnnoncesController < ApplicationController
     @categorie_search2 = params[:categorie_search2]
     @courant_search2 = params[:courant_search2]
     @couleur_search2 = params[:couleur_search2]
+    @disposition = params[:disposition]
+    @facture_achat = params[:facture_achat]
+    @ordre_annonce = params[:ordre_annonce]
     unless params[:prix_slider].nil?
       @pricemin = params[:prix_slider].split(",",2)[0].to_i
       @pricemax = params[:prix_slider].split(",",2)[1].to_i
@@ -118,8 +121,10 @@ class AnnoncesController < ApplicationController
     
     # Restrict
     @annonces_all = Annonce.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true)
-    @annonces_premium = @annonces_all.where(formule: "Mise en Avant").or(@annonces_all.where(formule: "Mise a la une")).order('random()')
-    @annonces_standard = @annonces_all.where(formule: "Standard").order('random()')
+    # @annonces_premium = @annonces_all.where(formule: "Mise en Avant").or(@annonces_all.where(formule: "Mise a la une")).order('random()')
+    @annonces_premium = @annonces_all.where(formule: "Mise en Avant").or(@annonces_all.where(formule: "Mise a la une"))
+    # @annonces_standard = @annonces_all.where(formule: "Standard").order('random()')
+    @annonces_standard = @annonces_all.where(formule: "Standard")
     @annonces = @annonces_standard
     @annonces_pre = @annonces_premium
 
@@ -146,6 +151,21 @@ class AnnoncesController < ApplicationController
         @annonces_pre = @annonces_pre.where("prix < ?", @pricemax)
       end
     end
+    
+    unless params[:disposition] == ''
+      if params[:disposition]
+        @annonces = @annonces.where("disposition = ?", @disposition)
+        @annonces_pre = @annonces_pre.where("disposition = ?", @disposition)
+      end
+    end
+  
+    unless params[:facture_achat] == '' 
+      if params[:facture_achat]
+        @annonces = @annonces.where(facture_achat: @facture_achat)
+        @annonces_pre = @annonces_pre.where(facture_achat: @facture_achat)
+      end
+    end
+    
 
     unless params[:categorie_search2] == ''
       if params[:categorie_search2]
@@ -188,7 +208,19 @@ class AnnoncesController < ApplicationController
         @annonces_pre = @annonces_pre.where(id: @couleur_idarray)
       end
     end
-
+    
+    unless params[:ordre_annonce] == '' 
+      if params[:ordre_annonce] == "PRIX CROISSANT"
+        @annonces = @annonces.order('prix ASC')
+        @annonces_pre = @annonces_pre.order('prix ASC')
+        # @probleme = "Prix croissant"
+      end
+      if params[:ordre_annonce] == "PRIX DECROISSANT"
+        @annonces = @annonces.order('prix DESC')
+        @annonces_pre = @annonces_pre.order('prix DESC')
+        # @probleme = "Prix decroissant"
+      end
+    end
     @annonces = @annonces.to_a
     @annonces_pre = @annonces_pre.to_a
   end
@@ -458,7 +490,7 @@ class AnnoncesController < ApplicationController
   private
 
   def annonce_params
-    params.require(:annonce).permit(:formule, :name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache,  :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider, categorie_annonces: [], courant_annonces: [], couleur_annonces: [], categorie_search2: [], courant_search2: [], couleur_search2: [], categories: [], courant_ids: [], couleur_ids: [], cat_ids: [])
+    params.require(:annonce).permit(:ordre_annonce, :formule, :name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache, :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider, categorie_annonces: [], courant_annonces: [], couleur_annonces: [], categorie_search2: [], courant_search2: [], couleur_search2: [], categories: [], courant_ids: [], couleur_ids: [], cat_ids: [])
   end
 end
 
