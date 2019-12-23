@@ -49,9 +49,9 @@
     <% end %>
     
     <% if params[:ordre_annonce] == '' || params[:ordre_annonce].nil?%>
-      <%= select_tag :ordre_annonce, options_for_select(["PRIX CROISSANT","PRIX DECROISSANT"], @ordre_annonce), include_blank: true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+      <%= select_tag :ordre_annonce, options_for_select([["Choisir un Tri",""],"PRIX CROISSANT","PRIX DECROISSANT"], ""), include_blank: false, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
     <% else %>
-      <%= select_tag :ordre_annonce, options_for_select(["PRIX CROISSANT","PRIX DECROISSANT"], @ordre_annonce), include_blank: true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+      <%= select_tag :ordre_annonce, options_for_select([["Choisir un Tri",""],"PRIX CROISSANT","PRIX DECROISSANT"], @ordre_annonce), include_blank: false, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
     <% end %>
     <%= @probleme %>
       <%= submit_tag 'Rechercher', :class => "btn btn-primary aa-search-field-form-btn" %>

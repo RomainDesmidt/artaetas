@@ -167,7 +167,7 @@ class AnnoncesController < ApplicationController
     end
     
 
-    unless params[:categorie_search2] == ''
+    unless params[:categorie_search2] == '' 
       if params[:categorie_search2]
         Annonce.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true).each do |annonce_unitaire|
           categories_annonceunitaire = annonce_unitaire.categorie_annonces.collect {|u| u.categorie_id}
@@ -209,7 +209,10 @@ class AnnoncesController < ApplicationController
       end
     end
     
-    unless params[:ordre_annonce] == '' 
+    if params[:ordre_annonce] == '' || params[:ordre_annonce].nil?
+      @annonces = @annonces.order('random()')
+      @annonces_pre = @annonces_pre.order('random()')
+    else
       if params[:ordre_annonce] == "PRIX CROISSANT"
         @annonces = @annonces.order('prix ASC')
         @annonces_pre = @annonces_pre.order('prix ASC')
