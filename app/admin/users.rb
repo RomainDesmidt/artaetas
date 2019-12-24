@@ -30,7 +30,7 @@ ActiveAdmin.register User do
   end
 
   batch_action :destroy, false
-  permit_params :login, :password, :password_confirmation, :email, :username, :confirmation_webmaster, :surname, :lastname, :afficher_email, :afficher_identite, :afficher_tel, :current_password, :instagram, :facebook, :website
+  permit_params :login, :password, :password_confirmation, :email, :username, :confirmation_webmaster, :surname, :lastname, :afficher_email, :afficher_identite, :afficher_tel, :current_password, :instagram, :facebook, :website, :codepostal, :paysresidence
 #
 # or
 #

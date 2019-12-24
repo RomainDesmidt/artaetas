@@ -101,6 +101,11 @@ class AnnoncesController < ApplicationController
     @disposition = params[:disposition]
     @facture_achat = params[:facture_achat]
     @ordre_annonce = params[:ordre_annonce]
+    @code_postal = params[:code_postal]
+    @pays = params[:pays]
+    # @code_postal_all = User.all.collect { |x| x.codepostal.divmod(1000)[0]}
+    @code_postal_all = User.all.collect { |x| x.codepostal}
+    @code_postal_all = @code_postal_all.uniq
     unless params[:prix_slider].nil?
       @pricemin = params[:prix_slider].split(",",2)[0].to_i
       @pricemax = params[:prix_slider].split(",",2)[1].to_i
@@ -209,6 +214,24 @@ class AnnoncesController < ApplicationController
       end
     end
     
+    unless params[:code_postal] == '' 
+      if params[:code_postal]
+        # @annonces = @annonces.joins(:user).where(User.arel_table[:codepostal].as("TEXT").matches("#{@code_postal}%")  )
+        # @annonces = @annonces.joins(:user).where("users.codepostal ILIKE ?", @code_postal.to_i.divmod(1000)[0].to_s)   
+        # @annonces = @annonces.joins(:user).where({users: { codepostal: @code_postal} })   
+        @annonces = @annonces.joins(:user).where({users: { codepostal: @code_postal} })
+        @annonces_pre = @annonces_pre.joins(:user).where({users: { codepostal: @code_postal} })   
+      end
+    end
+    
+    unless params[:pays] == '' 
+      if params[:pays]
+        @annonces = @annonces.joins(:user).where({users: { paysresidence: @pays} })
+        @annonces_pre = @annonces_pre.joins(:user).where({users: { paysresidence: @pays} })   
+      end
+    end
+    
+    
     if params[:ordre_annonce] == '' || params[:ordre_annonce].nil?
       @annonces = @annonces.order('random()')
       @annonces_pre = @annonces_pre.order('random()')
@@ -223,6 +246,27 @@ class AnnoncesController < ApplicationController
         @annonces_pre = @annonces_pre.order('prix DESC')
         # @probleme = "Prix decroissant"
       end
+      if params[:ordre_annonce] == "CREATION CROISSANT"
+        @annonces = @annonces.order('anneecreation ASC')
+        @annonces_pre = @annonces_pre.order('anneecreation ASC')
+        # @probleme = "Prix decroissant"
+      end
+      if params[:ordre_annonce] == "CREATION DECROISSANT"
+        @annonces = @annonces.order('anneecreation DESC')
+        @annonces_pre = @annonces_pre.order('anneecreation DESC')
+        # @probleme = "Prix decroissant"
+      end
+      if params[:ordre_annonce] == "ANNONCE CROISSANT"
+        @annonces = @annonces.order('anneecreation ASC')
+        @annonces_pre = @annonces_pre.order('anneecreation ASC')
+        # @probleme = "Prix decroissant"
+      end
+      if params[:ordre_annonce] == "ANNONCE DECROISSANT"
+        @annonces = @annonces.order('anneecreation DESC')
+        @annonces_pre = @annonces_pre.order('anneecreation DESC')
+        # @probleme = "Prix decroissant"
+      end
+  
     end
     @annonces = @annonces.to_a
     @annonces_pre = @annonces_pre.to_a
@@ -493,7 +537,7 @@ class AnnoncesController < ApplicationController
   private
 
   def annonce_params
-    params.require(:annonce).permit(:ordre_annonce, :formule, :name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache, :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider, categorie_annonces: [], courant_annonces: [], couleur_annonces: [], categorie_search2: [], courant_search2: [], couleur_search2: [], categories: [], courant_ids: [], couleur_ids: [], cat_ids: [])
+    params.require(:annonce).permit(:pays, :code_postal, :ordre_annonce, :formule, :name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache, :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider, categorie_annonces: [], courant_annonces: [], couleur_annonces: [], categorie_search2: [], courant_search2: [], couleur_search2: [], categories: [], courant_ids: [], couleur_ids: [], cat_ids: [])
   end
 end
 
