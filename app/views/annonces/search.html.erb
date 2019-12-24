@@ -37,21 +37,34 @@
     <% end %>
     
     <% if params[:disposition] == '' || params[:disposition].nil?%>
-      <%= select_tag :disposition, options_for_select(["Portrait","Paysage"], @disposition), include_blank: true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+      <%= select_tag :disposition, options_for_select([["Disposition",""],"Portrait","Paysage"], ""), include_blank: false, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
     <% else %>
-      <%= select_tag :disposition, options_for_select(["Portrait","Paysage"], @disposition), include_blank: true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+      <%= select_tag :disposition, options_for_select([["Disposition",""],"Portrait","Paysage"], @disposition), include_blank: false, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
     <% end %>
     
     <% if params[:facture_achat] == '' || params[:facture_achat].nil?%>
-      <%= select_tag :facture_achat, options_for_select([["Pas de Facture d'achat",false],["Facture présente",true]], @facture_achat), include_blank: true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+      <%= select_tag :facture_achat, options_for_select([["Facture",""],["Pas de Facture d'achat",false],["Facture présente",true]], ""), include_blank: false, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
     <% else %>
-      <%= select_tag :facture_achat, options_for_select([["Pas de Facture d'achat",false],["Facture présente",true]], @facture_achat), include_blank: true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+      <%= select_tag :facture_achat, options_for_select([["Facture",""],["Pas de Facture d'achat",false],["Facture présente",true]], @facture_achat), include_blank: false, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
     <% end %>
     
-    <% if params[:ordre_annonce] == '' || params[:ordre_annonce].nil?%>
-      <%= select_tag :ordre_annonce, options_for_select([["Choisir un Tri",""],"PRIX CROISSANT","PRIX DECROISSANT"], ""), include_blank: false, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+    <% if params[:code_postal] == '' || params[:code_postal].nil?%>
+      <%= select_tag :code_postal, options_for_select(@code_postal_all.each {|p| [ p ] }, ""), include_blank: false, :prompt => "Code Postal",  :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
     <% else %>
-      <%= select_tag :ordre_annonce, options_for_select([["Choisir un Tri",""],"PRIX CROISSANT","PRIX DECROISSANT"], @ordre_annonce), include_blank: false, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+      <%= select_tag :code_postal, options_for_select(@code_postal_all.each {|p| [ p ] }, @code_postal), include_blank: false, :prompt => "Code Postal", :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+    <% end %>
+    
+    <% if params[:pays] == '' || params[:pays].nil?%>
+       <%= select_tag :pays, options_for_select([["Choisir un Pays",""],"France","Grande-Bretagne","Irlande","Belgique","Pays-Bas","Luxembourg","Allemagne","Suisse","Italie","Espagne","Portugal"], "" ), include_blank: true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+    <% else %>
+      <%= select_tag :pays, options_for_select([["Choisir un Pays",""],"France","Grande-Bretagne","Irlande","Belgique","Pays-Bas","Luxembourg","Allemagne","Suisse","Italie","Espagne","Portugal"], @pays ) , include_blank: true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+    <% end %>
+    
+    
+    <% if params[:ordre_annonce] == '' || params[:ordre_annonce].nil?%>
+      <%= select_tag :ordre_annonce, options_for_select([["Choisir un Tri",""],"PRIX CROISSANT","PRIX DECROISSANT","CREATION CROISSANT","CREATION DECROISSANT","ANNONCE CROISSANT","ANNONCE DECROISSANT"], ""), include_blank: false, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+    <% else %>
+      <%= select_tag :ordre_annonce, options_for_select([["Choisir un Tri",""],"PRIX CROISSANT","PRIX DECROISSANT","CREATION CROISSANT","CREATION DECROISSANT","ANNONCE CROISSANT","ANNONCE DECROISSANT"], @ordre_annonce), include_blank: false, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
     <% end %>
     <%= @probleme %>
       <%= submit_tag 'Rechercher', :class => "btn btn-primary aa-search-field-form-btn" %>
