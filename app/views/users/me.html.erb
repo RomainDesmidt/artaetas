@@ -105,7 +105,15 @@
       <div class="grid-sizer-me"></div>
       <div class="gutter-sizer-me"></div>
        <% @annonces.each do |t| %>
-         <div class="grid-item-me">
+       <% if t.formule == "Mise en Avant" %>
+         <div class="grid-item-me" style="background-color: #D4FDFF;">
+       <% else %>
+         <% if t.formule == "Mise a la Une" %>
+           <div class="grid-item-me" style="background-color: #8D87FF;">
+         <% else %>
+           <div class="grid-item-me">
+         <% end %>
+        <% end %>
            <%= link_to annonce_path(t) , { class: "aa-annonce-titre"} do %>
               <%= image_tag(t.photo.url.insert(4, 's'))  %>
               <%#= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
