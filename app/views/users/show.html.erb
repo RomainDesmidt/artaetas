@@ -1,7 +1,7 @@
 <% if @user.photofond? %>
       <div class="aa-me-show-fondprofilcontainer" style="background-image: url('<%= "#{@user.photofond.url}" %>')  ;"></div>
 <% else %>
-      <div class="aa-me-show-fondprofilcontainer" style="background-color: black  ;"></div>
+      <div class="aa-me-show-fondprofilcontainer" style="display: flex;background-color: white;justify-content: center;"><%= image_tag asset_path("default-fondprofil.jpg") %></div>
 <% end %>
 <div class="aa-me-container2">
   <div class="aa-me-descriptionuser">
@@ -115,6 +115,7 @@
         <p>inscrit depuis: <b><%= @user.created_at.strftime("%d-%m-%Y") %></b></p>
         <p>derniere connexion: <b><%= @user.last_sign_in_at.strftime("%d-%m-%Y") %></b></p>
         <p>nombre d'annonce: <b><%= @user.annonces.count %></b></p>
+        <p>localisation: <b><%= "#{@user.paysresidence} #{@user.codepostal} #{@user.villeresidence}" %></b></p>
         <br>
         <% if @user.instagram? %>
           <p>Instagram : <%= link_to "@#{@user.instagram}", "https://www.instagram.com/#{@user.instagram}/", target: :_blank %></p>
@@ -155,7 +156,7 @@
               <% @user.annonces.each do |a| %>
       
                   <div class="aa-search-annonce-card">
-                  <%= link_to a, class: "aa-search-annonce-card-image" do %>
+                  <%= link_to a, class: "aa-search-annonce-card-image aa-show-user-pub" do %>
                     <!-- <div class="aa-search-annonce-card-image"> -->
                       <%= cl_image_tag a.photo %>
                     <!-- </div> -->
