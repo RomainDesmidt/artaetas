@@ -29,6 +29,11 @@
       <div class="modal-content" id="modal-content-signin" >
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Connexion</h5>
+          <div class="aa-show-retour" style="right: 35px; top: 9px;">
+            <%=link_to "/" do %> 
+              <%= inline_svg "home.svg", class: "aa-show-retour-svg" %>
+            <% end %>
+          </div>
         </div>
         <div class="modal-body">
           <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
