@@ -37,6 +37,20 @@ class AnnoncesController < ApplicationController
   def create
     @annonce = current_user.annonces.new(annonce_params)
     @annonce_params = annonce_params
+    unless  @annonce.largeur.nil? || @annonce.profondeur.nil? || @annonce.hauteur.nil?
+      if @annonce.largeur > 0 && @annonce.profondeur > 0 && @annonce.hauteur > 0
+        @volume = @annonce.largeur * @annonce.profondeur * @annonce.hauteur
+        if @volume > 0.25
+          if @volume > 1
+            @annonce.update(volume: "g")
+          else
+            @annonce.update(volume: "m")
+          end
+        else
+          @annonce.update(volume: "p")
+        end
+      end
+    end
     if  @annonce.save
       # unless params[:annonce][:categorie_annonces].nil?
       #   params[:annonce][:categorie_annonces].each do |id|
@@ -103,6 +117,7 @@ class AnnoncesController < ApplicationController
     @ordre_annonce = params[:ordre_annonce]
     @code_postal = params[:code_postal]
     @pays = params[:pays]
+    @volume = params[:volume]
     # @code_postal_all = User.all.collect { |x| x.codepostal.divmod(1000)[0]}
     @code_postal_all = User.all.collect { |x| x.codepostal}
     @code_postal_all = @code_postal_all.uniq
@@ -171,6 +186,19 @@ class AnnoncesController < ApplicationController
       end
     end
     
+    unless params[:volume] == ''
+      if params[:volume]
+        puts @volume
+        puts @volume.is_a? String
+        @annonces = @annonces.where("volume = ?", @volume.to_s)
+        @annonces_pre = @annonces_pre.where("volume = ?", @volume.to_s)
+        puts "-------volume-----"
+        puts @annonces
+        puts @annonces_pre
+        puts "------------"
+      end
+    end
+    
 
     unless params[:categorie_search2] == '' 
       if params[:categorie_search2]
@@ -230,6 +258,7 @@ class AnnoncesController < ApplicationController
         @annonces_pre = @annonces_pre.joins(:user).where({users: { paysresidence: @pays} })   
       end
     end
+  
     
     
     if params[:ordre_annonce] == '' || params[:ordre_annonce].nil?
@@ -266,8 +295,13 @@ class AnnoncesController < ApplicationController
         @annonces_pre = @annonces_pre.order('anneecreation DESC')
         # @probleme = "Prix decroissant"
       end
-  
     end
+    
+          
+        puts "------end------"
+        puts @annonces
+        puts @annonces_pre
+        puts "---------------"
     @annonces = @annonces.to_a
     @annonces_pre = @annonces_pre.to_a
   end
@@ -314,6 +348,20 @@ class AnnoncesController < ApplicationController
   def update
     @annonce = Annonce.find(params[:id])
     @annonce.update(annonce_params)
+    unless  @annonce.largeur.nil? || @annonce.profondeur.nil? || @annonce.hauteur.nil?
+      if @annonce.largeur > 0 && @annonce.profondeur > 0 && @annonce.hauteur > 0
+        @volume = @annonce.largeur * @annonce.profondeur * @annonce.hauteur
+        if @volume > 0.25
+          if @volume > 1
+            @annonce.update(volume: "g")
+          else
+            @annonce.update(volume: "m")
+          end
+        else
+          @annonce.update(volume: "p")
+        end
+      end
+    end
     unless @annonce.envente_yesno == nil
       @annonce.update(envente_yesno: nil)
       AnnonceMailer.with(user: @annonce.user, annonce: @annonce).confirm_edit_annonce.deliver_now
@@ -537,7 +585,7 @@ class AnnoncesController < ApplicationController
   private
 
   def annonce_params
-    params.require(:annonce).permit(:pays, :code_postal, :ordre_annonce, :formule, :name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache, :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider, categorie_annonces: [], courant_annonces: [], couleur_annonces: [], categorie_search2: [], courant_search2: [], couleur_search2: [], categories: [], courant_ids: [], couleur_ids: [], cat_ids: [])
+    params.require(:annonce).permit(:volume, :pays, :code_postal, :ordre_annonce, :formule, :name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache, :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider, categorie_annonces: [], courant_annonces: [], couleur_annonces: [], categorie_search2: [], courant_search2: [], couleur_search2: [], categories: [], courant_ids: [], couleur_ids: [], cat_ids: [])
   end
 end
 

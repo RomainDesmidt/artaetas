@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_125445) do
+ActiveRecord::Schema.define(version: 2019_12_26_151336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2019_12_18_125445) do
     t.integer "anneecreation"
     t.text "description"
     t.decimal "prix"
-    t.string "format"
+    t.string "volume"
     t.string "disposition"
     t.string "nom_artiste"
     t.bigint "user_id"

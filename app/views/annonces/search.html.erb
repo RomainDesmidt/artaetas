@@ -49,7 +49,7 @@
     <% end %>
     
     <% if params[:code_postal] == '' || params[:code_postal].nil?%>
-      <%= select_tag :code_postal, options_for_select(@code_postal_all.each {|p| [ p ] if p.is_a? Integer }, ""), include_blank: false, :prompt => "Code Postal",  :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+      <%= select_tag :code_postal, options_for_select(@code_postal_all.each {|p| [ p ] if p.is_a? Integer }, "Code Postal"), include_blank: false, :prompt => "Code Postal",  :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
     <% else %>
       <%= select_tag :code_postal, options_for_select(@code_postal_all.each {|p| [ p ] if p.is_a? Integer }, @code_postal), include_blank: false, :prompt => "Code Postal", :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
     <% end %>
@@ -60,14 +60,21 @@
       <%= select_tag :pays, options_for_select([["Choisir un Pays",""],"France","Grande-Bretagne","Irlande","Belgique","Pays-Bas","Luxembourg","Allemagne","Suisse","Italie","Espagne","Portugal"], @pays ) , include_blank: true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
     <% end %>
     
+    <% if params[:volume] == '' || params[:volume].nil?%>
+       <%= select_tag :volume, options_for_select([["Choisir une Taille",""],["Grand","g"],["Moyen","m"],["Petit","p"]], "" ), include_blank: false, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+    <% else %>
+      <%= select_tag :volume, options_for_select([["Choisir une Taille",""],["Grand","g"],["Moyen","m"],["Petit","p"]], @volume ) , include_blank: false, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+    <% end %>
+    
     
     <% if params[:ordre_annonce] == '' || params[:ordre_annonce].nil?%>
-      <%= select_tag :ordre_annonce, options_for_select([["Trier les Résultats",""],"PRIX CROISSANT","PRIX DECROISSANT","CREATION CROISSANT","CREATION DECROISSANT","ANNONCE CROISSANT","ANNONCE DECROISSANT"], ""), include_blank: false, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis", :style => "border: solid 1px rgba(1,1,1,0.1);"  %>  
+      <%= select_tag :ordre_annonce, options_for_select([["Trier les Résultats",""],"PRIX CROISSANT","PRIX DECROISSANT","CREATION CROISSANT","CREATION DECROISSANT","ANNONCE CROISSANT","ANNONCE DECROISSANT"], ""), include_blank: false, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis", :style => "border: solid 1px rgba(1,1,1,0.1); margin-left: 80%;"  %>  
     <% else %>
-      <%= select_tag :ordre_annonce, options_for_select([["Trier les Résultats",""],"PRIX CROISSANT","PRIX DECROISSANT","CREATION CROISSANT","CREATION DECROISSANT","ANNONCE CROISSANT","ANNONCE DECROISSANT"], @ordre_annonce), include_blank: false, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis", :style => "border: solid 1px rgba(1,1,1,0.1);"  %>  
+      <%= select_tag :ordre_annonce, options_for_select([["Trier les Résultats",""],"PRIX CROISSANT","PRIX DECROISSANT","CREATION CROISSANT","CREATION DECROISSANT","ANNONCE CROISSANT","ANNONCE DECROISSANT"], @ordre_annonce), include_blank: false, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis", :style => "border: solid 1px rgba(1,1,1,0.1); margin-left: 80%;"  %>  
     <% end %>
-    <%= @probleme %>
+    <%#= @format %>
       <%= submit_tag 'Rechercher', :class => "btn btn-primary aa-search-field-form-btn" %>
+
 
     <% end %>
 
@@ -169,7 +176,7 @@
           <% end %>
        <% end %>
        
-       <div class="grid-item">
+       <div class="grid-item ">
          <%= link_to "annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
               <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
               
@@ -211,6 +218,50 @@
         </div>
         <% i += 1 %>  
      <% end %>
+    <% if @annonces = [] %>
+      <% @annonces_pre.each do |t| %>
+        <div class="grid-item aa-formule-malu">
+         <%= link_to "annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
+              <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
+              
+              <% unless t.name.nil? %>
+                <p class='p-titre-search'><%= t.name[0,70] %></p>
+              <% end %>
+              
+              <div class="aa-search-artisteyearprice">
+                <p class="aa-show-detail-italic">
+                  <% if t.nom_artiste? %>
+                   <%= "#{t.nom_artiste} - "  %>
+                  <% end %>
+                  <% if t.anneecreation? %>
+                    <%= "#{t.anneecreation}" %>
+                  <% end %>
+                </p>
+                
+                <p class="aa-search-price  aa-show-detail-italic">
+                  <% if t.prix   %>
+                    <% if (t.prix.to_i - t.prix) > 0 %>
+                      <%= number_with_delimiter(t.prix.to_s, delimiter: " " ) %>€
+                    <% else %>
+                      <%= number_with_delimiter(t.prix.to_i.to_s, delimiter: " " ) %>€
+                    <% end %>
+                  <% end %>
+                </p>
+              </div>
+
+              
+              
+              <% unless t.description.nil? %>
+                <p class='p-description-search'>
+                  <%= t.description[0,265] %>
+                  <%= "..." if t.description.size > 265 %>
+                </p>
+              <% end %>
+            
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
 <%# ###################################### EACH ON Standard - END ####################################################### %>
   </div>
 </div>
