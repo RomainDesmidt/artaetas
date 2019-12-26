@@ -49,9 +49,9 @@
     <% end %>
     
     <% if params[:code_postal] == '' || params[:code_postal].nil?%>
-      <%= select_tag :code_postal, options_for_select(@code_postal_all.each {|p| [ p ] }, ""), include_blank: false, :prompt => "Code Postal",  :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+      <%= select_tag :code_postal, options_for_select(@code_postal_all.each {|p| [ p ] if p.is_a? Integer }, ""), include_blank: false, :prompt => "Code Postal",  :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
     <% else %>
-      <%= select_tag :code_postal, options_for_select(@code_postal_all.each {|p| [ p ] }, @code_postal), include_blank: false, :prompt => "Code Postal", :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
+      <%= select_tag :code_postal, options_for_select(@code_postal_all.each {|p| [ p ] if p.is_a? Integer }, @code_postal), include_blank: false, :prompt => "Code Postal", :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  
     <% end %>
     
     <% if params[:pays] == '' || params[:pays].nil?%>
