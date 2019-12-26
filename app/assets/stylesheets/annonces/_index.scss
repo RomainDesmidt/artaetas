@@ -511,11 +511,12 @@ a:focus { text-decoration: none}
 
 
 .aa-accroche {
-  height: 65px;
+  // height: 65px;
+  height: 10px;
   width: 100%;
   position: relative;
   margin-top: 50px;
-  height: 10%;
+  // height: 10%;
   background-color: $backgroundaa;
 }
 
@@ -544,8 +545,8 @@ a:focus { text-decoration: none}
 }
 
 .aa-accroche-texture {
-  height: 75%;
-  width: 100%;
+  height: 0px;
+  // height: 75%;
   background-image: image-url('texture.jpg');
   text-align: center;
   // padding-top: 10px;
@@ -800,7 +801,8 @@ p {
 
 
 .p-accroche-desktop {
-  display: flex;
+  display: none;
+  // display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
@@ -1027,8 +1029,9 @@ p {
    }
 
   .aa-accroche {
-    min-height: 70px;
-    height: 10%;
+    // min-height: 45px;
+    // height: 10%;
+    height: 45px;
   }
 
    .aa-who {
@@ -1084,7 +1087,8 @@ p {
    .p-accroche-desktop { display: none; }
 
    .p-accroche-mobile {
-     display: flex;
+     display: none;
+    // display: flex;
      justify-content: center;
      flex-direction: column;
      align-items: center;
