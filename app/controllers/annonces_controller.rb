@@ -583,9 +583,9 @@ class AnnoncesController < ApplicationController
     @annonce = Annonce.find(params[:id])
     @sujet = params[:annonce][:sujetcontact]
     @corps = params[:annonce][:corpscontact]
-    # @annonce.update(annonce_params)
-    # redirect_to users_me_path( :view_param => "annonce")
-    AnnonceMailer.with(user: @annonce.user, annonce: @annonce, corps: @corps, sujet: @sujet, intercedant: current_user).contact_user_annonce.deliver_now
+    @user = @annonce.user  
+    AnnonceMailer.with(user: @user, annonce: @annonce, corps: @corps, sujet: @sujet, intercedant: current_user).contact_user_annonce.deliver_now
+    redirect_to annonce_path(@annonce)
   end
 
   private
