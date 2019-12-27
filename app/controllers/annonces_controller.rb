@@ -112,6 +112,7 @@ class AnnoncesController < ApplicationController
     @categorie_search2 = params[:categorie_search2]
     @courant_search2 = params[:courant_search2]
     @couleur_search2 = params[:couleur_search2]
+    
     @disposition = params[:disposition]
     @facture_achat = params[:facture_achat]
     @ordre_annonce = params[:ordre_annonce]
@@ -192,10 +193,6 @@ class AnnoncesController < ApplicationController
         puts @volume.is_a? String
         @annonces = @annonces.where("volume = ?", @volume.to_s)
         @annonces_pre = @annonces_pre.where("volume = ?", @volume.to_s)
-        puts "-------volume-----"
-        puts @annonces
-        puts @annonces_pre
-        puts "------------"
       end
     end
     
@@ -297,11 +294,7 @@ class AnnoncesController < ApplicationController
       end
     end
     
-          
-        puts "------end------"
-        puts @annonces
-        puts @annonces_pre
-        puts "---------------"
+
     @annonces = @annonces.to_a
     @annonces_pre = @annonces_pre.to_a
   end
@@ -581,11 +574,24 @@ class AnnoncesController < ApplicationController
     @annonce.update(annonce_params)
     redirect_to users_me_path( :view_param => "annonce")
   end
+  
+  def contact_user
+    @annonce = Annonce.find(params[:id])
+  end
+  
+  def contact_deliver
+    @annonce = Annonce.find(params[:id])
+    @sujet = params[:annonce][:sujetcontact]
+    @corps = params[:annonce][:corpscontact]
+    # @annonce.update(annonce_params)
+    # redirect_to users_me_path( :view_param => "annonce")
+    AnnonceMailer.with(user: @annonce.user, annonce: @annonce, corps: @corps, sujet: @sujet, intercedant: current_user).contact_user_annonce.deliver_now
+  end
 
   private
 
   def annonce_params
-    params.require(:annonce).permit(:volume, :pays, :code_postal, :ordre_annonce, :formule, :name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache, :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider, categorie_annonces: [], courant_annonces: [], couleur_annonces: [], categorie_search2: [], courant_search2: [], couleur_search2: [], categories: [], courant_ids: [], couleur_ids: [], cat_ids: [])
+    params.require(:annonce).permit(:sujetcontact, :corpscontact, :volume, :pays, :code_postal, :ordre_annonce, :formule, :name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache, :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider, categorie_annonces: [], courant_annonces: [], couleur_annonces: [], categorie_search2: [], courant_search2: [], couleur_search2: [], categories: [], courant_ids: [], couleur_ids: [], cat_ids: [])
   end
 end
 
