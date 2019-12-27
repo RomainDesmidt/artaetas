@@ -1,0 +1,8 @@
+<div style="margin-top: 55px;"></div>
+<div style="margin-left: 20%; margin-right: 20%;">
+    <%= simple_form_for @annonce, :url => contact_deliver_annonce_path do |f| %>
+        <%= f.input :sujetcontact, hint: "sujet de la demande de contact", require: false %>
+        <%= f.input :corpscontact, hint: "corps du message", require: false, as: :text %>
+        <%= f.submit "Envoyer", class: "btn btn-primary aa-mobile-btn aa-new-publierannonce" %>
+    <% end %>
+</div>

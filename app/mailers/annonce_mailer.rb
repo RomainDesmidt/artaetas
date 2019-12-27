@@ -12,5 +12,13 @@ class AnnonceMailer < ApplicationMailer
     # This will render a view in `app/views/user_mailer`!
   end
   
+  def contact_user_annonce
+    @user_annonce = params[:user]
+    @annonce = params[:annonce]
+    @intercedant = params[:intercedant]
+    @corps = params[:corps]
+    @sujet = params[:sujet]
+    mail(to: @user_annonce.email, subject: @sujet)
+  end
 
 end

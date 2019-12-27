@@ -20,6 +20,8 @@ Rails.application.routes.draw do
         put "destroy_photo_deux", to: "annonces#destroy_photo_deux"
         get "edit_formule", to: "annonces#edit_formule"
         patch "update_formule", to: "annonces#update_formule"
+        get "contact_user", to: "annonces#contact_user"
+        patch "contact_deliver", to: "annonces#contact_deliver"
     end
 end
   # resources :annonces

@@ -41,5 +41,11 @@ class Annonce < ApplicationRecord
   
  # def cat_ids=(ids)
  # end
+ 
+ def sujetcontact
+ end
+ 
+ def corpscontact
+ end
   
 end
