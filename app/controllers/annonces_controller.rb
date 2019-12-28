@@ -112,6 +112,11 @@ class AnnoncesController < ApplicationController
     @categorie_search2 = params[:categorie_search2]
     @courant_search2 = params[:courant_search2]
     @couleur_search2 = params[:couleur_search2]
+    @administratif_search2 = params[:administratif_search2]
+    @disposition_search2 = params[:disposition_search2]
+    @code_postal_search2 = params[:code_postal_search2]
+    @pays_search2 = params[:pays_search2]
+    @volume_search2 = params[:volume_search2]
     
     @disposition = params[:disposition]
     @facture_achat = params[:facture_achat]
@@ -591,7 +596,7 @@ class AnnoncesController < ApplicationController
   private
 
   def annonce_params
-    params.require(:annonce).permit(:sujetcontact, :corpscontact, :volume, :pays, :code_postal, :ordre_annonce, :formule, :name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache, :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider, categorie_annonces: [], courant_annonces: [], couleur_annonces: [], categorie_search2: [], courant_search2: [], couleur_search2: [], categories: [], courant_ids: [], couleur_ids: [], cat_ids: [])
+    params.require(:annonce).permit(:sujetcontact, :corpscontact, :volume, :pays, :code_postal, :ordre_annonce, :formule, :name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache, :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider, categorie_annonces: [], courant_annonces: [], couleur_annonces: [], categorie_search2: [], courant_search2: [], administratif_search2: [], code_postal_search2: [], volume_search2: [], pays_search2: [], disposition_search2: [], couleur_search2: [], categories: [], courant_ids: [], couleur_ids: [], cat_ids: [])
   end
 end
 
