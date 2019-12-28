@@ -203,9 +203,13 @@
               <div class="aa-show-detailuser-contact-btn">
                 <% if @annonces.user.afficher_email %>
                     <%= inline_svg "conversation.svg", class: "aa-show-call-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
-                    <%= link_to "Envoyer un Mail", "mailto:#{@annonces.user.email}", class: "aa-show-mailto align-self-centeraa" %>
+                    <%#= link_to "Envoyer un Mail", "mailto:#{@annonces.user.email}", class: "aa-show-mailto align-self-centeraa" %>
+                    <%= link_to "Envoyer un Mail", contact_user_annonce_path , class: "aa-show-mailto align-self-centeraa" %>
                 <% else %>
-                  <%= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Notifier l'utilisateur</a>
+                  <%= inline_svg "conversation.svg", class: "aa-show-call-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
+                  <%#= link_to "Envoyer un Mail", "mailto:#{@annonces.user.email}", class: "aa-show-mailto align-self-centeraa" %>
+                  <%= link_to "Envoyer un Mail", contact_user_annonce_path , class: "aa-show-mailto align-self-centeraa" %>
+                  <%#= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Notifier l'utilisateur</a>
                 <% end %>
                 
               </div>
