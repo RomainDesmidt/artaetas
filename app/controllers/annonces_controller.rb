@@ -178,28 +178,117 @@ class AnnoncesController < ApplicationController
       end
     end
     
-    unless params[:disposition] == ''
-      if params[:disposition]
-        @annonces = @annonces.where("disposition = ?", @disposition)
-        @annonces_pre = @annonces_pre.where("disposition = ?", @disposition)
-      end
-    end
-  
-    unless params[:facture_achat] == '' 
-      if params[:facture_achat]
-        @annonces = @annonces.where(facture_achat: @facture_achat)
-        @annonces_pre = @annonces_pre.where(facture_achat: @facture_achat)
+    unless params[:pays_search2] == '' 
+      if params[:pays_search2]
+      @init_query_pays = Annonce.joins(:user).where( "users.paysresidence= ? ", "" )
+        params[:pays_search2].each do |pays_var|
+          @query_to_add_pays = Annonce.joins(:user).where( "users.paysresidence= ? ", pays_var )
+          @result_query_pays = Annonce.from("(#{@init_query_pays.to_sql} UNION #{@query_to_add_pays.to_sql}) AS annonces")
+          @init_query_pays = @result_query_pays
+        end
+        
+        @annonces = Annonce.from("(#{@annonces.to_sql} INTERSECT #{@result_query_pays.to_sql}) AS annonces")
+        @annonces_pre = Annonce.from("(#{@annonces_pre.to_sql} INTERSECT #{@result_query_pays.to_sql}) AS annonces")
+        
+        # @annonces = @result_query
+        # @annonces_pre = Annonce.none
+        # @annonces = @annonces.joins(:user).where({users: { paysresidence: @pays} })
+        # @annonces_pre = @annonces_pre.joins(:user).where({users: { paysresidence: @pays} })   
       end
     end
     
-    unless params[:volume] == ''
-      if params[:volume]
-        puts @volume
-        puts @volume.is_a? String
-        @annonces = @annonces.where("volume = ?", @volume.to_s)
-        @annonces_pre = @annonces_pre.where("volume = ?", @volume.to_s)
+    unless params[:volume_search2] == '' 
+      if params[:volume_search2]
+      @init_query_volume = Annonce.where( "volume = ? ", "pasdevolume" )
+        params[:volume_search2].each do |volume_var|
+          @query_to_add_volume = Annonce.where( "volume= ? ", volume_var )
+          @result_query_volume = Annonce.from("(#{@init_query_volume.to_sql} UNION #{@query_to_add_volume.to_sql}) AS annonces")
+          @init_query_volume = @result_query_volume
+        end
+        
+        @annonces = Annonce.from("(#{@annonces.to_sql} INTERSECT #{@result_query_volume.to_sql}) AS annonces")
+        @annonces_pre = Annonce.from("(#{@annonces_pre.to_sql} INTERSECT #{@result_query_volume.to_sql}) AS annonces")
+        
       end
-    end
+    end    
+    
+    unless params[:disposition_search2] == '' 
+      if params[:disposition_search2]
+      @init_query_disposition = Annonce.where( "disposition = ? ", "pasdedisposition" )
+        params[:disposition_search2].each do |disposition_var|
+          @query_to_add_disposition = Annonce.where( "disposition = ? ", disposition_var )
+          @result_query_disposition = Annonce.from("(#{@init_query_disposition.to_sql} UNION #{@query_to_add_disposition.to_sql}) AS annonces")
+          @init_query_disposition = @result_query_disposition
+        end
+        
+        @annonces = Annonce.from("(#{@annonces.to_sql} INTERSECT #{@result_query_disposition.to_sql}) AS annonces")
+        @annonces_pre = Annonce.from("(#{@annonces_pre.to_sql} INTERSECT #{@result_query_disposition.to_sql}) AS annonces")
+        
+      end
+    end    
+    
+    unless params[:code_postal_search2] == '' 
+      if params[:code_postal_search2]
+      @init_query_code_postal = Annonce.joins(:user).where( "users.codepostal= ? ", 9999999 )
+        params[:code_postal_search2].each do |code_postal_var|
+          @query_to_add_code_postal = Annonce.joins(:user).where( "users.codepostal= ? ", code_postal_var )
+          @result_query_code_postal = Annonce.from("(#{@init_query_code_postal.to_sql} UNION #{@query_to_add_code_postal.to_sql}) AS annonces")
+          @init_query_code_postal = @result_query_code_postal
+        end
+        
+        @annonces = Annonce.from("(#{@annonces.to_sql} INTERSECT #{@result_query_code_postal.to_sql}) AS annonces")
+        @annonces_pre = Annonce.from("(#{@annonces_pre.to_sql} INTERSECT #{@result_query_code_postal.to_sql}) AS annonces")
+        
+        # @annonces = @result_query
+        # @annonces_pre = Annonce.none
+        # @annonces = @annonces.joins(:user).where({users: { paysresidence: @pays} })
+        # @annonces_pre = @annonces_pre.joins(:user).where({users: { paysresidence: @pays} })   
+      end
+    end    
+    
+    unless params[:administratif_search2] == '' 
+      if params[:administratif_search2]
+      k = 0
+      @init_query_administratif = Annonce.where( "disposition = ? ", "pasdedisposition" )
+        params[:administratif_search2].each do |administratif_var|
+          @query_to_add_administratif = Annonce.where( "#{administratif_var} = ? ", true )
+          if k == 0
+            @result_query_administratif = Annonce.from("(#{@init_query_administratif.to_sql} UNION #{@query_to_add_administratif.to_sql}) AS annonces")
+            k += 1
+          else
+            @result_query_administratif = Annonce.from("(#{@init_query_administratif.to_sql} INTERSECT #{@query_to_add_administratif.to_sql}) AS annonces")
+          end
+          @init_query_administratif = @result_query_administratif
+        end
+        
+        @annonces = Annonce.from("(#{@annonces.to_sql} INTERSECT #{@result_query_administratif.to_sql}) AS annonces")
+        @annonces_pre = Annonce.from("(#{@annonces_pre.to_sql} INTERSECT #{@result_query_administratif.to_sql}) AS annonces")
+        
+      end
+    end    
+    
+    # unless params[:disposition] == ''
+    #   if params[:disposition]
+    #     @annonces = @annonces.where("disposition = ?", @disposition)
+    #     @annonces_pre = @annonces_pre.where("disposition = ?", @disposition)
+    #   end
+    # end
+  
+    # unless params[:facture_achat] == '' 
+    #   if params[:facture_achat]
+    #     @annonces = @annonces.where(facture_achat: @facture_achat)
+    #     @annonces_pre = @annonces_pre.where(facture_achat: @facture_achat)
+    #   end
+    # end
+    
+    # unless params[:volume] == ''
+    #   if params[:volume]
+    #     puts @volume
+    #     puts @volume.is_a? String
+    #     @annonces = @annonces.where("volume = ?", @volume.to_s)
+    #     @annonces_pre = @annonces_pre.where("volume = ?", @volume.to_s)
+    #   end
+    # end
     
 
     unless params[:categorie_search2] == '' 
@@ -244,22 +333,24 @@ class AnnoncesController < ApplicationController
       end
     end
     
-    unless params[:code_postal] == '' 
-      if params[:code_postal]
-        # @annonces = @annonces.joins(:user).where(User.arel_table[:codepostal].as("TEXT").matches("#{@code_postal}%")  )
-        # @annonces = @annonces.joins(:user).where("users.codepostal ILIKE ?", @code_postal.to_i.divmod(1000)[0].to_s)   
-        # @annonces = @annonces.joins(:user).where({users: { codepostal: @code_postal} })   
-        @annonces = @annonces.joins(:user).where({users: { codepostal: @code_postal} })
-        @annonces_pre = @annonces_pre.joins(:user).where({users: { codepostal: @code_postal} })   
-      end
-    end
+    # unless params[:code_postal] == '' 
+    #   if params[:code_postal]
+    #     # @annonces = @annonces.joins(:user).where(User.arel_table[:codepostal].as("TEXT").matches("#{@code_postal}%")  )
+    #     # @annonces = @annonces.joins(:user).where("users.codepostal ILIKE ?", @code_postal.to_i.divmod(1000)[0].to_s)   
+    #     # @annonces = @annonces.joins(:user).where({users: { codepostal: @code_postal} })   
+    #     @annonces = @annonces.joins(:user).where({users: { codepostal: @code_postal} })
+    #     @annonces_pre = @annonces_pre.joins(:user).where({users: { codepostal: @code_postal} })   
+    #   end
+    # end
     
-    unless params[:pays] == '' 
-      if params[:pays]
-        @annonces = @annonces.joins(:user).where({users: { paysresidence: @pays} })
-        @annonces_pre = @annonces_pre.joins(:user).where({users: { paysresidence: @pays} })   
-      end
-    end
+
+    
+    # unless params[:pays] == '' 
+    #   if params[:pays]
+    #     @annonces = @annonces.joins(:user).where({users: { paysresidence: @pays} })
+    #     @annonces_pre = @annonces_pre.joins(:user).where({users: { paysresidence: @pays} })   
+    #   end
+    # end
   
     
     
@@ -267,32 +358,32 @@ class AnnoncesController < ApplicationController
       @annonces = @annonces.order('random()')
       @annonces_pre = @annonces_pre.order('random()')
     else
-      if params[:ordre_annonce] == "PRIX CROISSANT"
+      if params[:ordre_annonce] == "PRIX >"
         @annonces = @annonces.order('prix ASC')
         @annonces_pre = @annonces_pre.order('prix ASC')
         # @probleme = "Prix croissant"
       end
-      if params[:ordre_annonce] == "PRIX DECROISSANT"
+      if params[:ordre_annonce] == "PRIX <"
         @annonces = @annonces.order('prix DESC')
         @annonces_pre = @annonces_pre.order('prix DESC')
         # @probleme = "Prix decroissant"
       end
-      if params[:ordre_annonce] == "CREATION CROISSANT"
+      if params[:ordre_annonce] == "DATE CREATION >"
         @annonces = @annonces.order('anneecreation ASC')
         @annonces_pre = @annonces_pre.order('anneecreation ASC')
         # @probleme = "Prix decroissant"
       end
-      if params[:ordre_annonce] == "CREATION DECROISSANT"
+      if params[:ordre_annonce] == "DATE CREATION <"
         @annonces = @annonces.order('anneecreation DESC')
         @annonces_pre = @annonces_pre.order('anneecreation DESC')
         # @probleme = "Prix decroissant"
       end
-      if params[:ordre_annonce] == "ANNONCE CROISSANT"
+      if params[:ordre_annonce] == "DATE ANNONCE >"
         @annonces = @annonces.order('anneecreation ASC')
         @annonces_pre = @annonces_pre.order('anneecreation ASC')
         # @probleme = "Prix decroissant"
       end
-      if params[:ordre_annonce] == "ANNONCE DECROISSANT"
+      if params[:ordre_annonce] == "DATE ANNONCE <"
         @annonces = @annonces.order('anneecreation DESC')
         @annonces_pre = @annonces_pre.order('anneecreation DESC')
         # @probleme = "Prix decroissant"
