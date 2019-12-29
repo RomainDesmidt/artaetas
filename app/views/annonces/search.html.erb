@@ -60,9 +60,9 @@
     <%# end %>
     
       <% if params[:administratif_search2] == '' || params[:administratif_search2].nil?%>
-        <%= select_tag :administratif_search2 , options_for_select(["Facture d'achat", "Facture présente"], ""), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd4"  %>  
+        <%= select_tag :administratif_search2 , options_for_select([ ["Facture d'achat","facture_achat"], ["Certificat d'authenticité","certificat_authenticite"], ["Encadrement","encadrement"], ["Etat Neuf","etat_neuf"] ], ""), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd4"  %>  
       <% else %>
-        <%= select_tag :administratif_search2 , options_for_select(["Facture d'achat", "Facture présente"], @administratif_search2 ), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd4"  %>  
+        <%= select_tag :administratif_search2 , options_for_select([ ["Facture d'achat","facture_achat"], ["Certificat d'authenticité","certificat_authenticite"], ["Encadrement","encadrement"], ["Etat Neuf","etat_neuf"] ], @administratif_search2 ), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd4"  %>  
       <% end %>
     
     <%# if params[:facture_achat] == '' || params[:facture_achat].nil?%>
@@ -168,97 +168,10 @@
 <% puts a_pre[0] %>
 <% puts a_pre[1] %>
 <% i = Varlocale.where(nomchamp: "OccurenceMea").first.valeurchamp %>
-     <% @annonces.each do |t| %>
-       <% if a_pre[0].nil? %>
-        <% a_pre = [] %>
-        <% a_pre.replace(@annonces_pre) %>
-       <% end %>
-       <% if i == Varlocale.where(nomchamp: "OccurenceMea").first.valeurchamp %>
-         <% unless a_pre[0].nil? %>
-          <div class="grid-item aa-formule-malu">
-            <%= link_to "annonces/#{a_pre[0].id}", { class: "aa-annonce-titre"} do %>
-              <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_pre[0].photo.url.insert(4, 's') })  %>
-              <% unless a_pre[0].name.nil? %>
-                <p class='p-titre-search'><%= a_pre[0].name[0,70] %></p>
-              <% end %>
-              <div class="aa-search-artisteyearprice">
-                <p class="aa-show-detail-italic">
-                  <% if a_pre[0].nom_artiste? %>
-                   <%= "#{a_pre[0].nom_artiste} - "  %>
-                  <% end %>
-                  <% if a_pre[0].anneecreation? %>
-                    <%= "#{a_pre[0].anneecreation}" %>
-                  <% end %>
-                </p>
-                <p class="aa-search-price  aa-show-detail-italic">
-                  <% if a_pre[0].prix   %>
-                    <% if (a_pre[0].prix.to_i - a_pre[0].prix) > 0 %>
-                      <%= number_with_delimiter(a_pre[0].prix.to_s, delimiter: " " ) %>€
-                    <% else %>
-                      <%= number_with_delimiter(a_pre[0].prix.to_i.to_s, delimiter: " " ) %>€
-                    <% end %>
-                  <% end %>
-                </p>
-              </div>
-              <% unless a_pre[0].description.nil? %>
-                <p class='p-description-search'>
-                  <%= a_pre[0].description[0,265] %>
-                  <%= "..." if a_pre[0].description.size > 265 %>
-                </p>
-              <% end %>
-            <% end %>
-          </div>
-            <% a_pre.slice!(0) %>
-            <% i = 0 %>
-          <% end %>
-       <% end %>
-       
-       <div class="grid-item ">
-         <%= link_to "annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
-              <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
-              
-              <% unless t.name.nil? %>
-                <p class='p-titre-search'><%= t.name[0,70] %></p>
-              <% end %>
-              
-              <div class="aa-search-artisteyearprice">
-                <p class="aa-show-detail-italic">
-                  <% if t.nom_artiste? %>
-                   <%= "#{t.nom_artiste} - "  %>
-                  <% end %>
-                  <% if t.anneecreation? %>
-                    <%= "#{t.anneecreation}" %>
-                  <% end %>
-                </p>
-                
-                <p class="aa-search-price  aa-show-detail-italic">
-                  <% if t.prix   %>
-                    <% if (t.prix.to_i - t.prix) > 0 %>
-                      <%= number_with_delimiter(t.prix.to_s, delimiter: " " ) %>€
-                    <% else %>
-                      <%= number_with_delimiter(t.prix.to_i.to_s, delimiter: " " ) %>€
-                    <% end %>
-                  <% end %>
-                </p>
-              </div>
-
-              
-              
-              <% unless t.description.nil? %>
-                <p class='p-description-search'>
-                  <%= t.description[0,265] %>
-                  <%= "..." if t.description.size > 265 %>
-                </p>
-              <% end %>
-            
-          <% end %>
-        </div>
-        <% i += 1 %>  
-     <% end %>
-    <% if @annonces = [] %>
+    <% if @annonces.count == 0 %>
       <% @annonces_pre.each do |t| %>
         <div class="grid-item aa-formule-malu">
-         <%= link_to "annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
+         <%= link_to "/annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
               <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
               
               <% unless t.name.nil? %>
@@ -299,6 +212,102 @@
         </div>
       <% end %>
     <% end %>
+    
+    <% @annonces.each do |t| %>
+       <% if a_pre[0].nil? %>
+        <% a_pre = [] %>
+        <% a_pre.replace(@annonces_pre) %>
+       <% end %>
+       <% if i == Varlocale.where(nomchamp: "OccurenceMea").first.valeurchamp %>
+         <% unless a_pre[0].nil? %>
+          <div class="grid-item aa-formule-malu">
+            <%= link_to "/annonces/#{a_pre[0].id}", { class: "aa-annonce-titre"} do %>
+              <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_pre[0].photo.url.insert(4, 's') })  %>
+              <% unless a_pre[0].name.nil? %>
+                <p class='p-titre-search'><%= a_pre[0].name[0,70] %></p>
+              <% end %>
+              <div class="aa-search-artisteyearprice">
+                <p class="aa-show-detail-italic">
+                  <% if a_pre[0].nom_artiste? %>
+                   <%= "#{a_pre[0].nom_artiste} - "  %>
+                  <% end %>
+                  <% if a_pre[0].anneecreation? %>
+                    <%= "#{a_pre[0].anneecreation}" %>
+                  <% end %>
+                </p>
+                <p class="aa-search-price  aa-show-detail-italic">
+                  <% if a_pre[0].prix   %>
+                    <% if (a_pre[0].prix.to_i - a_pre[0].prix) > 0 %>
+                      <%= number_with_delimiter(a_pre[0].prix.to_s, delimiter: " " ) %>€
+                    <% else %>
+                      <%= number_with_delimiter(a_pre[0].prix.to_i.to_s, delimiter: " " ) %>€
+                    <% end %>
+                  <% end %>
+                </p>
+              </div>
+              <% unless a_pre[0].description.nil? %>
+                <p class='p-description-search'>
+                  <%= a_pre[0].description[0,265] %>
+                  <%= "..." if a_pre[0].description.size > 265 %>
+                </p>
+              <% end %>
+            <% end %>
+          </div>
+            <% a_pre.slice!(0) %>
+            <% i = 0 %>
+          <% end %>
+       <% end %>
+       
+       <div class="grid-item ">
+         <%= link_to "/annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
+              <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
+              
+              <% unless t.name.nil? %>
+                <p class='p-titre-search'><%= t.name[0,70] %></p>
+              <% end %>
+              
+              <div class="aa-search-artisteyearprice">
+                <p class="aa-show-detail-italic">
+                  <% if t.nom_artiste? %>
+                   <%= "#{t.nom_artiste} - "  %>
+                  <% end %>
+                  <% if t.anneecreation? %>
+                    <%= "#{t.anneecreation}" %>
+                  <% end %>
+                </p>
+                
+                <p class="aa-search-price  aa-show-detail-italic">
+                  <% if t.prix   %>
+                    <% if (t.prix.to_i - t.prix) > 0 %>
+                      <%= number_with_delimiter(t.prix.to_s, delimiter: " " ) %>€
+                    <% else %>
+                      <%= number_with_delimiter(t.prix.to_i.to_s, delimiter: " " ) %>€
+                    <% end %>
+                  <% end %>
+                </p>
+              </div>
+
+              
+              
+              <% unless t.description.nil? %>
+                <p class='p-description-search'>
+                  <%= t.description[0,265] %>
+                  <%= "..." if t.description.size > 265 %>
+                </p>
+              <% end %>
+            
+          <% end %>
+        </div>
+        <% i += 1 %>  
+     <% end %>
+    
+<!--<div style="position: absolute; top: -30px;">-->
+<%# @result_query.each do |annonce| %>
+  <!--<p>-->
+    <%#= annonce %>
+  <!--</p>-->
+<%# end %>
+<!--</div>-->
 <%# ###################################### EACH ON Standard - END ####################################################### %>
   </div>
 </div>
