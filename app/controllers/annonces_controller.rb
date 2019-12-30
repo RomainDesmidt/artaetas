@@ -126,7 +126,7 @@ class AnnoncesController < ApplicationController
     @pays = params[:pays]
     @volume = params[:volume]
     # @code_postal_all = User.all.collect { |x| x.codepostal.divmod(1000)[0]}
-    @code_postal_all = User.all.collect { |x| x.codepostal.divmod(1000)[0] }
+    @code_postal_all = User.all.collect { |x| x.codepostal.divmod(1000)[0] if x.is_a? Integer }
     @code_postal_all = @code_postal_all.uniq
     unless params[:prix_slider].nil?
       @pricemin = params[:prix_slider].split(",",2)[0].to_i
