@@ -363,32 +363,32 @@ class AnnoncesController < ApplicationController
       @annonces = @annonces.order('random()')
       @annonces_pre = @annonces_pre.order('random()')
     else
-      if params[:ordre_annonce] == "PRIX >"
+      if params[:ordre_annonce] == "PRIX CROISSANT"
         @annonces = @annonces.order('prix ASC')
         @annonces_pre = @annonces_pre.order('prix ASC')
         # @probleme = "Prix croissant"
       end
-      if params[:ordre_annonce] == "PRIX <"
+      if params[:ordre_annonce] == "PRIX DECROISSANT"
         @annonces = @annonces.order('prix DESC')
         @annonces_pre = @annonces_pre.order('prix DESC')
         # @probleme = "Prix decroissant"
       end
-      if params[:ordre_annonce] == "DATE CREATION >"
+      if params[:ordre_annonce] == "DATE CREATION CROISSANT"
         @annonces = @annonces.order('anneecreation ASC')
         @annonces_pre = @annonces_pre.order('anneecreation ASC')
         # @probleme = "Prix decroissant"
       end
-      if params[:ordre_annonce] == "DATE CREATION <"
+      if params[:ordre_annonce] == "DATE CREATION DECROISSANT"
         @annonces = @annonces.order('anneecreation DESC')
         @annonces_pre = @annonces_pre.order('anneecreation DESC')
         # @probleme = "Prix decroissant"
       end
-      if params[:ordre_annonce] == "DATE ANNONCE >"
+      if params[:ordre_annonce] == "DATE ANNONCE CROISSANT"
         @annonces = @annonces.order('anneecreation ASC')
         @annonces_pre = @annonces_pre.order('anneecreation ASC')
         # @probleme = "Prix decroissant"
       end
-      if params[:ordre_annonce] == "DATE ANNONCE <"
+      if params[:ordre_annonce] == "DATE ANNONCE DECROISSANT"
         @annonces = @annonces.order('anneecreation DESC')
         @annonces_pre = @annonces_pre.order('anneecreation DESC')
         # @probleme = "Prix decroissant"
