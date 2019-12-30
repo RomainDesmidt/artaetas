@@ -51,6 +51,7 @@ class AnnoncesController < ApplicationController
         end
       end
     end
+    
     if  @annonce.save
       # unless params[:annonce][:categorie_annonces].nil?
       #   params[:annonce][:categorie_annonces].each do |id|
@@ -125,7 +126,7 @@ class AnnoncesController < ApplicationController
     @pays = params[:pays]
     @volume = params[:volume]
     # @code_postal_all = User.all.collect { |x| x.codepostal.divmod(1000)[0]}
-    @code_postal_all = User.all.collect { |x| x.codepostal}
+    @code_postal_all = User.all.collect { |x| x.codepostal.divmod(1000)[0] }
     @code_postal_all = @code_postal_all.uniq
     unless params[:prix_slider].nil?
       @pricemin = params[:prix_slider].split(",",2)[0].to_i
@@ -231,7 +232,7 @@ class AnnoncesController < ApplicationController
       if params[:code_postal_search2]
       @init_query_code_postal = Annonce.joins(:user).where( "users.codepostal= ? ", 9999999 )
         params[:code_postal_search2].each do |code_postal_var|
-          @query_to_add_code_postal = Annonce.joins(:user).where( "users.codepostal= ? ", code_postal_var )
+          @query_to_add_code_postal = Annonce.joins(:user).where( "users.departement= ? ", code_postal_var )
           @result_query_code_postal = Annonce.from("(#{@init_query_code_postal.to_sql} UNION #{@query_to_add_code_postal.to_sql}) AS annonces")
           @init_query_code_postal = @result_query_code_postal
         end
