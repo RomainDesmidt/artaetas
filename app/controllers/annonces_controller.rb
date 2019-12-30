@@ -127,7 +127,7 @@ class AnnoncesController < ApplicationController
     @volume = params[:volume]
     # @code_postal_all = User.all.collect { |x| x.codepostal.divmod(1000)[0]}
     @code_postal_all = User.all.collect do |x| 
-      unless x.code_postal.nil?
+      unless x.codepostal.nil?
         x.codepostal.divmod(1000)[0]
       end
     end
