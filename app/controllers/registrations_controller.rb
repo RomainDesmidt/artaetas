@@ -12,7 +12,9 @@ class RegistrationsController < Devise::RegistrationsController
     else
       resource.update_with_password(params)
     end
-    
+    unless params[:codepostal].nil?
+      resource.update_without_password(departement: params[:codepostal].to_i.divmod(1000)[0])
+    end
   end
   
   
