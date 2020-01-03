@@ -83,10 +83,11 @@ class AnnoncesController < ApplicationController
       #   end
       # end
 
-      redirect_to @annonce
-      flash[:error] = "it worked"
+      redirect_to @annonce, flash: { success: "L'annonce est en attente de modération, et est consultable dans l'onglet annonce du compte membre" }
+      # flash[:error] = "it worked"
     else
       render 'new'
+      flash[:error] = "Erreur a la creation"
     end
   end
 
