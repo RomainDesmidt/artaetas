@@ -13,5 +13,6 @@ class UsersController < ApplicationController
 
   def me
     @annonces = current_user.annonces
+    # flash.now[:notice] = 'Veuillez completer les informations de votre profil'
   end
 end
