@@ -1,8 +1,13 @@
 class Annonce < ApplicationRecord
-  
- validates :photo, :name, :description,  presence: true
+ 
+ # after_update :enventeorno
+ 
+
+ 
+ validates :photo, presence: true
+ validates :name, :description,  presence: true
  validates :prix, format: {with: /\A\d+(?:\.\d{0,2})?\z/}, numericality: {less_than_or_equal_to: 1000000}, presence: true
- validates :anneecreation, length: {maximum: 4}
+ validates :anneecreation, inclusion: { in: 0..2100 }
   acts_as_votable
   belongs_to :user
   
@@ -17,9 +22,6 @@ class Annonce < ApplicationRecord
   
   has_one  :order
 
-  mount_uploader :photo, PhotoUploader
-  mount_uploader :photo_un, PhotoUploader
-  mount_uploader :photo_deux, PhotoUploader
 
   acts_as_votable
   act_as_bookmarkee
@@ -40,6 +42,17 @@ class Annonce < ApplicationRecord
   # end
   
  # def cat_ids=(ids)
+ # end
+ 
+  mount_uploader :photo, PhotoUploader
+  mount_uploader :photo_un, PhotoUploader
+  mount_uploader :photo_deux, PhotoUploader 
+ 
+ # def enventeorno
+ #  unless self.envente_yesno == nil
+ #   self.update(envente_yesno: nil)
+ #   # AnnonceMailer.with(user: self.user, annonce: self).confirm_edit_annonce.deliver_now
+ #  end
  # end
  
  def sujetcontact

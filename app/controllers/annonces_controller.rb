@@ -37,6 +37,7 @@ class AnnoncesController < ApplicationController
   def create
     @annonce = current_user.annonces.new(annonce_params)
     @annonce_params = annonce_params
+    @annonce.update(formule: "Standard")
     unless  @annonce.largeur.nil? || @annonce.profondeur.nil? || @annonce.hauteur.nil?
       if @annonce.largeur > 0 && @annonce.profondeur > 0 && @annonce.hauteur > 0
         @volume = @annonce.largeur * @annonce.profondeur * @annonce.hauteur
@@ -457,9 +458,10 @@ class AnnoncesController < ApplicationController
         end
       end
     end
+    @annonce.save!
     unless @annonce.envente_yesno == nil
       @annonce.update(envente_yesno: nil)
-      AnnonceMailer.with(user: @annonce.user, annonce: @annonce).confirm_edit_annonce.deliver_now
+      # AnnonceMailer.with(user: @annonce.user, annonce: @annonce).confirm_edit_annonce.deliver_now
     end
     
 
