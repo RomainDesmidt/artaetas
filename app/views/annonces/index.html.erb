@@ -113,7 +113,11 @@
          <% unless a_pre[0].nil? %>
            <div class="grid-item aa-formule-malu">
              <%= link_to "annonces/#{a_pre[0].id}", { class: "aa-annonce-titre"} do %>
-                <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_pre[0].photo.url.insert(4, 's') })  %>
+                <% if a_pre[0].photo.url.nil? %>
+                  <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
+                <% else %>
+                  <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_pre[0].photo.url.insert(4, 's') })  %>
+                <% end %>
                 <% unless a_pre[0].name.lines.first.nil? %>
                   <p class='p-titre'><%= a_pre[0].name.lines.first[0,70] %></p>
                 <% end %>
@@ -133,7 +137,11 @@
      
         <div class="grid-item aa-formule-normal">
           <%= link_to "annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
-            <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
+            <% if t.photo.url.nil? %>
+              <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
+            <% else %>
+              <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
+            <% end %>
             <% unless t.name.lines.first.nil? %>
               <p class='p-titre'><%= t.name.lines.first[0,70] %></p>
             <% end %>

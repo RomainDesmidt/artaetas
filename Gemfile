@@ -25,6 +25,7 @@ gem 'figaro'
 gem 'omniauth-facebook'
 gem 'activeadmin'
 
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'letter_opener'

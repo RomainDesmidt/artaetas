@@ -1,10 +1,8 @@
 class Annonce < ApplicationRecord
  
  # after_update :enventeorno
- 
+ after_update :no_photo_envente_no
 
- 
- validates :photo, presence: true
  validates :name, :description,  presence: true
  validates :prix, format: {with: /\A\d+(?:\.\d{0,2})?\z/}, numericality: {less_than_or_equal_to: 1000000}, presence: true
  validates :anneecreation, inclusion: { in: 0..2100 }
@@ -54,6 +52,14 @@ class Annonce < ApplicationRecord
  #   # AnnonceMailer.with(user: self.user, annonce: self).confirm_edit_annonce.deliver_now
  #  end
  # end
+ 
+ def no_photo_envente_no
+  if self.photo.blank? 
+   unless self.envente_yesno == nil
+    self.update(envente_yesno: nil)
+   end
+  end
+ end
  
  def sujetcontact
  end

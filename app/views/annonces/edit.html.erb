@@ -17,13 +17,13 @@
         
         <div class="aa-new-photo-field">
           <div class="aa-new-photo-field-indivi">
-            <%= f.input :photo, :input_html => { :onchange => "document.getElementById('previewPhoto').src = window.URL.createObjectURL(this.files[0])", class: 'hide-photo-btn' } %>
+            <%= f.input :photo,  required: true, :input_html => { :onchange => "document.getElementById('previewPhoto').src = window.URL.createObjectURL(this.files[0]); document.getElementById('submitButtonEdit').disabled = false;", class: 'hide-photo-btn' } %>
             <% if @annonce.photo? %>
               <%= cl_image_tag @annonce.photo, class: "aa-edit-thumbnail", id: "previewPhoto" %>
             <% else %>
               <img class="aa-edit-thumbnail" id="previewPhoto"></img>
             <% end %>
-            <%= f.input :photo_cache, as: :hidden %>
+            <%= f.input :photo_cache, required: true, as: :hidden %>
           </div>
           <div class="aa-new-photo-field-indivi">
             <%= link_to destroy_photo_un_annonce_path(@annonce), method: :put,  :onclick => "document.getElementById('previewPhotoUn').src ='https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png'" do %>
@@ -139,7 +139,7 @@
       <%= f.input :etat_neuf , input_html: { class: 'aa-new-hide-chkbox' }, label_html: { class: "aa-new-label-chkbox" } %>
       </div>
     </div>
-    <%= f.submit "Modifier l'annonce", class: "btn btn-primary aa-mobile-btn aa-new-publierannonce" %>
+    <%= f.submit "Modifier l'annonce", class: "btn btn-primary aa-mobile-btn aa-new-publierannonce", id: "submitButtonEdit", disabled: true  %>
     <% end %>
   </div>
 </div>
