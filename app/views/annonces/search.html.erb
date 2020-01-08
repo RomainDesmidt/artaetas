@@ -172,7 +172,11 @@
       <% @annonces_pre.each do |t| %>
         <div class="grid-item aa-formule-malu">
          <%= link_to "/annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
-              <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
+              <% if t.photo.url.nil? %>
+                <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
+              <% else %>
+                <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
+              <% end %>
               
               <% unless t.name.nil? %>
                 <p class='p-titre-search'><%= t.name[0,70] %></p>
@@ -222,7 +226,11 @@
          <% unless a_pre[0].nil? %>
           <div class="grid-item aa-formule-malu">
             <%= link_to "/annonces/#{a_pre[0].id}", { class: "aa-annonce-titre"} do %>
-              <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_pre[0].photo.url.insert(4, 's') })  %>
+              <% if a_pre[0].photo.url.nil? %>
+                <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
+              <% else %>
+                <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_pre[0].photo.url.insert(4, 's') })  %>
+              <% end %>
               <% unless a_pre[0].name.nil? %>
                 <p class='p-titre-search'><%= a_pre[0].name[0,70] %></p>
               <% end %>
@@ -260,7 +268,11 @@
        
        <div class="grid-item ">
          <%= link_to "/annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
-              <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
+              <% if t.photo.url.nil? %>
+                <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
+              <% else %>
+                <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
+              <% end %>
               
               <% unless t.name.nil? %>
                 <p class='p-titre-search'><%= t.name[0,70] %></p>
