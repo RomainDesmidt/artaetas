@@ -58,8 +58,9 @@ class User < ApplicationRecord
   end
   
   def warm_up_exercice
-    self.masquefavoris = true
-    self.masquepublication = true
+    self.masquefavoris = false
+    self.masquepublication = false
+    self.afficher_email = true
     self.save!
   end
   

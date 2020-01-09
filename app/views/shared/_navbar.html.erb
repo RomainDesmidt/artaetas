@@ -30,7 +30,7 @@
            <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <!--<div class="dropdown-menu dropdown-menu-right aa-desktop-only" aria-labelledby="navbarDropdown">-->
-            <%= link_to "Mon Profil", "/users/me", class: "dropdown-item" %>
+            <%= link_to "Mon Profil", users_me_path( :view_param => "annonce"), class: "dropdown-item" %>
             <!-- < link_to "Liste user", "/users/", class: "dropdown-item" > -->
             <!-- < link_to "Edit Profile", edit_user_registration_path , class: "dropdown-item" > -->
             <%= link_to "Se Deconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
@@ -75,7 +75,7 @@
         </li>
         <li class="nav-item aa-nav-item aa-mobile-only">
         <div></div>
-          <div><%= link_to "Mon Profil", "/users/me", class: "nav-link aa-menu-link" %></div>
+          <div><%= link_to "Mon Profil", users_me_path( :view_param => "annonce"), class: "nav-link aa-menu-link" %></div>
         </li>
         <li class="nav-item aa-nav-item aa-mobile-only aa-section-end">
         <div></div>
