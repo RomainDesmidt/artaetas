@@ -17,7 +17,7 @@
         
         <div class="aa-new-photo-field">
           <div class="aa-new-photo-field-indivi">
-            <%= f.input :photo,  required: true, :input_html => { :onchange => "document.getElementById('previewPhoto').src = window.URL.createObjectURL(this.files[0]); document.getElementById('submitButtonEdit').disabled = false;", class: 'hide-photo-btn' } %>
+            <%= f.input :photo,  required: true, :input_html => { :onchange => "document.getElementById('previewPhoto').src = window.URL.createObjectURL(this.files[0]) ", class: 'hide-photo-btn' } %>
             <% if @annonce.photo? %>
               <%= cl_image_tag @annonce.photo, class: "aa-edit-thumbnail", id: "previewPhoto" %>
             <% else %>
@@ -134,12 +134,12 @@
       <%= f.input :profondeur, placeholder: "cm", input_html: { class: 'aa-textalignright' } %>
       <%= f.input :oeuvre_limite, label: "Tirage", :collection => ["Oeuvre Unique","Oeuvre Limite", "Oeuvre Illimite"]%>
       <%= f.input :certificat_authenticite, label: "Certificat d'authenticité", input_html: { class: 'aa-new-hide-chkbox' }, label_html: { class: "aa-new-label-chkbox aa-new-label-chkbox-first" } %>
-      <%= f.input :facture_achat, label: "Facture d'achat de l'oeuvre", input_html: { class: 'aa-new-hide-chkbox' }, label_html: { class: "aa-new-label-chkbox" } %>
+      <%= f.input :facture_achat, label: "Facture d'origine", input_html: { class: 'aa-new-hide-chkbox' }, label_html: { class: "aa-new-label-chkbox" } %>
       <%= f.input :encadrement , input_html: { class: 'aa-new-hide-chkbox' }, label_html: { class: "aa-new-label-chkbox" } %>
       <%= f.input :etat_neuf , input_html: { class: 'aa-new-hide-chkbox' }, label_html: { class: "aa-new-label-chkbox" } %>
       </div>
     </div>
-    <%= f.submit "Modifier l'annonce", class: "btn btn-primary aa-mobile-btn aa-new-publierannonce", id: "submitButtonEdit", disabled: true  %>
+    <%= f.submit "Modifier l'annonce", class: "btn btn-primary aa-mobile-btn aa-new-publierannonce" %>
     <% end %>
   </div>
 </div>

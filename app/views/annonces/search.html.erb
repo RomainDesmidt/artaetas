@@ -60,9 +60,9 @@
     <%# end %>
     
       <% if params[:administratif_search2] == '' || params[:administratif_search2].nil?%>
-        <%= select_tag :administratif_search2 , options_for_select([ ["Facture d'achat","facture_achat"], ["Certificat d'authenticité","certificat_authenticite"], ["Encadrement","encadrement"], ["Etat Neuf","etat_neuf"] ], ""), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd4"  %>  
+        <%= select_tag :administratif_search2 , options_for_select([ ["Facture d'origine","facture_achat"], ["Certificat d'authenticité","certificat_authenticite"], ["Encadrement","encadrement"], ["Etat Neuf","etat_neuf"] ], ""), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd4"  %>  
       <% else %>
-        <%= select_tag :administratif_search2 , options_for_select([ ["Facture d'achat","facture_achat"], ["Certificat d'authenticité","certificat_authenticite"], ["Encadrement","encadrement"], ["Etat Neuf","etat_neuf"] ], @administratif_search2 ), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd4"  %>  
+        <%= select_tag :administratif_search2 , options_for_select([ ["Facture d'origine","facture_achat"], ["Certificat d'authenticité","certificat_authenticite"], ["Encadrement","encadrement"], ["Etat Neuf","etat_neuf"] ], @administratif_search2 ), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd4"  %>  
       <% end %>
     
     <%# if params[:facture_achat] == '' || params[:facture_achat].nil?%>
