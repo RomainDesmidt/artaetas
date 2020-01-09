@@ -45,7 +45,7 @@ if (selection4) {
   
 })
 if ( document.querySelector('div.multiple-dd4>div.ss-multi-selected>div.ss-values>span.ss-disabled') != null )  {
-  document.querySelector('div.multiple-dd4>div.ss-multi-selected>div.ss-values>span.ss-disabled').innerText = "Administratif...";
+  document.querySelector('div.multiple-dd4>div.ss-multi-selected>div.ss-values>span.ss-disabled').innerText = "Spécificités...";
 }
   document.querySelector('div.multiple-dd4>div.ss-content>div.ss-search>input').placeholder = "Saisie";
 };

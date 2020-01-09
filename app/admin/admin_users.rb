@@ -1,4 +1,5 @@
 ActiveAdmin.register AdminUser do
+
   permit_params :username, :login, :email, :password, :password_confirmation
 
   index do
