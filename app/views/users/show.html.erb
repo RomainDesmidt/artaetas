@@ -152,8 +152,8 @@
     <div class="aa-me-annonceuser">
       <p class="text-center"><b>ANNONCES MEMBRE</b></p>
       <div class="aa-search-annonce-container">
-            <% if @user.annonces.count > 0 %>
-              <% @user.annonces.each do |a| %>
+            <% if @user.annonces.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true).count > 0 %>
+              <% @user.annonces.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true).each do |a| %>
       
                   <div class="aa-search-annonce-card">
                   <%= link_to a, class: "aa-search-annonce-card-image aa-show-user-pub" do %>

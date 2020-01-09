@@ -434,7 +434,14 @@ class AnnoncesController < ApplicationController
       AnnonceMailer.with(user: @annonce.user, annonce: @annonce).confirm_edit_annonce.deliver_now
     end
     
-    redirect_to @annonce
+    if  @annonce.save
+      redirect_to @annonce, flash: { success: "L'annonce est en attente de modération, et est consultable dans l'onglet annonce du compte membre" }
+      # flash[:error] = "it worked"
+    else
+      render 'edit'
+      flash[:error] = "Erreur d'edition"
+    end
+    
   end
 
   def destroy
