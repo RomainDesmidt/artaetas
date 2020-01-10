@@ -13,6 +13,11 @@ class UsersController < ApplicationController
 
   def me
     @annonces = current_user.annonces
+    unless current_user.compteur_rappel.nil?
+      if current_user.compteur_rappel < 6
+        flash.now[:notice] = 'Veuillez completer les informations de votre profil'
+      end
+    end
     # flash.now[:notice] = 'Veuillez completer les informations de votre profil'
   end
 end
