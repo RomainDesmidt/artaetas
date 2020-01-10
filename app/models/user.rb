@@ -4,6 +4,8 @@ class User < ApplicationRecord
   attr_accessor :login, :current_password
   
   validates :username, presence: true, uniqueness: {case_sensitive: false}, format: {with: /\A[a-zA-Z0-9 _\.]*\z/}
+  validates :confirm_cgu, acceptance:  { message:  '^Les CGU d\'ARTAETAS doivent etre acceptées' }
+  # validates_acceptance_of :confirm_cgu, :message => "^Les CGU d\'ARTAETAS doivent etre acceptées"
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :trackable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
   has_many :annonces
