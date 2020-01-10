@@ -1,3 +1,4 @@
+
 <div class="aa-signin-bg">
   <div class="aa-signin-container">
     <div class="aa-signin-column" id="aa-signin-hide">
@@ -51,6 +52,10 @@
                     required: true,
                     label: "Confirmation du mot de passe",
                     input_html: { autocomplete: "new-password" } %>
+                    
+        <%= f.input :confirm_cgu, 
+                    label: "Accepter les CGU Artaetas", 
+                    require: true  %>
       </div>
 
       <div class="form-actions">

@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/nanamkim/custom-err-msg.git
+  revision: d72fb180d9dfd19f18622c978747dcc0aa5374e0
+  specs:
+    custom_error_message (1.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -330,6 +336,7 @@ DEPENDENCIES
   bootsnap
   carrierwave (~> 1.2)
   cloudinary (~> 1.9.1)
+  custom_error_message!
   devise
   dotenv-rails
   figaro

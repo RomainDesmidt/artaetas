@@ -24,6 +24,7 @@ gem 'bookmark_system'
 gem 'figaro'
 gem 'omniauth-facebook'
 gem 'activeadmin'
+gem 'custom_error_message', git: 'https://github.com/nanamkim/custom-err-msg.git'
 
 
 group :development do
