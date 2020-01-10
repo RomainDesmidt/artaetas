@@ -42,6 +42,7 @@
               <%= f.input :login,
                           required: false,
                           autofocus: true,
+                          label: "Nom d'utilisateur" ,
                           input_html: { autocomplete: "login" }
                            %>
               <%= f.label :password, "Mot de passe" %>
@@ -49,11 +50,11 @@
                           required: false,
                           input_html: { autocomplete: "current-password" },
                           label: false %>
-              <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+              <%= f.input :remember_me, label: "Se souvenir de moi", as: :boolean if devise_mapping.rememberable? %>
             </div>
 
             <div class="form-actions">
-              <%= f.button :submit, "Log in", class: "btn btn-primary aa-signin-btn" %>
+              <%= f.button :submit, "Se connecter", class: "btn btn-primary aa-signin-btn" %>
             </div>
           <% end %>
 
