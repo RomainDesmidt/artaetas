@@ -71,5 +71,14 @@ class User < ApplicationRecord
     self.update(confirmation_webmaster: true)
   end
   
+  def after_database_authentication
+    if self.compteur_rappel.nil?
+      self.update(compteur_rappel: 1)
+    else
+      new_compteur = self.compteur_rappel + 1
+      self.update(compteur_rappel: new_compteur)
+    end
+  end
+  
   
 end

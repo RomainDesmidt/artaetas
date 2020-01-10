@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks", registrations: 'registrations' }
   as :user do
-    get 'users/me', :to => 'users#me', :as => :user_root
+    get 'users/me?view_param=annonce', :to => 'users#me', :as => :user_root
   end
   root to: 'annonces#index'
   resources :annonces do
