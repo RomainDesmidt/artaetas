@@ -9,6 +9,9 @@
   padding: 1.4rem 2.4rem !important;
 }
 
+
+
+
 html {
   position: relative;
 
@@ -38,6 +41,11 @@ h2[class="aa-legal-titre"] {
 h3[class="aa-legal-titre"] {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+
+title {
+  display: none;
 }
 
 .ss-main .ss-multi-selected .ss-values .ss-disabled {
@@ -268,9 +276,9 @@ textarea.form-control.is-valid {
 // }
 
 .aa-link-confirm-waiting::before {
-  content: 'En Attente';
+  content: 'En attente de modération';
   position: absolute;
-  left: -90px;
+  left: -193px;
   visibility: hidden;
   padding-right: 10px;
   padding-left: 10px;
@@ -278,12 +286,13 @@ textarea.form-control.is-valid {
   color: $entete;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  width: 200px;
 }
 
 .aa-link-confirm-refused::before {
-  content: 'Refusé';
+  content: 'Refusée';
   position: absolute;
-  left: -60px;
+  left: -69px;
   visibility: hidden;
   padding-right: 10px;
   padding-left: 10px;
@@ -294,9 +303,9 @@ textarea.form-control.is-valid {
 }
 
 .aa-link-confirm-confirmed::before {
-  content: 'Confirmé';
+  content: 'En ligne';
   position: absolute;
-  left: -80px;
+  left: -68px;
   visibility: hidden;
   padding-right: 10px;
   padding-left: 10px;
@@ -308,15 +317,16 @@ textarea.form-control.is-valid {
 
 .aa-edit-action::before {
   visibility: hidden;
-  content: 'Editer';
+  content: 'Modifier mon annonce';
   padding-right: 10px;
   padding-left: 10px;
   background-color: white;
   color: $entete;
   position: absolute;
-  left: -60px;
+  left: -171px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  width: 180px;
 }
 
 .aa-delete-action::before {
@@ -334,15 +344,16 @@ textarea.form-control.is-valid {
 
 .aa-dollar-action::before {
   visibility: hidden;
-  content: 'Formules';
+  content: 'Visibilité de l\'annonce';
   padding-right: 10px;
   padding-left: 10px;
   background-color: white;
   color: $entete;
   position: absolute;
-  left: -80px;
+  left: -167px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  width: 176px;
 }
 
 

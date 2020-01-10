@@ -121,7 +121,7 @@ if ( $('.gridouille').length ) {
 
 // ################################ BOTH
 
-$( document ).ready(function() {   
+$( document ).ready(function() { 
   $( window ).resize(function() {
     if ( $container.length ) {
       $container.delay(3000).masonry('layout');

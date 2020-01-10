@@ -12,3 +12,8 @@ $('a[data-popup]').on('click', function(e) { window.open($(this).attr('href')); 
 //     // $('.grid-item img.not-loaded').removeClass("not-loaded");
 //     $('.grid').delay(2000).masonry('layout');
 // });
+$( document ).ready(function() { 
+ $('.aa-navbar-artaetas title').html('');
+ $('aa-footer-ae title').html('');
+ 
+});
