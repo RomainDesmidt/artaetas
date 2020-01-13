@@ -13,7 +13,7 @@ $('a[data-popup]').on('click', function(e) { window.open($(this).attr('href')); 
 //     $('.grid').delay(2000).masonry('layout');
 // });
 $( document ).ready(function() { 
- $('.aa-navbar-artaetas title').html('');
- $('aa-footer-ae title').html('');
+ // $('.aa-navbar-artaetas title').html('');
+ // $('aa-footer-ae title').html('');
  
 });

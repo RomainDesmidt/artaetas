@@ -249,7 +249,7 @@
                 <%= f.input :lastname, require: false, label: false %>
 
                 <%= f.input :afficher_identite,
-                            hint: "cocher pour faire apparaitre dans votre profil et dans les annonces",
+                            hint: "cocher pour les faire apparaitre dans votre profil et dans les annonces",
                             label: "Afficher vos nom et prenoms",
                             require: false,
                             input_html: { class: 'aa-new-hide-chkbox' }, 
@@ -263,7 +263,7 @@
                             label_html: { class: "aa-new-label-chkbox" } 
                             %>
 
-                <%= f.input :tel, label: "Numéro de téléphone", hint: "ce numéro pourra etre utiliser pour vous contacter", require: false %>
+                <%= f.input :tel, label: "Numéro de téléphone", hint: "Ce numéro pourra être utilisé pour vous contacter", require: false %>
                 <%= f.input :afficher_tel, 
                             label: "Afficher le numéro de téléphone",
                             hint: "cocher pour que votre numéro apparaisse dans votre profil et dans les annonces",
@@ -304,14 +304,14 @@
                             require: false %>
                 <%= f.input :masquefavoris, 
                             label: "Masquer vos favoris", 
-                            hint: "masquer vos annonces et users favoris", 
+                            hint: "masquer vos annonces et membres favoris", 
                             require: false,
                             input_html: { class: 'aa-new-hide-chkbox' }, 
                             label_html: { class: "aa-new-label-chkbox" }  
                             %>
                 <%= f.input :masquepublication, 
                             label: "Masquer vos Publications", 
-                            hint: "masquer les annonces que vous avez créé", 
+                            hint: "Masquer les annonces que vous avez publiées", 
                             require: false,
                             input_html: { class: 'aa-new-hide-chkbox' }, 
                             label_html: { class: "aa-new-label-chkbox" } 
@@ -321,7 +321,7 @@
         <div class="aa-new-photo-field">
           <div class="aa-new-photo-field-indivi2">
             <%= f.input :photoprofil,
-             label: "Avatar",
+             label: "Photo de profil",
             :input_html => { :onchange => "document.getElementById('previewPhotoProfil').src = window.URL.createObjectURL(this.files[0])", 
             class: 'hide-photo-btn' } %>
             <% if current_user.photoprofil? %>
@@ -334,7 +334,7 @@
           
           <div class="aa-new-photo-field-indivi">
             <%= f.input :photofond,
-             label: "Bannière",
+             label: "Bannière de profil",
             :input_html => { :onchange => "document.getElementById('previewPhotoFond').src = window.URL.createObjectURL(this.files[0])", 
             class: 'hide-photo-btn' }  %>
             <% if current_user.photofond? %>
@@ -379,7 +379,6 @@
                        label: "Mot de passe actuel",
                        input_html: { autocomplete: "new-password", readonly: "readonly", onfocus: "this.removeAttribute('readonly');" } %>
            <%= f.input :password,
-                       hint: "Laisser vide si pas de changement",
                        required: false,
                        label: "Nouveau mot de passe",
                        input_html: { autocomplete: "new-password" } %>
