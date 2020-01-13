@@ -505,14 +505,16 @@ class AnnoncesController < ApplicationController
     @annonce = Annonce.find(params[:id])
     @user = User.find(@annonce.user_id)
     @user.followers << current_user
-    redirect_to @annonce
+    # redirect_to @annonce
+    redirect_back fallback_location: root_path
   end
 
   def unfollow
     @annonce = Annonce.find(params[:id])
     @user = User.find(@annonce.user_id)
     Follow.where(follower_id: current_user.id, followee_id: @user.id).first.destroy!
-    redirect_to @annonce
+    # redirect_to @annonce
+    redirect_back fallback_location: root_path
   end
   
   def edit_formule
