@@ -115,16 +115,21 @@
   <!--  <%# end %>-->
   <!--</div>-->
   
+      <div class="aa-me-moncompte-container">
+        <div class="aa-me-infoperso">
+          <h2>Mes Annonces</h2>        
+        </div>
+      </div>
   <div class="grid-container aa-search-grid-container">
     <div class="grid-me">
       <div class="grid-sizer-me"></div>
       <div class="gutter-sizer-me"></div>
        <% @annonces.each do |t| %>
        <% if t.formule == "Mise en Avant" %>
-         <div class="grid-item-me" style="background-color: #D4FDFF !important;">
+         <div class="grid-item-me" style="">
        <% else %>
          <% if t.formule == "Mise a la une" %>
-           <div class="grid-item-me" style="background-color: #8D87FF !important;">
+           <div class="grid-item-me" style="">
          <% else %>
            <div class="grid-item-me hello">
          <% end %>
@@ -170,9 +175,20 @@
                 </div>
                 
                 <div class="aa-me-submenu">
-                  <%= link_to edit_formule_annonce_path(t) , class: "aa-dollar-action" do %>
-                    <%= inline_svg "prix-composant.svg", class: "aa-suppr-svg" %>
-                  <% end %>
+                  <% case t.formule %>
+                    <% when "Standard" %>
+                      <%= link_to edit_formule_annonce_path(t) , class: "aa-standard-action" do %>
+                        <%= inline_svg "prix-composant.svg", class: "aa-suppr-svg" %>
+                      <% end %>
+                    <% when "Mise en Avant" %>
+                      <%= link_to edit_formule_annonce_path(t) , class: "aa-mea-action" do %>
+                        <%= inline_svg "prix-composant.svg", class: "aa-suppr-svg" %>
+                      <% end %>
+                    <% when "Mise a la une" %>
+                      <%= link_to edit_formule_annonce_path(t) , class: "aa-malu-action" do %>
+                        <%= inline_svg "prix-composant.svg", class: "aa-suppr-svg" %>
+                      <% end %>
+                  <% end %>                      
                 </div>
                 
                 <div class="aa-me-submenu">
@@ -197,6 +213,13 @@
 
 
   <div class="tab-pane fade text-center" id="transactions" role="tabpanel" aria-labelledby="transactions-tab">
+    
+          <div class="aa-me-moncompte-container">
+        <div class="aa-me-infoperso">
+          <h2 class="text-left">Mes Transactions</h2>        
+        </div>
+      </div>
+    
   Aucune transaction pour le moment!
   </div>
 
