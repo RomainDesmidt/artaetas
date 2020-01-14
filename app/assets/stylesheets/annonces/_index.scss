@@ -348,18 +348,46 @@ textarea.form-control.is-valid {
   border-bottom-left-radius: 5px;
 }
 
-.aa-dollar-action::before {
+.aa-standard-action::before {
   visibility: hidden;
-  content: 'Visibilité de l\'annonce';
+  content: 'Standard';
   padding-right: 10px;
   padding-left: 10px;
   background-color: white;
   color: $entete;
   position: absolute;
-  left: -167px;
+  left: -77px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  width: 176px;
+  width: 84px;
+}
+
+.aa-mea-action::before {
+  visibility: hidden;
+  content: 'Mise en avant';
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: white;
+  color: $entete;
+  position: absolute;
+  left: -110px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: 119px;
+}
+
+.aa-malu-action::before {
+  visibility: hidden;
+  content: 'Mise a la une';
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: white;
+  color: $entete;
+  position: absolute;
+  left: -105px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: 114px;
 }
 
 
@@ -369,7 +397,9 @@ textarea.form-control.is-valid {
 
 .aa-edit-action:hover::before { visibility: visible; }
 .aa-delete-action:hover::before { visibility: visible; }
-.aa-dollar-action:hover::before { visibility: visible; }
+.aa-standard-action:hover::before,
+.aa-mea-action:hover::before,
+.aa-malu-action:hover::before { visibility: visible; }
 
 .aa-edit-action:hover,
 .aa-delete-action:hover,
@@ -378,6 +408,14 @@ textarea.form-control.is-valid {
   .aa-suppr-svg path,
   .aa-edit-svg path {
     fill: $footer;
+  }
+}
+
+.aa-malu-action,
+.aa-mea-action {
+  .aa-suppr-svg path,
+  .aa-edit-svg path {
+    fill: #3a89c1;
   }
 }
 
