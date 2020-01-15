@@ -457,7 +457,7 @@ class AnnoncesController < ApplicationController
        CouleurAnnonce.all.where(annonce_id: @annonce.id).destroy_all
      end
     @annonce.destroy
-  redirect_to '/users/me'
+  redirect_to users_me_path( :view_param => "annonce")
   end
 
 

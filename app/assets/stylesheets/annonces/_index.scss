@@ -419,6 +419,60 @@ textarea.form-control.is-valid {
   }
 }
 
+
+// LIKE BOOKMARK
+
+.aa-link-like::before {
+  content: 'Like';
+  position: absolute;
+  left: 36px;
+  visibility: hidden;
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: white;
+  color: $entete;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: 50px;
+}
+
+.aa-link-fav::before {
+  content: 'Fav';
+  position: absolute;
+  left: 36px;
+  visibility: hidden;
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: white;
+  color: $entete;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: 59px;
+}
+
+.aa-link-unfav::before {
+  content: 'Unfav';
+  position: absolute;
+  left: 36px;
+  visibility: hidden;
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: white;
+  color: $entete;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: 59px;
+}
+
+
+.aa-link-like:hover::before { visibility: visible; }
+.aa-link-unlike:hover::before { visibility: visible; }
+.aa-link-fav:hover::before { visibility: visible; }
+.aa-link-unfav:hover::before { visibility: visible; }
+
+
+
+
 // FIN GRID CAROUSEL
 
 .aa-formule-normal {
