@@ -10,11 +10,11 @@
                 <div class="aa-show-like-svg-container" id="aa-show-likefunc">
                   <% if user_signed_in? %>
                     <% if current_user.liked? @annonces %>
-                      <%= link_to dislike_annonce_path(@annonces), class: 'vote', method: :put do %>
+                      <%= link_to dislike_annonce_path(@annonces), class: 'vote aa-link-unlike', method: :put do %>
                         <%= inline_svg "like.svg", class: "aa-show-dislike-svg" %>
                       <% end %>
                     <% else %>
-                      <%= link_to like_annonce_path(@annonces) , class: 'vote', method: :put do %>
+                      <%= link_to like_annonce_path(@annonces) , class: 'vote aa-link-like', method: :put do %>
                         <%= inline_svg "dislike.svg", class: "aa-show-like-svg" %>
                       <% end %>
                     <% end %>
@@ -27,11 +27,11 @@
               <div class="aa-show-fav-svg-container" id="aa-show-favfunc">
                 <% if user_signed_in? %>
                   <% if current_user.bookmarks?(@annonces) %>
-                    <%= link_to unbookmark_annonce_path(@annonces), method: :put do %>
+                    <%= link_to unbookmark_annonce_path(@annonces), class: 'aa-link-unfav', method: :put do %>
                       <%= inline_svg "faved.svg", class: "aa-show-unfav-svg" %>
                     <% end %>
                   <% else %>
-                    <%= link_to bookmark_annonce_path(@annonces) , method: :put do %>
+                    <%= link_to bookmark_annonce_path(@annonces), class: 'aa-link-fav' , method: :put do %>
                       <%= inline_svg "fav.svg", class: "aa-show-fav-svg" %>
                     <% end %>
                   <% end %>
@@ -191,9 +191,9 @@
                 
                 <% if user_signed_in? %>
                   <% if current_user.followees.include?(@user) %>
-                  <div class="aa-show-detailuser-followbtn"><%= link_to "SUIVRE", unfollow_annonce_path(@annonces), method: :put, class: "aa-show-suivre-link" %> <%= inline_svg "enlever.svg", class: "aa-show-follow-svg" %></div>
+                  <div class="aa-show-detailuser-followbtn"><%= link_to "MEMBRE SUIVI", unfollow_annonce_path(@annonces), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "enlever.svg", class: "aa-show-follow-svg" %></div>
                   <% else %>
-                    <div class="aa-show-detailuser-followbtn"><%= link_to "SUIVRE", follow_annonce_path(@annonces), method: :put, class: "aa-show-suivre-link" %> <%= inline_svg "ajouter.svg", class: "aa-show-follow-svg" %></div>
+                    <div class="aa-show-detailuser-followbtn"><%= link_to "SUIVRE LE MEMBRE", follow_annonce_path(@annonces), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "ajouter.svg", class: "aa-show-follow-svg" %></div>
                   <% end %>
                 <% end %>
             </div>

@@ -35,9 +35,9 @@
                 
           <% if user_signed_in? %>
             <% if current_user.followees.include?(@user) %>
-              <div class="aa-show-detailuser-followbtn"><%= link_to "SUIVRE", unfollow_annonce_path(@user), method: :put, class: "aa-show-suivre-link" %> <%= inline_svg "enlever.svg", class: "aa-show-follow-svg" %></div>
+              <div class="aa-show-detailuser-followbtn"><%= link_to "MEMBRE SUIVI", unfollow_annonce_path(@user), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "enlever.svg", class: "aa-show-follow-svg" %></div>
             <% else %>
-              <div class="aa-show-detailuser-followbtn"><%= link_to "SUIVRE", follow_annonce_path(@user), method: :put, class: "aa-show-suivre-link" %> <%= inline_svg "ajouter.svg", class: "aa-show-follow-svg" %></div>
+              <div class="aa-show-detailuser-followbtn"><%= link_to "SUIVRE LE MEMBRE", follow_annonce_path(@user), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "ajouter.svg", class: "aa-show-follow-svg" %></div>
             <% end %>
           <% end %>
         </div>
@@ -209,7 +209,7 @@
 
 <% if current_user.id == params[:id].to_i %>
   <div class="aa-show-retour">
-    <%=link_to "/users/me" do %> 
+    <%=link_to users_me_path( :view_param => "annonce") do %> 
       <%= inline_svg "home.svg", class: "aa-show-retour-svg" %>&nbsp;&nbsp;&nbsp;<span>Retour Profil</span>
     <% end %>
   </div>
