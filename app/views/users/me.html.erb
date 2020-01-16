@@ -19,8 +19,14 @@
     
     
     <li class="nav-item aa-me-nav-item">
+      <%= inline_svg "fav.svg", class: "aa-me-navsvg"  %>
+      <a class="nav-link" id="profil-tab" href="/users/<%= current_user.id %>"  aria-selected="false">Mes Favoris</a>
+    </li>
+    
+    
+    <li class="nav-item aa-me-nav-item">
       <%= inline_svg "administration.svg", class: "aa-me-navsvg"  %>
-      <a class="nav-link" id="compte-tab" data-toggle="tab" href="#compte" role="tab" aria-controls="compte" aria-selected="false">Mon compte</a>
+      <a class="nav-link" id="compte-tab" data-toggle="tab" href="#compte" role="tab" aria-controls="compte" aria-selected="false">Mes informations personnelles</a>
     </li>
     
     
@@ -47,8 +53,13 @@
     </li>
     
     <li class="nav-item aa-me-nav-item">
+      <%= inline_svg "fav.svg", class: "aa-me-navsvg"  %>
+      <a class="nav-link" id="profil-tab" href="/users/<%= current_user.id %>"  aria-selected="false">Mes Favoris</a>
+    </li>
+    
+    <li class="nav-item aa-me-nav-item">
       <%= inline_svg "administration.svg", class: "aa-me-navsvg"  %>
-      <a class="nav-link active" id="compte-tab" data-toggle="tab" href="#compte" role="tab" aria-controls="compte" aria-selected="true">Mon compte</a>
+      <a class="nav-link active" id="compte-tab" data-toggle="tab" href="#compte" role="tab" aria-controls="compte" aria-selected="true">Mes informations personnelles</a>
     </li>
     
   </ul>
