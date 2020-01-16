@@ -436,6 +436,21 @@ textarea.form-control.is-valid {
   width: 50px;
 }
 
+.aa-link-unlike::before {
+  content: 'Unlike';
+  position: absolute;
+  left: 36px;
+  visibility: hidden;
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: white;
+  color: $entete;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: 58px;
+}
+
+
 .aa-link-fav::before {
   content: 'Fav';
   position: absolute;
