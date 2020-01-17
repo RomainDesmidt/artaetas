@@ -7,11 +7,16 @@ class UsersController < ApplicationController
     @bookmark = @user.bookmarkees_by(Annonce)
     @bmlist = []
     @bookmark.each do |bm|
-    @bmlist << bm.bookmarkee_id
+      @bmlist << bm.bookmarkee_id
     end
   end
 
   def me
+    @bookmark = current_user.bookmarkees_by(Annonce)
+    @bmlist = []
+    @bookmark.each do |bm|
+      @bmlist << bm.bookmarkee_id
+    end
     @annonces = current_user.annonces
     unless current_user.compteur_rappel.nil?
       if current_user.tel.blank? || current_user.statut.blank? || current_user.surname.blank? || current_user.lastname.blank? || current_user.paysresidence.blank? || current_user.villeresidence.blank? || current_user.codepostal.blank?

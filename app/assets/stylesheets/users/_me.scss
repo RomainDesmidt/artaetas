@@ -1,4 +1,18 @@
 // MES ANNONCES
+.aa-me-containermargin {
+  max-width: 1066px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.aa-me-flexcontainer-fav {
+  display: flex;
+}
+
+.aa-flexitem-fav {
+  flex: 0 1 300px;
+}
+
+
 #previewPhotoFond {
   width: 300px;
   background-size: 300px 100px;
