@@ -20,7 +20,7 @@
     
     <li class="nav-item aa-me-nav-item">
       <%= inline_svg "fav.svg", class: "aa-me-navsvg"  %>
-      <a class="nav-link" id="profil-tab" href="/users/<%= current_user.id %>"  aria-selected="false">Mes Favoris</a>
+      <a class="nav-link" id="fav-tab" data-toggle="tab" href="#fav" role="tab" aria-controls="fav"  aria-selected="false">Mes Favoris</a>
     </li>
     
     
@@ -54,7 +54,7 @@
     
     <li class="nav-item aa-me-nav-item">
       <%= inline_svg "fav.svg", class: "aa-me-navsvg"  %>
-      <a class="nav-link" id="profil-tab" href="/users/<%= current_user.id %>"  aria-selected="false">Mes Favoris</a>
+      <a class="nav-link" id="fav-tab" data-toggle="tab" href="#fav" role="tab" aria-controls="fav"  aria-selected="false">Mes Favoris</a>
     </li>
     
     <li class="nav-item aa-me-nav-item">
@@ -219,13 +219,91 @@
   </div>
 <%# --------------------------------------------------------------------------------------------- %>
 </div>
+<%# -------------------------------------FAVORIS TAB-------------------------------------------------------- %>
+<div class="tab-pane fade text-center" id="fav" role="tabpanel" aria-labelledby="fav-tab">
+  <div class="aa-me-containermargin">
+    
+    <div class="aa-me-moncompte-container">
+        <div class="aa-me-infoperso">
+          <h2 class="text-left">User Favoris</h2>        
+        </div>
+    </div>
+      
+    <div class="aa-me-flexcontainer-fav">
+      <% current_user.followees.each do |user_suivi| %>
+      <div class="aa-show-detailuser-contact aa-show-minheight aa-flexitem-fav">
+            
+            <div class="aa-show-detailuser-contact-container" style="padding-bottom: 0px; margin-bottom: 0px; border-width: 0px;">
+              <div class="aa-show-detailuser-contact-profil">
+                <div class="aa-show-contact-profil-photo" id="profilAvatarShow">
+                  <% if user_suivi.photoprofil?  %>
+                    <%= cl_image_tag user_suivi.photoprofil, class: "aa-show-contact-svg"  %>
+                  <% else %>
+                    <%= inline_svg "profil.svg", class: "aa-show-contact-svg" %>
+                  <% end %>
+                </div>
+                
+                <div class="aa-show-contact-profil-detail">
+                  <%# if @annonces.user.afficher_identite %>
+                    <%#= link_to "#{@annonces.user.surname} #{@annonces.user.lastname}", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
+                  <%# else %>
+                    <% if user_suivi.username %>
+                     <%= link_to "#{user_suivi.username}", "/users/#{user_suivi.id}", class: "aa-show-user-link"  %>
+                    <%# else %>
+                      <%#= link_to "Profil Auteur", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
+                    <%# end %>
+                  <% end %>
+                  <% if user_suivi.statut %>
+                    <div class="aa-show-contact-profil-statut"><%= user_suivi.statut %></div>
+                  <% end %>
+                  <div class="aa-show-contact-profil-nbannonces"><%= user_suivi.annonces.count %> annonces en ligne</div>
+                  
+                    
+                    <% if user_signed_in? %>
+                      <% if current_user.followees.include?(user_suivi) %>
+                      <div class="aa-show-detailuser-followbtn"><%= link_to "MEMBRE SUIVI", unfollow_annonce_path(user_suivi.annonces.first), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "enlever.svg", class: "aa-show-follow-svg" %></div>
+                      <% else %>
+                        <div class="aa-show-detailuser-followbtn"><%= link_to "SUIVRE LE MEMBRE", follow_annonce_path(user_suivi.annonces.first), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "ajouter.svg", class: "aa-show-follow-svg" %></div>
+                      <% end %>
+                    <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+      <% end %>
+    </div>
+    <div class="aa-me-moncompte-container">
+        <div class="aa-me-infoperso">
+          <h2 class="text-left">Annonces Favorites</h2>        
+        </div>
+    </div>
+    <div class="aa-me-flexcontainer-fav">
 
 
+          <% i = 0 %>
+      <% @bmlist.each do |bml| %>
+              <div class="aa-show-detailuser-contact aa-show-minheight aa-flexitem-fav">
+        <div class="aa-show-detailuser-contact-container" style="padding-bottom: 0px; margin-bottom: 0px; border-width: 0px;">
+          <div class="aa-me-favoriuseritem">
+            <%= link_to "/annonces/#{@bmlist[i]}" do %>
+              <%= cl_image_tag Annonce.find(@bmlist[i]).photo, class: "aa-me-favoriuser-image" %>
+            <% end %>
+          </div>
+          </div>
+          </div>
+        <% i += 1 %>
+      <% end %>
 
+      
+    </div>
+  </div><!-- containermargin-->
+</div>
+<%# -------------------------------------Transaction TAB-------------------------------------------------------- %>
 
   <div class="tab-pane fade text-center" id="transactions" role="tabpanel" aria-labelledby="transactions-tab">
     
-          <div class="aa-me-moncompte-container">
+      <div class="aa-me-moncompte-container">
         <div class="aa-me-infoperso">
           <h2 class="text-left">Mes Transactions</h2>        
         </div>
