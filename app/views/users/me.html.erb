@@ -284,7 +284,7 @@
           <% i = 0 %>
       <% @bmlist.each do |bml| %>
               <div class="aa-show-detailuser-contact aa-show-minheight aa-flexitem-fav">
-        <div class="aa-show-detailuser-contact-container" style="padding-bottom: 0px; margin-bottom: 0px; border-width: 0px;">
+        <div class="aa-show-detailuser-contact-container" style="height: 100%;padding-bottom: 0px; margin-bottom: 0px; border-width: 0px;">
           <div class="aa-me-favoriuseritem">
             <%= link_to "/annonces/#{@bmlist[i]}" do %>
               <%= cl_image_tag Annonce.find(@bmlist[i]).photo, class: "aa-me-favoriuser-image" %>
