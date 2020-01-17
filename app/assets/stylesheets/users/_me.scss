@@ -6,10 +6,15 @@
 }
 .aa-me-flexcontainer-fav {
   display: flex;
+  width: 100%;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .aa-flexitem-fav {
-  flex: 0 1 300px;
+    flex: 0 0 342px;
+    flex-wrap: wrap;
 }
 
 
