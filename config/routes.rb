@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks", registrations: 'registrations' }
-  as :user do
-    get 'users/me?view_param=annonce', :to => 'users#me', :as => :user_root
-  end
+  # as :user do
+  #   get 'users/me?view_param=annonce', :to => 'users#me', :as => :user_root
+  # end
+
   root to: 'annonces#index'
   resources :annonces do
     member do
@@ -40,6 +41,7 @@ end
   get 'users', to: 'users#index'
   get 'testindex', to: 'annonces#index2'
   get 'changelog', to: 'pages#changelog'
+  get 'mentionslegales', to: 'pages#mentionslegales'
   # put "like", to: "annonces#like"
   # put "dislike", to: "annonces#dislike"
 

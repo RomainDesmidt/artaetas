@@ -131,7 +131,7 @@
             </div>
           <% end %>
           <% unless CourantAnnonce.all.where(annonce_id: @annonces.id).nil? || CourantAnnonce.all.where(annonce_id: @annonces.id) == []  %>
-            <b><p>Courants</p></b>
+            <b><p>Courants / Styles</p></b>
           <div class="aa-show-categorie-list">
             <% CourantAnnonce.all.where(annonce_id: @annonces.id).each do |cour| %>
             <div class="aa-show-categorie-indivi"><p><%= Courant.find(cour.courant_id).name %></p></div>

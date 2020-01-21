@@ -9,6 +9,9 @@ class PagesController < ApplicationController
 
   def politiquedeconfidentialite
   end
+  
+  def mentionslegales
+  end
 
   def styleguide
     @base_font   = "Roboto"
