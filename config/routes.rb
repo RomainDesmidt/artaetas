@@ -14,6 +14,8 @@ Rails.application.routes.draw do
         put "dislikeuser", to: "annonces#dislikeuser"
         put "follow", to: "annonces#follow"
         put "unfollow", to: "annonces#unfollow"
+        put "followuser", to: "annonces#follow_user"
+        put "unfollowuser", to: "annonces#unfollow_user"
         put "bookmark", to: "annonces#bookmark"
         put "unbookmark", to: "annonces#unbookmark"
         put "destroy_photo_un", to: "annonces#destroy_photo_un"

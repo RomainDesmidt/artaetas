@@ -423,7 +423,7 @@ textarea.form-control.is-valid {
 // LIKE BOOKMARK
 
 .aa-link-like::before {
-  content: 'Like';
+  content: 'donner un like';
   position: absolute;
   left: 36px;
   visibility: hidden;
@@ -433,11 +433,11 @@ textarea.form-control.is-valid {
   color: $entete;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  width: 50px;
+  width: 120px;
 }
 
 .aa-link-unlike::before {
-  content: 'Unlike';
+  content: 'like donné';
   position: absolute;
   left: 36px;
   visibility: hidden;
@@ -447,12 +447,12 @@ textarea.form-control.is-valid {
   color: $entete;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  width: 58px;
+  width: 94px;
 }
 
 
 .aa-link-fav::before {
-  content: 'Fav';
+  content: 'rajouter à mes favoris';
   position: absolute;
   left: 36px;
   visibility: hidden;
@@ -462,11 +462,11 @@ textarea.form-control.is-valid {
   color: $entete;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  width: 59px;
+  width: 176px;
 }
 
 .aa-link-unfav::before {
-  content: 'Unfav';
+  content: 'dans mes favoris';
   position: absolute;
   left: 36px;
   visibility: hidden;
@@ -476,7 +476,7 @@ textarea.form-control.is-valid {
   color: $entete;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  width: 59px;
+  width: 143px;
 }
 
 
