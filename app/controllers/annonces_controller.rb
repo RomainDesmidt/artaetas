@@ -517,6 +517,21 @@ class AnnoncesController < ApplicationController
     redirect_back fallback_location: root_path
   end
   
+  def follow_user
+    @user = User.find(params[:id])
+    @user.followers << current_user
+    # redirect_to @annonce
+    redirect_back fallback_location: root_path
+  end
+
+  def unfollow_user
+    @user = User.find(params[:id])
+    Follow.where(follower_id: current_user.id, followee_id: @user.id).first.destroy!
+    # redirect_to @annonce
+    redirect_back fallback_location: root_path
+  end
+  
+  
   def edit_formule
     @annonce = Annonce.find(params[:id])
   end
