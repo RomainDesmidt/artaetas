@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'donotreply@artaetas.com'
+  default from: 'artaetas-administration@artaetas.com'
   layout 'mailer'
 end
