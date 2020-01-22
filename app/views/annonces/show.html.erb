@@ -11,11 +11,11 @@
                   <% if user_signed_in? %>
                     <% if current_user.liked? @annonces %>
                       <%= link_to dislike_annonce_path(@annonces), class: 'vote aa-link-unlike', method: :put do %>
-                        <%= inline_svg "like.svg", class: "aa-show-dislike-svg" %>
+                        <%= inline_svg "dislike.svg", class: "aa-show-dislike-svg" %>
                       <% end %>
                     <% else %>
                       <%= link_to like_annonce_path(@annonces) , class: 'vote aa-link-like', method: :put do %>
-                        <%= inline_svg "dislike.svg", class: "aa-show-like-svg" %>
+                        <%= inline_svg "like.svg", class: "aa-show-like-svg" %>
                       <% end %>
                     <% end %>
                   <% end %>
@@ -198,6 +198,7 @@
                 <% end %>
             </div>
           </div>
+          <p class="aa-show-share-title aa-show-interess-title">Interessé par cette annonce?</p>
           <% if user_signed_in? %>        
             <div class="aa-show-detailuser-contact-email">
               <div class="aa-show-detailuser-contact-btn">

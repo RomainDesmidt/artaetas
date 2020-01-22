@@ -64,7 +64,7 @@
          <%# end %>
          
          
-        <p class="aa-new-label">Courants</p>
+        <p class="aa-new-label">Courants / Styles</p>
         <%= f.select :courant_ids , options_for_select(Courant.all.collect {|u| [u.name, u.id]}), {:include_blank => false}, {:multiple => true, :class => 'multiple-dd2 form-group'}  %>
         <%# for courant in Courant.all %>
         <!--<label class="aa-new-label-tags">-->
