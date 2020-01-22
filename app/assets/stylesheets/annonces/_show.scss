@@ -1,3 +1,12 @@
+.aa-show-interess-title {
+    margin-top: 20px;
+    border-style: solid;
+    border-width: 1px 0px 0px 0px;
+    border-color: lightgray;
+    padding-top: 20px;
+    text-align: center;
+}
+
 .aa-show-report {
   display: flex;
   justify-content: flex-end;
@@ -408,11 +417,12 @@
 }
 
 .aa-show-dislike-svg path {
-  fill: white;
+  fill: #ff0000;
 }
 
 .aa-show-like-svg path {
-  fill: white ; 
+  // fill: #ff0000 ; 
+  fill: #478BBA;
 }
 
 
