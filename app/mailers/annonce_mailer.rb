@@ -18,7 +18,7 @@ class AnnonceMailer < ApplicationMailer
     @intercedant = params[:intercedant]
     @corps = params[:corps]
     @sujet = params[:sujet]
-    mail(to: @user_annonce.email, subject: @sujet)
+    mail(to: @user_annonce.email, subject: "l'utilisateur #{@intercedant}, vous envoie un message suite à votre annonce")
   end
 
 end
