@@ -125,8 +125,8 @@
 }
 
 .aa-me-descriptionuser-stats {
-  flex: 0 0 200px;
-  height: 200px;
+  flex: 1 0 auto;
+  // height: 200px;
   padding-top: 30px;
   display: flex;
   flex-direction: column;
@@ -215,6 +215,8 @@ object-fit: contain !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .aa-statsblue-stats {
@@ -257,7 +259,12 @@ object-fit: contain !important;
   
 }
 
+.aa-me-descriptionuser-statsblue > .aa-show-detailuser-contact-tel {
+  padding-top: 5px;
+}
+
 .aa-me-descriptionuser-statsblue > .aa-show-detailuser-contact-email {
+  padding-top: 10px;
   display: flex;
 }
 

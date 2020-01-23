@@ -81,29 +81,38 @@
           </div>
           
           
-          <div class="aa-show-detailuser-contact-email">
-            <div class="aa-show-detailuser-contact-btn">
+          
+              
               <% if @user.afficher_email %>
+          <div class="aa-show-detailuser-contact-email">
+            <div class="aa-show-detailuser-contact-btn">    
+              
                   <%= inline_svg "conversation.svg", class: "aa-show-call-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
                   <%= link_to "Envoyer un Mail", "mailto:#{@user.email}", class: "aa-show-mailto align-self-centeraa" %>
-              <% else %>
-                <%= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Envoyer un Mail</a>
+              <%# else %>
+                <%#= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %>
+                <!--&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Envoyer un Mail</a>-->
+            </div>
+          </div>    
+                
               <% end %>
               
               
-            </div>
-          </div>
+            
           
+
+        <% if @user.afficher_tel %>
           <div class="aa-show-detailuser-contact-tel">
             <div class="aa-show-detailuser-contact-btn">
-               <% if @user.afficher_tel %>
                 <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
                  <%= link_to "Contacter", "tel:#{@user.tel}", class: "aa-show-mailto align-self-centeraa" %>
-              <% else %>
-                <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg" %>&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Contacter</a>
-              <% end %>
+              <%# else %>
+                <%#= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg" %>
+                <!--&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Contacter</a>-->
             </div>
           </div>
+        <% end %>
+            
           
           
         </div>
