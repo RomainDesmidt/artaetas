@@ -1,8 +1,55 @@
 <div style="margin-top: 55px;"></div>
-<div style="margin-left: 20%; margin-right: 20%;">
+<div style="margin-left: 20%; margin-right: 20%; margin-top: 100px;">
     <%= simple_form_for @annonce, :url => contact_deliver_annonce_path do |f| %>
         <%#= f.input :sujetcontact, hint: "sujet de la demande de contact", require: false %>
-        <%= f.input :corpscontact, label: "Contenu du mail", hint: "corps du message", require: false, as: :text %>
+        <%= f.input :corpscontact, label: "Requête", class: "aa-corpscontact",  hint: "contenu du mail", require: false, as: :text %>
         <%= f.submit "Envoyer", class: "btn btn-primary aa-mobile-btn aa-new-publierannonce" %>
     <% end %>
+
+
+<div class="aa-show-detailannonce-header" style="display: flex; margin-top: 50px; background-color: #fdfdfd;">
+        <div class="aa-show-detailannonce-photo" id="aa-show-nopaddingtop">
+          <%= cl_image_tag @annonce.photo, id: "bigPhoto", class: "aa-contact-photo" %>
+          
+        </div>
+        <div class="aa-show-detailannonce-titre aa-show-marginbottom">
+          <div class="aa-show-detailannonce-container">
+            <div class="aa-show-detail-container">
+              <b><p class='aa-show-titre'><%= @annonce.name %></p></b>
+              <p class="aa-show-detail-italic">
+              <% if @annonce.nom_artiste? %>
+               <%= "#{@annonce.nom_artiste} - "  %>
+              <% end %>
+              <% if @annonce.anneecreation? %>
+                <%= "#{@annonce.anneecreation}" %>
+              <% end %>
+              </p>
+              <p class="aa-show-price  aa-show-detail-italic">
+              <% if @annonce.prix   %>
+                <% if (@annonce.prix.to_i - @annonce.prix) > 0 %>
+                  <%= number_with_delimiter(@annonce.prix.to_s, delimiter: " " ) %>€
+                <% else %>
+                  <%= number_with_delimiter(@annonce.prix.to_i.to_s, delimiter: " " ) %>€
+                <% end %>
+              <% end %>
+              </p>
+              
+
+
+              <!-- <p class=''>< @annonces.created_at.to_date ></p> -->
+            </div>
+            <div class="aa-show-thumbnail-container">
+            <% if @annonce.photo_deux? %>
+              <%= cl_image_tag @annonce.photo_deux, class: 'aa-show-thumbnail' , id: "thumbPhotoDeux", onclick: "document.getElementById('bigPhoto').src = this.src" %>
+            <% end %>
+            <% if @annonce.photo_un? %>
+              <%= cl_image_tag @annonce.photo_un, class: 'aa-show-thumbnail' , id: "thumbPhotoUn", onclick: "document.getElementById('bigPhoto').src = this.src" %>
+            <% end %>
+            <% if (@annonce.photo? && @annonce.photo_un?) || (@annonce.photo? && @annonce.photo_un?) %>
+              <%= cl_image_tag @annonce.photo, class: 'aa-show-thumbnail' , id: "thumbPhoto", onclick: "document.getElementById('bigPhoto').src = this.src" %>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
 </div>
