@@ -506,7 +506,7 @@ class AnnoncesController < ApplicationController
     @user = User.find(@annonce.user_id)
     @user.followers << current_user
     # redirect_to @annonce
-    redirect_back fallback_location: root_path, flash: { success: "Le membre est suivi!" }
+    redirect_back fallback_location: root_path, flash: { success: "Le membre est suivi, vous pouvez accéder a la liste des membres suivis dans votre compte membre!" }
   end
 
   def unfollow
@@ -521,7 +521,7 @@ class AnnoncesController < ApplicationController
     @user = User.find(params[:id])
     @user.followers << current_user
     # redirect_to @annonce
-    redirect_back fallback_location: root_path, flash: { success: "Le membre est suivi!" }
+    redirect_back fallback_location: root_path, flash: { success: "Le membre est suivi, vous pouvez accéder a la liste des membres suivis dans votre compte membre!" }
   end
 
   def unfollow_user
