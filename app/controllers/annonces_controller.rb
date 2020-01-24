@@ -506,7 +506,7 @@ class AnnoncesController < ApplicationController
     @user = User.find(@annonce.user_id)
     @user.followers << current_user
     # redirect_to @annonce
-    redirect_back fallback_location: root_path
+    redirect_back fallback_location: root_path, flash: { success: "Le membre est suivi!" }
   end
 
   def unfollow
@@ -514,21 +514,21 @@ class AnnoncesController < ApplicationController
     @user = User.find(@annonce.user_id)
     Follow.where(follower_id: current_user.id, followee_id: @user.id).first.destroy!
     # redirect_to @annonce
-    redirect_back fallback_location: root_path
+    redirect_back fallback_location: root_path, flash: { success: "Le membre n'est plus suivi!" }
   end
   
   def follow_user
     @user = User.find(params[:id])
     @user.followers << current_user
     # redirect_to @annonce
-    redirect_back fallback_location: root_path
+    redirect_back fallback_location: root_path, flash: { success: "Le membre est suivi!" }
   end
 
   def unfollow_user
     @user = User.find(params[:id])
     Follow.where(follower_id: current_user.id, followee_id: @user.id).first.destroy!
     # redirect_to @annonce
-    redirect_back fallback_location: root_path
+    redirect_back fallback_location: root_path, flash: { success: "Le membre n'est plus suivi!" }
   end
   
   
@@ -552,7 +552,7 @@ class AnnoncesController < ApplicationController
     @corps = params[:annonce][:corpscontact]
     @user = @annonce.user  
     AnnonceMailer.with(user: @user, annonce: @annonce, corps: @corps, sujet: @sujet, intercedant: current_user).contact_user_annonce.deliver_now
-    redirect_to annonce_path(@annonce)
+    redirect_to annonce_path(@annonce), flash: { success: "Le message a été envoyé." }
   end
 
   private
