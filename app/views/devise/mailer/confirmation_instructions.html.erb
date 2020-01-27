@@ -1,4 +1,4 @@
-<p>Bienvenue <%= User.where( email: @email ).username %>!</p>
+<p>Bienvenue <%= User.where( email: @email ).first.username %>!</p>
 
 <p>Vous recevez cet email car vous venez de créer un compte membre sur ARTAETAS.</p>
 <p>Afin de valider celui ci, veuillez confirmer votre adresse email en cliquant sur le lien ci-dessous </p>
