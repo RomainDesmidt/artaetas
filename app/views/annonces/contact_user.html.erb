@@ -8,14 +8,14 @@
 
 
 <div class="aa-show-detailannonce-header" style="display: flex; margin-top: 50px; background-color: #fdfdfd;">
-        <div class="aa-show-detailannonce-photo" id="aa-show-nopaddingtop">
+        <div class="aa-show-detailannonce-photo" style="max-width: 25%; id="aa-show-nopaddingtop">
           <%= cl_image_tag @annonce.photo, id: "bigPhoto", class: "aa-contact-photo" %>
           
         </div>
         <div class="aa-show-detailannonce-titre aa-show-marginbottom">
           <div class="aa-show-detailannonce-container">
             <div class="aa-show-detail-container">
-              <b><p class='aa-show-titre'><%= @annonce.name %></p></b>
+              <b><p class='aa-show-titre'><%= @annonce.name.truncate(150) %></p></b>
               <p class="aa-show-detail-italic">
               <% if @annonce.nom_artiste? %>
                <%= "#{@annonce.nom_artiste} - "  %>
