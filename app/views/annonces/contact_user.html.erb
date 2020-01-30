@@ -8,14 +8,20 @@
 
 
 <div class="aa-show-detailannonce-header" style="display: flex; margin-top: 50px; background-color: #fdfdfd;">
-        <div class="aa-show-detailannonce-photo" style="max-width: 25%; id="aa-show-nopaddingtop">
-          <%= cl_image_tag @annonce.photo, id: "bigPhoto", class: "aa-contact-photo" %>
+        <!--<div class="aa-show-detailannonce-photo" style="width: 240px; height: 200px;" id="aa-show-nopaddingtop">-->
+          <%#= cl_image_tag @annonce.photo, id: "bigPhoto", class: "aa-contact-photo" %>
           
-        </div>
+        <!--</div>-->
+        <%= link_to @annonce, class: "aa-search-annonce-card-image aa-show-user-pub" do %>
+                    <!-- <div class="aa-search-annonce-card-image"> -->
+            <%= cl_image_tag @annonce.photo %>
+                    <!-- </div> -->
+        <% end %>
         <div class="aa-show-detailannonce-titre aa-show-marginbottom">
           <div class="aa-show-detailannonce-container">
             <div class="aa-show-detail-container">
-              <b><p class='aa-show-titre'><%= @annonce.name.truncate(150) %></p></b>
+              <b><p class='aa-show-titre' style='margin-bottom: 5px;'><%= @annonce.name.truncate(150) %></p></b>
+              <p class='aa-show-titre' style='margin-bottom: 10px;'><%= @annonce.description.truncate(150) %></p>
               <p class="aa-show-detail-italic">
               <% if @annonce.nom_artiste? %>
                <%= "#{@annonce.nom_artiste} - "  %>
@@ -38,17 +44,7 @@
 
               <!-- <p class=''>< @annonces.created_at.to_date ></p> -->
             </div>
-            <div class="aa-show-thumbnail-container">
-            <% if @annonce.photo_deux? %>
-              <%= cl_image_tag @annonce.photo_deux, class: 'aa-show-thumbnail' , id: "thumbPhotoDeux", onclick: "document.getElementById('bigPhoto').src = this.src" %>
-            <% end %>
-            <% if @annonce.photo_un? %>
-              <%= cl_image_tag @annonce.photo_un, class: 'aa-show-thumbnail' , id: "thumbPhotoUn", onclick: "document.getElementById('bigPhoto').src = this.src" %>
-            <% end %>
-            <% if (@annonce.photo? && @annonce.photo_un?) || (@annonce.photo? && @annonce.photo_un?) %>
-              <%= cl_image_tag @annonce.photo, class: 'aa-show-thumbnail' , id: "thumbPhoto", onclick: "document.getElementById('bigPhoto').src = this.src" %>
-            <% end %>
-            </div>
+            
           </div>
         </div>
       </div>
