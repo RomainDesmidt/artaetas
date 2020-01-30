@@ -80,6 +80,9 @@ textarea.form-control.is-valid {
 
 .aa-contact-photo {
   // max-width: 20%;
+  object-fit: contain !important;
+  height: 100%;
+  width: 100%;
 }
 
 // GRID CAROUSEL
