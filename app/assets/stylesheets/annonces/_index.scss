@@ -54,6 +54,14 @@ title {
   font-size: 11px;
 }
 
+.aa-show-detailuser-contact > .social-share-button > .ssb-icon {
+  margin-right: 8px;
+}
+
+button.close:focus {
+  outline: none !important;
+}
+
 .form-control.is-valid {
   background-position: center right 2rem;
 }

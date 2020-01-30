@@ -186,7 +186,13 @@
               <% if @annonces.user.statut %>
                 <div class="aa-show-contact-profil-statut"><%= @annonces.user.statut %></div>
               <% end %>
-              <div class="aa-show-contact-profil-nbannonces"><%= @annonces.user.annonces.count %> annonces en ligne</div>
+              <div class="aa-show-contact-profil-nbannonces"><%= @annonces.user.annonces.count %>
+                <% if @annonces.user.annonces.count <= 1 %>
+                  annonce en ligne
+                <% else %>
+                  annonces en ligne
+                <% end %>
+              </div>
               
                 
                 <% if user_signed_in? %>
