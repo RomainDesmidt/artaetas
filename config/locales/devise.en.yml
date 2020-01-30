@@ -31,10 +31,17 @@ en:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
     passwords:
-      no_token: "Impossible d'accéder à cette page sans passer par le lien envoyé par email."
-      send_instructions: "Vous allez recevoir un email comportant les instructions nécessaire à la réinitialisation de votre mot de passe dans quelques minutes."
+    
+      # no_token: "Impossible d'accéder à cette page sans passer par le lien envoyé par email."
+      # send_instructions: "Vous allez recevoir un email comportant les instructions nécessaire à la réinitialisation de votre mot de passe dans quelques minutes."
+      # send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
+      # updated: "Votre mot de passe a été changé avec succès. Vous êtes maintenant connecté."
+      # updated_not_active: "Your password has been changed successfully."
+      
+      no_token: ""
+      send_instructions: ""
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      updated: "Votre mot de passe a été changé avec succès. Vous êtes maintenant connecté."
+      updated: ""
       updated_not_active: "Your password has been changed successfully."
     registrations:
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
