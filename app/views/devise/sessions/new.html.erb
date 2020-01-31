@@ -64,7 +64,7 @@
         <h5 class="text-center">Pas de compte ?</h5>
         <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
           <%= simple_form_for(resource, as: resource_name, url: new_registration_path(resource_name), method: :get) do |f| %>
-            <%= f.button :submit, "Creer un compte", class: "btn btn-secondary aa-signin-btn" %>
+            <%= f.button :submit, "Creer un compte", class: "btn btn-primary aa-signin-btn" %>
           <% end %>
           <!-- < link_to "Creer un compte", new_registration_path(resource_name) > -->
         <% end %>

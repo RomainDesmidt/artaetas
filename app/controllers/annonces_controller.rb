@@ -1,5 +1,5 @@
 class AnnoncesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :search]
 
   def destroy_photo_un
     @annonce = Annonce.find(params[:id])
