@@ -225,7 +225,7 @@
     
     <div class="aa-me-moncompte-container">
         <div class="aa-me-infoperso">
-          <h2 class="text-left">Membres Favoris</h2>        
+          <h2 class="text-left h2-margin-top">Membres Favoris</h2>        
         </div>
     </div>
       
@@ -275,7 +275,7 @@
     </div>
     <div class="aa-me-moncompte-container">
         <div class="aa-me-infoperso">
-          <h2 class="text-left">Annonces Favorites</h2>        
+          <h2 class="text-left h2-margin-top">Annonces Favorites</h2>        
         </div>
     </div>
     <div class="aa-me-flexcontainer-fav">
@@ -362,7 +362,7 @@
 
                 <%= f.input :afficher_identite,
                             hint: "cocher pour les faire apparaitre dans votre profil et dans les annonces",
-                            label: "Afficher vos nom et prénoms",
+                            label: "Afficher vos nom et prénom",
                             require: false,
                             input_html: { class: 'aa-new-hide-chkbox' }, 
                             label_html: { class: "aa-new-label-chkbox" } 
@@ -452,7 +452,7 @@
             <% if current_user.photofond? %>
               <%= cl_image_tag current_user.photofond, class: "aa-edit-thumbnail", id: "previewPhotoFond" %>
             <% else %>
-              <img class="aa-edit-thumbnail" id="previewPhotoFond" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png"></img>
+              <img class="aa-edit-thumbnail-large" id="previewPhotoFond" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png"></img>
             <% end %>
             <%= f.input :photofond_cache, as: :hidden %>
           </div>
