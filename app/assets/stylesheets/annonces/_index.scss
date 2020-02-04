@@ -737,7 +737,7 @@ a:focus { text-decoration: none}
   margin-right: 1%;
   border: solid 1px rgba(50,50,50,0.2);
   font-weight: bold;
-  font-weight: normal;
+  // font-weight: normal;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   height: 52px;
@@ -762,7 +762,7 @@ a:focus { text-decoration: none}
   margin-left: 1%;
   border: solid 1px rgba(23,57,80,0.6);
   font-weight: bold;
-  font-weight: normal;
+  // font-weight: normal;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   height: 52px;
@@ -771,10 +771,10 @@ a:focus { text-decoration: none}
   justify-content: center;
 }
 
-.aa-button-gros > p,
-.aa-button-petit > p {
-  font-size: 1.1rem;
-}
+// .aa-button-gros > p,
+// .aa-button-petit > p {
+//   font-size: 1.1rem;
+// }
 
 .aa-button-symb-blue,
 .aa-button-symb-white {
