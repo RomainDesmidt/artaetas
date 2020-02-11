@@ -1,0 +1,21 @@
+<div style="margin-top: 55px;"></div>
+<div class="container">
+  <div class="row py-4">
+    <div class="col-md-3"><%= image_tag @order.annonce.photo_url, width: '100%' %></div>
+    <div class="col">
+      <h1>Recapitulatif de la souscription</h1>
+      <p>Mise en avant de <strong><%= @order.annonce.name %></strong> pour <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
+      <button id="pay" class="btn btn-primary">Payer avec Stripe</button>
+      <script src="https://js.stripe.com/v3/"></script>
+      <script>
+        const paymentButton = document.getElementById('pay');
+        paymentButton.addEventListener('click', () => {
+          const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+          stripe.redirectToCheckout({
+            sessionId: '<%= @order.checkout_session_id %>'
+          });
+        });
+      </script>
+    </div>
+  </div>
+</div>

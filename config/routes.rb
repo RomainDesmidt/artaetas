@@ -26,7 +26,10 @@ Rails.application.routes.draw do
         get "contact_user", to: "annonces#contact_user"
         patch "contact_deliver", to: "annonces#contact_deliver"
     end
-end
+  end
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: :new
+  end
   # resources :annonces
   get 'social', to: 'pages#social'
   get 'cgu', to: 'pages#cgu'
