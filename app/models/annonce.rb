@@ -18,7 +18,6 @@ class Annonce < ApplicationRecord
   has_many :courant_annonces, :dependent => :destroy
   has_many :courants, through: :courant_annonces
   
-  has_one  :order
 
 
   acts_as_votable
