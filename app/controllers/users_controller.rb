@@ -10,6 +10,32 @@ class UsersController < ApplicationController
       @bmlist << bm.bookmarkee_id
     end
   end
+  def mesannonces
+    @bookmark = current_user.bookmarkees_by(Annonce)
+    @bmlist = []
+    @bookmark.each do |bm|
+      @bmlist << bm.bookmarkee_id
+    end
+    @annonces = current_user.annonces
+  end
+  
+  def mesfavoris
+    @bookmark = current_user.bookmarkees_by(Annonce)
+    @bmlist = []
+    @bookmark.each do |bm|
+      @bmlist << bm.bookmarkee_id
+    end
+    @annonces = current_user.annonces
+  end
+  
+  def mesinfos
+    @bookmark = current_user.bookmarkees_by(Annonce)
+    @bmlist = []
+    @bookmark.each do |bm|
+      @bmlist << bm.bookmarkee_id
+    end
+    @annonces = current_user.annonces
+  end
 
   def me
     @bookmark = current_user.bookmarkees_by(Annonce)
