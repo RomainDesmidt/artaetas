@@ -12,6 +12,13 @@
   flex-wrap: wrap;
 }
 
+
+@media (max-width: 576px) {
+ .aa-me-flexcontainer-fav {
+   justify-content: center;
+  }
+
+}
 .h2-margin-top {
   margin-top: 30px;
 }

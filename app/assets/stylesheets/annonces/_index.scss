@@ -1178,11 +1178,75 @@ p {
   // column-count:         2;
   // }
 }
+
+@media (max-width: 638px) {
+  
+  
+    .grid,
+    .grid-me { 
+      background: $backgroundaa;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 15px;
+      margin-bottom: 35px;
+    }
+    .grid:after,
+    .grid-me:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .grid-sizer,
+    .grid-sizer-me,
+    .grid-item,
+    .grid-item-me { 
+      width: 48%; 
+      
+    }
+    .grid-item,
+    .grid-item-me { 
+        float: left; 
+        margin-bottom: 1.75%;
+        background-color: $bloc;
+        padding: 5px;
+        position: relative;
+    }
+    .grid-item img,
+    .grid-item-me img{
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    .gutter-sizer { width: 2%; }
+    .gutter-sizer-me { width: 2%; }
+    
+    .p-description {
+      max-width: 37ch;
+      overflow: hidden;
+    }
+    
+    .p-titre {
+      max-width: 37ch;
+      overflow: hidden;
+    }
+    
+}
+
 @media (max-width: 576px) {
+
+  
+  
+  
     .container-annonces-div {
       width: 100%; // fallback
       width: calc(100%/var(--n));
     }
+    
+ 
+  .dropdown-hidemobile {
+    display: none;
+  }
 
   .container-annonces {
     // height: 425px;
@@ -1400,6 +1464,55 @@ p {
   body {
     position: relative !important ;
   }
+  
+      .grid,
+    .grid-me { 
+      background: $backgroundaa;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 15px;
+      margin-bottom: 35px;
+    }
+    .grid:after,
+    .grid-me:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .grid-sizer,
+    .grid-sizer-me,
+    .grid-item,
+    .grid-item-me { 
+      width: 22%; 
+      
+    }
+    .grid-item,
+    .grid-item-me { 
+        float: left; 
+        margin-bottom: 1.75%;
+        background-color: $bloc;
+        padding: 5px;
+        position: relative;
+    }
+    .grid-item img,
+    .grid-item-me img{
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    .gutter-sizer { width: 2%; }
+    .gutter-sizer-me { width: 2%; }
+    
+    .p-description {
+      max-width: 37ch;
+      overflow: hidden;
+    }
+    
+    .p-titre {
+      max-width: 37ch;
+      overflow: hidden;
+    }
 
 }
 
@@ -1501,6 +1614,10 @@ and (-webkit-min-device-pixel-ratio: 1){
   .aa-button-deposer,
   .aa-button-decouvrir {
     margin-bottom: 15px;
+  }
+  
+  .dropdown-hidedesktop {
+  display: none;
   }
   
 }
