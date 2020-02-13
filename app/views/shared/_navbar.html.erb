@@ -30,7 +30,11 @@
            <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <!--<div class="dropdown-menu dropdown-menu-right aa-desktop-only" aria-labelledby="navbarDropdown">-->
-            <%= link_to "Mon Profil", users_me_path( :view_param => "annonce"), class: "dropdown-item" %>
+            <%= link_to "Mon Profil", users_me_path( :view_param => "annonce"), class: "dropdown-item dropdown-hidemobile" %>
+            <%= link_to "Mes Annonces", users_mesannonces_path, class: "dropdown-item dropdown-hidedesktop" %>
+            <%= link_to "Mes Favoris", users_mesfavoris_path, class: "dropdown-item dropdown-hidedesktop" %>
+            <%= link_to "Mes Infos", users_mesinfos_path, class: "dropdown-item dropdown-hidedesktop" %>
+            <%= link_to "Mes Transactions", users_mestransactions_path, class: "dropdown-item dropdown-hidedesktop" %>
             <!-- < link_to "Liste user", "/users/", class: "dropdown-item" > -->
             <!-- < link_to "Edit Profile", edit_user_registration_path , class: "dropdown-item" > -->
             <%= link_to "Se Déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
@@ -57,7 +61,7 @@
           <div><a href="" class="nav-link aa-menu-link" data-toggle="modal" data-target="#infosmodal">Découvrir ARTAETAS</a></div>
           <!-- < link_to "Découvrir Artaetas", "#cestquoi", class: "nav-link aa-menu-link" > -->
         </li>
-        <li class="nav-item aa-nav-item">
+        <li class="nav-item aa-nav-item" style="height: 39px;">
           <!-- < svg 'recherche' > -->
           <!-- <form action="/searchannonce/" method="get" id="aa-nav-search-form"><input name="term" class="aa-nav-search-input" placeholder="Rechercher" type="search"></form> -->
           <div id="aa-link-rechercher-picto"><%= svg 'recherche' %></div>
@@ -75,7 +79,19 @@
         </li>
         <li class="nav-item aa-nav-item aa-mobile-only">
         <div></div>
-          <div><%= link_to "Mon Profil", users_me_path( :view_param => "annonce"), class: "nav-link aa-menu-link" %></div>
+          <div><%= link_to "Mes Annonces", users_mesannonces_path, class: "nav-link aa-menu-link" %></div>
+        </li>
+        <li class="nav-item aa-nav-item aa-mobile-only">
+        <div></div>
+          <div><%= link_to "Mes Favoris", users_mesfavoris_path, class: "nav-link aa-menu-link" %></div>
+        </li>
+        <li class="nav-item aa-nav-item aa-mobile-only">
+        <div></div>
+          <div><%= link_to "Mes Infos", users_mesinfos_path, class: "nav-link aa-menu-link" %></div>
+        </li>
+        <li class="nav-item aa-nav-item aa-mobile-only">
+        <div></div>
+          <div><%= link_to "Mes Transactions", users_mestransactions_path, class: "nav-link aa-menu-link" %></div>
         </li>
         <li class="nav-item aa-nav-item aa-mobile-only aa-section-end">
         <div></div>
