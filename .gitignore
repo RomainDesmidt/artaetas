@@ -17,6 +17,7 @@ yarn-error.log
 vendor/
 config/cloudinary.yml
 pg.sh
+heroku.sh
 # Ignore application configuration
 /config/application.yml
 .env*
