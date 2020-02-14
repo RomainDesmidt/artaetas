@@ -1,3 +1,17 @@
+.slider-tick-label {
+ font-size: 11px; 
+}
+
+.title-slider-label {
+  display: flex;
+  margin-bottom: 0px;
+}
+
+.slider-horizontal {
+  margin-bottom: 0px !important;
+  // display: none !important;
+}
+
 ::-webkit-input-placeholder {
    font-style: italic;
 }
@@ -293,55 +307,90 @@ overflow: hidden;
 
 @media (max-width: 576px) {
 
-.aa-search-field-basis {
-  flex-basis: 100%;
-  margin-left: 0px;
-  margin-right: 66%;
-  height: 42px;
-}
-
-.aa-search-field-bg {
-  display: none;
-}
-
-.aa-search-field-mobile {
-  display: block;
-  position: fixed;
-  z-index: 4;
-  top: 50px;
-  height: 100%;
-  width: 100%;
-  background-color: $champs;
-  overflow-y: hidden;
-}
-
-.aa-search-hidden {
-  display: none;
-}
-
-.aa-search-mobile {
-  z-index: 5;
-  display: block;
-}
-
-.aa-search-field-form {
-  z-index: 5;
-
-}
-
-.aa-search-field-text {
-  flex: 1 0 90%;
-  margin-right: 5px;
-  margin-bottom: 20px;
-}
-
-.aa-search-field-form-btn {
-  flex: 1 0 90%;
-  margin-bottom: 20px;
-}
-
-.aa-search-field-select:nth-of-type(3) {
-  margin-left: 0px;
-}
+  .aa-search-field-basis {
+    flex-basis: 100%;
+    margin-left: 0px;
+    // margin-right: 66%;
+    height: 32px;
+  }
+  
+  [class*="multiple-dd"] {
+    height: 100% !important;
+  }
+  
+  .aa-search-field-select {
+    padding-left: 0px;
+  }
+  
+  .aa-search-textfieldwrap {
+   flex-wrap: wrap;
+  }
+  
+  .aa-search-field-bg {
+    // display: none;
+    height: 100%;
+    margin-top: 48px;
+  }
+  
+  .aa-search-field-mobile {
+    display: block;
+    position: fixed;
+    z-index: 4;
+    top: 50px;
+    height: 100%;
+    width: 100%;
+    background-color: $champs;
+    overflow-y: hidden;
+  }
+  
+  .aa-search-hidden {
+    display: none;
+  }
+  
+  .aa-search-mobile {
+    z-index: 5;
+    display: block;
+  }
+  
+  .aa-search-field-form {
+    z-index: 5;
+    height: 100%;
+  
+  }
+  
+  .aa-search-field-text {
+    flex: 1 0 90%;
+    margin-right: 5px;
+    margin-bottom: 20px;
+  }
+  #ordre_annonce {
+    padding-left: 5px;
+  }
+  
+  .aa-search-field-form-btn {
+    flex: 1 0 90%;
+    margin-bottom: 20px;
+    position: absolute;
+    transform: none;
+    left: initial;
+    bottom: -11px;
+    width: 98%;
+  }
+  
+  .aa-search-field-select:nth-of-type(3) {
+    margin-left: 0px;
+  }
+  
+  .slider-horizontal {
+    display: none !important;
+  }
+  
+  .title-slider-label {
+    display: none;
+  }
+  
+  .multiple-dd8 {
+    margin-bottom: 35px;
+  }
 
 }
