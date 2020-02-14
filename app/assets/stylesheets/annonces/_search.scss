@@ -208,7 +208,7 @@ overflow: hidden;
   flex-basis: auto;
   margin-left: 0px;
   margin-right: 0px;
-  height: 42px;
+  // height: 42px;
 }
 
 .aa-search-field-text {
@@ -270,8 +270,6 @@ overflow: hidden;
   padding-top: 4px;
 }
 
-
-
 .aa-search-field-text-tag {
    // padding: 20px 10px;
   width: 100px;
@@ -329,14 +327,14 @@ overflow: hidden;
 @media (max-width: 576px) {
 
   .aa-search-field-basis {
-    // flex-basis: 100%;
+    flex-basis: 100%;
     margin-left: 0px;
     // margin-right: 66%;
     height: 32px;
   }
   
   [class*="multiple-dd"] {
-    height: unset !important;
+    // height: !important;
   }
   
   .aa-search-field-select {
