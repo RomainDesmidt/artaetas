@@ -241,6 +241,24 @@ overflow: hidden;
   border-radius: 0px !important;
   font-size: 11px;
   color: #717679;
+  // background-color: $champs;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-left: 20px;
+  // border: solid 1px;
+  font-style: italic;
+  padding-top: 4px;
+}
+
+.aa-search-field-selectfleche {
+  // padding: 20px 10px;
+  width: 100px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 0px !important;
+  font-size: 11px;
+  color: #717679;
   background: image-url('br_down.png') no-repeat right 10px center;
   // background-color: $champs;
   -webkit-appearance: none;
@@ -251,6 +269,8 @@ overflow: hidden;
   font-style: italic;
   padding-top: 4px;
 }
+
+
 
 .aa-search-field-text-tag {
    // padding: 20px 10px;
