@@ -328,7 +328,7 @@ overflow: hidden;
   
   .aa-search-field-bg {
     // display: none;
-    height: 100%;
+    height: auto;
     margin-top: 48px;
   }
   
@@ -337,7 +337,7 @@ overflow: hidden;
     position: fixed;
     z-index: 4;
     top: 50px;
-    height: 100%;
+    height: auto;
     width: 100%;
     background-color: $champs;
     overflow-y: hidden;
@@ -354,7 +354,7 @@ overflow: hidden;
   
   .aa-search-field-form {
     z-index: 5;
-    height: 100%;
+    height: auto;
   
   }
   
