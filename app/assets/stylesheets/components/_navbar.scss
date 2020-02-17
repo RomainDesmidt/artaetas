@@ -1,4 +1,8 @@
 
+.modal {
+  z-index: 995;
+}
+
 #aa-link-rechercher {
   padding-left : 15px !important;
 }
@@ -293,7 +297,7 @@ a:active {
 
 .nav-flex-14 {
   flex: 0 0 14%;
-  height: 50px;
+  height: 50px !important;
 }
 
 .nav-flex-14 img,
