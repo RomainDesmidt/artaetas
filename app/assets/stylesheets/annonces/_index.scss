@@ -1298,7 +1298,7 @@ p {
    }
 
    .aa-button-deposer {
-    flex: 1 0 60%;
+    flex: 1 0 75%;
     justify-content: center;
     margin-left: 0px;
    }
@@ -1314,7 +1314,7 @@ p {
 
 
    .aa-button-decouvrir {
-    flex: 1 0 60%;
+    flex: 1 0 75%;
     justify-content: center;
     margin-right: 0px;
    }
@@ -1457,6 +1457,9 @@ p {
   }
 
 
+  .aa-button {
+    width: 100vw;
+  }
   .annonce-column {
     flex-direction : row;
     padding: 20px 0px;
