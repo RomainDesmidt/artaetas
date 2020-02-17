@@ -1,3 +1,8 @@
+
+#aa-link-rechercher {
+  padding-left : 15px !important;
+}
+
 .avatar {
  width: 30px;
 }
@@ -68,7 +73,8 @@ padding: 0px;
 
 .navbar-toggler {
   position: fixed;
-  top: 10px;
+  // top: 10px;
+  top: 8px;
   padding: 4px 0px;
   width: 3rem;
 }
@@ -112,6 +118,7 @@ padding: 0px;
   top: 0px;
   width: 100%;
   width: device-width;
+  width: 100vw;
   margin-bottom: 50px;
   z-index: 6;
   // flex-wrap: nowrap
@@ -135,13 +142,18 @@ padding: 0px;
 .aa-navbar-artaetas {
   // width: 40px;
   width: 70%;
-  height: 100%;
+  // height: 100%;
+  top: 6px;
   max-width: 125px;
   display: block;
-  margin-left: 40%;
-  margin-right: auto;
+  // margin-left: 40%;
+  // margin-right: auto;
   // margin-left: 23vw;
   // margin-right: 9vw;
+  
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 // .navbar-lewagon .navbar-item img {
@@ -152,7 +164,8 @@ padding: 0px;
 .navbar-toggler {
   flex: 0 0 10%;
   height: 33px;
-  margin-left: 10px;
+  // margin-left: 10px;
+  margin-left: 6px;
 }
 
 .navbar-toggler-icon {
@@ -313,7 +326,29 @@ a:active {
 }
 
 
+@media (max-width: 576px) {
+  .nav-flex-14 > #navbarDropdown {
+      height: 100%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 51%;
+      max-width: 35px;
+      vertical-align: middle;
+  }
+  
+  .nav-item {
+    height: 37px;
+  }
+  
+}
+
+
 @media (min-width: 576px) {
+  
+  .nav-item {
+    height: 50px;
+  }
 
     .aa-navbar-artaetas {
     // width: 40px;
@@ -321,6 +356,12 @@ a:active {
     max-width: 200px;
     margin-left: 0px;
     margin-right: 0px;
+    position: relative;
+    transform: none;
+    left: initial;
+    // top: 6px;
+    top: initial;
+    height: 100%;
     }
 
     .navbar-lewagon .navbar-buffer {

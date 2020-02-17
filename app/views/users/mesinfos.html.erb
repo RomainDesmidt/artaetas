@@ -2,7 +2,7 @@
   <ul class="nav nav-tabs aa-under-navbar" id="myTab" role="tablist" style="height: 20px;">
     
     <li class="nav-item aa-me-nav-item" style="display: none;">
-      <a class="nav-link active" id="compte-tab" data-toggle="tab" href="#compte" role="tab" aria-controls="compte" aria-selected="true">Mes informations personnelles</a>
+      <a class="nav-link active" id="compte-tab" data-toggle="tab" href="#compte" role="tab" aria-controls="compte" aria-selected="true">Mes informations</a>
     </li>
   </ul>
 
@@ -15,7 +15,7 @@
         
         <div class="aa-me-infocivil">
           <a name="infoperso"></a>
-          <h2>Mes informations personnelles</h2>
+          <h2>Mes informations</h2>
             <%= simple_form_for(current_user, url: registration_path(current_user), html: { method: :put }) do |f| %>
               <%= f.error_notification %>
 

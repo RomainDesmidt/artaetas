@@ -56,21 +56,21 @@
         <li class="nav-item aa-nav-item">
           <a href="#" class="nav-link aa-menu-link"></a>
         </li>
-        <li class="nav-item aa-nav-item" id="aa-nav-decouvrir">
+        <li class="nav-item aa-nav-item" id="aa-nav-decouvrir" style="">
           <div data-toggle="modal" data-target="#infosmodal"><%= svg 'aide' %></div>
           <div><a href="" class="nav-link aa-menu-link" data-toggle="modal" data-target="#infosmodal">Découvrir ARTAETAS</a></div>
           <!-- < link_to "Découvrir Artaetas", "#cestquoi", class: "nav-link aa-menu-link" > -->
         </li>
-        <li class="nav-item aa-nav-item" style="height: 39px;">
+        <li class="nav-item aa-nav-item" style="">
           <!-- < svg 'recherche' > -->
           <!-- <form action="/searchannonce/" method="get" id="aa-nav-search-form"><input name="term" class="aa-nav-search-input" placeholder="Rechercher" type="search"></form> -->
           <div id="aa-link-rechercher-picto"><%= svg 'recherche' %></div>
           <form action="/searchannonce/" method="get" class="none" id="aa-nav-search-form"><input name="term" id="aa-nav-search-input" placeholder="Rechercher" type="search"></form>
-          <div><%= link_to "Rechercher", "#", class: "nav-link aa-menu-link", id: "aa-link-rechercher" %></div>
+          <div style="height: 50px;"><%= link_to "Rechercher", "#", class: "nav-link aa-menu-link", id: "aa-link-rechercher" %></div>
 
 
         </li>
-        <li class="nav-item aa-nav-item aa-section-end" id="aa-nav-deposer">
+        <li class="nav-item aa-nav-item aa-section-end" id="aa-nav-deposer" style="">
           <div><%= svg 'archiver2' %></div>
           <div><%= link_to "Déposer", "/annonces/new", class: "nav-link aa-menu-link" %></div>
         </li>
@@ -78,19 +78,19 @@
           <p>COMPTE</p>
         </li>
         <li class="nav-item aa-nav-item aa-mobile-only">
-        <div></div>
+          <div><%= svg 'groupe' %></div>
           <div><%= link_to "Mes Annonces", users_mesannonces_path, class: "nav-link aa-menu-link" %></div>
         </li>
         <li class="nav-item aa-nav-item aa-mobile-only">
-        <div></div>
+        <div><%= svg 'fav' %></div>
           <div><%= link_to "Mes Favoris", users_mesfavoris_path, class: "nav-link aa-menu-link" %></div>
         </li>
         <li class="nav-item aa-nav-item aa-mobile-only">
-        <div></div>
+        <div><%= svg 'administration' %></div>
           <div><%= link_to "Mes Infos", users_mesinfos_path, class: "nav-link aa-menu-link" %></div>
         </li>
         <li class="nav-item aa-nav-item aa-mobile-only">
-        <div></div>
+        <div><%= svg 'prix-composant' %></div>
           <div><%= link_to "Mes Transactions", users_mestransactions_path, class: "nav-link aa-menu-link" %></div>
         </li>
         <li class="nav-item aa-nav-item aa-mobile-only aa-section-end">

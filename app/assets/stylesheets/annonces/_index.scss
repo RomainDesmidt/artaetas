@@ -15,6 +15,7 @@
 html {
   position: relative;
   // height: 100%;
+  overflow-x: hidden;
 
 }
 
@@ -649,7 +650,8 @@ body {
 
 a { text-decoration: none}
 a:hover { text-decoration: none}
-a:focus { text-decoration: none}
+a:focus { text-decoration: none; outline: none;}
+img:focus { outline: none;}
 
 .p-accroche-mobile { display: none ; }
 
@@ -677,14 +679,14 @@ a:focus { text-decoration: none}
   margin-right: 20px;
   margin-bottom:10px;
   border-radius: 5px;
-  width: 100px;
+  width: 150px;
   text-align: center;
   background-color: $buttonaa;
   color: black;
   position: absolute;
   left: 50%;
   transform: translate(-70%, 0%);
-  font-size: xx-small;
+  font-size: 11px;
   bottom: -7%;
 
 }
@@ -925,6 +927,8 @@ a:focus { text-decoration: none}
 
 .aa-whoo-footer-modal {
   margin-top: 5px;
+  text-align: justify;
+  text-align-last: left;
 }
 
 .aa-who-p-title {
@@ -933,6 +937,12 @@ a:focus { text-decoration: none}
   font-weight: bold;
   line-height: 20px;
 }
+
+.aa-who-p-modal {
+  text-align: justify;
+  text-align-last: left;
+}
+
 
 .container-annonces {
   --n: 1;
@@ -1237,7 +1247,11 @@ p {
 @media (max-width: 576px) {
 
   
-  
+  .alert {
+    width: 100%;
+    top: 46px;
+    // font-size: 11px;
+  }
   
     .container-annonces-div {
       width: 100%; // fallback
@@ -1284,7 +1298,7 @@ p {
    }
 
    .aa-button-deposer {
-    flex: 1 0 40%;
+    flex: 1 0 60%;
     justify-content: center;
     margin-left: 0px;
    }
@@ -1300,7 +1314,7 @@ p {
 
 
    .aa-button-decouvrir {
-    flex: 1 0 40%;
+    flex: 1 0 60%;
     justify-content: center;
     margin-right: 0px;
    }
