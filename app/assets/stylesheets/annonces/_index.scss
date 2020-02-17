@@ -1253,6 +1253,10 @@ p {
     // font-size: 11px;
   }
   
+  .modal-body-cquoi {
+    padding: 1.4rem 0.4rem !important;
+  }
+  
     .container-annonces-div {
       width: 100%; // fallback
       width: calc(100%/var(--n));
