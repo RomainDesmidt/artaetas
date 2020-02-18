@@ -4,14 +4,14 @@
   align-items: normal !important;
 }
 
-.modal-content {
+#modal-content-signin {
 position: absolute;
 top: 50%;
 left: 50%;
 right: auto;
 bottom: auto;
 transform: translate(-50%,-50%);
-// -webkit-transform: translate (-50%,-50%);
+-webkit-transform: translate (-50%,-50%);
 }
 
 .modal-dialog {
@@ -20,5 +20,5 @@ transform: translate(-50%,-50%);
 }
 
 #modal-content-signin {
-  top: 410px;  
+  // top: 410px;  
 }
