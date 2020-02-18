@@ -201,14 +201,14 @@ $( document ).ready(function() {
   });
   
   
-  $( window ).change(function() {
-    if ( $container.length ) {
-      $container.masonry('layout');
-    };
-    if ( $containerme.length ) {
-      $containerme.masonry('layout');
-    }
-  });
+  // $( window ).change(function() {
+  //   if ( $container.length ) {
+  //     $container.masonry('layout');
+  //   };
+  //   if ( $containerme.length ) {
+  //     $containerme.masonry('layout');
+  //   }
+  // });
    
    
 });
