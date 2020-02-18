@@ -9,7 +9,9 @@
   padding: 1.4rem 2.4rem !important;
 }
 
-
+.embed-responsive-item {
+  width: 100%;
+}
 
 
 html {
@@ -1445,7 +1447,7 @@ p {
 }
 
 #modal-content-signin {
-  top: 350px;  
+  // top: 350px;  
 }
 // body {
 //   margin: 0;
@@ -1640,6 +1642,10 @@ and (-webkit-min-device-pixel-ratio: 1){
   
   .dropdown-hidedesktop {
   display: none;
+  }
+  
+  .embed-responsive-item {
+    height: 421.22px;  
   }
   
 }
