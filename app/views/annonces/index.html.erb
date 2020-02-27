@@ -112,7 +112,7 @@
        <% if i == Varlocale.where(nomchamp: "OccurenceMalu").first.valeurchamp %>
          <% unless a_pre[0].nil? %>
            <div class="grid-item aa-formule-malu">
-             <%= link_to "annonces/#{a_pre[0].id}", { class: "aa-annonce-titre"} do %>
+             <%= link_to showannonces_path(a_pre[0].slug), { class: "aa-annonce-titre"} do %>
                 <% if a_pre[0].photo.url.nil? %>
                   <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
                 <% else %>
@@ -136,7 +136,7 @@
        
      
         <div class="grid-item aa-formule-normal">
-          <%= link_to "annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
+          <%= link_to showannonces_path(t.slug), { class: "aa-annonce-titre"} do %>
             <% if t.photo.url.nil? %>
               <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
             <% else %>

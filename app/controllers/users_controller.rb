@@ -3,8 +3,11 @@ class UsersController < ApplicationController
     @users = User.all
   end
   def show
+    # @username = params[:username]
     @user= User.find(params[:id])
+    # @user= User.where(username: @username).first
     @bookmark = @user.bookmarkees_by(Annonce)
+    @bookmark = []
     @bmlist = []
     @bookmark.each do |bm|
       @bmlist << bm.bookmarkee_id

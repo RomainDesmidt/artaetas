@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   # end
 
   root to: 'annonces#index'
-  resources :annonces do
+  get "annonces/:slug", to: "annonces#show", as: :showannonces
+  resources :annonces, except: [:show] do
     member do
         put "like", to: "annonces#like"
         put "dislike", to: "annonces#dislike"
@@ -44,7 +45,8 @@ Rails.application.routes.draw do
   get 'users/mesfavoris', to: 'users#mesfavoris'
   get 'users/mesinfos', to: 'users#mesinfos'
   get 'users/mestransactions', to: 'users#mestransactions'
-  get 'users/:id', to: 'users#show'
+  get 'users/:id', to: 'users#show', as: :profil
+  # get 'users/:username', to: 'users#show', as: :profil
   get 'users', to: 'users#index'
   get 'testindex', to: 'annonces#index2'
   get 'changelog', to: 'pages#changelog'

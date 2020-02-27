@@ -166,4 +166,21 @@
 
 # AdminUser.create!(email: 'admin@artaetas.fr', username: 'groot', password: '201286', password_confirmation: '201286') if Rails.env.development?
 # Varlocale.create!( id: 1, nomchamp: "OccurenceMalu", valeurchamp: 2) 
-Varlocale.create!( id: 2, nomchamp: "OccurenceMea", valeurchamp: 2) 
+# Varlocale.create!( id: 2, nomchamp: "OccurenceMea", valeurchamp: 2) 
+Annonce.all.each do |an|
+    if an.anneecreation.nil?
+        an.update!(anneecreation: 2000)
+    end
+end
+
+Annonce.all.each do |an|
+    if an.slug.nil?
+        anslug = ""
+        loop do
+            anslug = SecureRandom.uuid
+            break unless Annonce.exists?(slug: anslug)
+        end
+        an.update!(slug: anslug)
+        puts an.slug
+    end
+end

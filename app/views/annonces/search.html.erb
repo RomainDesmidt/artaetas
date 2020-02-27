@@ -171,7 +171,7 @@
     <% if @annonces.count == 0 %>
       <% @annonces_pre.each do |t| %>
         <div class="grid-item aa-formule-malu" style="">
-         <%= link_to "/annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
+         <%= link_to showannonces_path(a_pre[0].slug), { class: "aa-annonce-titre"} do %>
               <% if t.photo.url.nil? %>
                 <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
               <% else %>
@@ -225,7 +225,7 @@
        <% if i == Varlocale.where(nomchamp: "OccurenceMea").first.valeurchamp %>
          <% unless a_pre[0].nil? %>
           <div class="grid-item aa-formule-malu" style="">
-            <%= link_to "/annonces/#{a_pre[0].id}", { class: "aa-annonce-titre"} do %>
+            <%= link_to showannonces_path(a_pre[0].slug), { class: "aa-annonce-titre"} do %>
               <% if a_pre[0].photo.url.nil? %>
                 <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
               <% else %>
@@ -267,7 +267,7 @@
        <% end %>
        
        <div class="grid-item aa-formule-normal"  style="">
-         <%= link_to "/annonces/#{t.id}", { class: "aa-annonce-titre"} do %>
+         <%= link_to showannonces_path(t.slug), { class: "aa-annonce-titre"} do %>
               <% if t.photo.url.nil? %>
                 <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
               <% else %>
