@@ -178,7 +178,8 @@
                 <%#= link_to "#{@annonces.user.surname} #{@annonces.user.lastname}", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
               <%# else %>
                 <% if @annonces.user.username %>
-                 <%= link_to "#{@annonces.user.username}", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
+                 <%= link_to "#{@annonces.user.username}", profil_path(@annonces.user) , class: "aa-show-user-link"  %>
+                 <%#= link_to "#{@annonces.user.username}", profil_path(@annonces.user.username) , class: "aa-show-user-link"  %>
                 <%# else %>
                   <%#= link_to "Profil Auteur", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
                 <%# end %>
@@ -211,11 +212,11 @@
                 <% if @annonces.user.afficher_email %>
                     <%= inline_svg "conversation.svg", class: "aa-show-call-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
                     <%#= link_to "Envoyer un Mail", "mailto:#{@annonces.user.email}", class: "aa-show-mailto align-self-centeraa" %>
-                    <%= link_to "Envoyer un Mail", contact_user_annonce_path , class: "aa-show-mailto align-self-centeraa" %>
+                    <%= link_to "Envoyer un Mail", contact_user_annonce_path(@annonces.id) , class: "aa-show-mailto align-self-centeraa" %>
                 <% else %>
                   <%= inline_svg "conversation.svg", class: "aa-show-call-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
                   <%#= link_to "Envoyer un Mail", "mailto:#{@annonces.user.email}", class: "aa-show-mailto align-self-centeraa" %>
-                  <%= link_to "Envoyer un Mail", contact_user_annonce_path , class: "aa-show-mailto align-self-centeraa" %>
+                  <%= link_to "Envoyer un Mail", contact_user_annonce_path(@annonces.id) , class: "aa-show-mailto align-self-centeraa" %>
                   <%#= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %>
                   <!--&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Notifier l'utilisateur</a>-->
                 <% end %>

@@ -375,7 +375,8 @@ class AnnoncesController < ApplicationController
 
 
   def show
-    @annonces = Annonce.find(params[:id])
+    # @annonces = Annonce.find(params[:id])
+    @annonces = Annonce.where(slug: params[:slug]).first
     @user = User.find(@annonces.user_id)
     if @annonces.hauteur.nil?
       @hauteur = 1
@@ -544,6 +545,7 @@ class AnnoncesController < ApplicationController
   
   def contact_user
     @annonce = Annonce.find(params[:id])
+    
   end
   
   def contact_deliver

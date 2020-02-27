@@ -1,6 +1,7 @@
 class Annonce < ApplicationRecord
  
  # after_update :enventeorno
+ before_create :set_slug
  after_update :no_photo_envente_no
 
  validates :name, :description,  presence: true
@@ -64,6 +65,13 @@ class Annonce < ApplicationRecord
  end
  
  def corpscontact
+ end
+ 
+ def set_slug
+  loop do
+   self.slug = SecureRandom.uuid
+   break unless Annonce.where(slug: slug).exists?
+  end
  end
   
 end
