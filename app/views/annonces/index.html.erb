@@ -179,7 +179,10 @@
   
   <div class="aa-button-deposer" id="aa-deposer">
     <div class="aa-button-symb-white">
-      <a href="/annonces/new" ><%= svg 'archiver2' %></a>
+      <%= link_to new_annonce_path do %>
+        <%= svg 'archiver2' %>
+      <% end %>
+      <!--<a href="/annonces/new" ></a>-->
     </div>
     <div class="aa-button-text">
       <div class="aa-button-gros">
