@@ -448,6 +448,9 @@ class AnnoncesController < ApplicationController
   def destroy
     @annonce = Annonce.find(params[:id])
 
+    unless Order.all.where(annonce_id: @annonce.id).nil?
+      Order.all.where(annonce_id: @annonce.id).destroy_all
+    end
     unless CategorieAnnonce.all.where(annonce_id: @annonce.id).nil?
       CategorieAnnonce.all.where(annonce_id: @annonce.id).destroy_all
      end
