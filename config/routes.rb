@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   # end
 
   root to: 'annonces#index'
-  get "annonces/:slug", to: "annonces#show", as: :showannonces
   resources :annonces, except: [:show] do
     member do
         put "like", to: "annonces#like"
@@ -28,6 +27,7 @@ Rails.application.routes.draw do
         patch "contact_deliver", to: "annonces#contact_deliver"
     end
   end
+  get "annonces/:slug", to: "annonces#show", as: :showannonces
   resources :orders, only: [:show, :create] do
     resources :payments, only: :new
   end
