@@ -55,7 +55,7 @@ class AnnoncesController < ApplicationController
     
     if  @annonce.save
 
-      redirect_to @annonce, flash: { success: "L'annonce est en attente de modération, et est consultable dans l'onglet annonce du compte membre" }
+      redirect_to showannonces_path(@annonce.slug), flash: { success: "L'annonce est en attente de modération, et est consultable dans l'onglet annonce du compte membre" }
       # flash[:error] = "it worked"
     else
       render 'new'
@@ -483,27 +483,27 @@ class AnnoncesController < ApplicationController
   def like
     @annonce = Annonce.find(params[:id])
     @annonce.liked_by current_user
-    redirect_to @annonce
+    redirect_to showannonces_path(@annonce.slug)
   end
 
   def likeuser
     @annonce = Annonce.find(params[:id])
     @user = User.find(@annonce.user_id)
     @user.liked_by current_user
-    redirect_to @annonce
+    redirect_to showannonces_path(@annonce.slug)
   end
 
   def dislike   
     @annonce = Annonce.find(params[:id])
     @annonce.disliked_by current_user
-    redirect_to @annonce
+    redirect_to showannonces_path(@annonce.slug)
   end
 
   def dislikeuser
     @annonce = Annonce.find(params[:id])
     @user = User.find(@annonce.user_id)
     @user.disliked_by current_user
-    redirect_to @annonce
+    redirect_to showannonces_path(@annonce.slug)
   end
 
   def follow
@@ -558,7 +558,7 @@ class AnnoncesController < ApplicationController
     @corps = params[:annonce][:corpscontact]
     @user = @annonce.user  
     AnnonceMailer.with(user: @user, annonce: @annonce, corps: @corps, sujet: @sujet, intercedant: current_user).contact_user_annonce.deliver_now
-    redirect_to annonce_path(@annonce), flash: { success: "Le message a été envoyé." }
+    redirect_to showannonces_path(@annonce.slug), flash: { success: "Le message a été envoyé." }
   end
 
   private
