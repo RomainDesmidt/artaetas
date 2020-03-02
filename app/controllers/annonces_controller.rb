@@ -470,13 +470,13 @@ class AnnoncesController < ApplicationController
   def bookmark
     @annonce = Annonce.find(params[:id])
     current_user.bookmark(@annonce)
-    redirect_to @annonce
+    redirect_to showannonces_path(@annonce.slug)
   end
   
   def unbookmark
     @annonce = Annonce.find(params[:id])
     current_user.unbookmark(@annonce)
-    redirect_to @annonce
+    redirect_to showannonces_path(@annonce.slug)
   end
   
   
