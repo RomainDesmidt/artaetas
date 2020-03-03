@@ -154,8 +154,8 @@
       <% @bmlist.each do |bml| %>
         <% if i < 5 %>
           <div class="aa-me-favoriuseritem">
-            <%= link_to "/annonces/#{@bmlist[i]}" do %>
-              <%= cl_image_tag Annonce.find(@bmlist[i]).photo, class: "aa-me-favoriuser-image" %>
+            <%= link_to "/annonces/#{bml.slug}" do %>
+              <%= cl_image_tag Annonce.find(bml.id).photo, class: "aa-me-favoriuser-image" %>
             <% end %>
           </div>
         <% end %>
@@ -174,12 +174,12 @@
               <% @user.annonces.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true).each do |a| %>
       
                   <div class="aa-search-annonce-card">
-                  <%= link_to a, class: "aa-search-annonce-card-image aa-show-user-pub" do %>
+                  <%= link_to showannonces_path(a.slug), class: "aa-search-annonce-card-image aa-show-user-pub" do %>
                     <!-- <div class="aa-search-annonce-card-image"> -->
                       <%= cl_image_tag a.photo %>
                     <!-- </div> -->
                   <% end %>
-                  <%= link_to a, class: "aa-search-annonce-card-detail" do %>
+                  <%= link_to showannonces_path(a.slug), class: "aa-search-annonce-card-detail" do %>
                   
                   
                   

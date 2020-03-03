@@ -7,17 +7,17 @@ class UsersController < ApplicationController
     @user= User.find(params[:id])
     # @user= User.where(username: @username).first
     @bookmark = @user.bookmarkees_by(Annonce)
-    @bookmark = []
+    # @bookmark = []
     @bmlist = []
     @bookmark.each do |bm|
-      @bmlist << bm.bookmarkee_id
+      @bmlist << Annonce.find(bm.bookmarkee_id)
     end
   end
   def mesannonces
     @bookmark = current_user.bookmarkees_by(Annonce)
     @bmlist = []
     @bookmark.each do |bm|
-      @bmlist << bm.bookmarkee_id
+      @bmlist << Annonce.find(bm.bookmarkee_id)
     end
     @annonces = current_user.annonces
   end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     @bookmark = current_user.bookmarkees_by(Annonce)
     @bmlist = []
     @bookmark.each do |bm|
-      @bmlist << bm.bookmarkee_id
+      @bmlist << Annonce.find(bm.bookmarkee_id)
     end
     @annonces = current_user.annonces
   end
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     @bookmark = current_user.bookmarkees_by(Annonce)
     @bmlist = []
     @bookmark.each do |bm|
-      @bmlist << bm.bookmarkee_id
+      @bmlist << Annonce.find(bm.bookmarkee_id)
     end
     @annonces = current_user.annonces
     unless current_user.compteur_rappel.nil?
