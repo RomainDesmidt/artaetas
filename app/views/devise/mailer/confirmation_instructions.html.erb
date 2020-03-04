@@ -1,10 +1,13 @@
-<p>Bienvenue <%= User.where( email: @email ).first.username %>!</p>
+<p>Bonjour <%= User.where( email: @email ).first.username %>!</p>
 
-<p>Vous recevez cet email car vous venez de créer un compte membre sur ARTAETAS.</p>
-<p>Afin de valider celui ci, veuillez confirmer votre adresse email en cliquant sur le lien ci-dessous </p>
+<p>Vous venez de créer un compte membre sur ARTAETAS.</p>
+<p>Afin de valider celui ci, veuillez confirmer votre adresse mail en cliquant sur le lien ci-dessous </p>
 <p><%= link_to 'Confirmer mon compte', confirmation_url(@resource, confirmation_token: @token) %></p>
 <br>
-<p>Bien cordialement</p>
+<p>A très bientôt.</p>
+<br>
 <p>L’équipe ARTAETAS</p>
-
+<br>
+<p>Cet e-mail est un e-mail automatique, veuillez ne pas y répondre.</p>
+<p>Nous vous invitons à écrire à contact@artaetas.com pour tout renseignement.</p>
 

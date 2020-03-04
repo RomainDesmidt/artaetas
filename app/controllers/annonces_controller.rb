@@ -436,7 +436,7 @@ class AnnoncesController < ApplicationController
     end
     
     if  @annonce.save
-      redirect_to @annonce, flash: { success: "L'annonce est en attente de modération, et est consultable dans l'onglet annonce du compte membre" }
+      redirect_to showannonces_path(@annonce.slug), flash: { success: "L'annonce est en attente de modération, et est consultable dans l'onglet annonce du compte membre" }
       # flash[:error] = "it worked"
     else
       render 'edit'
