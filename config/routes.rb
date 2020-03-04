@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   # resources :annonces
   get 'social', to: 'pages#social'
   get 'cgu', to: 'pages#cgu'
+  get 'faq', to: 'pages#faq'
+  get 'quisommesnous', to: 'pages#quisommesnous'
   get 'politiquedeconfidentialite', to: 'pages#politiquedeconfidentialite'
   # get 'annonces', to: 'annonces#index'
   # get 'annonces/new', to: 'annonces#new'

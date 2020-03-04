@@ -6,6 +6,12 @@ class PagesController < ApplicationController
   
   def cgu
   end
+  
+  def faq
+  end
+  
+  def quisommesnous
+  end
 
   def politiquedeconfidentialite
   end
