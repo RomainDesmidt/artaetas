@@ -89,6 +89,9 @@
 }
 
 
+
+
+
 .aa-me-descriptionuser-left {
   flex: 0 0 66%;
   display: flex;
@@ -412,4 +415,74 @@ object-fit: contain !important;
 
 .aa-ilotprofil-rs {
   padding-left: 25px;
+}
+
+.aa-me-brmobile {
+  display: none;
+}
+
+
+@media (max-width: 830px)  {
+  
+  .aa-me-descriptionuser {
+    flex-direction: column;
+  }
+  
+
+  .aa-me-descriptionuser-topleft {
+    height: initial;
+    flex-direction: column;
+    flex: 1 1 auto;
+  }
+  
+  .aa-me-descriptionuser-portrait {
+    flex: 0 0 175px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 200px;
+
+  }
+  
+  .aa-me-descriptionuser-caracteristiques {
+    text-align: center;
+  }
+  
+  .aa-show-detailuser-followbtn {
+    position: relative !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+  
+  .aa-me-descriptionuser-right {
+    flex-direction: row-reverse;
+  }
+  
+  .aa-statsblue-stats {
+    flex-direction: column;
+  }
+  
+  .aa-me-brmobile {
+    display: block;
+  }
+  .aa-me-descriptionuser-stats2 {
+    padding: 15px 0px;
+  }
+  .aa-me-descriptionuser-stats {
+    padding: 15px 0px;
+  }
+  
+
+}
+
+@media (max-width: 576px)  {
+  .aa-search-annonce-card-detail {
+    display: none;
+  }
+  .aa-search-annonce-card-control{
+    display: none;
+  }
+  .aa-search-annonce-card-image {
+    flex: 1 1 auto;
+  }
 }

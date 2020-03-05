@@ -126,13 +126,13 @@
       </div>
       <div class="aa-me-descriptionuser-stats2">
          <% if @user.afficher_identite? %>
-          <p>Identité : <%= "#{@user.surname} #{@user.lastname}" %></p>
+          <p>Identité : <br class="aa-me-brmobile"><b><%= "#{@user.surname} #{@user.lastname}" %></b></p>
         <% end %>
-        <p>inscrit depuis: <b><%= @user.created_at.strftime("%d-%m-%Y") unless @user.created_at.nil?  %></b></p>
-        <p>derniere connexion: <b><%= @user.last_sign_in_at.strftime("%d-%m-%Y") unless @user.last_sign_in_at.nil? %></b></p>
-        <p>nombre d'annonce: <b><%= @user.annonces.count %></b></p>
+        <p>inscrit depuis: <br class="aa-me-brmobile"><b><%= @user.created_at.strftime("%d-%m-%Y") unless @user.created_at.nil?  %></b></p>
+        <p>derniere connexion: <br class="aa-me-brmobile"> <b><%= @user.last_sign_in_at.strftime("%d-%m-%Y") unless @user.last_sign_in_at.nil? %></b></p>
+        <p>nombre d'annonce: <br class="aa-me-brmobile"> <b><%= @user.annonces.count %></b></p>
         <% if @user.paysresidence? || @user.codepostal? || @user.villeresidence? %>
-          <p>localisation: <b><%= "#{@user.paysresidence} #{@user.codepostal} #{@user.villeresidence}" %></b></p>
+          <p>localisation:<br class="aa-me-brmobile"> <b><%= "#{@user.paysresidence} #{@user.codepostal} #{@user.villeresidence}" %></b></p>
           <br>
         <% end %>
         <% if @user.instagram? %>
