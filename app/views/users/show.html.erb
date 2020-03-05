@@ -128,8 +128,8 @@
          <% if @user.afficher_identite? %>
           <p>Identité : <%= "#{@user.surname} #{@user.lastname}" %></p>
         <% end %>
-        <p>inscrit depuis: <b><%= @user.created_at.strftime("%d-%m-%Y") %></b></p>
-        <p>derniere connexion: <b><%= @user.last_sign_in_at.strftime("%d-%m-%Y") %></b></p>
+        <p>inscrit depuis: <b><%= @user.created_at.strftime("%d-%m-%Y") unless @user.created_at.nil?  %></b></p>
+        <p>derniere connexion: <b><%= @user.last_sign_in_at.strftime("%d-%m-%Y") unless @user.created_at.nil? %></b></p>
         <p>nombre d'annonce: <b><%= @user.annonces.count %></b></p>
         <% if @user.paysresidence? || @user.codepostal? || @user.villeresidence? %>
           <p>localisation: <b><%= "#{@user.paysresidence} #{@user.codepostal} #{@user.villeresidence}" %></b></p>
