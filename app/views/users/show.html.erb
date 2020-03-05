@@ -132,17 +132,29 @@
         <p>derniere connexion: <br class="aa-me-brmobile"> <b><%= @user.last_sign_in_at.strftime("%d-%m-%Y") unless @user.last_sign_in_at.nil? %></b></p>
         <p>nombre d'annonce: <br class="aa-me-brmobile"> <b><%= @user.annonces.count %></b></p>
         <% if @user.paysresidence? || @user.codepostal? || @user.villeresidence? %>
-          <p>localisation:<br class="aa-me-brmobile"> <b><%= "#{@user.paysresidence} #{@user.codepostal} #{@user.villeresidence}" %></b></p>
+          <p>localisation:<br class="aa-me-brmobile"> 
+            <b>
+              <% unless @user.codepostal.nil? %>
+                <%= "#{@user.codepostal} " %><br class="aa-me-brmobile">
+              <% end %>
+              <% unless @user.codepostal.nil? %>
+                <%= "#{@user.villeresidence} " %><br class="aa-me-brmobile">
+              <% end %>
+              <% unless @user.codepostal.nil? %>
+                <%= "#{@user.paysresidence}" %>
+              <% end %>              
+            </b>
+          </p>
           <br>
         <% end %>
         <% if @user.instagram? %>
-          <p>Instagram : <%= link_to "@#{@user.instagram}", "https://www.instagram.com/#{@user.instagram}/", target: :_blank %></p>
+          <p>Instagram :<br class="aa-me-brmobile"> <%= link_to "@#{@user.instagram}", "https://www.instagram.com/#{@user.instagram}/", target: :_blank %></p>
         <% end %>
         <% if @user.facebook? %>
-          <p>Facebook : <%= link_to "#{@user.facebook}", "https://www.facebook.com/#{@user.facebook}/", target: :_blank %></p>
+          <p>Facebook :<br class="aa-me-brmobile"> <%= link_to "#{@user.facebook}", "https://www.facebook.com/#{@user.facebook}/", target: :_blank %></p>
         <% end %>
         <% if @user.website? %>
-          <p>Site Web : <%= link_to "#{@user.website}", "http://#{@user.website.downcase}", target: :_blank %></p>
+          <p>Site Web :<br class="aa-me-brmobile"> <%= link_to "#{@user.website}", "http://#{@user.website.downcase}", target: :_blank %></p>
         <% end %>
       </div>
     </div>
