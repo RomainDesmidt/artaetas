@@ -422,12 +422,17 @@ object-fit: contain !important;
 }
 
 
-@media (max-width: 830px)  {
+@media (max-width: 800px)  {
   
   .aa-me-descriptionuser {
     flex-direction: column;
   }
   
+
+  .aa-me-descriptionuser-descr {
+    padding-right: 0px;
+    padding-bottom: 15px;
+  }
 
   .aa-me-descriptionuser-topleft {
     height: initial;
