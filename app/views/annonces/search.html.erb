@@ -40,17 +40,17 @@
 
      
     <% if params[:prix_slider] == '' || params[:prix_slider].nil?%>
-      <dd class="title-slider-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="prix_slider" class="aa-label-prix-slider">Prix</label></dd>
-      <input name="prix_slider" id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="<%= "#{@slider_max}" %>" data-slider-step="5" data-slider-value="[0,<%= "#{@slider_max}" %>]"/>
+      <!--<dd class="title-slider-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="prix_slider" class="aa-label-prix-slider">Prix</label></dd>-->
+      <input data-slider-ticks="[0,<%= "#{@slider_max}" %>]" data-slider-ticks-labels='["Prix Min", "Prix Max"]' name="prix_slider" id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="<%= "#{@slider_max}" %>" data-slider-step="5" data-slider-value="[0,<%= "#{@slider_max}" %>]"/>
     <% else %>
       <dd class="title-slider-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="prix_slider" class="aa-label-prix-slider">Prix</label></dd>
       <input name="prix_slider" id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="<%= "#{@slider_max}" %>" data-slider-step="5" data-slider-value="[<%= "#{@pricemin}" %>,<%= "#{@pricemax}" %>]"/>
     <% end %>
     
     <% if params[:disposition_search2] == '' || params[:disposition_search2].nil?%>
-      <%= select_tag :disposition_search2, options_for_select(["Portrait","Paysage"], ""), include_blank: false, :multiple => true,  :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd5"  %>  
+      <%= select_tag :disposition_search2, options_for_select(["Portrait","Paysage","Carre"], ""), include_blank: false, :multiple => true,  :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd5"  %>  
     <% else %>
-      <%= select_tag :disposition_search2, options_for_select(["Portrait","Paysage"], @disposition_search2), include_blank: false, :multiple => true,  :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis  multiple-dd5"  %>  
+      <%= select_tag :disposition_search2, options_for_select(["Portrait","Paysage","Carre"], @disposition_search2), include_blank: false, :multiple => true,  :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis  multiple-dd5"  %>  
     <% end %>
     
     <%# if params[:disposition] == '' || params[:disposition].nil?%>
