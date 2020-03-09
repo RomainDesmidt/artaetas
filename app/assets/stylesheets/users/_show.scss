@@ -1,3 +1,7 @@
+.aa-me-show-fondprofilcontainer > img {
+    object-fit: cover;
+}
+
 .aa-show-retour {
   position: absolute;
   top: 5px;
@@ -427,6 +431,7 @@ object-fit: contain !important;
   .aa-me-show-fondprofilcontainer > img {
     width: 100%;
     object-fit: contain;
+    max-height: 150px;
   }
   .aa-me-show-fondprofilcontainer {
     margin-bottom: 53px;

@@ -1,5 +1,8 @@
 <% if @user.photofond? %>
-      <div class="aa-me-show-fondprofilcontainer" style="background-image: url('<%= "#{@user.photofond.url}" %>')  ;"></div>
+      <div class="aa-me-show-fondprofilcontainer" style="display: flex;background-color: #e2e3e7;justify-content: center; object-fit: contain;"><%= image_tag @user.photofond.url %></div>
+      <%# <div class="aa-me-show-fondprofilcontainer" style="background-image: url(' %>
+      <%#= "#{@user.photofond.url}" %>
+      <%# \')  ;\"></div> %>
 <% else %>
       <div class="aa-me-show-fondprofilcontainer" style="display: flex;background-color: #e2e3e7;justify-content: center; object-fit: contain;"><%= image_tag asset_path("bgartaetas.jpg") %></div>
 <% end %>
