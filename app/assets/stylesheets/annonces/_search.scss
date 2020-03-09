@@ -1,6 +1,9 @@
 .slider-tick-label {
  font-size: 11px; 
+ color: #8f8f8f;
+ font-style: italic;
 }
+
 
 .title-slider-label {
   display: flex;
@@ -388,8 +391,9 @@ overflow: hidden;
   
   .aa-search-field-form-btn {
     flex: 1 0 90%;
-    margin-bottom: 20px;
-    position: absolute;
+    // margin-bottom: 20px;
+    position: relative; //cetait absolute
+    order: 1;
     transform: none;
     left: initial;
     bottom: -11px;
@@ -401,7 +405,12 @@ overflow: hidden;
   }
   
   .slider-horizontal {
-    display: none !important;
+    // display: none !important;
+    order: 1;
+    width: 95% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 20px !important;
   }
   
   .title-slider-label {
@@ -409,7 +418,20 @@ overflow: hidden;
   }
   
   .multiple-dd8 {
-    margin-bottom: 35px;
+    margin-bottom: 11px; //anciennement 35px
+  }
+  
+  .slider-tick-label:first-of-type {
+    position: absolute;
+    width: initial !important;
+    left: -15px !important;
+  }
+  
+  
+  .slider-tick-label:last-of-type {
+    position: absolute;
+    width: initial !important;
+    right: -15px !important;
   }
 
 }
