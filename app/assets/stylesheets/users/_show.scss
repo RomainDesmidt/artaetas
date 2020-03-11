@@ -436,7 +436,7 @@ object-fit: contain !important;
     max-height: 150px;
   }
   .aa-me-show-fondprofilcontainer {
-    margin-bottom: 53px;
+    margin-bottom: 51px; // anciennement 53px
     height: initial;
   }
   
@@ -518,6 +518,13 @@ object-fit: contain !important;
 }
 
 @media (max-width: 400px)  {
+  
+  .aa-me-descriptionuser-portraitfond {
+    // box-shadow: none;
+    // background-color: transparent;
+    position: absolute;
+  }
+  
   
     .aa-search-annonce-card-detail {
     display: none;
