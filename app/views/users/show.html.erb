@@ -1,10 +1,10 @@
 <% if @user.photofond? %>
-      <div class="aa-me-show-fondprofilcontainer" style="display: flex;background-color: #e2e3e7;justify-content: center; object-fit: contain;"><%= image_tag @user.photofond.url %></div>
+      <div class="aa-me-show-fondprofilcontainer" style="display: flex;background-color: #dddddd;justify-content: center; object-fit: contain;"><%= image_tag @user.photofond.url %></div>
       <%# <div class="aa-me-show-fondprofilcontainer" style="background-image: url(' %>
       <%#= "#{@user.photofond.url}" %>
       <%# \')  ;\"></div> %>
 <% else %>
-      <div class="aa-me-show-fondprofilcontainer" style="display: flex;background-color: #e2e3e7;justify-content: center; object-fit: contain;"><%= image_tag asset_path("bgartaetas.jpg") %></div>
+      <div class="aa-me-show-fondprofilcontainer" style="display: flex;background-color: #dddddd;justify-content: center; object-fit: contain;"><%= image_tag asset_path("bgartaetas.jpg") %></div>
 <% end %>
 <div class="aa-me-container2">
   <div class="aa-me-descriptionuser">
@@ -163,20 +163,22 @@
     </div>
   </div>
   <% unless @user.masquefavoris? %>
-    <p class="text-center"><b>FAVORIS</b></p>
-    <div class="aa-me-favoriuser">
-      <% i = 0 %>
-      <% @bmlist.each do |bml| %>
-        <% if i < 5 %>
-          <div class="aa-me-favoriuseritem">
-            <%= link_to "/annonces/#{bml.slug}" do %>
-              <%= cl_image_tag Annonce.find(bml.id).photo, class: "aa-me-favoriuser-image" %>
-            <% end %>
-          </div>
+    <% unless @bmlist == [] %>
+      <p class="text-center"><b>FAVORIS</b></p>
+      <div class="aa-me-favoriuser">
+        <% i = 0 %>
+        <% @bmlist.each do |bml| %>
+          <% if i < 5 %>
+            <div class="aa-me-favoriuseritem">
+              <%= link_to "/annonces/#{bml.slug}" do %>
+                <%= cl_image_tag Annonce.find(bml.id).photo, class: "aa-me-favoriuser-image" %>
+              <% end %>
+            </div>
+          <% end %>
+          <% i += 1 %>
         <% end %>
-        <% i += 1 %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   <% end %>
   <style>
     .aa-search-annonce-container { margin-top : 0px; }

@@ -120,6 +120,9 @@
           <% if @annonces.etat_neuf %>
             <p>Etat neuf</p>
           <% end %>
+          <% if @annonces.oeuvre_originale %>
+            <p>Oeuvre Originale</p>
+          <% end %>
           <br>
           <br>
           <% unless CategorieAnnonce.all.where(annonce_id: @annonces.id).nil? || CategorieAnnonce.all.where(annonce_id: @annonces.id) == [] %>
