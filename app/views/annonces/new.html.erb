@@ -94,12 +94,11 @@
       <%= f.input :hauteur, placeholder: "cm", input_html: { class: 'aa-textalignright' } %>
       <%= f.input :largeur, placeholder: "cm", input_html: { class: 'aa-textalignright' } %>
       <%= f.input :profondeur, placeholder: "cm", input_html: { class: 'aa-textalignright' } %>
-      <%= f.input :oeuvre_limite, label: "Tirage", :collection => ["Oeuvre Unique","Édition limitée", "Édition illimitée"]%>
+      <%= f.input :oeuvre_limite, label: "Tirage", :collection => ["Oeuvre Unique","Édition limitée", "Édition illimitée", "Oeuvre Originale"]%>
       <%= f.input :certificat_authenticite, label: "Certificat d'authenticité", input_html: { class: 'aa-new-hide-chkbox' }, label_html: { class: "aa-new-label-chkbox aa-new-label-chkbox-first" } %>
       <%= f.input :facture_achat, label: "Facture d'origine", input_html: { class: 'aa-new-hide-chkbox' }, label_html: { class: "aa-new-label-chkbox" } %>
       <%= f.input :encadrement , input_html: { class: 'aa-new-hide-chkbox' }, label_html: { class: "aa-new-label-chkbox" } %>
       <%= f.input :etat_neuf , input_html: { class: 'aa-new-hide-chkbox' }, label_html: { class: "aa-new-label-chkbox" } %>
-      <%= f.input :oeuvre_originale , input_html: { class: 'aa-new-hide-chkbox' }, label_html: { class: "aa-new-label-chkbox" } %>
       </div>
     </div>
     <%= f.submit "Publier cette annonce", class: "btn btn-primary aa-mobile-btn aa-new-publierannonce" , id: "submitButtonNew", disabled: true  %>
