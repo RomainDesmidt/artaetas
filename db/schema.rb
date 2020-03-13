@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_145508) do
+ActiveRecord::Schema.define(version: 2020_03_13_175647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 2020_03_10_145508) do
     t.string "photo_deux"
     t.string "formule"
     t.string "slug"
-    t.boolean "oeuvre_originale"
     t.index ["slug"], name: "index_annonces_on_slug", unique: true
     t.index ["user_id"], name: "index_annonces_on_user_id"
   end
