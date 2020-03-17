@@ -116,6 +116,12 @@
                 <% if a_pre[0].photo.url.nil? %>
                   <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
                 <% else %>
+                  <%# imagepath = a_pre[0].photo.url.insert(4, 's') %>
+                  <%# filename = a_pre[0].photo.filename %>
+                  <%# imagepath.slice! filename %>
+                  <%# imageminusfilename = imagepath + 'q_auto:low/' %>
+                  <%# imagefullpath = imageminusfilename + filename %>
+                  <%#= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: imagefullpath })  %>
                   <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_pre[0].photo.url.insert(4, 's') })  %>
                 <% end %>
                 <% unless a_pre[0].name.lines.first.nil? %>
@@ -140,6 +146,12 @@
             <% if t.photo.url.nil? %>
               <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
             <% else %>
+              <%# imagepath = t.photo.url.insert(4, 's') %>
+              <%# filename = t.photo.filename %>
+              <%# imagepath.slice! filename %>
+              <%# imageminusfilename = imagepath + 'q_auto:low/' %>
+              <%# imagefullpath = imageminusfilename + filename %>
+              <%#= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: imagefullpath })  %>
               <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
             <% end %>
             <% unless t.name.lines.first.nil? %>
