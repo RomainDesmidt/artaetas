@@ -149,7 +149,7 @@
               <% if t.photo.url.nil? %>
                 <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
               <% else %>
-                <%= image_tag(t.photo.url.insert(4, 's'))  %>
+                <%= image_tag(t.photolow)  %>
               <% end %>
               <%#= image_tag(t.photo.url.insert(4, 's'))  %>
               <%#= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>

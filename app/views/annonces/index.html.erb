@@ -122,7 +122,8 @@
                   <%# imageminusfilename = imagepath + 'q_auto:low/' %>
                   <%# imagefullpath = imageminusfilename + filename %>
                   <%#= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: imagefullpath })  %>
-                  <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_pre[0].photo.url.insert(4, 's') })  %>
+                  <%#= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_pre[0].photo.url.insert(4, 's') })  %>
+                  <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_pre[0].photolow })  %>
                 <% end %>
                 <% unless a_pre[0].name.lines.first.nil? %>
                   <p class='p-titre'><%= a_pre[0].name.lines.first[0,70] %></p>
@@ -152,7 +153,8 @@
               <%# imageminusfilename = imagepath + 'q_auto:low/' %>
               <%# imagefullpath = imageminusfilename + filename %>
               <%#= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: imagefullpath })  %>
-              <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
+              <%#= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
+              <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photolow })  %>
             <% end %>
             <% unless t.name.lines.first.nil? %>
               <p class='p-titre'><%= t.name.lines.first[0,70] %></p>

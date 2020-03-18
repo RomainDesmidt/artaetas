@@ -73,5 +73,12 @@ class Annonce < ApplicationRecord
    break unless Annonce.where(slug: slug).exists?
   end
  end
+ 
+ def photolow
+  httpsimagepath = self.photo.url.insert(4, 's')
+  httpsimagepath.slice! self.photo.filename
+  httpsimagepath = httpsimagepath + 'q_auto:low/' + self.photo.filename
+  return httpsimagepath
+ end
   
 end
