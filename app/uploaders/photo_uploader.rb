@@ -1,5 +1,7 @@
 class PhotoUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
+  
+  
   def content_type_whitelist
     /image\//
   end
@@ -7,4 +9,5 @@ class PhotoUploader < CarrierWave::Uploader::Base
   def extension_whitelist
     %w(jpg jpeg)
   end
+  
 end

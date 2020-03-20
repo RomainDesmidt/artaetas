@@ -80,5 +80,6 @@ class Annonce < ApplicationRecord
   httpsimagepath = httpsimagepath + 'q_auto:low/' + self.photo.filename
   return httpsimagepath
  end
+ 
   
 end
