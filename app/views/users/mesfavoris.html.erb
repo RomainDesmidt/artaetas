@@ -34,7 +34,7 @@
                     <%#= link_to "#{@annonces.user.surname} #{@annonces.user.lastname}", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
                   <%# else %>
                     <% if user_suivi.username %>
-                     <%= link_to "#{user_suivi.username}", "/users/#{user_suivi.id}", class: "aa-show-user-link"  %>
+                     <%= link_to "#{user_suivi.username}", profil_path(user_suivi.username), class: "aa-show-user-link"  %>
                     <%# else %>
                       <%#= link_to "Profil Auteur", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
                     <%# end %>

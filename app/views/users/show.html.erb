@@ -26,7 +26,7 @@
               <%#= link_to "#{@user.surname} #{@user.lastname}", "/users/#{@user.id}", class: "aa-show-user-link"  %>
             <%# else %>
               <% if @user.username %>
-                <%= link_to "#{@user.username}", "/users/#{@user.id}", class: "aa-show-user-link"  %>
+                <%= link_to "#{@user.username}", profil_path(@user.username) , class: "aa-show-user-link"  %>
               <%# else %>
                   <%#= link_to "Profil Auteur", "/users/#{@user.id}", class: "aa-show-user-link"  %>
               <% end %>

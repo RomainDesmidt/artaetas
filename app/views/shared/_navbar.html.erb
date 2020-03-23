@@ -35,7 +35,7 @@
             <%= link_to "Mes Favoris", users_mesfavoris_path, class: "dropdown-item dropdown-hidedesktop" %>
             <%= link_to "Mes Infos", users_mesinfos_path, class: "dropdown-item dropdown-hidedesktop" %>
             <%= link_to "Mes Transactions", users_mestransactions_path, class: "dropdown-item dropdown-hidedesktop" %>
-            <%= link_to "Mon Profil Public",  profil_path(current_user), class: "dropdown-item dropdown-hidedesktop" %>
+            <%= link_to "Mon Profil Public",  profil_path(current_user.username), class: "dropdown-item dropdown-hidedesktop" %>
             <!-- < link_to "Liste user", "/users/", class: "dropdown-item" > -->
             <!-- < link_to "Edit Profile", edit_user_registration_path , class: "dropdown-item" > -->
             <%= link_to "Se Déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
