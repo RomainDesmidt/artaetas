@@ -47,8 +47,8 @@ Rails.application.routes.draw do
   get 'users/mesfavoris', to: 'users#mesfavoris'
   get 'users/mesinfos', to: 'users#mesinfos'
   get 'users/mestransactions', to: 'users#mestransactions'
-  get 'users/:id', to: 'users#show', as: :profil
-  # get 'users/:username', to: 'users#show', as: :profil
+  # get 'users/:id', to: 'users#show', as: :profil
+  get 'users/:username', to: 'users#show', as: :profil
   get 'users', to: 'users#index'
   get 'testindex', to: 'annonces#index2'
   get 'changelog', to: 'pages#changelog'

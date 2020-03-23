@@ -178,7 +178,7 @@
                 <%#= link_to "#{@annonces.user.surname} #{@annonces.user.lastname}", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
               <%# else %>
                 <% if @annonces.user.username %>
-                 <%= link_to "#{@annonces.user.username}", profil_path(@annonces.user) , class: "aa-show-user-link"  %>
+                 <%= link_to "#{@annonces.user.username}", profil_path(@annonces.user.username) , class: "aa-show-user-link"  %>
                  <%#= link_to "#{@annonces.user.username}", profil_path(@annonces.user.username) , class: "aa-show-user-link"  %>
                 <%# else %>
                   <%#= link_to "Profil Auteur", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
