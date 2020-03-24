@@ -175,7 +175,7 @@
               <% if t.photo.url.nil? %>
                 <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
               <% else %>
-                <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photolow })  %>
+                <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.low.exifignore })  %>
               <% end %>
               
               <% unless t.name.nil? %>
@@ -229,7 +229,7 @@
               <% if a_pre[0].photo.url.nil? %>
                 <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
               <% else %>
-                <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_pre[0].photolow })  %>
+                <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_pre[0].photo.low.exifignore })  %>
               <% end %>
               <% unless a_pre[0].name.nil? %>
                 <p class='p-titre-search' style=""><%= a_pre[0].name[0,70] %></p>
@@ -271,7 +271,7 @@
               <% if t.photo.url.nil? %>
                 <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
               <% else %>
-                <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photolow })  %>
+                <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.low.exifignore })  %>
               <% end %>
               
               <% unless t.name.nil? %>
