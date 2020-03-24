@@ -81,5 +81,19 @@ class Annonce < ApplicationRecord
   return httpsimagepath
  end
  
+  def photoexif
+   httpsimagepath = self.photo.url.insert(4, 's')
+   httpsimagepath.slice! self.photo.filename
+   httpsimagepath = httpsimagepath + 'a_exif/' + self.photo.filename
+   return httpsimagepath
+  end
+ 
+  def exif
+   puts self.url 
+   # httpsimagepath = self.url.insert(4, 's')
+   # httpsimagepath.slice! self.filename
+   # httpsimagepath = httpsimagepath + 'a_exif/' + self.filename
+   # return httpsimagepath
+  end
   
 end
