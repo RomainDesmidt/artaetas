@@ -75,25 +75,29 @@ class Annonce < ApplicationRecord
  end
  
  def photolow
-  httpsimagepath = self.photo.url.insert(4, 's')
-  httpsimagepath.slice! self.photo.filename
-  httpsimagepath = httpsimagepath + 'q_auto:low/' + self.photo.filename
-  return httpsimagepath
+  unless self.photo?
+   httpsimagepath = self.photo.url.insert(4, 's')
+   httpsimagepath.slice! self.photo.filename
+   httpsimagepath = httpsimagepath + 'q_auto:low/' + self.photo.filename
+   return httpsimagepath
+  end
  end
  
   def photoexif
-   httpsimagepath = self.photo.url.insert(4, 's')
-   httpsimagepath.slice! self.photo.filename
-   httpsimagepath = httpsimagepath + 'a_exif/' + self.photo.filename
-   return httpsimagepath
+   unless self.photo?
+    httpsimagepath = self.photo.url.insert(4, 's')
+    httpsimagepath.slice! self.photo.filename
+    httpsimagepath = httpsimagepath + 'a_exif/' + self.photo.filename
+    return httpsimagepath
+   end
   end
  
-  def exif
-   puts self.url 
-   # httpsimagepath = self.url.insert(4, 's')
-   # httpsimagepath.slice! self.filename
-   # httpsimagepath = httpsimagepath + 'a_exif/' + self.filename
-   # return httpsimagepath
-  end
+  # def exif
+  #  puts self.url 
+  #  # httpsimagepath = self.url.insert(4, 's')
+  #  # httpsimagepath.slice! self.filename
+  #  # httpsimagepath = httpsimagepath + 'a_exif/' + self.filename
+  #  # return httpsimagepath
+  # end
   
 end
