@@ -6,19 +6,19 @@ class PhotoUploader < CarrierWave::Uploader::Base
     /image\//
   end
   
-  def exif
-    # puts self.url
-    # puts self.filename
-    httpsimagepath = self.url.insert(4, 's')
-    # httpsimagepath.slice! self.filename
-    filename = self.url.split('/').last
-    httpsimagepath.slice! filename
-    httpsimagepath = httpsimagepath + 'a_exif/' + filename
-    return httpsimagepath
-  end
+  # def exif
+  #   # puts self.url
+  #   # puts self.filename
+  #   httpsimagepath = self.url.insert(4, 's')
+  #   # httpsimagepath.slice! self.filename
+  #   filename = self.url.split('/').last
+  #   httpsimagepath.slice! filename
+  #   httpsimagepath = httpsimagepath + 'a_exif/' + filename
+  #   return httpsimagepath
+  # end
   
    def low
-     unless self.nil?
+     unless self.url.nil?
       httpsimagepath = self.url.insert(4, 's')
       # httpsimagepath.slice! self.filename
       filename = self.url.split('/').last
@@ -35,7 +35,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
    end
    
     def exifignore
-      unless self.nil?
+      unless self.url.nil?
         httpsimagepath = self.url.insert(4, 's')
         # httpsimagepath.slice! self.filename
         filename = self.url.split('/').last
