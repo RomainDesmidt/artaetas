@@ -17,8 +17,10 @@ ActiveAdmin.register Annonce do
   show :title => :id do
     attributes_table do
       row :envente_yesno
-      row "Photo 1" do |image|
-        image_tag image.photoexif, style: "width: 50px; height: 50px; object-fit: cover;", onMouseOver: "$(this).css({'width':'600px','height':'auto'})", onMouseOut: "$(this).css({'width':'50px','height':'50px'})"
+      if Annonce.find(params[:id]).photo?
+        row "Photo 1" do |image|
+          image_tag image.photoexif, style: "width: 50px; height: 50px; object-fit: cover;", onMouseOver: "$(this).css({'width':'600px','height':'auto'})", onMouseOut: "$(this).css({'width':'50px','height':'50px'})"
+        end
       end
       if Annonce.find(params[:id]).photo_un?
         row "Photo 2" do |image|
