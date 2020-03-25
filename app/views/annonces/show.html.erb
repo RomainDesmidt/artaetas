@@ -4,7 +4,9 @@
       <div class="aa-show-detailannonce-header">
         <div class="aa-show-detailannonce-photo" id="aa-show-nopaddingtop">
           <%#= cl_image_tag @annonces.photo, id: "bigPhoto" %>
-          <%= image_tag @annonces.photo.exifignore, id: "bigPhoto" %>
+          <% unless @annonces.photo.url.nil? %>
+              <%= image_tag @annonces.photo.exifignore, id: "bigPhoto" %>
+          <% end %>
           <% if user_signed_in? %>
             <div class="aa-show-favlike">
               <div class="aa-show-like">
