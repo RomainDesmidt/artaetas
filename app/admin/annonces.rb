@@ -9,6 +9,9 @@ ActiveAdmin.register Annonce do
     column "Publiée", :envente_yesno
     column :formule
     column :name
+    column "photo" do |annonce|
+      annonce.photo?
+    end
     column :user
     column :created_at
     actions
