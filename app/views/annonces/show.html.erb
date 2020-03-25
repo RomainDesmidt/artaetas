@@ -5,7 +5,7 @@
         <div class="aa-show-detailannonce-photo" id="aa-show-nopaddingtop">
           <%#= cl_image_tag @annonces.photo, id: "bigPhoto" %>
           <% if @annonces.photo.url.nil? %>
-          <%= image_tag( asset_path("crossed.png"), id: "bigPhoto") %>
+            <%= image_tag( asset_path("crossed.png"), id: "bigPhoto") %>
             <%# <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="bigPhoto"> %>
           <% else %>
               <%= image_tag @annonces.photo.exifignore, id: "bigPhoto" %>
@@ -80,8 +80,12 @@
             <% if @annonces.photo_un? %>
               <%= image_tag @annonces.photo_un.exifignore, class: 'aa-show-thumbnail' , id: "thumbPhotoUn", onclick: "document.getElementById('bigPhoto').src = this.src" %>
             <% end %>
-            <% if (@annonces.photo? && @annonces.photo_un?) || (@annonces.photo? && @annonces.photo_un?) %>
+            <% if (@annonces.photo? && @annonces.photo_un?) || (@annonces.photo? && @annonces.photo_deux?) %>
               <%= image_tag @annonces.photo.exifignore, class: 'aa-show-thumbnail' , id: "thumbPhoto", onclick: "document.getElementById('bigPhoto').src = this.src" %>
+            <% else %>
+              <% if @annonces.photo.url.nil? %>
+                <%= image_tag( asset_path("crossed.png"), class: 'aa-show-thumbnail' , id: "thumbPhoto", onclick: "document.getElementById('bigPhoto').src = this.src") %>
+              <% end %>
             <% end %>
             </div>
           </div>
