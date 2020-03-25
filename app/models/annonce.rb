@@ -75,7 +75,7 @@ class Annonce < ApplicationRecord
  end
  
  def photolow
-  unless self.photo?
+  if self.photo?
    httpsimagepath = self.photo.url.insert(4, 's')
    httpsimagepath.slice! self.photo.filename
    httpsimagepath = httpsimagepath + 'q_auto:low/' + self.photo.filename
@@ -84,7 +84,7 @@ class Annonce < ApplicationRecord
  end
  
   def photoexif
-   unless self.photo?
+   if self.photo?
     httpsimagepath = self.photo.url.insert(4, 's')
     httpsimagepath.slice! self.photo.filename
     httpsimagepath = httpsimagepath + 'a_exif/' + self.photo.filename
