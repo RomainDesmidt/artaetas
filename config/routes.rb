@@ -62,4 +62,6 @@ Rails.application.routes.draw do
 
    # static pages
   get 'styleguide', to: 'pages#styleguide'
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
+  
 end
