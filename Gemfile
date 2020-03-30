@@ -27,6 +27,7 @@ gem 'activeadmin'
 gem 'custom_error_message', git: 'https://github.com/nanamkim/custom-err-msg.git'
 gem 'money-rails'
 gem 'stripe'
+gem 'stripe_event'
 
 
 group :development do
