@@ -192,13 +192,17 @@
                         <%= inline_svg "prix-composant.svg", class: "aa-suppr-svg" %>
                       <% end %>
                     <% when "Mise en Avant" %>
-                      <%= link_to edit_formule_annonce_path(t) , class: "aa-mea-action" do %>
+                      <%#= link_to edit_formule_annonce_path(t) , class: "aa-mea-action" do %>
+                      <a class="aa-mea-action" href="#">
                         <%= inline_svg "prix-composant.svg", class: "aa-suppr-svg" %>
-                      <% end %>
+                      </a>
+                      <%# end %>
                     <% when "Mise a la une" %>
-                      <%= link_to edit_formule_annonce_path(t) , class: "aa-malu-action" do %>
+                      <%#= link_to edit_formule_annonce_path(t) , class: "aa-malu-action" do %>
+                      <a class="aa-malu-action" href="#">
                         <%= inline_svg "prix-composant.svg", class: "aa-suppr-svg" %>
-                      <% end %>
+                      </a>
+                      <%# end %>
                   <% end %>                      
                 </div>
                 
