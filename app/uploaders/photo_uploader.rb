@@ -1,6 +1,12 @@
 class PhotoUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
   
+  cloudinary_transformation :transformation => { :quality => "auto:good" }
+  
+  def size_range
+    0.kilobytes..750.kilobytes
+  end
+  
   
   def content_type_whitelist
     /image\//
