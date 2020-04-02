@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  errors:
+    messages:
+      max_size_error: doit être inférieur à 750 Ko
