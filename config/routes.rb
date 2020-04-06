@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   get 'testindex', to: 'annonces#index2'
   get 'changelog', to: 'pages#changelog'
   get 'mentionslegales', to: 'pages#mentionslegales'
+  get 'imglist', to: 'pages#imglist'
   # put "like", to: "annonces#like"
   # put "dislike", to: "annonces#dislike"
 
