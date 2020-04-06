@@ -26,4 +26,47 @@ class PagesController < ApplicationController
   
   def changelog
   end
+  
+  def imglist
+    @imghash = []
+    @imgarray = []
+    @userhash = []
+    @userarray = []
+    Annonce.all.each do |annonce|
+      if annonce.photo?
+        @imgarray << annonce.photo.file.public_id
+      else
+        @imgarray << "none"
+      end
+      if annonce.photo_un?
+        @imgarray << annonce.photo_un.file.public_id
+      else
+        @imgarray << "none"
+      end
+      if annonce.photo_deux?
+        @imgarray << annonce.photo_deux.file.public_id
+      else
+        @imgarray << "none"
+      end
+      @imghash << @imgarray
+      @imgarray = []
+    end
+    
+    User.all.each do |user_un|
+      if user_un.photofond?
+        @userarray << user_un.photofond.file.public_id
+      else
+        @userarray << "none"
+      end
+      if user_un.photoprofil?
+        @userarray << user_un.photoprofil.file.public_id
+      else
+        @userarray << "none"
+      end
+      @userhash << @userarray
+      @userarray = []
+    end
+    
+    
+  end
 end
