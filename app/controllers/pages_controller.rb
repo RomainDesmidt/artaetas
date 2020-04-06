@@ -33,6 +33,7 @@ class PagesController < ApplicationController
     @userhash = []
     @userarray = []
     Annonce.all.each do |annonce|
+      @imgarray << annonce.id
       if annonce.photo?
         @imgarray << annonce.photo.file.public_id
       else
@@ -53,6 +54,7 @@ class PagesController < ApplicationController
     end
     
     User.all.each do |user_un|
+      @userarray << user_un.id
       if user_un.photofond?
         @userarray << user_un.photofond.file.public_id
       else
