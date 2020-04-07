@@ -16,7 +16,7 @@
         
         <div class="aa-new-photo-field">
           <div class="aa-new-photo-field-indivi">
-            <%= f.input :photo, :input_html => { :onchange => "document.getElementById('previewPhoto').src = window.URL.createObjectURL(this.files[0]); document.getElementById('submitButtonNew').disabled = false;", class: 'hide-photo-btn' } %>
+            <%= f.input :photo, :input_html => { :onload => "document.getElementById('previewPhoto').src = window.URL.createObjectURL(this.files[0])", :onchange => "document.getElementById('previewPhoto').src = window.URL.createObjectURL(this.files[0]); document.getElementById('submitButtonNew').disabled = false;", class: 'hide-photo-btn' } %>
             <% if @annonce.photo? %>
               <%= cl_image_tag @annonce.photo, class: "aa-edit-thumbnail", id: "previewPhoto" %>
             <% else %>
