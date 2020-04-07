@@ -33,4 +33,4 @@ en:
   hello: "Hello world"
   errors:
     messages:
-      max_size_error: doit être inférieur à 750 Ko
+      max_size_error: ^L'image doit être d'une taille inférieure à 750 Ko
