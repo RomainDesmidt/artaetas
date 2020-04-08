@@ -4,9 +4,9 @@ class OrdersController < ApplicationController
       premium_formule = params[:premium_formule]
       case premium_formule 
       when "Mise en Avant"
-        amount_premium = 5
+        amount_premium = Varlocale.where(nomchamp: "PrixMea").first.valeurchamp
       when "Mise a la une"
-        amount_premium = 10
+        amount_premium = Varlocale.where(nomchamp: "PrixMalu").first.valeurchamp
       end
       amount_stripe = amount_premium * 100
       order  = Order.create!(annonce: annonce, premium_sku: premium_formule, amount: amount_premium, state: 'pending', user: current_user)
