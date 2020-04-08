@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
       when "Mise a la une"
         amount_premium = Varlocale.where(nomchamp: "PrixMalu").first.valeurchamp
       end
-      amount_stripe = amount_premium * 100
+      amount_stripe = amount_premium
       order  = Order.create!(annonce: annonce, premium_sku: premium_formule, amount: amount_premium, state: 'pending', user: current_user)
     
       session = Stripe::Checkout::Session.create(
