@@ -103,13 +103,14 @@
 
 <% a_pre = [] %>
 <% a_pre.replace(@annonces_pre) %>
-<% i = Varlocale.where(nomchamp: "OccurenceMalu").first.valeurchamp %>
+<%# i = Varlocale.where(nomchamp: "OccurenceMalu").first.valeurchamp %>
+<% i = @occurencemalu %>
      <% @annonces.each do |t| %>
        <% if a_pre[0].nil? %>
         <% a_pre = [] %>
         <% a_pre.replace(@annonces_pre) %>
        <% end %>
-       <% if i == Varlocale.where(nomchamp: "OccurenceMalu").first.valeurchamp %>
+       <% if i == @occurencemalu %>
          <% unless a_pre[0].nil? %>
            <div class="grid-item aa-formule-malu">
              <%= link_to showannonces_path(a_pre[0].slug), { class: "aa-annonce-titre"} do %>

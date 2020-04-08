@@ -15,6 +15,7 @@ class AnnoncesController < ApplicationController
 
   
   def index
+    @occurencemalu = Varlocale.where(nomchamp: "OccurenceMalu").first.valeurchamp
     @annonces_confirmeduser = Annonce.joins(:user).where("users.confirmation_webmaster = true")
     @annonces_all = @annonces_confirmeduser.where(envente_yesno: true)
     @landingp = 1
@@ -66,6 +67,7 @@ class AnnoncesController < ApplicationController
   def search
     # @pricemin = params[:pricemin]
     # @pricemax = params[:pricemax]
+    @occurencemea = Varlocale.where(nomchamp: "OccurenceMea").first.valeurchamp
     price_all = []
     Annonce.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true).each do |u|
       price_all << u.prix.to_i

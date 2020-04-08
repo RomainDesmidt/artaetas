@@ -15,54 +15,54 @@
 # Courant.destroy_all
 # Couleur.destroy_all
 
-puts "Creating Categories"
+# puts "Creating Categories"
 
-Categorie.new(name: "Peinture").save
-Categorie.new(name: "Sculpture").save
-Categorie.new(name: "Photographie").save
-Categorie.new(name: "Editions").save
-Categorie.new(name: "Dessins").save
-Categorie.new(name: "Gravures et estampes").save
-Categorie.new(name: "Medias mixtes").save
+# Categorie.new(name: "Peinture").save
+# Categorie.new(name: "Sculpture").save
+# Categorie.new(name: "Photographie").save
+# Categorie.new(name: "Editions").save
+# Categorie.new(name: "Dessins").save
+# Categorie.new(name: "Gravures et estampes").save
+# Categorie.new(name: "Medias mixtes").save
 
 
-puts "Creating Courants"
+# puts "Creating Courants"
 
-Courant.new(name: "Abstrait").save
-Courant.new(name: "Nature").save
-Courant.new(name: "Nus").save
-Courant.new(name: "Scenes de vie").save
-Courant.new(name: "Nature morte").save
-Courant.new(name: "Classique").save
-Courant.new(name: "Ville").save
-Courant.new(name: "Street Art").save
-Courant.new(name: "Pop Art").save
-Courant.new(name: "Portraits").save
-Courant.new(name: "Animaux").save
-Courant.new(name: "Art moderne").save
-Courant.new(name: "Noir et blanc").save
-Courant.new(name: "Aquarelle").save
-Courant.new(name: "Icones").save
-Courant.new(name: "Collage et art papier").save
-Courant.new(name: "Art numerique").save
-Courant.new(name: "Calligraphie").save
-Courant.new(name: "Art brut").save
-Courant.new(name: "Art deco").save
-Courant.new(name: "Art nouveau").save
+# Courant.new(name: "Abstrait").save
+# Courant.new(name: "Nature").save
+# Courant.new(name: "Nus").save
+# Courant.new(name: "Scenes de vie").save
+# Courant.new(name: "Nature morte").save
+# Courant.new(name: "Classique").save
+# Courant.new(name: "Ville").save
+# Courant.new(name: "Street Art").save
+# Courant.new(name: "Pop Art").save
+# Courant.new(name: "Portraits").save
+# Courant.new(name: "Animaux").save
+# Courant.new(name: "Art moderne").save
+# Courant.new(name: "Noir et blanc").save
+# Courant.new(name: "Aquarelle").save
+# Courant.new(name: "Icones").save
+# Courant.new(name: "Collage et art papier").save
+# Courant.new(name: "Art numerique").save
+# Courant.new(name: "Calligraphie").save
+# Courant.new(name: "Art brut").save
+# Courant.new(name: "Art deco").save
+# Courant.new(name: "Art nouveau").save
 
-puts "Couleurs dominante"
+# puts "Couleurs dominante"
 
-Couleur.new(couleur_dominante: "Bleu").save
-Couleur.new(couleur_dominante: "Blanc").save
-Couleur.new(couleur_dominante: "Gris").save
-Couleur.new(couleur_dominante: "Jaune").save
-Couleur.new(couleur_dominante: "Marron").save
-Couleur.new(couleur_dominante: "Noir").save
-Couleur.new(couleur_dominante: "Orange").save
-Couleur.new(couleur_dominante: "Rose").save
-Couleur.new(couleur_dominante: "Rouge").save
-Couleur.new(couleur_dominante: "Vert").save
-Couleur.new(couleur_dominante: "Violet").save
+# Couleur.new(couleur_dominante: "Bleu").save
+# Couleur.new(couleur_dominante: "Blanc").save
+# Couleur.new(couleur_dominante: "Gris").save
+# Couleur.new(couleur_dominante: "Jaune").save
+# Couleur.new(couleur_dominante: "Marron").save
+# Couleur.new(couleur_dominante: "Noir").save
+# Couleur.new(couleur_dominante: "Orange").save
+# Couleur.new(couleur_dominante: "Rose").save
+# Couleur.new(couleur_dominante: "Rouge").save
+# Couleur.new(couleur_dominante: "Vert").save
+# Couleur.new(couleur_dominante: "Violet").save
 
 
 # puts "Creating courant...."
@@ -168,7 +168,9 @@ Couleur.new(couleur_dominante: "Violet").save
 # AdminUser.create!(email: 'admin@artaetas.fr', username: 'groot', password: '201286', password_confirmation: '201286')
 # AdminUser.create!(email: 'admin@artaetas.fr', username: 'admin', password: 'root', password_confirmation: 'root')
 # Varlocale.create!( id: 1, nomchamp: "OccurenceMalu", valeurchamp: 2) 
-# Varlocale.create!( id: 2, nomchamp: "OccurenceMea", valeurchamp: 2) 
+# Varlocale.create!( id: 2, nomchamp: "OccurenceMea", valeurchamp: 2)
+Varlocale.create!( id: 3, nomchamp: "PrixMea", valeurchamp: 500) 
+Varlocale.create!( id: 4, nomchamp: "PrixMalu", valeurchamp: 600) 
 # Annonce.all.each do |an|
 #     if an.anneecreation.nil?
 #         an.update!(anneecreation: 2000)
