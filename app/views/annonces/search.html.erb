@@ -167,7 +167,7 @@
 <% a_pre.replace(@annonces_pre) %>
 <% puts a_pre[0] %>
 <% puts a_pre[1] %>
-<% i = Varlocale.where(nomchamp: "OccurenceMea").first.valeurchamp %>
+<% i = @occurencemea %>
     <% if @annonces.count == 0 %>
       <% @annonces_pre.each do |t| %>
         <div class="grid-item aa-formule-malu" style="">
@@ -222,7 +222,7 @@
         <% a_pre = [] %>
         <% a_pre.replace(@annonces_pre) %>
        <% end %>
-       <% if i == Varlocale.where(nomchamp: "OccurenceMea").first.valeurchamp %>
+       <% if i == @occurencemea %>
          <% unless a_pre[0].nil? %>
           <div class="grid-item aa-formule-malu" style="">
             <%= link_to showannonces_path(a_pre[0].slug), { class: "aa-annonce-titre"} do %>
