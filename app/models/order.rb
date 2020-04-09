@@ -6,10 +6,9 @@ class Order < ApplicationRecord
   
   
   def set_slug
-  loop do
-   self.slug = SecureRandom.uuid
-   break unless Order.where(slug: slug).exists?
+    loop do
+     self.slug = SecureRandom.uuid
+     break unless Order.where(slug: slug).exists?
+    end
   end
- end
-  
 end

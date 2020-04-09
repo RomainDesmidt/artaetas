@@ -169,8 +169,10 @@
 # AdminUser.create!(email: 'admin@artaetas.fr', username: 'admin', password: 'root', password_confirmation: 'root')
 # Varlocale.create!( id: 1, nomchamp: "OccurenceMalu", valeurchamp: 2) 
 # Varlocale.create!( id: 2, nomchamp: "OccurenceMea", valeurchamp: 2)
-Varlocale.create!( id: 3, nomchamp: "PrixMea", valeurchamp: 500) 
-Varlocale.create!( id: 4, nomchamp: "PrixMalu", valeurchamp: 600) 
+# Varlocale.create!( id: 3, nomchamp: "PrixMea", valeurchamp: 500) 
+# Varlocale.create!( id: 4, nomchamp: "PrixMalu", valeurchamp: 600)
+Varlocale.create!( id: 5, nomchamp: "PeriodeMea", valeurchamp: 7) 
+Varlocale.create!( id: 6, nomchamp: "PeriodeMalu", valeurchamp: 7) 
 # Annonce.all.each do |an|
 #     if an.anneecreation.nil?
 #         an.update!(anneecreation: 2000)
