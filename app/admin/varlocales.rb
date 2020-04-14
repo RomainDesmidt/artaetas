@@ -8,6 +8,7 @@ ActiveAdmin.register Varlocale do
     id_column
     column :nomchamp
     column :valeurchamp
+    column :description
     actions
   end
 
@@ -15,14 +16,15 @@ ActiveAdmin.register Varlocale do
     f.semantic_errors # shows errors on :base
     f.inputs "Tags" do  
         f.input :nomchamp, input_html: { disabled: true } 
-        f.input :valeurchamp,  hint: "minimum toutes les 1 annonces"
+        f.input :valeurchamp
+        f.input :description
     end
     f.actions         # adds the 'Submit' and 'Cancel' buttons
   end
 
 
 
-permit_params :valeurchamp
+permit_params :valeurchamp, :description
 #
 # or
 #
