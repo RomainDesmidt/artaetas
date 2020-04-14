@@ -540,6 +540,8 @@ class AnnoncesController < ApplicationController
   
   
   def edit_formule
+    @limmaxmea = Varlocale.where(nomchamp: "LimMaxMea").first.valeurchamp
+    @limmaxmalu = Varlocale.where(nomchamp: "LimMaxMalu").first.valeurchamp
     @annonce = Annonce.find(params[:id])
   end
   
