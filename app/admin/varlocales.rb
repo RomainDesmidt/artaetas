@@ -17,14 +17,13 @@ ActiveAdmin.register Varlocale do
     f.inputs "Tags" do  
         f.input :nomchamp, input_html: { disabled: true } 
         f.input :valeurchamp
-        f.input :description
     end
     f.actions         # adds the 'Submit' and 'Cancel' buttons
   end
 
 
 
-permit_params :valeurchamp, :description
+permit_params :valeurchamp
 #
 # or
 #
