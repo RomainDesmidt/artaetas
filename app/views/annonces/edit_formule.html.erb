@@ -16,6 +16,10 @@
 <p><b>Meilleure visibilité sur les pages de recherche</b></p>
 <p>Apparition dans les premières annonces</p>
 <p>Fréquence d’apparition renforcée</p>
+
+<p>Actuellement un maximum de <%= @limmaxmea %> Mise en avant et un maximum de <%= @limmaxmalu %> Mise à la une</p>
+<p>les taux d'occupations sont de <%= Annonce.where(formule: "Mise en Avant").count %>/<%= @limmaxmea %> pour les Mise en avant </p>
+<p>et de <%= Annonce.where(formule: "Mise a la une").count %>/<%= @limmaxmalu %> pour les Mise à la une </p>
     <%= form_tag orders_path do %>
       <%= hidden_field_tag 'annonce_id', @annonce.id %>
       <div class="form-group select optional annonce_formule form-group-valid">
