@@ -10,7 +10,7 @@ task :check_periode_malu => :environment do
   Order.where(ongoing_subscription: true).where(premium_sku: "Mise a la une").each do |order|
     if order.updated_at < @periode_malu.days.ago
       order.update(ongoing_subscription: false)
-      order.annonce.update(formule: "Standard")
+      order.annonce.update(formule: "Standard", last_sub_order: nil)
     end
   end
 end
@@ -20,7 +20,7 @@ task :check_periode_mea => :environment do
   Order.where(ongoing_subscription: true).where(premium_sku: "Mise en Avant").each do |order|
     if order.updated_at < @periode_mea.days.ago
       order.update(ongoing_subscription: false)
-      order.annonce.update(formule: "Standard")
+      order.annonce.update(formule: "Standard", last_sub_order: nil)
     end
   end
 end
