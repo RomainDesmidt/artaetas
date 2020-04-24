@@ -11,6 +11,10 @@ ActiveAdmin.register Order do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+  action_item :touchpdf, only: [:show], if: proc { Order.find(params[:id]).state == "paid" }  do 
+    link_to "PDF", order_path(Order.find(params[:id]), format: "pdf")
+  end
+  
 
   action_item :touchjour, only: [:show], if: proc { Order.find(params[:id]).ongoing_subscription == true }  do 
     link_to 'RaZ', renewday_admin_order_path, method: :put
