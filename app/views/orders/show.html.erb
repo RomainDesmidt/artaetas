@@ -1,2 +1,3 @@
 <div class="aa-under-navbar"></div>
 <p>Etat de votre transaction: <%= @state %></p>
+<p><%= link_to "Version Imprimable (PDF)", order_path(@order, format: "pdf") %></p>

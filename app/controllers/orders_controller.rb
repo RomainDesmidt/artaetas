@@ -43,5 +43,63 @@ class OrdersController < ApplicationController
     def show
       @order = Order.find(params[:id])
       @state = @order.state
+      Mime::Type.register "application/pdf", :pdf
+      require 'invoice_printer'
+      
+      item = InvoicePrinter::Document::Item.new(
+        name: @order.annonce.name.lines.first[0,30]+(@order.annonce.name.lines.first[31].nil? ? "" : "...") ,
+        quantity: "Annonce" ,
+        unit: '7 jours',
+        price: @order.premium_sku,
+        amount: @order.amount.to_s+' €'
+      )
+      
+      # @provider_address = <<~ADDRESS
+      # Rolnická 1
+      # 747 05  Opava
+      # Kateřinky
+      # ADDRESS
+      
+      # @purchaser_address = <<~ADDRESS
+      # Ostravská 1
+      # 747 70  Opava
+      # ADDRESS
+      
+      invoice = InvoicePrinter::Document.new(
+        number: 'No.'+@order.updated_at.strftime("%Y%m%d").to_s+@order.id.to_s,
+        provider_name: 'ARTAETAS',
+        # Deprecated 1.3 API, use provider_lines
+        # Here for compatibility test
+        provider_street: 'http://www.artaetas.com',
+        provider_street_number: '',
+        provider_postcode: '',
+        provider_city: '',
+        purchaser_name: @order.annonce.user.username,
+        # Deprecated 1.3 API, use purchaser_lines
+        # Here for compatibility test
+        purchaser_street: @order.annonce.user.surname+' '+@order.annonce.user.lastname,
+        purchaser_street_number: '' ,
+        purchaser_postcode: '' ,
+        purchaser_city: '',
+        issue_date: @order.updated_at.strftime("%d/%m/%Y").to_s,
+        due_date: (@order.updated_at+7.days).strftime("%d/%m/%Y").to_s,
+        total: @order.amount.to_s+' €',
+        bank_account_number: 'YOURARTAVENUE SAS',
+        items: [item],
+        note: ''
+      )
+      respond_to do |format|
+        format.html
+        format.pdf do
+          @pdf = InvoicePrinter.render(
+            document: invoice
+          )
+          send_data @pdf, type: 'application/pdf', disposition: 'inline'
+          # InvoicePrinter.print(
+          #   document: invoice,
+          #   file_name: 'invoice.pdf'
+          # )
+        end      
+      end
     end
 end
