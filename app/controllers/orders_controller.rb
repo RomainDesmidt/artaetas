@@ -46,6 +46,42 @@ class OrdersController < ApplicationController
       Mime::Type.register "application/pdf", :pdf
       require 'invoice_printer'
       
+      case @state
+      when "gifted"
+        @state_fr = "Non payé"
+      when "pending"
+        @state_fr = "En Attente"
+      when "paid"
+        @state_fr = "Payé"
+      end
+      InvoicePrinter.labels = {
+        name: 'Facture',
+        provider: 'Fournisseur',
+        purchaser: 'Acheteur',
+        tax_id: 'Identification number',
+        tax_id2: 'Identification number',
+        payment: 'Paiement',
+        payment_by_transfer: 'Statut : '+@state_fr,
+        payment_in_cash: 'Payment in cash',
+        account_number: 'Moyen de paiement:',
+        swift: 'SWIFT',
+        iban: 'IBAN',
+        issue_date: 'Date :',
+        due_date: 'Expire le :',
+        item: 'Titre',
+        variable: '',
+        quantity: 'Type',
+        unit: 'Periode',
+        price_per_item: 'Formule',
+        amount: 'Montant',
+        tax: 'Tax',
+        tax2: 'Tax 2',
+        tax3: 'Tax 3',
+        subtotal: 'Sous total hors taxes',
+        total: 'Total net'
+      }
+      
+      
       item = InvoicePrinter::Document::Item.new(
         name: @order.annonce.name.lines.first[0,30]+(@order.annonce.name.lines.first[31].nil? ? "" : "...") ,
         quantity: "Annonce" ,
@@ -67,26 +103,27 @@ class OrdersController < ApplicationController
       
       invoice = InvoicePrinter::Document.new(
         number: 'No.'+@order.updated_at.strftime("%Y%m%d").to_s+@order.id.to_s,
-        provider_name: 'ARTAETAS',
+        provider_name: 'YOURARTAVENUE SASU',
         # Deprecated 1.3 API, use provider_lines
         # Here for compatibility test
-        provider_street: 'http://www.artaetas.com',
+        provider_street: '24 allée des allumoirs',
         provider_street_number: '',
-        provider_postcode: '',
+        provider_postcode: '59493 VILLENEUVE D\'ASCQ, FRANCE',
         provider_city: '',
-        purchaser_name: @order.annonce.user.username,
+        purchaser_name: @order.annonce.user.email,
         # Deprecated 1.3 API, use purchaser_lines
         # Here for compatibility test
         purchaser_street: @order.annonce.user.surname+' '+@order.annonce.user.lastname,
         purchaser_street_number: '' ,
-        purchaser_postcode: '' ,
+        purchaser_postcode: @order.annonce.user.codepostal.to_s+' '+@order.annonce.user.villeresidence, 
         purchaser_city: '',
         issue_date: @order.updated_at.strftime("%d/%m/%Y").to_s,
         due_date: (@order.updated_at+7.days).strftime("%d/%m/%Y").to_s,
+        subtotal: '',
         total: @order.amount.to_s+' €',
-        bank_account_number: 'YOURARTAVENUE SAS',
+        bank_account_number: "Carte de credit (Stripe)",
         items: [item],
-        note: ''
+        note: 'TVA non applicable, art.293 B du CGI'
       )
       respond_to do |format|
         format.html
