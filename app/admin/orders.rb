@@ -11,7 +11,31 @@ ActiveAdmin.register Order do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  action_item :touchpdf, only: [:show], if: proc { Order.find(params[:id]).state == "paid" }  do 
+
+  index do
+    style do
+      [".col-sub{width: 25px}; "].join(' ')
+    end
+    style do
+      [".col-annonce{width: 400px}; "].join(' ')
+    end
+    id_column
+    column "Sub", :ongoing_subscription
+    column :state
+    column :premium_sku
+    column :amount
+    column :user
+    column :annonce, :'max-width' => "200px", :'min-width' => "200px"
+    actions
+    column "Facture" do |item|
+      if (item.state == "gifted" ||  item.state == "paid")
+        link_to "PDF", order_path(item, format: "pdf")
+      end
+    end
+  end
+
+
+  action_item :touchpdf, only: [:show], if: proc { (Order.find(params[:id]).state == "paid" || Order.find(params[:id]).state == "gifted" || Order.find(params[:id]).state == "pending"   ) }  do 
     link_to "PDF", order_path(Order.find(params[:id]), format: "pdf")
   end
   
