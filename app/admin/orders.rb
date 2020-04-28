@@ -21,7 +21,7 @@ ActiveAdmin.register Order do
     end
     id_column
     column "Sub", :ongoing_subscription
-    column :state do |item|
+    column "Etat", :state, sortable: "state" do |item|
       case item.state
       when "pending"
         "Non payée"
@@ -31,8 +31,8 @@ ActiveAdmin.register Order do
         "Offerte"
       end
     end
-    column :premium_sku
-    column :amount do |item|
+    column "Formule", :premium_sku
+    column "Montant", :amount do |item|
       item.amount.to_s+" €"
     end
     column :user
