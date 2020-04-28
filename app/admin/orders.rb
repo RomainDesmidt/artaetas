@@ -21,17 +21,26 @@ ActiveAdmin.register Order do
     end
     id_column
     column "Sub", :ongoing_subscription
-    column :state
+    column :state do |item|
+      case item.state
+      when "pending"
+        "Non payée"
+      when "paid"
+        "Payée"
+      when "gifted"
+        "Offerte"
+      end
+    end
     column :premium_sku
     column :amount
     column :user
     column :annonce, :'max-width' => "200px", :'min-width' => "200px"
     actions
-    #column "Facture" do |item|
-    #  if (item.state == "gifted" ||  item.state == "paid")
-    #    link_to "PDF", order_path(item, format: "pdf")
-    #  end
-    #end
+    column "Facture" do |item|
+      if (item.state == "gifted" ||  item.state == "paid")
+        link_to "PDF", order_path(item, format: "pdf")
+      end
+    end
   end
 
 
