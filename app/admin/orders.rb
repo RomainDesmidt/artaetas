@@ -32,7 +32,9 @@ ActiveAdmin.register Order do
       end
     end
     column :premium_sku
-    column :amount
+    column :amount do |item|
+      item.amount.to_s+" €"
+    end
     column :user
     column :annonce, :'max-width' => "200px", :'min-width' => "200px"
     actions
