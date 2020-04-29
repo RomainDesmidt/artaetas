@@ -12,6 +12,64 @@
   flex-wrap: wrap;
 }
 
+.aa-order-header {
+  text-align: center;
+}
+
+.aa-order-table {
+  // width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 50px;
+    margin-top: 15px;
+}
+
+.aa-order-filler {
+  // width: 20%;
+}
+.aa-order-firstcell {
+  width: 155px;
+  text-align: right;
+  padding: 0px 25px;
+  border: 1px solid black;
+}
+
+.aa-order-secondcell {
+  width: 125px;
+  text-align: right;
+  padding: 0px 25px;
+  border: 1px solid black;
+}
+
+.aa-order-thirdcell {
+  width: 300px;
+  text-align: right;
+  padding: 0px 25px;
+  border: 1px solid black;
+}
+
+.aa-order-fourthcell {
+  width: 81px;
+  text-align: right;
+  padding: 0px 25px;
+  border: 1px solid black;
+}
+
+.aa-order-fourthcell-nopdf {
+  width: 81px;
+  text-align: right;
+  padding: 0px 25px;
+  // border: 1px solid black;
+}
+
+
+.aa-order-fifthcell {
+  width: 150px;
+  text-align: right;
+  padding: 0px 25px;
+  border: 1px solid black;
+}
 
 @media (max-width: 576px) {
  .aa-me-flexcontainer-fav {

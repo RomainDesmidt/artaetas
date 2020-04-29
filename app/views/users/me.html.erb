@@ -308,13 +308,69 @@
 
   <div class="tab-pane fade text-center" id="transactions" role="tabpanel" aria-labelledby="transactions-tab">
     
+    <div class="aa-me-containermargin">
       <div class="aa-me-moncompte-container">
         <div class="aa-me-infoperso">
           <h2 class="text-left">Mes Transactions</h2>        
         </div>
       </div>
+      
+      <h3>Payée</h3>
+      <table class="aa-order-table">
+        <tr>
+          <th class="aa-order-filler"></th>
+          <th class="aa-order-header">Date</th>
+          <th class="aa-order-header">Formule</th>
+          <th class="aa-order-header">Montant</th>
+          <th class="aa-order-header">Annonce</th>
+          <th class="aa-order-header">Facture</th>
+          <th class="aa-order-filler"></th>
+        </tr>
+        <% @paid.each do |unit| %>
+        <tr>
+          <td class="aa-order-filler"></td>
+          <td class="aa-order-fifthcell"><%= "#{unit.created_at}" %></td>
+          <td class="aa-order-firstcell"><%= "#{(unit.premium_sku == "Mise en Avant" ? "Mise en avant" : "Mise à la une")}" %></td>
+          <td class="aa-order-secondcell"><%= "#{unit.amount} €" %></td>
+          <td class="aa-order-thirdcell"><%= "#{unit.annonce.name.lines.first[0,30]} #{(unit.annonce.name.lines.first[31].nil? ? '' : '..')}" %></td>
+          <td class="aa-order-fourthcell"><%= link_to "PDF", order_path(unit, format: "pdf")  %></td>
+          <td class="aa-order-filler"></td>
+        </tr>
+        <% end %>
+      </table>
+      <br>
+      <h3>Offerte</h3>
+      <table class="aa-order-table">
+      <% @gifted.each do |unit| %>
+        <tr>
+          <td class="aa-order-filler"></td>
+          <td class="aa-order-fifthcell"><%= "#{unit.created_at}" %></td>
+          <td class="aa-order-firstcell"><%= "#{(unit.premium_sku == "Mise en Avant" ? "Mise en avant" : "Mise à la une")}" %></td>
+          <td class="aa-order-secondcell"><%= "#{unit.amount} €" %></td>
+          <td class="aa-order-thirdcell"><%= "#{unit.annonce.name.lines.first[0,30]} #{(unit.annonce.name.lines.first[31].nil? ? '' : '..')}" %></td>
+          <td class="aa-order-fourthcell"><%= link_to "PDF", order_path(unit, format: "pdf")  %></td>
+          <td class="aa-order-filler"></td>
+        </tr>
+      <% end %>
+      </table>
+      <br>
+      <h3>Non payée</h3>
+      <table class="aa-order-table">
+        <% @pending.each do |unit| %>
+        <tr>
+          <td class="aa-order-filler"></td>
+          <td class="aa-order-fifthcell"><%= "#{unit.created_at}" %></td>
+          <td class="aa-order-firstcell"><%= "#{(unit.premium_sku == "Mise en Avant" ? "Mise en avant" : "Mise à la une")}" %></td>
+          <td class="aa-order-secondcell"><%= "#{unit.amount} €" %></td>
+          <td class="aa-order-thirdcell"><%= "#{unit.annonce.name.lines.first[0,30]} #{(unit.annonce.name.lines.first[31].nil? ? '' : '..')}" %></td>
+          <td class="aa-order-fourthcell-nopdf"></td>
+          <td class="aa-order-filler"></td>
+        </tr>
+        <% end %>
+      </table>
+      <!--Aucune transaction pour le moment!-->
+    </div>
     
-  Aucune transaction pour le moment!
   </div>
 
 

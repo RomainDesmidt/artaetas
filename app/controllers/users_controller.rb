@@ -39,8 +39,25 @@ class UsersController < ApplicationController
     end
     @annonces = current_user.annonces
   end
+  
+  def mestransactions
+    @orders = current_user.orders
+    @gifted = @orders.where(state: "gifted")
+    @pending = @orders.where(state: "pending")
+    @paid = @orders.where(state: "paid")    
+    @bookmark = current_user.bookmarkees_by(Annonce)
+    @bmlist = []
+    @bookmark.each do |bm|
+      @bmlist << bm.bookmarkee_id
+    end
+    @annonces = current_user.annonces    
+  end
 
   def me
+    @orders = current_user.orders
+    @gifted = @orders.where(state: "gifted")
+    @pending = @orders.where(state: "pending")
+    @paid = @orders.where(state: "paid")
     @bookmark = current_user.bookmarkees_by(Annonce)
     @bmlist = []
     @bookmark.each do |bm|
