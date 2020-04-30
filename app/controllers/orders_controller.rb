@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  layout false
+    skip_before_action :authenticate_user!, only: [:show]
     def create
       @countmea = Annonce.where(formule: "Mise en Avant").count
       @countmalu = Annonce.where(formule: "Mise a la une").count
