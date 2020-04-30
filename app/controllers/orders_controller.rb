@@ -113,9 +113,9 @@ class OrdersController < ApplicationController
         purchaser_name: @order.annonce.user.email,
         # Deprecated 1.3 API, use purchaser_lines
         # Here for compatibility test
-        purchaser_street: @order.annonce.user.surname+' '+@order.annonce.user.lastname,
+        purchaser_street: (@order.annonce.user.surname.nil? ? "" : @order.annonce.user.surname )+' '+(@order.annonce.user.lastname.nil? ? "" : @order.annonce.user.lastname ),
         purchaser_street_number: '' ,
-        purchaser_postcode: @order.annonce.user.codepostal.to_s+' '+@order.annonce.user.villeresidence, 
+        purchaser_postcode: (@order.annonce.user.codepostal.nil? ? "" : @order.annonce.user.codepostal.to_s )+' '+(@order.annonce.user.villeresidence.nil? ? "" : @order.annonce.user.villeresidence ), 
         purchaser_city: '',
         issue_date: @order.updated_at.strftime("%d/%m/%Y").to_s,
         due_date: (@order.updated_at+7.days).strftime("%d/%m/%Y").to_s,
