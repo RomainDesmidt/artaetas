@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
+  get '/admin/orders/pdfshow/:id', to: 'admin/orders#pdfshow', as: :admin_orders_pdfshow
   ActiveAdmin.routes(self)
   devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks", registrations: 'registrations' }
   # as :user do

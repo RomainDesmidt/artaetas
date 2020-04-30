@@ -167,6 +167,7 @@
 # AdminUser.create!(email: 'admin@artaetas.fr', username: 'groot', password: '201286', password_confirmation: '201286') if Rails.env.production?
 # AdminUser.create!(email: 'admin@artaetas.fr', username: 'groot', password: '201286', password_confirmation: '201286')
 # AdminUser.create!(email: 'admin@artaetas.fr', username: 'admin', password: 'root', password_confirmation: 'root')
+#AdminUser.create!(email: 'adminvincent@artaetas.fr', username: 'adminvincent', password: 'rootvincent', password_confirmation: 'rootvincent')
 # Varlocale.create!( id: 1, nomchamp: "OccurenceMalu", valeurchamp: 2) 
 # Varlocale.create!( id: 2, nomchamp: "OccurenceMea", valeurchamp: 2)
 # Varlocale.create!( id: 3, nomchamp: "PrixMea", valeurchamp: 500) 
