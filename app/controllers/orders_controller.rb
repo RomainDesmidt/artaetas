@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  layout false
     def create
       @countmea = Annonce.where(formule: "Mise en Avant").count
       @countmalu = Annonce.where(formule: "Mise a la une").count
