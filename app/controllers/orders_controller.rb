@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
           currency: 'eur',
           quantity: 1
         }],
-        success_url: order_url(order),
+        success_url: facturepdf_url(order.slug, order.id),
         cancel_url: new_order_payment_url(order)
       )
     
@@ -44,7 +44,8 @@ class OrdersController < ApplicationController
     end
     
     def show
-      @order = Order.find(params[:id])
+      @order = Order.where(slug: params[:slug]).first
+      #@order = Order.find(params[:id])
       @state = @order.state
       Mime::Type.register "application/pdf", :pdf
       require 'invoice_printer'
