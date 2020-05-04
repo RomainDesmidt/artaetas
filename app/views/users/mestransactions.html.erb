@@ -33,7 +33,7 @@
           <td class="aa-order-firstcell"><%= "#{(unit.premium_sku == "Mise en Avant" ? "Mise en avant" : "Mise à la une")}" %></td>
           <td class="aa-order-secondcell"><%= "#{unit.amount} €" %></td>
           <td class="aa-order-thirdcell"><%= "#{unit.annonce.name.lines.first[0,30]} #{(unit.annonce.name.lines.first[31].nil? ? '' : '..')}" %></td>
-          <td class="aa-order-fourthcell"><%= link_to "PDF", order_path(unit, format: "pdf")  %></td>
+          <td class="aa-order-fourthcell"><%= link_to "PDF", facturepdf_path(unit.slug, unit.id, format: "pdf")  %></td>
           <td class="aa-order-filler"></td>
         </tr>
         <% end %>
@@ -48,7 +48,7 @@
           <td class="aa-order-firstcell"><%= "#{(unit.premium_sku == "Mise en Avant" ? "Mise en avant" : "Mise à la une")}" %></td>
           <td class="aa-order-secondcell"><%= "#{unit.amount} €" %></td>
           <td class="aa-order-thirdcell"><%= "#{unit.annonce.name.lines.first[0,30]} #{(unit.annonce.name.lines.first[31].nil? ? '' : '..')}" %></td>
-          <td class="aa-order-fourthcell"><%= link_to "PDF", order_path(unit, format: "pdf")  %></td>
+          <td class="aa-order-fourthcell"><%= link_to "PDF", facturepdf_path(unit.slug, unit.id, format: "pdf")  %></td>
           <td class="aa-order-filler"></td>
         </tr>
       <% end %>

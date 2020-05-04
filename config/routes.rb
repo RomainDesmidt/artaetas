@@ -29,9 +29,10 @@ Rails.application.routes.draw do
     end
   end
   get "annonces/:slug", to: "annonces#show", as: :showannonces
-  resources :orders, only: [:show, :create] do
+  resources :orders, only: [:create] do
     resources :payments, only: :new
   end
+  get "orders/:slug/:id", to: "orders#show", as: :facturepdf
   # resources :annonces
   get 'social', to: 'pages#social'
   get 'cgu', to: 'pages#cgu'
