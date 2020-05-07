@@ -148,7 +148,7 @@ end
 
 
   action_item :touchpdf, only: [:show], if: proc { (Order.find(params[:id]).state == "paid" || Order.find(params[:id]).state == "gifted" || Order.find(params[:id]).state == "pending"   ) }  do 
-    link_to "PDF", order_path(Order.find(params[:id]), format: "pdf")
+    link_to "PDF", admin_orders_pdfshow_path(Order.find(params[:id]), format: "pdf")
   end
   
 
