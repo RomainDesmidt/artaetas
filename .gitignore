@@ -19,6 +19,6 @@ config/cloudinary.yml
 pg.sh
 heroku.sh
 # Ignore application configuration
-/config/application.yml
+config/application.yml
 .env*
-/lib/tasks/callapi.rake
+lib/tasks/callapi.rake
