@@ -21,3 +21,4 @@ heroku.sh
 # Ignore application configuration
 /config/application.yml
 .env*
+/lib/tasks/callapi.rake
