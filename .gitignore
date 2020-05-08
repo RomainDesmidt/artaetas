@@ -22,3 +22,4 @@ heroku.sh
 config/application.yml
 .env*
 lib/tasks/callapi.rake
+

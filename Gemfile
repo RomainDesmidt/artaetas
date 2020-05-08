@@ -32,6 +32,7 @@ gem 'invoice_printer'
 gem 'sidekiq'
 
 
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'letter_opener'
