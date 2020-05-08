@@ -27,6 +27,12 @@ class PagesController < ApplicationController
   def changelog
   end
   
+  def sidekiqtest
+    CallOrderWorker.perform_async
+    flash[:notice] = "Performing now"
+    redirect_to root
+  end
+  
   def imglist
     @imghash = []
     @imgarray = []

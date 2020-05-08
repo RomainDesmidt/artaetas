@@ -28,7 +28,8 @@ gem 'custom_error_message', git: 'https://github.com/nanamkim/custom-err-msg.git
 gem 'money-rails'
 gem 'stripe'
 gem 'stripe_event'
-gem 'invoice_printer' 
+gem 'invoice_printer'
+gem 'sidekiq'
 
 
 group :development do
