@@ -29,7 +29,7 @@ gem 'money-rails'
 gem 'stripe'
 gem 'stripe_event'
 gem 'invoice_printer'
-gem 'sidekiq'
+gem 'sucker_punch' 
 
 
 

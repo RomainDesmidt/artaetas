@@ -28,9 +28,9 @@ class PagesController < ApplicationController
   end
   
   def sidekiqtest
-    CallOrderWorker.perform_async
+    CallOrderJob.perform_in(10)
     flash[:notice] = "Performing now"
-    redirect_to root
+    # redirect_to root
   end
   
   def imglist
