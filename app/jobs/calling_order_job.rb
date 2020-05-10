@@ -3,9 +3,11 @@ class CallingOrderJob < ApplicationJob
   queue_as :default
 
   def perform
-    Order.where(state: "pending").each do |order|
-        puts order.checkout_session_id
-        sleep 4
+    ActiveRecord::Base.connection_pool.with_connection do
+      Order.where(state: "pending").each do |order|
+          puts order.checkout_session_id
+          sleep 4
+      end
     end
   end
 end
