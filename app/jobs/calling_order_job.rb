@@ -1,4 +1,5 @@
 class CallingOrderJob < ApplicationJob
+  include SuckerPunch::Job
   queue_as :default
 
   def perform
