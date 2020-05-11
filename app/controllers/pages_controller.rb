@@ -28,7 +28,7 @@ class PagesController < ApplicationController
   end
   
   def sidekiqtest
-    CallingOrderJob.perform_in(10)
+    NettoyageOrderJob.perform_in(5)
     flash[:notice] = "Performing now"
     # redirect_to root
   end
