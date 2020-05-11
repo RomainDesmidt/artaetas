@@ -25,6 +25,8 @@ controller do
         @state_fr = "En Attente"
       when "paid"
         @state_fr = "Payé"
+      when "canceled"
+        @state_fr = "Annulé"
       end
       InvoicePrinter.labels = {
         name: 'Facture',
@@ -130,6 +132,8 @@ end
         "Payée"
       when "gifted"
         "Offerte"
+      when "canceled"
+        "Annulée"
       end
     end
     column "Formule", :premium_sku
