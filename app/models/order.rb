@@ -14,7 +14,7 @@ class Order < ApplicationRecord
   end
   
   def execute_later
-    puts "l'id de cette order est : #{self.id}"
-    CallingOrderJob.perform_in(10)
+    #puts "l'id de cette order est : #{self.id}"
+    CallingOrderJob.perform_in(10, self.id)
   end
 end
