@@ -354,20 +354,20 @@
       <% end %>
       </table>
       <br>
-      <h3>Non payée</h3>
-      <table class="aa-order-table">
-        <% @pending.each do |unit| %>
-        <tr>
-          <td class="aa-order-filler"></td>
-          <td class="aa-order-fifthcell"><%= "#{unit.created_at}" %></td>
-          <td class="aa-order-firstcell"><%= "#{(unit.premium_sku == "Mise en Avant" ? "Mise en avant" : "Mise à la une")}" %></td>
-          <td class="aa-order-secondcell"><%= "#{unit.amount} €" %></td>
-          <td class="aa-order-thirdcell"><%= "#{unit.annonce.name.lines.first[0,30]} #{(unit.annonce.name.lines.first[31].nil? ? '' : '..')}" %></td>
-          <td class="aa-order-fourthcell-nopdf"></td>
-          <td class="aa-order-filler"></td>
-        </tr>
-        <% end %>
-      </table>
+      <h3>Refusée</h3>
+      <!--<table class="aa-order-table">-->
+        <%# @pending.each do |unit| %>
+        <!--<tr>-->
+        <!--  <td class="aa-order-filler"></td>-->
+        <!--  <td class="aa-order-fifthcell"><%= "#{unit.created_at}" %></td>-->
+        <!--  <td class="aa-order-firstcell"><%= "#{(unit.premium_sku == "Mise en Avant" ? "Mise en avant" : "Mise à la une")}" %></td>-->
+        <!--  <td class="aa-order-secondcell"><%= "#{unit.amount} €" %></td>-->
+        <!--  <td class="aa-order-thirdcell"><%= "#{unit.annonce.name.lines.first[0,30]} #{(unit.annonce.name.lines.first[31].nil? ? '' : '..')}" %></td>-->
+        <!--  <td class="aa-order-fourthcell-nopdf"></td>-->
+        <!--  <td class="aa-order-filler"></td>-->
+        <!--</tr>-->
+        <%# end %>
+      <!--</table>-->
       <!--Aucune transaction pour le moment!-->
     </div>
     
