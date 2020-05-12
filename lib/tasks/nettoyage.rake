@@ -20,6 +20,7 @@ task :monsieur_propre => :environment do
             else
                 order.update(state: query_payment["status"])
             end
+            sleep 2
         end
       end
     end
