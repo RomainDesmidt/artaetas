@@ -24,3 +24,36 @@ task :check_periode_mea => :environment do
     end
   end
 end
+
+task :check_periode_propre => :environment do
+    require 'stripe'
+    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+    unless Order.where(state: "pending").first.nil?
+      Order.where(state: "pending").each do |order|
+        unless order.checkout_session_id.nil?
+          unless order.checkout_session_id.include? "cs_test"
+              query_checkout = Stripe::Checkout::Session.retrieve(
+                order.checkout_session_id,
+              )
+              sleep 2
+              query_payment = Stripe::PaymentIntent.retrieve(
+                query_checkout["payment_intent"],
+              )
+              case query_payment["status"]
+              when "canceled"
+                  order.update(state: "canceled")
+              when "requires_payment_method"
+                  order.update(state: "canceled")
+              else
+                  order.update(state: query_payment["status"])
+              end
+              sleep 2
+          end
+        end
+      end
+    end
+end
+
+task :delete_canceled_safe => :environment do
+  Order.where(state: "canceled").where("created_at < ?", 2.days.ago).destroy_all
+end
