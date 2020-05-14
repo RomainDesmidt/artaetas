@@ -316,7 +316,7 @@
       </div>
       
       <h3>Payée</h3>
-      <table class="aa-order-table">
+      <table class="aa-order-table aa-paid-table">
         <tr>
           <th class="aa-order-filler"></th>
           <th class="aa-order-header">Date</th>
@@ -340,7 +340,16 @@
       </table>
       <br>
       <h3>Offerte</h3>
-      <table class="aa-order-table">
+      <table class="aa-order-table aa-gifted-table">
+        <tr>
+          <th class="aa-order-filler"></th>
+          <th class="aa-order-header">Date</th>
+          <th class="aa-order-header">Formule</th>
+          <th class="aa-order-header">Montant</th>
+          <th class="aa-order-header">Annonce</th>
+          <th class="aa-order-header">Facture</th>
+          <th class="aa-order-filler"></th>
+        </tr>
       <% @gifted.each do |unit| %>
         <tr>
           <td class="aa-order-filler"></td>

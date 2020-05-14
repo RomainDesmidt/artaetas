@@ -1,4 +1,10 @@
 // MES ANNONCES
+.aa-gifted-table > tbody > tr:nth-of-type(odd),
+.aa-paid-table > tbody > tr:nth-of-type(odd),
+.aa-refused-table > tbody > tr:nth-of-type(odd) {
+  background: #eee;
+}
+
 .aa-me-containermargin {
   max-width: 1066px;
   margin-left: auto;
@@ -30,30 +36,30 @@
 }
 .aa-order-firstcell {
   width: 155px;
-  text-align: right;
-  padding: 0px 25px;
-  border: 1px solid black;
+  text-align: center;
+ // padding: 0px 25px;
+  // border: 1px solid black;
 }
 
 .aa-order-secondcell {
   width: 125px;
-  text-align: right;
-  padding: 0px 25px;
-  border: 1px solid black;
+  text-align: center;
+  //padding: 0px 25px;
+  // border: 1px solid black;
 }
 
 .aa-order-thirdcell {
   width: 300px;
-  text-align: right;
-  padding: 0px 25px;
-  border: 1px solid black;
+  text-align: center;
+  //padding: 0px 25px;
+  // border: 1px solid black;
 }
 
 .aa-order-fourthcell {
   width: 81px;
-  text-align: right;
-  padding: 0px 25px;
-  border: 1px solid black;
+  text-align: center;
+  //padding: 0px 25px;
+  // border: 1px solid black;
 }
 
 .aa-order-fourthcell-nopdf {
@@ -66,9 +72,9 @@
 
 .aa-order-fifthcell {
   width: 150px;
-  text-align: right;
-  padding: 0px 25px;
-  border: 1px solid black;
+  text-align: center;
+//  padding: 0px 25px;
+  // border: 1px solid black;
 }
 
 @media (max-width: 576px) {
@@ -413,4 +419,88 @@ padding: 0px 0px 20px 0px;
   
 
 
+}
+
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+}
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+  background: #eee; 
+}
+th { 
+  background: #333; 
+  color: white; 
+  font-weight: bold; 
+}
+td, th { 
+  padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: left; 
+}
+
+
+.aa-order-filler { display: none;}
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	tr th { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	//td:nth-of-type(1):before { content: "First Name"; }
+	td:nth-of-type(2):before { content: "Date"; }
+	td:nth-of-type(3):before { content: "Formule"; }
+	td:nth-of-type(4):before { content: "Montant"; }
+	td:nth-of-type(5):before { content: "Annonce"; }
+	td:nth-of-type(6):before { content: "Facture"; }
+	//td:nth-of-type(7):before { content: "Date of Birth"; }
+	//td:nth-of-type(8):before { content: "Dream Vacation City"; }
+	//td:nth-of-type(9):before { content: "GPA"; }
+	//td:nth-of-type(10):before { content: "Arbitrary Data"; }
+	
+	.aa-order-filler { display: none;}
+	.aa-order-firstcell,
+	.aa-order-secondcell,
+	.aa-order-thirdcell,
+	.aa-order-fourthcell,
+	.aa-order-fifthcell {
+	 width: 100%;
+	 text-align: initial;
+	}
 }
