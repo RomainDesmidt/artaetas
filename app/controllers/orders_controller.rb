@@ -114,6 +114,8 @@ class OrdersController < ApplicationController
         provider_street_number: '',
         provider_postcode: '59493 VILLENEUVE D\'ASCQ, FRANCE',
         provider_city: '',
+        provider_city_part: '',
+        provider_extra_address_line: '',
         purchaser_name: @order.annonce.user.email,
         # Deprecated 1.3 API, use purchaser_lines
         # Here for compatibility test
@@ -127,13 +129,15 @@ class OrdersController < ApplicationController
         total: @order.amount.to_s+' €',
         bank_account_number: "Carte de credit (Stripe)",
         items: [item],
-        note: 'TVA non applicable, art.293 B du CGI'
+        #note: 'TVA non applicable, art.293 B du CGI'
       )
       respond_to do |format|
         format.html
         format.pdf do
           @pdf = InvoicePrinter.render(
-            document: invoice
+            document: invoice,
+            background: File.expand_path('../../assets/images/background_feinte5.png', __FILE__),
+            font: File.expand_path('../../assets/fonts/roboto/Roboto-Regular.ttf', __FILE__)
           )
           send_data @pdf, type: 'application/pdf', disposition: 'inline'
           # InvoicePrinter.print(
