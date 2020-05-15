@@ -1,5 +1,5 @@
 <% if @user.photofond? %>
-      <div class="aa-me-show-fondprofilcontainer" style="display: flex;background-color: #dddddd;justify-content: center; object-fit: contain;"><%= image_tag @user.photofond.url %></div>
+      <div class="aa-me-show-fondprofilcontainer" style="display: flex;background-color: #dddddd;justify-content: center; object-fit: contain;"><%= image_tag @user.photofond.low.exifignore %></div>
       <%# <div class="aa-me-show-fondprofilcontainer" style="background-image: url(' %>
       <%#= "#{@user.photofond.url}" %>
       <%# \')  ;\"></div> %>
@@ -14,7 +14,7 @@
         <div class="aa-me-descriptionuser-portrait">
           <div class="aa-me-descriptionuser-portraitfond">
             <% if @user.photoprofil? %>
-              <%= cl_image_tag @user.photoprofil, class: "aa-me-show-portraitphoto" %>
+              <%= cl_image_tag @user.photoprofil.exifignore, class: "aa-me-show-portraitphoto" %>
             <% else %>
               <%= inline_svg "profil.svg", class: "aa-me-show-portraitphoto aa-me-show-profilblank" %>
             <% end %>
@@ -171,7 +171,7 @@
           <% if i < 5 %>
             <div class="aa-me-favoriuseritem">
               <%= link_to "/annonces/#{bml.slug}" do %>
-                <%= cl_image_tag Annonce.find(bml.id).photo, class: "aa-me-favoriuser-image" %>
+                <%= cl_image_tag Annonce.find(bml.id).photo.exifignore, class: "aa-me-favoriuser-image" %>
               <% end %>
             </div>
           <% end %>
@@ -193,7 +193,7 @@
                   <div class="aa-search-annonce-card">
                   <%= link_to showannonces_path(a.slug), class: "aa-search-annonce-card-image aa-show-user-pub" do %>
                     <!-- <div class="aa-search-annonce-card-image"> -->
-                      <%= cl_image_tag a.photo %>
+                      <%= cl_image_tag a.photo.exifignore %>
                     <!-- </div> -->
                   <% end %>
                   <%= link_to showannonces_path(a.slug), class: "aa-search-annonce-card-detail" do %>
