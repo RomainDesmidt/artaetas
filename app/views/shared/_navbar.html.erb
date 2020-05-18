@@ -75,35 +75,43 @@
           <div><%= svg 'archiver2' %></div>
           <div><%= link_to "Déposer", "/annonces/new", class: "nav-link aa-menu-link" %></div>
         </li>
-        <li class="nav-item aa-menu-separateur aa-mobile-only">
-          <p>COMPTE</p>
-        </li>
-        <li class="nav-item aa-nav-item aa-mobile-only">
-          <div><%= svg 'groupe' %></div>
-          <div><%= link_to "Mes Annonces", users_mesannonces_path, class: "nav-link aa-menu-link" %></div>
-        </li>
-        <li class="nav-item aa-nav-item aa-mobile-only">
-        <div><%= svg 'fav' %></div>
-          <div><%= link_to "Mes Favoris", users_mesfavoris_path, class: "nav-link aa-menu-link" %></div>
-        </li>
-        <li class="nav-item aa-nav-item aa-mobile-only">
-        <div><%= svg 'administration' %></div>
-          <div><%= link_to "Mes Infos", users_mesinfos_path, class: "nav-link aa-menu-link" %></div>
-        </li>
-        <li class="nav-item aa-nav-item aa-mobile-only">
-        <div><%= svg 'prix-composant' %></div>
-          <div><%= link_to "Mes Transactions", users_mestransactions_path, class: "nav-link aa-menu-link" %></div>
-        </li>
-        <li class="nav-item aa-nav-item aa-mobile-only aa-section-end">
-        <div></div>
-         <div><%= link_to "Se Deconnecter", destroy_user_session_path, method: :delete, class: "nav-link aa-menu-link" %></div>
-        </li>
+        <!--<li class="nav-item aa-menu-separateur aa-mobile-only">-->
+        <!--  <p>COMPTE</p>-->
+        <!--</li>-->
+        <!--<li class="nav-item aa-nav-item aa-mobile-only">-->
+        <!--  <div><%#= svg 'groupe' %></div>-->
+        <!--  <div><%#= link_to "Mes Annonces", users_mesannonces_path, class: "nav-link aa-menu-link" %></div>-->
+        <!--</li>-->
+        <!--<li class="nav-item aa-nav-item aa-mobile-only">-->
+        <!--<div><%#= svg 'fav' %></div>-->
+        <!--  <div><%#= link_to "Mes Favoris", users_mesfavoris_path, class: "nav-link aa-menu-link" %></div>-->
+        <!--</li>-->
+        <!--<li class="nav-item aa-nav-item aa-mobile-only">-->
+        <!--<div><%#= svg 'administration' %></div>-->
+        <!--  <div><%#= link_to "Mes Infos", users_mesinfos_path, class: "nav-link aa-menu-link" %></div>-->
+        <!--</li>-->
+        <!--<li class="nav-item aa-nav-item aa-mobile-only">-->
+        <!--<div><%#= svg 'prix-composant' %></div>-->
+        <!--  <div><%#= link_to "Mes Transactions", users_mestransactions_path, class: "nav-link aa-menu-link" %></div>-->
+        <!--</li>-->
+        <!--<li class="nav-item aa-nav-item aa-mobile-only aa-section-end">-->
+        <!--<div></div>-->
+        <!-- <div><%#= link_to "Se Deconnecter", destroy_user_session_path, method: :delete, class: "nav-link aa-menu-link" %></div>-->
+        <!--</li>-->
         <li class="nav-item aa-menu-separateur aa-mobile-only">
           <p>INFOS</p>
         </li>
         <li class="nav-item aa-nav-item aa-mobile-only">
         <div></div>
-          <div><%= link_to "CGU & CGV", cgu_path , class: "nav-link aa-menu-link" %></div>
+          <div><%= link_to "Qui sommes nous?", quisommesnous_path , class: "nav-link aa-menu-link" %></div>
+        </li>
+        <li class="nav-item aa-nav-item aa-mobile-only">
+        <div></div>
+          <div><%= link_to "Besoin d'aide?", faq_path , class: "nav-link aa-menu-link" %></div>
+        </li>
+        <li class="nav-item aa-nav-item aa-mobile-only">
+        <div></div>
+          <div><%= link_to "CGU", cgu_path , class: "nav-link aa-menu-link" %></div>
         </li>
         <li class="nav-item aa-nav-item aa-mobile-only">
         <div></div>
@@ -111,11 +119,11 @@
         </li>
         <li class="nav-item aa-nav-item aa-mobile-only">
         <div></div>
-          <div><%= link_to "Mentions Legales", "#", class: "nav-link aa-menu-link" %></div>
+          <div><%= link_to "Contact", "mailto:contact@artaetas.com", class: "nav-link aa-menu-link" %></div>
         </li>
         <li class="nav-item aa-nav-item aa-mobile-only">
         <div></div>
-          <div><%= link_to "Contact", "#", class: "nav-link aa-menu-link" %></div>
+          <div><%= link_to "Mentions Légales", mentionslegales_path, class: "nav-link aa-menu-link" %></div>
         </li>
 
 

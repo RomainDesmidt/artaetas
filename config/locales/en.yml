@@ -28,9 +28,22 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
-  errors:
-    messages:
-      max_size_error: ^L'image doit être d'une taille inférieure à 750 Ko
+  activerecord:
+    attributes:
+      user:
+        email: "Email"
+        username: "Nom d'utilisateur"
+        password: "Mot de passe"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "ne doit pas être vide"
+            username:
+              blank: "ne doit pas être vide"
+            password: 
+              blank: "ne doit pas être vide"
+      messages:
+        max_size_error: ^L'image doit être d'une taille inférieure à 750 Ko
