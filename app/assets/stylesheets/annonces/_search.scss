@@ -114,11 +114,13 @@ overflow: hidden;
 }
 
 .aa-search-annonce-card {
-  flex: 1 1 100px;
+  // flex: 1 1 100px; // original
+  flex: 1 1 200px;
   display: flex;
   flex-direction: raw;
   margin-bottom: 10px;
   height: 200px;
+  overflow: hidden;
 }
 
 .aa-search-annonce-card-detail,

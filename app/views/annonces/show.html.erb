@@ -177,7 +177,7 @@
           <div class="aa-show-detailuser-contact-profil">
             <div class="aa-show-contact-profil-photo" id="profilAvatarShow">
               <% if @annonces.user.photoprofil?  %>
-                <%= cl_image_tag @annonces.user.photoprofil, class: "aa-show-contact-svg"  %>
+                <%= cl_image_tag @annonces.user.photoprofil.exifignore, class: "aa-show-contact-svg"  %>
               <% else %>
                 <%= inline_svg "profil.svg", class: "aa-show-contact-svg" %>
               <% end %>
