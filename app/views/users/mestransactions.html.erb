@@ -1,9 +1,33 @@
 <div class="aa-me-undernavbar"></div>
-  <ul class="nav nav-tabs aa-under-navbar" id="myTab" role="tablist" style="height: 20px;">
-    <li class="nav-item aa-me-nav-item" style="display: none;">
-      <a class="nav-link active" id="transactions-tab" data-toggle="tab" href="#transactions" role="tab" aria-controls="transactions" aria-selected="true">Mes transactions</a>
+  <ul class="nav nav-tabs aa-under-navbar" id="myTab" role="tablist" style="height: 155px;" >
+    
+    <li class="nav-item aa-me-nav-item">
+      <%= inline_svg "groupe.svg", class: "aa-me-navsvg" %>
+      <a class="nav-link" id="annonces-tab"  href="/users/mesannonces" role="tab" aria-controls="annonces" aria-selected="false">Mes annonces</a>
     </li>
+    
+    <li class="nav-item aa-me-nav-item">
+    <%= inline_svg "prix-composant.svg", class: "aa-me-navsvg"  %>
+      <a class="nav-link active" id="transactions-tab"  href="/users/mestransactions" role="tab" aria-controls="transactions" aria-selected="true">Mes transactions</a>
+    </li>
+    
+      <li class="nav-item aa-me-nav-item">
+    <%= inline_svg "profil.svg", class: "aa-me-navsvg"  %>
+      <a class="nav-link" id="profil-tab" href="/users/<%= current_user.username %>"  aria-selected="false">Profil public</a>
+    </li>
+    
+    <li class="nav-item aa-me-nav-item">
+      <%= inline_svg "fav.svg", class: "aa-me-navsvg"  %>
+      <a class="nav-link" id="fav-tab"  href="/users/mesfavoris" role="tab" aria-controls="fav"  aria-selected="false">Mes Favoris</a>
+    </li>
+    
+    <li class="nav-item aa-me-nav-item">
+      <%= inline_svg "administration.svg", class: "aa-me-navsvg"  %>
+      <a class="nav-link" id="compte-tab" href="/users/mesinfos" role="tab" aria-controls="compte" aria-selected="false">Mes informations</a>
+    </li>
+    
   </ul>
+
 
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade text-center active show" id="transactions" role="tabpanel" aria-labelledby="transactions-tab">

@@ -464,7 +464,8 @@ class AnnoncesController < ApplicationController
      end
      
     @annonce.destroy
-    redirect_to users_me_path( :view_param => "annonce")
+    # redirect_to users_me_path( :view_param => "annonce")
+    redirect_to users_mesannonces_path
   end
 
 
@@ -550,7 +551,8 @@ class AnnoncesController < ApplicationController
   def update_formule
     @annonce = Annonce.find(params[:id])
     @annonce.update(annonce_params)
-    redirect_to users_me_path( :view_param => "annonce")
+    # redirect_to users_me_path( :view_param => "annonce")
+    redirect_to users_mesannonces_path
   end
   
   def contact_user

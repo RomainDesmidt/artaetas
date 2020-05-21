@@ -242,9 +242,10 @@
   <% end %>
 </div>
 
-<% if current_user.id == params[:id].to_i %>
+<% if current_user.username == params[:username] %>
   <div class="aa-show-retour">
-    <%=link_to users_me_path( :view_param => "annonce") do %> 
+    <%#=link_to users_me_path( :view_param => "annonce") do %> 
+    <%=link_to users_mesannonces_path do %>
       <%= inline_svg "home.svg", class: "aa-show-retour-svg" %>&nbsp;&nbsp;&nbsp;<span>Retour Profil</span>
     <% end %>
   </div>

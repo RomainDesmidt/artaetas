@@ -1251,7 +1251,13 @@ p {
 }
 
 @media (max-width: 576px) {
-
+  #myTab {
+    display: none;
+  }
+  
+  #myTabContent {
+    margin-top: 55px;
+  }
   
   .alert {
     width: 100%;

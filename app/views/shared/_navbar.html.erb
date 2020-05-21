@@ -30,7 +30,8 @@
            <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <!--<div class="dropdown-menu dropdown-menu-right aa-desktop-only" aria-labelledby="navbarDropdown">-->
-            <%= link_to "Mon Profil", users_me_path( :view_param => "annonce"), class: "dropdown-item dropdown-hidemobile" %>
+            <%#= link_to "Mon Profil", users_me_path( :view_param => "annonce"), class: "dropdown-item dropdown-hidemobile" %>
+            <%= link_to "Mon Profil", users_mesannonces_path, class: "dropdown-item dropdown-hidemobile" %>
             <%= link_to "Mes Annonces", users_mesannonces_path, class: "dropdown-item dropdown-hidedesktop" %>
             <%= link_to "Mes Favoris", users_mesfavoris_path, class: "dropdown-item dropdown-hidedesktop" %>
             <%= link_to "Mes Infos", users_mesinfos_path, class: "dropdown-item dropdown-hidedesktop" %>
