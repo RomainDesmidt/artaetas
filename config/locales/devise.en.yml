@@ -217,7 +217,7 @@
 #       not_saved:
 #         one: 'une erreur a empêché ce (cet ou cette) %{resource} d’être enregistré(e) :'
 #         other: "%{count} erreurs ont empêché ce (cet ou cette) %{resource} d’être enregistré(e) :"
-fr:
+en:
   devise:
     confirmations:
       confirmed: "Votre compte a été validé."
