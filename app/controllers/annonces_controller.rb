@@ -126,13 +126,19 @@ class AnnoncesController < ApplicationController
     couleurs_choisies = []
     
     # Restrict
-    @annonces_all = Annonce.joins(:user).where("users_annonces.confirmation_webmaster = true").where(envente_yesno: true)
+    
+    if params[:term].nil?
+      @annonces_all = Annonce.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true)
+    else
+      @annonces_all = Annonce.joins(:user).where("users_annonces.confirmation_webmaster = true").where(envente_yesno: true)
+    end
     # @annonces_premium = @annonces_all.where(formule: "Mise en Avant").or(@annonces_all.where(formule: "Mise a la une")).order('random()')
     @annonces_premium = @annonces_all.where(formule: "Mise en Avant").or(@annonces_all.where(formule: "Mise a la une"))
     # @annonces_standard = @annonces_all.where(formule: "Standard").order('random()')
     @annonces_standard = @annonces_all.where(formule: "Standard")
     @annonces = @annonces_standard
     @annonces_pre = @annonces_premium
+    
 
     
     # Shown Annonces
