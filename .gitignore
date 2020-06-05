@@ -20,6 +20,7 @@ pg.sh
 heroku.sh
 # Ignore application configuration
 config/application.yml
+path/
 .env*
 lib/tasks/callapi.rake
 

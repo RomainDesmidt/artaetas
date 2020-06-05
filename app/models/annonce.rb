@@ -1,5 +1,5 @@
 class Annonce < ApplicationRecord
- 
+
  # after_update :enventeorno
  before_create :set_slug
  after_update :no_photo_envente_no
@@ -18,7 +18,19 @@ class Annonce < ApplicationRecord
   
   has_many :courant_annonces, :dependent => :destroy
   has_many :courants, through: :courant_annonces
-
+  
+  include PgSearch
+  pg_search_scope :search_annonce,
+    against: [ :name, :description, :nom_artiste ],
+    associated_against: {
+   #   courants: [ :name ],
+   #   cats: [ :name ],
+   #   couleurs: [ :name ],
+    user: [ :username ]
+    },
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 
   acts_as_votable
   act_as_bookmarkee
@@ -51,7 +63,8 @@ class Annonce < ApplicationRecord
  #   # AnnonceMailer.with(user: self.user, annonce: self).confirm_edit_annonce.deliver_now
  #  end
  # end
- 
+
+    
  def no_photo_envente_no
   if self.photo.blank? 
    unless self.envente_yesno == nil

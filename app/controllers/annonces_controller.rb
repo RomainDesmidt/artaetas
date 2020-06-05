@@ -126,7 +126,7 @@ class AnnoncesController < ApplicationController
     couleurs_choisies = []
     
     # Restrict
-    @annonces_all = Annonce.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true)
+    @annonces_all = Annonce.joins(:user).where("users_annonces.confirmation_webmaster = true").where(envente_yesno: true)
     # @annonces_premium = @annonces_all.where(formule: "Mise en Avant").or(@annonces_all.where(formule: "Mise a la une")).order('random()')
     @annonces_premium = @annonces_all.where(formule: "Mise en Avant").or(@annonces_all.where(formule: "Mise a la une"))
     # @annonces_standard = @annonces_all.where(formule: "Standard").order('random()')
@@ -139,8 +139,10 @@ class AnnoncesController < ApplicationController
 
     unless params[:term] == "Que recherchez-vous?"
       if params[:term]
-        @annonces = @annonces.where('annonces.name ILIKE ? OR annonces.description ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%")
-        @annonces_pre = @annonces_pre.where('annonces.name ILIKE ? OR annonces.description ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%")
+       # @annonces = @annonces.where('annonces.name ILIKE ? OR annonces.description ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%")
+       # @annonces_pre = @annonces_pre.where('annonces.name ILIKE ? OR annonces.description ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%")
+       @annonces = @annonces.search_annonce(params[:term])
+       @annonces_pre = @annonces_pre.search_annonce(params[:term])
       end
     end
     unless params[:prix_slider] == ''

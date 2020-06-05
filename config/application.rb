@@ -17,6 +17,7 @@ module Artaetas
     config.load_defaults 5.2
     config.active_job.queue_adapter = :sucker_punch
     config.secret_key_base = Figaro.env.secret_key_base
+    #config.autoload_paths += %W('#{config.root}/lib')
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
