@@ -98,4 +98,15 @@ if ( document.querySelector('div.multiple-dd8>div.ss-multi-selected>div.ss-value
   document.querySelector('div.multiple-dd8>div.ss-content>div.ss-search>input').placeholder = "Saisie";
 };
 
+var selection9 = document.querySelector('.multiple-dd9') !== null;
+if (selection9) {
+   var select9 = new SlimSelect({
+  select: document.querySelector('.multiple-dd9')
+  
+})
+if ( document.querySelector('div.multiple-dd9>div.ss-multi-selected>div.ss-values>span.ss-disabled') != null )  {
+  document.querySelector('div.multiple-dd9>div.ss-multi-selected>div.ss-values>span.ss-disabled').innerText = "Artiste...";
+}
+  document.querySelector('div.multiple-dd9>div.ss-content>div.ss-search>input').placeholder = "Saisie";
+};
 
