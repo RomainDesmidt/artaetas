@@ -23,10 +23,10 @@ class Annonce < ApplicationRecord
   pg_search_scope :search_annonce,
     against: [ :name, :description, :nom_artiste ],
     associated_against: {
-   #   courants: [ :name ],
-   #   cats: [ :name ],
-   #   couleurs: [ :name ],
-    user: [ :username ]
+      courants: [ :name ],
+      cats: [ :name ],
+      couleurs: [ :name ],
+      user: [ :username ]
     },
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
