@@ -77,11 +77,11 @@
       <%= select_tag :code_postal_search2, options_for_select(@code_postal_all.each {|p| [ p ] if p.is_a? Integer }, @code_postal_search2), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis  multiple-dd6"  %>  
     <% end %>
     
-    <% if params[:nom_artiste_search2] == '' || params[:nom_artiste_search2].nil?%>
-      <%= select_tag :nom_artiste_search2, options_for_select(@nom_artiste_all.each {|p| [ p ] if p.is_a? String }, 99999999), include_blank: false, :multiple => true,  :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis  multiple-dd9"  %>  
-    <% else %>
-      <%= select_tag :nom_artiste_search2, options_for_select(@nom_artiste_all.each {|p| [ p ] if p.is_a? String }, @nom_artiste_search2), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis  multiple-dd9"  %>  
-    <% end %>
+    <%# if params[:nom_artiste_search2] == '' || params[:nom_artiste_search2].nil?%>
+      <%#= select_tag :nom_artiste_search2, options_for_select(@nom_artiste_all.each {|p| [ p ] if p.is_a? String }, 99999999), include_blank: false, :multiple => true,  :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis  multiple-dd9"  %>  
+    <%# else %>
+      <%#= select_tag :nom_artiste_search2, options_for_select(@nom_artiste_all.each {|p| [ p ] if p.is_a? String }, @nom_artiste_search2), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis  multiple-dd9"  %>  
+    <%# end %>
     
     <%# if params[:code_postal] == '' || params[:code_postal].nil?%>
       <%#= select_tag :code_postal, options_for_select(@code_postal_all.each {|p| [ p ] if p.is_a? Integer }, "Code Postal"), include_blank: false, :prompt => "Code Postal",  :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis"  %>  

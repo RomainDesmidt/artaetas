@@ -134,11 +134,11 @@ class AnnoncesController < ApplicationController
     
     # Restrict
     
-    if params[:term].nil?
+    #if params[:term].nil?
       @annonces_all = Annonce.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true)
-    else
-      @annonces_all = Annonce.joins(:user).where("users_annonces.confirmation_webmaster = true").where(envente_yesno: true)
-    end
+    #else
+    #  @annonces_all = Annonce.joins(:user).where("users_annonces.confirmation_webmaster = true").where(envente_yesno: true)
+   # end
     # @annonces_premium = @annonces_all.where(formule: "Mise en Avant").or(@annonces_all.where(formule: "Mise a la une")).order('random()')
     @annonces_premium = @annonces_all.where(formule: "Mise en Avant").or(@annonces_all.where(formule: "Mise a la une"))
     # @annonces_standard = @annonces_all.where(formule: "Standard").order('random()')
@@ -146,18 +146,21 @@ class AnnoncesController < ApplicationController
     @annonces = @annonces_standard
     @annonces_pre = @annonces_premium
     
-
-    
+    #Annonce.joins(:courants, :cats, :couleurs).where("annonces.name = 'Nus' OR courants.name = 'Nus' OR categories.name = 'Nus' OR couleurs.couleur_dominante = 'Nus' ")
+    #Annonce.joins("INNER JOIN \"courant_annonces\" ON \"courant_annonces\".\"annonce_id\" = \"annonces\".\"id\" INNER JOIN \"courants\" ON \"courants\".\"id\" = \"courant_annonces\".\"courant_id\"").where("courants.name = 'Nus'").first
     # Shown Annonces
 
     unless params[:term] == "Que recherchez-vous?"
       if params[:term]
-       # @annonces = @annonces.where('annonces.name ILIKE ? OR annonces.description ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%")
-       # @annonces_pre = @annonces_pre.where('annonces.name ILIKE ? OR annonces.description ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%")
-       @annonces = @annonces.search_annonce(params[:term])
-       @annonces_pre = @annonces_pre.search_annonce(params[:term])
+       @annonces = @annonces.where('annonces.name ILIKE ? OR annonces.description ILIKE ? ', "%#{params[:term]}%", "%#{params[:term]}%")
+       @annonces_pre = @annonces_pre.where('annonces.name ILIKE ? OR annonces.description ILIKE ? ', "%#{params[:term]}%", "%#{params[:term]}%")  
+      # @annonces = @annonces.where('annonces.name ILIKE ? OR annonces.description ILIKE ? OR annonces.nom_artiste ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%")
+      # @annonces_pre = @annonces_pre.where('annonces.name ILIKE ? OR annonces.description ILIKE ? OR annonces.nom_artiste ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%")
+      #@annonces = @annonces.search_annonce(params[:term])
+      #@annonces_pre = @annonces_pre.search_annonce(params[:term])
       end
     end
+    
     unless params[:prix_slider] == ''
       if params[:prix_slider]
         @annonces = @annonces.where("prix > ?", @pricemin)
@@ -239,7 +242,33 @@ class AnnoncesController < ApplicationController
         # @annonces = @annonces.joins(:user).where({users: { paysresidence: @pays} })
         # @annonces_pre = @annonces_pre.joins(:user).where({users: { paysresidence: @pays} })   
       end
-    end    
+    end
+    
+    unless params[:nom_artiste_search2] == '' 
+      if params[:nom_artiste_search2]
+        #@init_query_nom_artiste = Annonce.where( "nom_artiste= ? ", "noidea" )
+        b = 0
+        params[:nom_artiste_search2].each do |nom_artiste_var|
+          b += 1
+          @query_to_add_nom_artiste = Annonce.where( "nom_artiste= ? ", nom_artiste_var )
+          if b > 1 
+            @result_query_nom_artiste = Annonce.from("(#{@init_query_nom_artiste.to_sql} UNION #{@query_to_add_nom_artiste.to_sql}) AS annonces")
+            @init_query_nom_artiste = @result_query_nom_artiste
+          else
+            @init_query_nom_artiste = @query_to_add_nom_artiste
+          end
+        end
+        #if b > 1 
+          @annonces = Annonce.from("(#{@annonces.to_sql} INTERSECT #{@result_query_nom_artiste.to_sql}) AS annonces")
+          @annonces_pre = Annonce.from("(#{@annonces_pre.to_sql} INTERSECT #{@result_query_nom_artiste.to_sql}) AS annonces")
+        #end
+        
+        # @annonces = @result_query
+        # @annonces_pre = Annonce.none
+        # @annonces = @annonces.joins(:user).where({users: { paysresidence: @pays} })
+        # @annonces_pre = @annonces_pre.joins(:user).where({users: { paysresidence: @pays} })   
+      end
+    end        
     
     unless params[:administratif_search2] == '' 
       if params[:administratif_search2]
@@ -384,6 +413,15 @@ class AnnoncesController < ApplicationController
         # @probleme = "Prix decroissant"
       end
     end
+    
+    # unless params[:term] == "Que recherchez-vous?"
+    #   if params[:term]
+    #   # @annonces = @annonces.where('annonces.name ILIKE ? OR annonces.description ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%")
+    #   # @annonces_pre = @annonces_pre.where('annonces.name ILIKE ? OR annonces.description ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%")
+    #   @annonces = @annonces.search_annonce(params[:term])
+    #   @annonces_pre = @annonces_pre.search_annonce(params[:term])
+    #   end
+    # end
     
 
     @annonces = @annonces.to_a
