@@ -14,6 +14,7 @@ ActiveAdmin.register Annonce do
     end
     column :user
     column :created_at
+    column :updated_at
     actions
   end
     

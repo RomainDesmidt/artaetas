@@ -152,10 +152,10 @@ class AnnoncesController < ApplicationController
 
     unless params[:term] == "Que recherchez-vous?"
       if params[:term]
-       @annonces = @annonces.where('annonces.name ILIKE ? OR annonces.description ILIKE ? ', "%#{params[:term]}%", "%#{params[:term]}%")
-       @annonces_pre = @annonces_pre.where('annonces.name ILIKE ? OR annonces.description ILIKE ? ', "%#{params[:term]}%", "%#{params[:term]}%")  
-      # @annonces = @annonces.where('annonces.name ILIKE ? OR annonces.description ILIKE ? OR annonces.nom_artiste ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%")
-      # @annonces_pre = @annonces_pre.where('annonces.name ILIKE ? OR annonces.description ILIKE ? OR annonces.nom_artiste ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%")
+      # @annonces = @annonces.where('annonces.name ILIKE ? OR annonces.description ILIKE ? ', "%#{params[:term]}%", "%#{params[:term]}%")
+      # @annonces_pre = @annonces_pre.where('annonces.name ILIKE ? OR annonces.description ILIKE ? ', "%#{params[:term]}%", "%#{params[:term]}%")  
+       @annonces = @annonces.where('annonces.name ILIKE ? OR annonces.description ILIKE ? OR annonces.nom_artiste ILIKE ? OR users.username ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%")
+       @annonces_pre = @annonces_pre.where('annonces.name ILIKE ? OR annonces.description ILIKE ? OR annonces.nom_artiste ILIKE ? OR users.username ILIKE ?', "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%")
       #@annonces = @annonces.search_annonce(params[:term])
       #@annonces_pre = @annonces_pre.search_annonce(params[:term])
       end
@@ -246,17 +246,15 @@ class AnnoncesController < ApplicationController
     
     unless params[:nom_artiste_search2] == '' 
       if params[:nom_artiste_search2]
-        #@init_query_nom_artiste = Annonce.where( "nom_artiste= ? ", "noidea" )
-        b = 0
+        @init_query_nom_artiste = Annonce.where( "nom_artiste= ? ", "pas de nom d'artiste" )
         params[:nom_artiste_search2].each do |nom_artiste_var|
-          b += 1
+          
           @query_to_add_nom_artiste = Annonce.where( "nom_artiste= ? ", nom_artiste_var )
-          if b > 1 
-            @result_query_nom_artiste = Annonce.from("(#{@init_query_nom_artiste.to_sql} UNION #{@query_to_add_nom_artiste.to_sql}) AS annonces")
-            @init_query_nom_artiste = @result_query_nom_artiste
-          else
-            @init_query_nom_artiste = @query_to_add_nom_artiste
-          end
+          
+          @result_query_nom_artiste = Annonce.from("(#{@init_query_nom_artiste.to_sql} UNION #{@query_to_add_nom_artiste.to_sql}) AS annonces")
+          @init_query_nom_artiste = @result_query_nom_artiste
+          
+      
         end
         #if b > 1 
           @annonces = Annonce.from("(#{@annonces.to_sql} INTERSECT #{@result_query_nom_artiste.to_sql}) AS annonces")
