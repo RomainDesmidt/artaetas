@@ -111,10 +111,10 @@ class AnnoncesController < ApplicationController
     @code_postal_all = @code_postal_all.uniq
     @nom_artiste_all = Annonce.all.collect do |x| 
       unless x.nom_artiste.nil?
-        x.nom_artiste.downcase
+        x.nom_artiste.downcase.strip
       end
     end
-    @nom_artiste_all = @nom_artiste_all.uniq.sort!
+    @nom_artiste_all = @nom_artiste_all.sort!.uniq!
     unless params[:prix_slider].nil?
       @pricemin = params[:prix_slider].split(",",2)[0].to_i
       @pricemax = params[:prix_slider].split(",",2)[1].to_i
