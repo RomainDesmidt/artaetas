@@ -247,10 +247,10 @@ class AnnoncesController < ApplicationController
     
     unless params[:nom_artiste_search2] == '' 
       if params[:nom_artiste_search2]
-        @init_query_nom_artiste = Annonce.where( "nom_artiste= ? ", "pas de nom d'artiste" )
+        @init_query_nom_artiste = Annonce.where( "nom_artiste ILIKE ? ", "pas de nom d'artiste" )
         params[:nom_artiste_search2].each do |nom_artiste_var|
           
-          @query_to_add_nom_artiste = Annonce.where( "nom_artiste= ? ", nom_artiste_var )
+          @query_to_add_nom_artiste = Annonce.where( "nom_artiste ILIKE ? ", nom_artiste_var )
           
           @result_query_nom_artiste = Annonce.from("(#{@init_query_nom_artiste.to_sql} UNION #{@query_to_add_nom_artiste.to_sql}) AS annonces")
           @init_query_nom_artiste = @result_query_nom_artiste
