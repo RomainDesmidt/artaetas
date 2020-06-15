@@ -174,8 +174,8 @@
 # Varlocale.create!( id: 4, nomchamp: "PrixMalu", valeurchamp: 600)
 # Varlocale.create!( id: 5, nomchamp: "PeriodeMea", valeurchamp: 7) 
 # Varlocale.create!( id: 6, nomchamp: "PeriodeMalu", valeurchamp: 7) 
-Varlocale.create!( id: 7, nomchamp: "LimMaxMea", valeurchamp: 100, description: "Nombre maximum de mise en avant autorisé, avant que la prise d'option soit bloquée") 
-Varlocale.create!( id: 8, nomchamp: "LimMaxMalu", valeurchamp: 100, description: "Nombre maximum de mise a la une autorisé, avant que la prise d'option soit bloquée") 
+# Varlocale.create!( id: 7, nomchamp: "LimMaxMea", valeurchamp: 100, description: "Nombre maximum de mise en avant autorisé, avant que la prise d'option soit bloquée") 
+# Varlocale.create!( id: 8, nomchamp: "LimMaxMalu", valeurchamp: 100, description: "Nombre maximum de mise a la une autorisé, avant que la prise d'option soit bloquée") 
 # Annonce.all.each do |an|
 #     if an.anneecreation.nil?
 #         an.update!(anneecreation: 2000)
@@ -193,3 +193,23 @@ Varlocale.create!( id: 8, nomchamp: "LimMaxMalu", valeurchamp: 100, description:
 #         puts an.slug
 #     end
 # end
+puts "Modifying Dimension..."
+Annonce.all.each do |annonce_unit|
+    unless  annonce_unit.largeur.nil? ||  annonce_unit.hauteur.nil?
+      #if annonce_unit.largeur > 0 && annonce_unit.profondeur > 0 && annonce_unit.hauteur > 0
+      #  @volume = annonce_unit.largeur * annonce_unit.profondeur * annonce_unit.hauteur
+      if annonce_unit.largeur > 0  && annonce_unit.hauteur > 0
+        @volume = annonce_unit.largeur  * annonce_unit.hauteur
+        if @volume > 2500
+          if @volume > 10000
+            annonce_unit.update(volume: "g")
+          else
+            annonce_unit.update(volume: "m")
+          end
+        else
+          annonce_unit.update(volume: "p")
+        end
+      end
+    end
+    puts "le volume a ete modifie #{annonce_unit.volume}"
+end

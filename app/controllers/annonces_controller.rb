@@ -39,11 +39,13 @@ class AnnoncesController < ApplicationController
     @annonce = current_user.annonces.new(annonce_params)
     @annonce_params = annonce_params
     @annonce.update(formule: "Standard")
-    unless  @annonce.largeur.nil? || @annonce.profondeur.nil? || @annonce.hauteur.nil?
-      if @annonce.largeur > 0 && @annonce.profondeur > 0 && @annonce.hauteur > 0
-        @volume = @annonce.largeur * @annonce.profondeur * @annonce.hauteur
-        if @volume > 0.25
-          if @volume > 1
+    unless  @annonce.largeur.nil? ||  @annonce.hauteur.nil?
+      #if @annonce.largeur > 0 && @annonce.profondeur > 0 && @annonce.hauteur > 0
+      #  @volume = @annonce.largeur * @annonce.profondeur * @annonce.hauteur
+      if @annonce.largeur > 0  && @annonce.hauteur > 0
+        @volume = @annonce.largeur  * @annonce.hauteur
+        if @volume > 2500
+          if @volume > 10000
             @annonce.update(volume: "g")
           else
             @annonce.update(volume: "m")
@@ -53,7 +55,6 @@ class AnnoncesController < ApplicationController
         end
       end
     end
-    
     if  @annonce.save
 
       redirect_to showannonces_path(@annonce.slug), flash: { success: "L'annonce est en attente de modération, et est consultable dans l'onglet annonce du compte membre" }
@@ -469,11 +470,13 @@ class AnnoncesController < ApplicationController
   def update
     @annonce = Annonce.find(params[:id])
     @annonce.update(annonce_params)
-    unless  @annonce.largeur.nil? || @annonce.profondeur.nil? || @annonce.hauteur.nil?
-      if @annonce.largeur > 0 && @annonce.profondeur > 0 && @annonce.hauteur > 0
-        @volume = @annonce.largeur * @annonce.profondeur * @annonce.hauteur
-        if @volume > 0.25
-          if @volume > 1
+    unless  @annonce.largeur.nil? ||  @annonce.hauteur.nil?
+      #if @annonce.largeur > 0 && @annonce.profondeur > 0 && @annonce.hauteur > 0
+      #  @volume = @annonce.largeur * @annonce.profondeur * @annonce.hauteur
+      if @annonce.largeur > 0  && @annonce.hauteur > 0
+        @volume = @annonce.largeur  * @annonce.hauteur
+        if @volume > 2500
+          if @volume > 10000
             @annonce.update(volume: "g")
           else
             @annonce.update(volume: "m")
