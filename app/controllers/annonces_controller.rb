@@ -164,28 +164,28 @@ class AnnoncesController < ApplicationController
        #@annonces_pre = Annonce.from("(#{@annonces_pre_init.to_sql} UNION #{@annonces_pre_courant.to_sql}) AS annonces")
       
       #---------------- WORKING ------------------------------------
-      # @annonces_courant = @annonces.joins(:courants).where("courants.name ILIKE ? ", "%#{params[:term]}%" )
-      # @annonces_pre_courant = @annonces_pre.joins(:courants).where("courants.name ILIKE ? ", "%#{params[:term]}%" )
-      
-      # @annonces_cat = @annonces.joins(:cats).where("categories.name ILIKE ? ", "%#{params[:term]}%" )
-      # @annonces_pre_cat = @annonces_pre.joins(:cats).where("categories.name ILIKE ? ", "%#{params[:term]}%" )
-      
-      # @annonces_couleur = @annonces.joins(:couleurs).where("couleurs.couleur_dominante ILIKE ? ", "%#{params[:term]}%" )
-      # @annonces_pre_couleur = @annonces_pre.joins(:couleurs).where("couleurs.couleur_dominante ILIKE ? ", "%#{params[:term]}%" )
-      
-      # @annonces_deux = Annonce.from("(#{@annonces_init.to_sql} UNION #{@annonces_courant.to_sql}) AS annonces")
-      # @annonces_pre_deux = Annonce.from("(#{@annonces_pre_init.to_sql} UNION #{@annonces_pre_courant.to_sql}) AS annonces")
-      
-      # @annonces_trois = Annonce.from("(#{@annonces_deux.to_sql} UNION #{@annonces_cat.to_sql}) AS annonces")
-      # @annonces_pre_trois  = Annonce.from("(#{@annonces_pre_deux.to_sql} UNION #{@annonces_pre_cat.to_sql}) AS annonces")
-      
-      # @annonces = Annonce.from("(#{@annonces_trois.to_sql} UNION #{@annonces_couleur.to_sql}) AS annonces")
-      # @annonces_pre = Annonce.from("(#{@annonces_pre_trois.to_sql} UNION #{@annonces_pre_couleur.to_sql}) AS annonces")
-      #---------------- END ------------------------------------------
       @annonces_courant = @annonces.joins(:courants).where("courants.name ILIKE ? ", "%#{params[:term]}%" )
       @annonces_pre_courant = @annonces_pre.joins(:courants).where("courants.name ILIKE ? ", "%#{params[:term]}%" )
-      @annonces = Annonce.from("(#{@annonces_init.to_sql} UNION #{@annonces_courant.to_sql}) AS annonces")
-      @annonces_pre = Annonce.from("(#{@annonces_pre_init.to_sql} UNION #{@annonces_pre_courant.to_sql}) AS annonces")
+      
+      @annonces_cat = @annonces.joins(:cats).where("categories.name ILIKE ? ", "%#{params[:term]}%" )
+      @annonces_pre_cat = @annonces_pre.joins(:cats).where("categories.name ILIKE ? ", "%#{params[:term]}%" )
+      
+      @annonces_couleur = @annonces.joins(:couleurs).where("couleurs.couleur_dominante ILIKE ? ", "%#{params[:term]}%" )
+      @annonces_pre_couleur = @annonces_pre.joins(:couleurs).where("couleurs.couleur_dominante ILIKE ? ", "%#{params[:term]}%" )
+      
+      @annonces_deux = Annonce.from("(#{@annonces_init.to_sql} UNION #{@annonces_courant.to_sql}) AS annonces")
+      @annonces_pre_deux = Annonce.from("(#{@annonces_pre_init.to_sql} UNION #{@annonces_pre_courant.to_sql}) AS annonces")
+      
+      @annonces_trois = Annonce.from("(#{@annonces_deux.to_sql} UNION #{@annonces_cat.to_sql}) AS annonces")
+      @annonces_pre_trois  = Annonce.from("(#{@annonces_pre_deux.to_sql} UNION #{@annonces_pre_cat.to_sql}) AS annonces")
+      
+      @annonces = Annonce.from("(#{@annonces_trois.to_sql} UNION #{@annonces_couleur.to_sql}) AS annonces")
+      @annonces_pre = Annonce.from("(#{@annonces_pre_trois.to_sql} UNION #{@annonces_pre_couleur.to_sql}) AS annonces")
+      #---------------- END ------------------------------------------
+      # @annonces_courant = @annonces.joins(:courants).where("courants.name ILIKE ? ", "%#{params[:term]}%" )
+      # @annonces_pre_courant = @annonces_pre.joins(:courants).where("courants.name ILIKE ? ", "%#{params[:term]}%" )
+      # @annonces = Annonce.from("(#{@annonces_init.to_sql} UNION #{@annonces_courant.to_sql}) AS annonces")
+      # @annonces_pre = Annonce.from("(#{@annonces_pre_init.to_sql} UNION #{@annonces_pre_courant.to_sql}) AS annonces")
       
       
       #@annonces = @annonces.search_annonce(params[:term])
