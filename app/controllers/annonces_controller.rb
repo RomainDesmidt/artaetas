@@ -108,7 +108,8 @@ class AnnoncesController < ApplicationController
         x.codepostal.divmod(1000)[0]
       end
     end
-    @code_postal_all = @code_postal_all.compact.uniq
+    @code_postal_all = @code_postal_all.compact.sort.uniq
+    @code_postal_all = @code_postal_all.uniq
     @nom_artiste_all = Annonce.all.collect do |x| 
       unless x.nom_artiste.nil?
         x.nom_artiste.downcase.strip
