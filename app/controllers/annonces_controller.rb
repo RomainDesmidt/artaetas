@@ -210,7 +210,7 @@ class AnnoncesController < ApplicationController
     
     unless params[:pays_search2] == '' 
       if params[:pays_search2]
-      @init_query_pays = Annonce.joins(:user).where( "users.paysresidence= ? ", "" )
+      @init_query_pays = Annonce.joins(:user).where( "users.paysresidence= ? ", "pasdepays" )
         params[:pays_search2].each do |pays_var|
           @query_to_add_pays = Annonce.joins(:user).where( "users.paysresidence= ? ", pays_var )
           @result_query_pays = Annonce.from("(#{@init_query_pays.to_sql} UNION #{@query_to_add_pays.to_sql}) AS annonces")
