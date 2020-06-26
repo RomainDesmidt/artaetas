@@ -4,11 +4,47 @@
       <div class="aa-show-detailannonce-header">
         <div class="aa-show-detailannonce-photo" id="aa-show-nopaddingtop">
           <%#= cl_image_tag @annonces.photo, id: "bigPhoto" %>
+          <%# if (@annonces.photo? && @annonces.photo_un?) || (@annonces.photo? && @annonces.photo_deux?) %>
+          <% if (@annonces.photo? && !@annonces.photo_un? && !@annonces.photo_deux? ) %>
+            <script>
+              var photoArray = ["bigPhoto","bigPhoto"];
+            </script>
+          <% end %>
+          <% if (@annonces.photo? && @annonces.photo_un? && @annonces.photo_deux? ) %>
+            <script>
+              var photoArray = ["thumbPhoto","thumbPhotoUn","thumbPhotoDeux"];
+            </script>
+          <% end %>
+          <% if (@annonces.photo? && !@annonces.photo_un? && @annonces.photo_deux? ) %>
+            <script>
+              var photoArray = ["thumbPhoto","thumbPhotoDeux"];
+            </script>
+          <% end %>
+          <% if (@annonces.photo? && @annonces.photo_un? && !@annonces.photo_deux? ) %>
+            <script>
+              var photoArray = ["thumbPhoto","thumbPhotoUn"];
+            </script>
+          <% end %>
+          
+          <script> 
+            var photoNumber = 0;
+            var photoPosition = 0;
+            
+            function next_photo(){
+              if (photoPosition >= photoNumber - 1 ) {
+                photoPosition = 0;
+                document.getElementById('bigPhoto').src = document.getElementById(photoArray[(photoPosition)]).src;
+              } else {
+                document.getElementById('bigPhoto').src = document.getElementById(photoArray[(photoPosition + 1)]).src;
+                photoPosition++;
+              }
+            }    
+          </script>
           <% if @annonces.photo.url.nil? %>
-            <%= image_tag( asset_path("crossed.png"), id: "bigPhoto") %>
+            <%= image_tag asset_path("crossed.png"), id: "bigPhoto" %>
             <%# <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" id="bigPhoto"> %>
           <% else %>
-              <%= image_tag @annonces.photo.exifignore, id: "bigPhoto" %>
+              <%= image_tag @annonces.photo.exifignore, id: "bigPhoto", onclick: "next_photo();" %>
           <% end %>
           <% if user_signed_in? %>
             <div class="aa-show-favlike">
@@ -68,21 +104,32 @@
                 <% end %>
               <% end %>
               </p>
-              
-
+            
 
               <!-- <p class=''>< @annonces.created_at.to_date ></p> -->
             </div>
             <div class="aa-show-thumbnail-container">
             <% if @annonces.photo_deux? %>
-              <%= image_tag @annonces.photo_deux.exifignore, class: 'aa-show-thumbnail' , id: "thumbPhotoDeux", onclick: "document.getElementById('bigPhoto').src = this.src" %>
+              <%= image_tag @annonces.photo_deux.exifignore, class: 'aa-show-thumbnail' , id: "thumbPhotoDeux", onclick: "document.getElementById('bigPhoto').src = this.src; photoPosition = 2; " %>
+              <script> 
+                photoNumber++;
+              </script>
             <% end %>
             <% if @annonces.photo_un? %>
-              <%= image_tag @annonces.photo_un.exifignore, class: 'aa-show-thumbnail' , id: "thumbPhotoUn", onclick: "document.getElementById('bigPhoto').src = this.src" %>
+              <%= image_tag @annonces.photo_un.exifignore, class: 'aa-show-thumbnail' , id: "thumbPhotoUn", onclick: "document.getElementById('bigPhoto').src = this.src ; photoPosition = 1;" %>
+              <script> 
+                photoNumber++;
+              </script>
             <% end %>
             <% if (@annonces.photo? && @annonces.photo_un?) || (@annonces.photo? && @annonces.photo_deux?) %>
-              <%= image_tag @annonces.photo.exifignore, class: 'aa-show-thumbnail' , id: "thumbPhoto", onclick: "document.getElementById('bigPhoto').src = this.src" %>
+              <%= image_tag @annonces.photo.exifignore, class: 'aa-show-thumbnail' , id: "thumbPhoto", onclick: "document.getElementById('bigPhoto').src = this.src; photoPosition = 0;" %>
+              <script> 
+                photoNumber++;
+              </script>
             <% else %>
+              <script> 
+                photoNumber++;
+              </script>
               <% if @annonces.photo.url.nil? %>
                 <%= image_tag( asset_path("crossed.png"), class: 'aa-show-thumbnail' , id: "thumbPhoto", onclick: "document.getElementById('bigPhoto').src = this.src") %>
               <% end %>
