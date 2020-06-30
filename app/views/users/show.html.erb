@@ -92,42 +92,57 @@
           
           
           
-              
+          <% if user_signed_in? %>    
               <% if @user.afficher_email %>
-          <div class="aa-show-detailuser-contact-email">
-            <div class="aa-show-detailuser-contact-btn">    
-              
-                  <%= inline_svg "conversation.svg", class: "aa-show-call-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
-                  <%= link_to "Envoyer un Mail", "mailto:#{@user.email}", class: "aa-show-mailto align-self-centeraa" %>
-              <%# else %>
-                <%#= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %>
-                <!--&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Envoyer un Mail</a>-->
-            </div>
-          </div>    
-                
+                <div class="aa-show-detailuser-contact-email">
+                  <div class="aa-show-detailuser-contact-btn">    
+                    
+                        <%= inline_svg "conversation.svg", class: "aa-show-call-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
+                        <%= link_to "Envoyer un Mail", "mailto:#{@user.email}", class: "aa-show-mailto align-self-centeraa" %>
+                    <%# else %>
+                      <%#= inline_svg "conversation.svg", class: "aa-show-call-svg aa-show-standard-svg" %>
+                      <!--&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Envoyer un Mail</a>-->
+                  </div>
+                </div>    
               <% end %>
               
               
             
           
 
-        <% if @user.afficher_tel %>
-          <div class="aa-show-detailuser-contact-tel">
-            <div class="aa-show-detailuser-contact-btn">
-                <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
-                 <%= link_to "Contacter", "tel:#{@user.tel}", class: "aa-show-mailto align-self-centeraa" %>
-              <%# else %>
-                <%#= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg" %>
-                <!--&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Contacter</a>-->
-            </div>
-          </div>
-        <% end %>
-            
+              <% if @user.afficher_tel %>
+                <div class="aa-show-detailuser-contact-tel">
+                  <div class="aa-show-detailuser-contact-btn">
+                      <%= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg align-self-centeraa" %>&nbsp;&nbsp;&nbsp;
+                       <%= link_to "Contacter", "tel:#{@user.tel}", class: "aa-show-mailto align-self-centeraa" %>
+                    <%# else %>
+                      <%#= inline_svg "contact.svg", class: "aa-show-call-svg aa-show-standard-svg" %>
+                      <!--&nbsp;&nbsp;&nbsp;<a class="aa-show-mailto align-self-centeraa">Contacter</a>-->
+                  </div>
+                </div>
+              <% end %>
+            <%# else %>
+            <!--<div class="aa-show-detailuser-contact-tel">-->
+            <!--  <div class="aa-show-detailuser-contact-btn">-->
+            <!--  <a href="" class="nav-link aa-menu-link aa-menu-link-last" data-toggle="modal" data-target="#exampleModal">-->
+            <!--    Enregistrez-vous pour contacter le membre-->
+            <!--  </a>-->
+            <!--  </div>-->
+            <!--</div>-->
+            <% end %>
           
           
         </div>
       </div>
       <div class="aa-me-descriptionuser-stats2">
+        
+            
+            <% unless user_signed_in? %>
+              <a href="" class="" data-toggle="modal" data-target="#exampleModal" style="padding-left: 0px !important; padding-top: 6px !important;">
+                <p class="aa-show-share-title">Enregistrez-vous pour contacter le membre</p>
+              </a>
+            <% end %>
+
          <% if @user.afficher_identite? %>
           <p>Identité : <br class="aa-me-brmobile"><b><%= "#{@user.surname} #{@user.lastname}" %></b></p>
         <% end %>
@@ -150,15 +165,17 @@
           </p>
           <br>
         <% end %>
-        <% if @user.instagram? %>
-          <p>Instagram :<br class="aa-me-brmobile"> <%= link_to "@#{@user.instagram}", "https://www.instagram.com/#{@user.instagram}/", target: :_blank %></p>
-        <% end %>
-        <% if @user.facebook? %>
-          <p>Facebook :<br class="aa-me-brmobile"> <%= link_to "#{@user.facebook}", "https://www.facebook.com/#{@user.facebook}/", target: :_blank %></p>
-        <% end %>
-        <% if @user.website? %>
-          <p>Site Web :<br class="aa-me-brmobile"> <%= link_to "#{@user.website}", "http://#{@user.website.downcase}", target: :_blank %></p>
-        <% end %>
+        <% if user_signed_in? %>
+          <% if @user.instagram? %>
+            <p>Instagram :<br class="aa-me-brmobile"> <%= link_to "@#{@user.instagram}", "https://www.instagram.com/#{@user.instagram}/", target: :_blank %></p>
+          <% end %>
+          <% if @user.facebook? %>
+            <p>Facebook :<br class="aa-me-brmobile"> <%= link_to "#{@user.facebook}", "https://www.facebook.com/#{@user.facebook}/", target: :_blank %></p>
+          <% end %>
+          <% if @user.website? %>
+            <p>Site Web :<br class="aa-me-brmobile"> <%= link_to "#{@user.website}", "http://#{@user.website.downcase}", target: :_blank %></p>
+          <% end %>
+        <% end %>  
       </div>
     </div>
   </div>
@@ -241,12 +258,13 @@
     </div>
   <% end %>
 </div>
-
-<% if current_user.username == params[:username] %>
-  <div class="aa-show-retour">
-    <%#=link_to users_me_path( :view_param => "annonce") do %> 
-    <%=link_to users_mesannonces_path do %>
-      <%= inline_svg "home.svg", class: "aa-show-retour-svg" %>&nbsp;&nbsp;&nbsp;<span>Retour Profil</span>
-    <% end %>
-  </div>
-<% end %>
+<% unless current_user.nil? %>
+  <% if current_user.username == params[:username] %>
+    <div class="aa-show-retour">
+      <%#=link_to users_me_path( :view_param => "annonce") do %> 
+      <%=link_to users_mesannonces_path do %>
+        <%= inline_svg "home.svg", class: "aa-show-retour-svg" %>&nbsp;&nbsp;&nbsp;<span>Retour Profil</span>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>  
