@@ -11,5 +11,11 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:account_update) { |u| u.permit( :current_password, :email, :username, :surname, :lastname, :afficher_identite, :afficher_email, :tel, :afficher_tel, :paysresidence, :villeresidence, :codepostal, :instagram, :facebook, :website, :description, :masquefavoris, :masquepublication, :statut, :photoprofil, :photoprofil_cache, :password, :password_confirmation, :photofond, :photofond_cache )}
     end
     
-
+    def after_sign_in_path_for(resource)
+      if (request.referer.include? "/users/sign_in")
+        root_path
+      else
+        request.referer
+      end
+    end
 end
