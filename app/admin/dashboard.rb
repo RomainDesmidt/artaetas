@@ -24,12 +24,16 @@ ActiveAdmin.register_page "Dashboard" do
     
     columns do
       column do
-        panel "Annonces nécessitant confirmation" do
+        panel "Annonces en attente de validation" do
           ul do
-            Annonce.where(envente_yesno: false ).map do |annonce|
+            Annonce.where(envente_yesno: nil ).map do |annonce|
               li link_to(annonce.name, admin_annonce_path(annonce))
             end
-              Annonce.where(envente_yesno: nil ).map do |annonce|
+          end
+        end
+        panel "Annonces refusées" do
+          ul do
+            Annonce.where(envente_yesno: false ).map do |annonce|
               li link_to(annonce.name, admin_annonce_path(annonce))
             end
           end
