@@ -151,6 +151,12 @@
   text-align: justify;
 }
 
+.aa-me-descriptionuser-descr > p {
+    white-space: pre-wrap;
+    max-height: 115px;
+    overflow-y: hidden;
+}
+
 .aa-me-descriptionuser-stats2 {
   flex: 0 0 50%;
   padding-top: 15px;
