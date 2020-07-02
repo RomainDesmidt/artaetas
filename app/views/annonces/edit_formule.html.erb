@@ -4,6 +4,8 @@
         <%#= f.input :formule, hint: "statut de votre annonce", :collection => ["Mise en Avant","Mise a la une", "Standard"], require: false %>
         <%#= f.submit "Modifier l'annonce", class: "btn btn-primary aa-mobile-btn aa-new-publierannonce" %>
     <%# end %>
+<br>
+<br>
 <h4>Mise à la une :</h4>
 
 <p>Meilleure visibilité sur <u>l’accueil</u> et les pages de recherche</p>
@@ -53,3 +55,11 @@
     <%# end %>
     
 </div>
+<% unless current_user.nil? %>
+    <div class="aa-show-retour">
+      <%#=link_to users_me_path( :view_param => "annonce") do %> 
+      <%=link_to users_mesannonces_path do %>
+        <%= inline_svg "home.svg", class: "aa-show-retour-svg" %>&nbsp;&nbsp;&nbsp;<span>Retour Profil</span>
+      <% end %>
+    </div>
+<% end %>  

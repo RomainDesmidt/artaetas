@@ -7,6 +7,8 @@
       <div class="aa-new-titrefield">Votre Annonce</div>
       <div class="aa-new-vafield">
         <!-- [...] -->
+        <p style="font-size: 12px; color: #6c757d;">les champs suivis d'une étoile * sont nécessaires pour enregistrer l'annonce.</p>
+        <br>
         <%= f.input :name, label: "Nom de l'oeuvre", hint: "max 70 caracteres dans l'index"  %>
         <%= f.input :description, hint: "Seul 70 caracteres de la premiere ligne apparaissent dans l'index" %>
         <%= f.input :prix, placeholder: "€" %>
@@ -45,7 +47,7 @@
           </div>
           
         </div>
-        <p style="font-size: 12px; color: #6c757d;">la taille de l'upload est limité a 750 Ko</p>
+        <p style="font-size: 12px; color: #6c757d;">la taille de l'upload est limitée à 750 Ko</p>
         
         <!-- [...] -->
       </div>
