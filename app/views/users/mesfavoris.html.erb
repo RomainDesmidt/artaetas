@@ -33,7 +33,7 @@
     
     <div class="aa-me-moncompte-container">
         <div class="aa-me-infoperso">
-          <h2 class="text-left h2-margin-top">Membres Favoris</h2>        
+          <h2 class="text-left h2-margin-top">Membres que vous suivez</h2>        
         </div>
     </div>
       
@@ -72,6 +72,55 @@
                       <div class="aa-show-detailuser-followbtn" style="align-self: center;"><%= link_to "MEMBRE SUIVI", unfollow_annonce_path(user_suivi.annonces.first), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "enlever.svg", class: "aa-show-follow-svg" %></div>
                       <% else %>
                         <div class="aa-show-detailuser-followbtn" style="align-self: center;"><%= link_to "SUIVRE LE MEMBRE", follow_annonce_path(user_suivi.annonces.first), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "ajouter.svg", class: "aa-show-follow-svg" %></div>
+                      <% end %>
+                    <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+      <% end %>
+    </div>
+    <div class="aa-me-moncompte-container">
+      <div class="aa-me-infoperso">
+        <h2 class="text-left h2-margin-top">Membres qui vous suive</h2>        
+      </div>
+    </div>
+    <div class="aa-me-flexcontainer-fav">
+      <% current_user.followers.each do |user_suiveur| %>
+      <div class="aa-show-detailuser-contact aa-show-minheight aa-flexitem-fav">
+            
+            <div class="aa-show-detailuser-contact-container" style="padding-bottom: 0px; margin-bottom: 0px; border-width: 0px;">
+              <div class="aa-show-detailuser-contact-profil">
+                <div class="aa-show-contact-profil-photo" id="profilAvatarShow">
+                  <% if user_suiveur.photoprofil?  %>
+                    <%= cl_image_tag user_suiveur.photoprofil, class: "aa-show-contact-svg"  %>
+                  <% else %>
+                    <%= inline_svg "profil.svg", class: "aa-show-contact-svg" %>
+                  <% end %>
+                </div>
+                
+                <div class="aa-show-contact-profil-detail">
+                  <%# if @annonces.user.afficher_identite %>
+                    <%#= link_to "#{@annonces.user.surname} #{@annonces.user.lastname}", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
+                  <%# else %>
+                    <% if user_suiveur.username %>
+                     <%= link_to "#{user_suiveur.username}", profil_path(user_suiveur.username), class: "aa-show-user-link"  %>
+                    <%# else %>
+                      <%#= link_to "Profil Auteur", "/users/#{@annonces.user.id}", class: "aa-show-user-link"  %>
+                    <%# end %>
+                  <% end %>
+                  <% if user_suiveur.statut %>
+                    <div class="aa-show-contact-profil-statut"><%= user_suiveur.statut %></div>
+                  <% end %>
+                  <div class="aa-show-contact-profil-nbannonces"><%= user_suiveur.annonces.count %> annonces en ligne</div>
+                  
+                    
+                    <% if user_signed_in? %>
+                      <% if current_user.followees.include?(user_suiveur) %>
+                      <div class="aa-show-detailuser-followbtn" style="align-self: center;"><%= link_to "MEMBRE SUIVI", unfollow_annonce_path(user_suiveur.annonces.first), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "enlever.svg", class: "aa-show-follow-svg" %></div>
+                      <% else %>
+                        <div class="aa-show-detailuser-followbtn" style="align-self: center;"><%= link_to "SUIVRE LE MEMBRE", follow_annonce_path(user_suiveur.annonces.first), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "ajouter.svg", class: "aa-show-follow-svg" %></div>
                       <% end %>
                     <% end %>
                 </div>
