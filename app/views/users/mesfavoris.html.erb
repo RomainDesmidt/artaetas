@@ -30,13 +30,21 @@
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade text-center active show" id="fav" role="tabpanel" aria-labelledby="fav-tab">
   <div class="aa-me-containermargin">
+    <% if ( current_user.followees.empty? && current_user.followers.empty? && @bmlist.empty? ) %>
+      <div class="aa-me-moncompte-container">
+          <div class="aa-me-infoperso">
+            <h2 class="text-left h2-margin-top">Aucun favori d'aucune sorte</h2>        
+          </div>
+      </div>
+    <% end %>
     
-    <div class="aa-me-moncompte-container">
-        <div class="aa-me-infoperso">
-          <h2 class="text-left h2-margin-top">Membres que vous suivez</h2>        
-        </div>
-    </div>
-      
+    <% unless current_user.followees.empty? %>
+      <div class="aa-me-moncompte-container">
+          <div class="aa-me-infoperso">
+            <h2 class="text-left h2-margin-top">Membres que vous suivez</h2>        
+          </div>
+      </div>
+    <% end %>  
     <div class="aa-me-flexcontainer-fav">
       <% current_user.followees.each do |user_suivi| %>
       <div class="aa-show-detailuser-contact aa-show-minheight aa-flexitem-fav">
@@ -81,13 +89,13 @@
       
       <% end %>
     </div>
-    
-    <div class="aa-me-moncompte-container">
-      <div class="aa-me-infoperso">
-        <h2 class="text-left h2-margin-top">Membres qui vous suivent</h2>        
+    <% unless current_user.followers.empty? %>
+      <div class="aa-me-moncompte-container">
+        <div class="aa-me-infoperso">
+          <h2 class="text-left h2-margin-top">Membres qui vous suivent</h2>        
+        </div>
       </div>
-    </div>
-    
+    <% end %>
     <div class="aa-me-flexcontainer-fav">
       <% current_user.followers.each do |user_suiveur| %>
       <div class="aa-show-detailuser-contact aa-show-minheight aa-flexitem-fav">
@@ -132,11 +140,13 @@
       
       <% end %>
     </div>
-    <div class="aa-me-moncompte-container">
-        <div class="aa-me-infoperso">
-          <h2 class="text-left h2-margin-top">Annonces Favorites</h2>        
-        </div>
-    </div>
+    <% unless @bmlist.empty? %>
+      <div class="aa-me-moncompte-container">
+          <div class="aa-me-infoperso">
+            <h2 class="text-left h2-margin-top">Annonces Favorites</h2>        
+          </div>
+      </div>
+    <% end %>
     <div class="aa-me-flexcontainer-fav">
 
 
