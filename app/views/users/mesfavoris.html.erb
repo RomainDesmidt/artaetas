@@ -77,9 +77,9 @@
                     
                     <% if user_signed_in? %>
                       <% if current_user.followees.include?(user_suivi) %>
-                      <div class="aa-show-detailuser-followbtn" style="align-self: center;"><%= link_to "MEMBRE SUIVI", unfollow_annonce_path(user_suivi.annonces.first), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "enlever.svg", class: "aa-show-follow-svg" %></div>
+                      <div class="aa-show-detailuser-followbtn" style="align-self: center;"><%= link_to "MEMBRE SUIVI", unfollowuser_annonce_path(user_suivi.id), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "enlever.svg", class: "aa-show-follow-svg" %></div>
                       <% else %>
-                        <div class="aa-show-detailuser-followbtn" style="align-self: center;"><%= link_to "SUIVRE LE MEMBRE", follow_annonce_path(user_suivi.annonces.first), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "ajouter.svg", class: "aa-show-follow-svg" %></div>
+                        <div class="aa-show-detailuser-followbtn" style="align-self: center;"><%= link_to "SUIVRE LE MEMBRE", follow_ser_annonce_path(user_suivi.id), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "ajouter.svg", class: "aa-show-follow-svg" %></div>
                       <% end %>
                     <% end %>
                 </div>
@@ -128,9 +128,9 @@
                     
                     <% if user_signed_in? %>
                       <% if current_user.followees.include?(user_suiveur) %>
-                      <div class="aa-show-detailuser-followbtn" style="align-self: center;"><%= link_to "MEMBRE SUIVI", unfollow_annonce_path(user_suiveur.annonces.first), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "enlever.svg", class: "aa-show-follow-svg" %></div>
+                      <div class="aa-show-detailuser-followbtn" style="align-self: center;"><%= link_to "MEMBRE SUIVI", unfollowuser_annonce_path(user_suiveur.id), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "enlever.svg", class: "aa-show-follow-svg" %></div>
                       <% else %>
-                        <div class="aa-show-detailuser-followbtn" style="align-self: center;"><%= link_to "SUIVRE LE MEMBRE", follow_annonce_path(user_suiveur.annonces.first), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "ajouter.svg", class: "aa-show-follow-svg" %></div>
+                        <div class="aa-show-detailuser-followbtn" style="align-self: center;"><%= link_to "SUIVRE LE MEMBRE", followuser_annonce_path(user_suiveur.id), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "ajouter.svg", class: "aa-show-follow-svg" %></div>
                       <% end %>
                     <% end %>
                 </div>
