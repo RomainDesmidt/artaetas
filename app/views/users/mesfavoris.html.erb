@@ -33,7 +33,7 @@
     <% if ( current_user.followees.empty? && current_user.followers.empty? && @bmlist.empty? ) %>
       <div class="aa-me-moncompte-container">
           <div class="aa-me-infoperso">
-            <h2 class="text-left h2-margin-top">Aucun favori d'aucune sorte</h2>        
+            <h2 class="text-center h2-margin-top">Aucun favori d'aucune sorte</h2>        
           </div>
       </div>
     <% end %>
@@ -41,7 +41,7 @@
     <% unless current_user.followees.empty? %>
       <div class="aa-me-moncompte-container">
           <div class="aa-me-infoperso">
-            <h2 class="text-left h2-margin-top">Membres que vous suivez</h2>        
+            <h2 class="text-center h2-margin-top">Membres que vous suivez</h2>        
           </div>
       </div>
     <% end %>  
@@ -92,7 +92,7 @@
     <% unless current_user.followers.empty? %>
       <div class="aa-me-moncompte-container">
         <div class="aa-me-infoperso">
-          <h2 class="text-left h2-margin-top">Membres qui vous suivent</h2>        
+          <h2 class="text-center h2-margin-top">Membres qui vous suivent</h2>        
         </div>
       </div>
     <% end %>
@@ -143,7 +143,7 @@
     <% unless @bmlist.empty? %>
       <div class="aa-me-moncompte-container">
           <div class="aa-me-infoperso">
-            <h2 class="text-left h2-margin-top">Annonces Favorites</h2>        
+            <h2 class="text-center h2-margin-top">Annonces Favorites</h2>        
           </div>
       </div>
     <% end %>
@@ -156,7 +156,7 @@
         <div class="aa-show-detailuser-contact-container" style="height: 100%;padding-bottom: 0px; margin-bottom: 0px; border-width: 0px;">
           <div class="aa-me-favoriuseritem">
             <%= link_to "/annonces/#{bml.slug}" do %>
-              <%= cl_image_tag Annonce.find(bml.id).photo, class: "aa-me-favoriuser-image" %>
+              <%= cl_image_tag Annonce.find(bml.id).photo.exifignore, class: "aa-me-favoriuser-image-bm" %>
             <% end %>
           </div>
           </div>

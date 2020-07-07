@@ -211,6 +211,13 @@
   width: 90%;
 }
 
+.aa-me-favoriuser-bm {
+  object-fit: contain;
+  height: 100%;
+  // max-width: 90%;
+  width: 90%;
+}
+
 .aa-show-user-pub img {
 
 object-fit: contain !important;
@@ -555,6 +562,13 @@ object-fit: contain !important;
     left: 50%;
     transform: translateX(-50%);
     max-height: 250px
+  }
+  
+  .aa-me-favoriuser-image-bm{
+    position: relative;
+    /*left: 50%;
+    transform: translateX(-50%);
+    max-height: 250px*/
   }
   
   .aa-me-descriptionuser-stats2 {
