@@ -491,6 +491,12 @@ object-fit: contain !important;
     transform: translateX(-50%) !important;
   }
   
+    .aa-show-detailuser-followbtn-fav {
+    position: relative !important;
+    // left: 50% !important;
+    // transform: translateX(-50%) !important;
+  }
+  
   .aa-me-descriptionuser-right {
     flex-direction: row-reverse;
     justify-content: center;

@@ -197,6 +197,19 @@
   
 }
 
+.aa-show-detailuser-followbtn-fav {
+  padding: 0px 5px;
+  // height: 28px;
+  background-color: $bloc;
+  border-style: solid;
+  border-color: lightgray;
+  border-width: 1px;
+  margin-bottom: 2px;
+  width: fit-content;
+  height: fit-content;
+  line-height: 18px;
+}
+
 .aa-show-suivre-link {
   font-size: 11px;
 }
