@@ -18,21 +18,21 @@
       </div>
       
       <% if params[:categorie_search2] == '' || params[:categorie_search2].nil? %>
-        <%= select_tag :categorie_search2 , options_from_collection_for_select(Categorie.all, "id", "name", selected: @categorie_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd"  %>
+        <%= select_tag :categorie_search2 , options_from_collection_for_select(Categorie.all.order("name ASC"), "id", "name", selected: @categorie_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd"  %>
       <% else %>
-        <%= select_tag :categorie_search2 ,   options_from_collection_for_select(Categorie.all, "id", "name", selected: @categorie_search2 || nil ), include_blank: false, :multiple => true, :class =>"aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd"  %>
+        <%= select_tag :categorie_search2 ,   options_from_collection_for_select(Categorie.all.order("name ASC"), "id", "name", selected: @categorie_search2 || nil ), include_blank: false, :multiple => true, :class =>"aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd"  %>
       <% end %>
 
       <% if params[:courant_search2] == '' || params[:courant_search2].nil?%>
-        <%= select_tag :courant_search2 , options_from_collection_for_select(Courant.all, "id", "name", selected: @courant_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd2"  %>
+        <%= select_tag :courant_search2 , options_from_collection_for_select(Courant.all.order("name ASC"), "id", "name", selected: @courant_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd2"  %>
       <% else %>
-        <%= select_tag :courant_search2 , options_from_collection_for_select(Courant.all, "id", "name", selected: @courant_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd2"  %>      
+        <%= select_tag :courant_search2 , options_from_collection_for_select(Courant.all.order("name ASC"), "id", "name", selected: @courant_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd2"  %>      
       <% end %>
 
       <% if params[:couleur_search2] == '' || params[:couleur_search2].nil?%>
-        <%= select_tag :couleur_search2 , options_from_collection_for_select(Couleur.all, "id", "couleur_dominante", selected: @couleur_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd3"  %>  
+        <%= select_tag :couleur_search2 , options_from_collection_for_select(Couleur.all.order("couleur_dominante ASC"), "id", "couleur_dominante", selected: @couleur_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd3"  %>  
       <% else %>
-        <%= select_tag :couleur_search2 , options_from_collection_for_select(Couleur.all, "id", "couleur_dominante", selected: @couleur_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd3"  %>  
+        <%= select_tag :couleur_search2 , options_from_collection_for_select(Couleur.all.order("couleur_dominante ASC"), "id", "couleur_dominante", selected: @couleur_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd3"  %>  
       <% end %>
       
 

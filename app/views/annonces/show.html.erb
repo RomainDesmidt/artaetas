@@ -181,25 +181,37 @@
           <br>
           <% unless CategorieAnnonce.all.where(annonce_id: @annonces.id).nil? || CategorieAnnonce.all.where(annonce_id: @annonces.id) == [] %>
           <b><p>Tags</p></b>
-          <div class="aa-show-categorie-list">  
+          <div class="aa-show-categorie-list">
+              <% catannonces = [] %>  
               <% CategorieAnnonce.all.where(annonce_id: @annonces.id).each do |cat| %>
-                <div class="aa-show-categorie-indivi"><p class="aa-show-categorie-txt"><%= Categorie.find(cat.categorie_id).name %></p></div>
+                <% catannonces << Categorie.find(cat.categorie_id).name %>
+              <% end %>
+              <% catannonces.sort.each do |cat| %>
+                <div class="aa-show-categorie-indivi"><p class="aa-show-categorie-txt"><%= cat %></p></div>
               <% end %>
             </div>
           <% end %>
           <% unless CourantAnnonce.all.where(annonce_id: @annonces.id).nil? || CourantAnnonce.all.where(annonce_id: @annonces.id) == []  %>
             <b><p>Courants / Styles</p></b>
           <div class="aa-show-categorie-list">
+            <% courannonces = [] %>
             <% CourantAnnonce.all.where(annonce_id: @annonces.id).each do |cour| %>
-            <div class="aa-show-categorie-indivi"><p><%= Courant.find(cour.courant_id).name %></p></div>
+              <% courannonces << Courant.find(cour.courant_id).name %>
+            <% end %>
+            <% courannonces.sort.each do |cour| %>
+              <div class="aa-show-categorie-indivi"><p><%= cour %></p></div>
             <% end %>
           </div>
           <% end %>
           <% unless CouleurAnnonce.all.where(annonce_id: @annonces.id).nil? || CouleurAnnonce.all.where(annonce_id: @annonces.id) == [] %>
           <b><p>Couleurs</p></b>
           <div class="aa-show-categorie-list">
+            <% coulannonces = [] %>
             <% CouleurAnnonce.all.where(annonce_id: @annonces.id).each do |coul| %>
-            <div class="aa-show-categorie-indivi"><p><%= Couleur.find(coul.couleur_id).couleur_dominante %></p></div>
+              <% coulannonces << Couleur.find(coul.couleur_id).couleur_dominante %>
+            <% end %>
+            <% coulannonces.sort.each do |coul| %>
+              <div class="aa-show-categorie-indivi"><p><%= coul %></p></div>
             <% end %>
           </div>
         <% end %>
