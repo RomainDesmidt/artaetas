@@ -139,6 +139,7 @@ ActiveAdmin.setup do |config|
   #
   # You can completely disable comments:
   config.comments = false
+
   #
   # You can change the name under which comments are registered:
   # config.comments_registration_name = 'AdminComment'
@@ -241,12 +242,34 @@ ActiveAdmin.setup do |config|
   #
   # To change the default utility navigation to show a link to your website & a logout btn
   #
-  #   config.namespace :admin do |admin|
-  #     admin.build_menu :utility_navigation do |menu|
-  #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
-  #       admin.add_logout_button_to_menu menu
-  #     end
+  # config.namespace :admin do |admin|
+  #   admin.build_menu :utility_navigation do |menu|
+  #     menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
+  #     admin.add_logout_button_to_menu menu
   #   end
+  # end
+  
+  # config.namespace :admin do |admin|
+  #   admin.build_menu :default do |menu|
+  #     menu.add label: "Categories", url: "/admin/categories?order=name_asc"
+  #     menu.add label: "Couleurs", url: "/admin/couleurs?order=name_asc"
+  #     menu.add label: "Courants", url: "/admin/courants?order=name_asc"
+  #     #menu.add label: "Categories", if: proc{ false }
+  #   end
+  # end
+  
+  
+  config.namespace :admin do |admin|
+    admin.build_menu :default do |menu|
+      menu.add label: "Categories(filtre)", url: "/admin/categories?order=name_asc"
+      menu.add label: "Couleurs(filtre)", url: "/admin/couleurs?order=name_asc"
+      menu.add label: "Courants(filtre)", url: "/admin/courants?order=name_asc"
+      #menu.add label: "Categories", if: proc{ false }
+    end
+  end
+  
+  
+  
   #
   # If you wanted to add a static menu item to the default menu provided:
   #
