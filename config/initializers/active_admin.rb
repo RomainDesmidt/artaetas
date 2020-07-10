@@ -261,9 +261,9 @@ ActiveAdmin.setup do |config|
   
   config.namespace :admin do |admin|
     admin.build_menu :default do |menu|
-      menu.add label: "Categories(filtre)", url: "/admin/categories?order=name_asc"
-      menu.add label: "Couleurs(filtre)", url: "/admin/couleurs?order=name_asc"
-      menu.add label: "Courants(filtre)", url: "/admin/courants?order=name_asc"
+      menu.add label: "Categories", url: "/admin/categories?order=name_asc"
+      menu.add label: "Couleurs", url: "/admin/couleurs?order=name_asc"
+      menu.add label: "Courants", url: "/admin/courants?order=name_asc"
       #menu.add label: "Categories", if: proc{ false }
     end
   end

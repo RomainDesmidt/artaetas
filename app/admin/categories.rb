@@ -2,8 +2,7 @@ ActiveAdmin.register Categorie do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-# menu :parent => "Cats", :if => proc { false }
-
+    menu :parent => "Cats", :if => proc { false }
     index do
         selectable_column
         id_column

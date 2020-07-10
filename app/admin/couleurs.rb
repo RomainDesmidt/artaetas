@@ -2,7 +2,7 @@ ActiveAdmin.register Couleur do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-# menu :parent => "Coul", :if => proc { false }
+    menu :parent => "Coul", :if => proc { false }
     index do
         selectable_column
         id_column
