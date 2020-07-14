@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_17_152645) do
+ActiveRecord::Schema.define(version: 2020_07_14_100319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_04_17_152645) do
     t.string "formule"
     t.string "slug"
     t.string "last_sub_order"
+    t.boolean "archive", default: false
     t.index ["slug"], name: "index_annonces_on_slug", unique: true
     t.index ["user_id"], name: "index_annonces_on_user_id"
   end
