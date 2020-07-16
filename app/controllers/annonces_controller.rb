@@ -16,7 +16,7 @@ class AnnoncesController < ApplicationController
   
   def index
     @occurencemalu = Varlocale.where(nomchamp: "OccurenceMalu").first.valeurchamp
-    @annonces_confirmeduser = Annonce.joins(:user).where("users.confirmation_webmaster = true")
+    @annonces_confirmeduser = Annonce.joins(:user).where("users.confirmation_webmaster = true").where("annonces.archive = false")
     @annonces_all = @annonces_confirmeduser.where(envente_yesno: true)
     @landingp = 1
     @annonces_premium = @annonces_all.where(formule: "Mise a la une").order('random()')
@@ -136,7 +136,7 @@ class AnnoncesController < ApplicationController
     # Restrict
     
     #if params[:term].nil?
-      @annonces_all = Annonce.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true)
+      @annonces_all = Annonce.joins(:user).where("users.confirmation_webmaster = true").where("annonces.archive = false").where(envente_yesno: true)
     #else
     #  @annonces_all = Annonce.joins(:user).where("users_annonces.confirmation_webmaster = true").where(envente_yesno: true)
    # end
