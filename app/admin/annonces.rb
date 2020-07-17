@@ -90,6 +90,16 @@ ActiveAdmin.register Annonce do
     link_to 'Standard', standard_admin_annonce_path, method: :put
   end
   
+  
+  action_item :desarchiver, only: [:show], if: proc { Annonce.find(params[:id]).archive == true }  do 
+    link_to 'Désarchiver', desarchiver_admin_annonce_path, method: :put
+  end
+  
+  action_item :archiver, only: [:show], if: proc { Annonce.find(params[:id]).archive == false }  do 
+    link_to 'Archiver', archiver_admin_annonce_path, method: :put
+  end
+  
+  
   # action_item :statutmea, only: [:show], if: proc { Annonce.find(params[:id]).formule == "Standard" || Annonce.find(params[:id]).formule == "Mise a la une"  }  do 
   #   link_to 'MEA', mea_admin_annonce_path, method: :put
   # end
@@ -135,7 +145,7 @@ ActiveAdmin.register Annonce do
     @modif_annonce.update(formule: "Mise a la une", last_sub_order: @order.id)
     redirect_to admin_annonce_path
   end
-  
+# ---------------------  
   member_action :publier, :method => :put do
     @modif_annonce = Annonce.find(params[:id])
     @modif_annonce.envente_yesno = true
@@ -153,7 +163,25 @@ ActiveAdmin.register Annonce do
     AdminMailer.with(user: @modif_usertarget, annonce: @modif_annonce).refuse_user_annonce.deliver_now
     redirect_to admin_annonce_path
   end
-
+# ---------------------
+  member_action :archiver, :method => :put do
+    @modif_annonce = Annonce.find(params[:id])
+    @modif_annonce.archive = true
+    @modif_annonce.save!
+    #@modif_usertarget = @modif_annonce.user
+    #AdminMailer.with(user: @modif_usertarget, annonce: @modif_annonce ).confirm_user_annonce.deliver_now
+    redirect_to admin_annonce_path
+  end
+  
+  member_action :desarchiver, :method => :put do
+    @modif_annonce = Annonce.find(params[:id])
+    @modif_annonce.archive = false
+    @modif_annonce.save!
+    #@modif_usertarget = @modif_annonce.user
+    #AdminMailer.with(user: @modif_usertarget, annonce: @modif_annonce).refuse_user_annonce.deliver_now
+    redirect_to admin_annonce_path
+  end
+# ---------------------
   action_item :previous, only: [:show, :edit] do
     id = Annonce.where('id < ?', params[:id]).order('id DESC').first
     if id.nil?
