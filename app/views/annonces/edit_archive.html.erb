@@ -15,7 +15,7 @@
     <!--    <%#= f.submit 'Confirmer', class: 'btn btn-primary aa-mobile-btn aa-new-publierannonce' %>-->
     <!--<%# end %>-->
     
-    <form class="simple_form edit_annonce" id="edit_annonce_<%= @annonce.id %>" novalidate="novalidate" action="/annonces/<%= @annonce.id %>/update_archive" accept-charset="UTF-8" method="post" >
+    <form class="simple_form edit_annonce" id="edit_annonce_<%= @annonce.id %>" style="text-align: center;" novalidate="novalidate" action="/annonces/<%= @annonce.id %>/update_archive" accept-charset="UTF-8" method="post" >
         <input type="hidden" name="_method" value="patch">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
         <input name="annonce[archive]" type="hidden" value="0">
