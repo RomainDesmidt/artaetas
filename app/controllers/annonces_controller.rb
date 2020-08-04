@@ -624,6 +624,33 @@ class AnnoncesController < ApplicationController
     redirect_back fallback_location: root_path, flash: { success: "Le membre n'est plus suivi!" }
   end
   
+  def don
+    @annonce = Annonce.find(params[:id])
+  end
+  
+  def edit_archive
+    @annonce = Annonce.find(params[:id])
+  end
+  
+  def update_archive
+    @annonce = Annonce.find(params[:id])
+    
+    #@annonce.update(annonce_params)
+    @don = params[:annonce][:faire_un_don].to_i
+    @archive = params[:annonce][:archive].to_i
+    # puts params[:annonce]
+    #puts @don
+    #puts @archive
+    if @archive == 1
+     @annonce.update(archive: true) 
+    end
+    if @don == 1
+      redirect_to don_annonce_path(@annonce)
+    else
+      redirect_to users_mesannonces_path
+      puts @don
+    end
+  end
   
   def edit_formule
     @countmea = Annonce.where(formule: "Mise en Avant").count
@@ -657,7 +684,7 @@ class AnnoncesController < ApplicationController
   private
 
   def annonce_params
-    params.require(:annonce).permit( :envente_yesno, :sujetcontact, :corpscontact, :volume, :pays, :code_postal, :ordre_annonce, :formule, :name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache, :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider, categorie_annonces: [], courant_annonces: [], couleur_annonces: [], categorie_search2: [], courant_search2: [], administratif_search2: [], code_postal_search2: [], nom_artiste_search2: [], volume_search2: [], pays_search2: [], disposition_search2: [], couleur_search2: [], categories: [], courant_ids: [], couleur_ids: [], cat_ids: [])
+    params.require(:annonce).permit( :archive, :envente_yesno, :sujetcontact, :corpscontact, :volume, :pays, :code_postal, :ordre_annonce, :formule, :name, :anneecreation, :nom_artiste, :description, :photo, :photo_cache, :photo_un, :photo_un_cache, :photo_deux, :photo_deux_cache, :user_id, :prix, :format, :disposition, :hauteur, :largeur, :profondeur, :oeuvre_limite, :oeuvre_unique, :oeuvre_illimite, :facture_achat, :certificat_authenticite, :encadrement, :etat_neuf, :term, :categorie_search, :courant_search, :couleur_search, :prix_slider, categorie_annonces: [], courant_annonces: [], couleur_annonces: [], categorie_search2: [], courant_search2: [], administratif_search2: [], code_postal_search2: [], nom_artiste_search2: [], volume_search2: [], pays_search2: [], disposition_search2: [], couleur_search2: [], categories: [], courant_ids: [], couleur_ids: [], cat_ids: [])
   end
 end
 

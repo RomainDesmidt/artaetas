@@ -1,0 +1,7 @@
+.aa-archive-don {
+    display: none;
+}
+
+.aa-archive-mainquestion:checked ~ .aa-archive-don {
+    display: block;
+}

@@ -1,0 +1,51 @@
+<div class="aa-me-undernavbar" style="height: 100px;"></div>
+<div style="margin-left: 20%; margin-right: 20%;">
+    <%#= simple_form_for(@annonce, :url => orders_donate_path, :method => post ) do |f| %>
+       <%#= f.input :montant, label: "Quel montant voulait vous donner ?" %>
+       <%#= f.submit 'Confirmer', class: 'btn btn-primary aa-mobile-btn aa-new-publierannonce' %>
+    <%# end %>
+    
+    <%= form_tag orders_donate_path, style: "text-align: center;" do %>
+        <%= hidden_field_tag 'annonce_id', @annonce.id %>
+        <p><label class="form-control-label select optional" for="Montant">Quel Montant souhaitez vous donner ?</label></p>
+        <p><%= number_field_tag 'montant', class: "form-control is-valid optional" %></p>
+        <br>
+        <%= submit_tag 'Donner', class: 'btn btn-primary aa-mobile-btn aa-new-publierannonce' %>
+    <% end %>
+    <!--<form class="simple_form edit_annonce" id="edit_annonce_8" novalidate="novalidate" action="/annonces/8/update_archive" accept-charset="UTF-8" method="post">-->
+    <!--    <input type="hidden" name="_method" value="patch">-->
+    <!--    <input type="hidden" name="authenticity_token" value="<%#= form_authenticity_token %>">-->
+    <!--    <input name="annonce[archive]" type="hidden" value="0">-->
+    <!--    <input class="form-check-input boolean optional aa-archive-mainquestion" type="checkbox" value="1" name="annonce[archive]" id="annonce_archive">-->
+    <!--    <label class="form-check-label boolean optional" for="annonce_archive">Archiver cette annonce?</label>-->
+    <!--    <br>-->
+    <!--    <div class="aa-archive-don">-->
+    <!--        <input name="annonce[faire_un_don]" type="hidden" value="0">-->
+    <!--        <input label="false" type="checkbox" value="1" name="annonce[faire_un_don]" id="annonce_faire_un_don">-->
+    <!--        <label class="form-check-label boolean optional" for="annonce_archive">Faire un don?</label>-->
+    <!--    </div>-->
+    <!--    <input type="submit" name="commit" value="Confirmer" class="btn btn-primary aa-mobile-btn aa-new-publierannonce" data-disable-with="Confirmer">-->
+        
+        
+        <!--<input name="utf8" type="hidden" value="✓">-->
+        <!--<input type="hidden" name="_method" value="patch">-->
+        <!--<input type="hidden" name="authenticity_token" value="W5zKIgsHqZt+a7/0XQJRZnsw9mKoOAwkR+/L5Bk1SHJwez8BaCepCnPcbvGlXtnRbkM0tZNiJoMbHxMOi53QFA==">-->
+        <!--<fieldset class="form-group boolean optional annonce_archive">-->
+        <!--    <div class="form-check"><input name="annonce[archive]" type="hidden" value="0">-->
+        <!--        <input class="form-check-input boolean optional aa-archive-mainquestion" type="checkbox" value="1" name="annonce[archive]" id="annonce_archive">-->
+        <!--        <label class="form-check-label boolean optional" for="annonce_archive">Archiver cette annonce?</label>-->
+        <!--    </div>-->
+        <!--</fieldset>-->
+        <!--<div class="aa-archive-don">-->
+        <!--    <fieldset class="form-group boolean optional annonce_faire_un_don">-->
+        <!--        <div class="form-check">-->
+        <!--            <input name="annonce[faire_un_don]" type="hidden" value="0"><input label="false" type="checkbox" value="1" name="annonce[faire_un_don]" id="annonce_faire_un_don">-->
+        <!--            <label class="form-check-label boolean optional" for="annonce_archive">Faire un don?</label>-->
+        <!--        </div>-->
+        <!--    </fieldset>-->
+        <!--</div>-->
+        <!--<input type="submit" name="commit" value="Confirmer" class="btn btn-primary aa-mobile-btn aa-new-publierannonce" data-disable-with="Confirmer">-->
+        
+        
+    <!--</form>-->
+</div>

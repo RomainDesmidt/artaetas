@@ -43,6 +43,30 @@ class OrdersController < ApplicationController
       redirect_to new_order_payment_path(order)
     end
     
+    def donate
+      annonce = Annonce.find(params[:annonce_id])
+      premium_formule = "Don"
+      amount_premium = params[:montant].to_i*100
+      amount_stripe = amount_premium
+      order  = Order.create!(annonce: annonce, premium_sku: premium_formule, amount: (amount_premium/100), state: 'pending', user: current_user)
+    
+      session = Stripe::Checkout::Session.create(
+        payment_method_types: ['card'],
+        line_items: [{
+          name: annonce.name,
+          images: [annonce.photo_url],
+          amount: amount_stripe,
+          currency: 'eur',
+          quantity: 1
+        }],
+        success_url: facturepdf_url(order.slug, order.id),
+        cancel_url: new_order_payment_url(order)
+      )
+    
+      order.update(checkout_session_id: session.id)
+      redirect_to new_order_payment_path(order)
+    end
+    
     def show
       @order = Order.where(slug: params[:slug]).first
       #@order = Order.find(params[:id])

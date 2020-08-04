@@ -24,14 +24,18 @@ Rails.application.routes.draw do
         put "destroy_photo_deux", to: "annonces#destroy_photo_deux"
         get "edit_formule", to: "annonces#edit_formule"
         patch "update_formule", to: "annonces#update_formule"
+        get "edit_archive", to: "annonces#edit_archive"
+        patch "update_archive", to: "annonces#update_archive"
         get "contact_user", to: "annonces#contact_user"
         patch "contact_deliver", to: "annonces#contact_deliver"
+        get "don", to: "annonces#don"
     end
   end
   get "annonces/:slug", to: "annonces#show", as: :showannonces
-  resources :orders, only: [:create] do
+  resources :orders, only: [:create, :donate] do
     resources :payments, only: :new
   end
+  post "orders/donate", to: "orders#donate"
   get "orders/:slug/:id", to: "orders#show", as: :facturepdf
   # resources :annonces
   get 'social', to: 'pages#social'
@@ -66,6 +70,7 @@ Rails.application.routes.draw do
    # static pages
   get 'sidekiqtest', to: 'pages#sidekiqtest'
   get 'styleguide', to: 'pages#styleguide'
+  get 'don', to: 'pages#don'
   mount StripeEvent::Engine, at: '/stripe-webhooks'
   
 end

@@ -27,6 +27,10 @@ class PagesController < ApplicationController
   def changelog
   end
   
+  def don
+    @annonce = Annonce.find(1)
+  end
+  
   def sidekiqtest
     NettoyageOrderJob.perform_in(5)
     flash[:notice] = "Performing now"

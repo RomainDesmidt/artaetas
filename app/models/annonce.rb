@@ -57,6 +57,8 @@ class Annonce < ApplicationRecord
   mount_uploader :photo_un, PhotoUploader
   mount_uploader :photo_deux, PhotoUploader 
  
+ 
+  attr_accessor :faire_un_don
  # def enventeorno
  #  unless self.envente_yesno == nil
  #   self.update(envente_yesno: nil)
