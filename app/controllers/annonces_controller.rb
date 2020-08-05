@@ -630,25 +630,31 @@ class AnnoncesController < ApplicationController
   
   def edit_archive
     @annonce = Annonce.find(params[:id])
+    if !(current_user == @annonce.user)
+      redirect_to users_mesannonces_path
+    end
   end
   
   def update_archive
     @annonce = Annonce.find(params[:id])
-    
-    #@annonce.update(annonce_params)
-    @don = params[:annonce][:faire_un_don].to_i
-    @archive = params[:annonce][:archive].to_i
-    # puts params[:annonce]
-    #puts @don
-    #puts @archive
-    if @archive == 1
-     @annonce.update(archive: true) 
-    end
-    if @don == 1
-      redirect_to don_annonce_path(@annonce)
+    if current_user == @annonce.user
+      #@annonce.update(annonce_params)
+      @don = params[:annonce][:faire_un_don].to_i
+      @archive = params[:annonce][:archive].to_i
+      # puts params[:annonce]
+      #puts @don
+      #puts @archive
+      if @archive == 1
+       @annonce.update(archive: true) 
+      end
+      if @don == 1
+        redirect_to don_annonce_path(@annonce)
+      else
+        redirect_to users_mesannonces_path
+        #puts @don
+      end
     else
       redirect_to users_mesannonces_path
-      puts @don
     end
   end
   
@@ -658,6 +664,9 @@ class AnnoncesController < ApplicationController
     @limmaxmea = Varlocale.where(nomchamp: "LimMaxMea").first.valeurchamp
     @limmaxmalu = Varlocale.where(nomchamp: "LimMaxMalu").first.valeurchamp
     @annonce = Annonce.find(params[:id])
+    if ( @annonce.envente_yesno.nil? || @annonce.envente_yesno == false )
+      redirect_to users_mesannonces_path
+    end
   end
   
   def update_formule
