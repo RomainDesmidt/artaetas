@@ -70,7 +70,7 @@ Rails.application.routes.draw do
    # static pages
   get 'sidekiqtest', to: 'pages#sidekiqtest'
   get 'styleguide', to: 'pages#styleguide'
-  get 'don', to: 'pages#don'
+  get 'contribution', to: 'pages#don'
   mount StripeEvent::Engine, at: '/stripe-webhooks'
   
 end

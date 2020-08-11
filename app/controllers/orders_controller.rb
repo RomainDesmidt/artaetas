@@ -45,7 +45,11 @@ class OrdersController < ApplicationController
     
     def donate
       annonce = Annonce.find(params[:annonce_id])
-      premium_formule = "Don"
+      if annonce.id == 1
+        premium_formule = "Contribution"
+      else
+        premium_formule = "Don"
+      end
       amount_premium = params[:montant].to_i*100
       amount_stripe = amount_premium
       order  = Order.create!(annonce: annonce, premium_sku: premium_formule, amount: (amount_premium/100), state: 'pending', user: current_user)
