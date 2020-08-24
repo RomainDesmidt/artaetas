@@ -23,30 +23,35 @@
 <p>Emplacements actuellement disponibles : </p>
 <p>-pour les Mise à la une, <b><%= @countmalu %>/<%= @limmaxmalu %></b></p>
 <p>-pour les Mise en avant, <b><%= @countmea %>/<%= @limmaxmea %></b></p>
-    <%= form_tag orders_path do %>
-      <%= hidden_field_tag 'annonce_id', @annonce.id %>
-      <div class="form-group select optional annonce_formule form-group-valid">
-        <label class="form-control-label select optional" for="premium_formule"></label>
+
+<br><br>
+
+TEMPORAIREMENT HORS SERVICE
+<%#  FORMULE OFF     %>
+    <%#= form_tag orders_path do %>
+      <%#= hidden_field_tag 'annonce_id', @annonce.id %>
+      <!--<div class="form-group select optional annonce_formule form-group-valid">-->
+      <!--  <label class="form-control-label select optional" for="premium_formule"></label>-->
         
-    <% if (@limmaxmea > @countmea && @limmaxmalu > @countmalu) %>
-      <%= select_tag 'premium_formule', options_for_select(["Mise a la une","Mise en Avant"]), class: "form-control is-valid select optional" %>
-    <% else %>
-      <% if @limmaxmea > @countmea %>
-          <%= select_tag 'premium_formule', options_for_select(["Mise en Avant"]), class: "form-control is-valid select optional" %>
-      <% else %>
-          <% if @limmaxmalu > @countmalu %>
-              <%= select_tag 'premium_formule', options_for_select(["Mise a la une"]), class: "form-control is-valid select optional" %>
-          <% else %>
-              <p>Les Quotats sont atteint il n'est pas possible pour le moment d'acheter une option Malu ou Mea</p>
-          <% end %>
-      <% end %>
-    <% end %>
+    <%# if (@limmaxmea > @countmea && @limmaxmalu > @countmalu) %>
+      <%#= select_tag 'premium_formule', options_for_select(["Mise a la une","Mise en Avant"]), class: "form-control is-valid select optional" %>
+    <%# else %>
+      <%# if @limmaxmea > @countmea %>
+          <%#= select_tag 'premium_formule', options_for_select(["Mise en Avant"]), class: "form-control is-valid select optional" %>
+      <%# else %>
+          <%# if @limmaxmalu > @countmalu %>
+              <%#= select_tag 'premium_formule', options_for_select(["Mise a la une"]), class: "form-control is-valid select optional" %>
+          <%# else %>
+              <!--<p>Les Quotats sont atteint il n'est pas possible pour le moment d'acheter une option Malu ou Mea</p>-->
+          <%# end %>
+      <%# end %>
+    <%# end %>
       <%# <small class="form-text text-muted">statut de votre annonce</small> %>
-      </div>
-      <% unless (@countmea >= @limmaxmea  && @countmalu >= @limmaxmalu) %>
-          <%= submit_tag 'Souscrire', class: 'btn btn-primary aa-mobile-btn aa-new-publierannonce' %>
-      <% end %>
-    <% end %>
+      <!--</div>-->
+      <%# unless (@countmea >= @limmaxmea  && @countmalu >= @limmaxmalu) %>
+          <%#= submit_tag 'Souscrire', class: 'btn btn-primary aa-mobile-btn aa-new-publierannonce' %>
+      <%# end %>
+    <%# end %>
     
     <%#= simple_form orders_path do |f| %>
         <%#= f.input 'annonce_id', :as => :hidden, :input_html => { :value => @annonce.id } %>
@@ -55,6 +60,9 @@
     <%# end %>
     
 </div>
+
+<%# FORMULE END %>
+
 <% unless current_user.nil? %>
     <div class="aa-show-retour">
       <%#=link_to users_me_path( :view_param => "annonce") do %> 

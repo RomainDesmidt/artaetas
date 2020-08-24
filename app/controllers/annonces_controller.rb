@@ -641,11 +641,16 @@ class AnnoncesController < ApplicationController
       #@annonce.update(annonce_params)
       @don = params[:annonce][:faire_un_don].to_i
       @archive = params[:annonce][:archive].to_i
+      @archivedef = params[:annonce][:archiver_definitivement].to_i
       # puts params[:annonce]
       #puts @don
       #puts @archive
-      if @archive == 1
-       @annonce.update(archive: true) 
+      if @archive == 1 && @archivedef == 1
+       @annonce.update(archive: true)
+      else
+        if @archive == 1
+          @annonce.update(archive: true)
+        end
       end
       if @don == 1
         redirect_to don_annonce_path(@annonce)

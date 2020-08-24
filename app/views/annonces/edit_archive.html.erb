@@ -23,6 +23,11 @@
         <label class="form-check-label boolean optional" for="annonce_archive">Archiver cette annonce?</label>
         <br>
         <div class="aa-archive-don">
+            <input name="annonce[archiver_definitivement]" type="hidden" value="0">
+            <input label="false" type="checkbox" value="1" name="annonce[archiver_definitivement]" id="annonce_archiver_definitivement">
+            <label class="form-check-label boolean optional" for="annonce_archiver_definitivement">Ne plus faire apparaitre cette annonce sur mon profil?</label>
+        </div>
+        <div class="aa-archive-don">
             <input name="annonce[faire_un_don]" type="hidden" value="0">
             <input label="false" type="checkbox" value="1" name="annonce[faire_un_don]" id="annonce_faire_un_don">
             <label class="form-check-label boolean optional" for="annonce_faire_un_don">Faire un don?</label>

@@ -186,11 +186,13 @@
         <% i = 0 %>
         <% @bmlist.each do |bml| %>
           <% if i < 5 %>
-            <div class="aa-me-favoriuseritem">
-              <%= link_to "/annonces/#{bml.slug}" do %>
-                <%= cl_image_tag Annonce.find(bml.id).photo.exifignore, class: "aa-me-favoriuser-image" %>
-              <% end %>
-            </div>
+            <% unless Annonce.find(bml.id).archivedef %>
+              <div class="aa-me-favoriuseritem">
+                <%= link_to "/annonces/#{bml.slug}" do %>
+                  <%= cl_image_tag Annonce.find(bml.id).photo.exifignore, class: "aa-me-favoriuser-image" %>
+                <% end %>
+              </div>
+            <% end %>
           <% end %>
           <% i += 1 %>
         <% end %>
@@ -206,7 +208,7 @@
       <div class="aa-search-annonce-container">
             <% if @user.annonces.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true).count > 0 %>
               <% @user.annonces.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true).each do |a| %>
-      
+              <% unless a.archivedef %>  
                   <div class="aa-search-annonce-card">
                   <%= link_to showannonces_path(a.slug), class: "aa-search-annonce-card-image aa-show-user-pub" do %>
                     <!-- <div class="aa-search-annonce-card-image"> -->
@@ -249,7 +251,7 @@
       
       
                   </div>
-      
+                <% end %>
               <% end %>
             <% else %>
               <h1>Aucune annonce trouvee</h1>
