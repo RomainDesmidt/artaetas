@@ -5,3 +5,17 @@
 .aa-archive-mainquestion:checked ~ .aa-archive-don {
     display: block;
 }
+
+.aa-archive-confirm {
+    position: relative;
+    top: 15px;
+}
+
+.aa-archive-mainquestion:checked ~ .aa-archive-confirm {
+    position: relative;
+    top: 75px;
+}
+
+.aa-don-width {
+    width: 55px;
+}
