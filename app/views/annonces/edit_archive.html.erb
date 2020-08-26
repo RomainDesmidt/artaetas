@@ -15,22 +15,52 @@
     <!--    <%#= f.submit 'Confirmer', class: 'btn btn-primary aa-mobile-btn aa-new-publierannonce' %>-->
     <!--<%# end %>-->
     
-    <form class="simple_form edit_annonce" id="edit_annonce_<%= @annonce.id %>" style="text-align: center; position: relative;" novalidate="novalidate" action="/annonces/<%= @annonce.id %>/update_archive" accept-charset="UTF-8" method="post" >
+    <form class="simple_form edit_annonce" id="edit_annonce_<%= @annonce.id %>" style="text-align: center;" novalidate="novalidate" action="/annonces/<%= @annonce.id %>/update_archive" accept-charset="UTF-8" method="post" >
         <input type="hidden" name="_method" value="patch">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input name="annonce[archive]" type="hidden" value="0">
-        <input class="form-check-input boolean optional aa-archive-mainquestion" type="checkbox" value="1" name="annonce[archive]" id="annonce_archive" style="left: 24%; position: absolute;">
-        <label class="form-check-label boolean optional" for="annonce_archive" style="left: 25%; position: absolute;">Je souhaite archiver mon annonce => elle sera visible sur mon profil membre</label>
-        <br>
-        <div class="aa-archive-don" style="position: relative;">
-            <input name="annonce[archiver_definitivement]" type="hidden" value="0">
-            <input label="false" type="checkbox" value="1" name="annonce[archiver_definitivement]" id="annonce_archiver_definitivement" style="position: absolute; left: 23.2%; top: 8px;">
-            <label class="form-check-label boolean optional" for="annonce_archiver_definitivement" style="position: absolute; left: 26.2%; top: 5px;">Je souhaite supprimer mon annonce définitivement</label>
+        <div class="aa-archive-flex">
+            <input name="annonce[archive]" type="hidden" value="0">
+            <input class="form-check-input boolean optional aa-archive-mainquestionone" type="radio" value="1" name="annonce[archive]" id="annonce_archive" required>
+            <label class="form-check-label boolean optional" for="annonce_archive" >Je souhaite archiver mon annonce => elle sera visible sur mon profil membre</label>
+            <div class="aa-archive-flexitem">
+                <div class="aa-archive-donone" >
+                    <input name="annonce[vendu]" type="hidden" value="0">
+                    <input label="false" type="radio" value="1" name="annonce[vendu]" id="annonce_vendu_artaetas1" >
+                    <label class="form-check-label boolean optional" for="annonce_vendu_artaetas1" >J'ai vendu grâce à ARTAETAS</label>
+                </div>
+                <div class="aa-archive-donone" >
+                    <!--<input name="annonce[vendu]" type="hidden" value="0">-->
+                    <input label="false" type="radio" value="2" name="annonce[vendu]" id="annonce_vendu_autre1" >
+                    <label class="form-check-label boolean optional" for="annonce_vendu_autre1" >J'ai vendu mon oeuvre par d'autres moyens</label>
+                </div>
+                <div class="aa-archive-donone" >
+                    <!--<input name="annonce[vendu]" type="hidden" value="0">-->
+                    <input label="false" type="radio" value="3" name="annonce[vendu]" id="annonce_retirer1" >
+                    <label class="form-check-label boolean optional" for="annonce_retirer1" >Je souhaite juste retirer mon oeuvre</label>
+                </div>
+            </div>
         </div>
-        <div class="aa-archive-don" style="position: relative;">
-            <input name="annonce[faire_un_don]" type="hidden" value="0">
-            <input label="false" type="checkbox" value="1" name="annonce[faire_un_don]" id="annonce_faire_un_don" style="position: absolute; left: 23.2%; top: 38px;">
-            <label class="form-check-label boolean optional" for="annonce_faire_un_don" style="position: absolute; left: 26.2%; top: 34px;">J'ai vendu mon oeuvre grâce à ARTAETAS ou par d'autres moyens et souhaite faire un don</label>
+        <div class="aa-archive-flex">
+            <!--<input name="annonce[archive]" type="hidden" value="0">-->
+            <input class="form-check-input boolean optional aa-archive-mainquestiontwo" type="radio" value="2" name="annonce[archive]" id="annonce_archive2" required>
+            <label class="form-check-label boolean optional" for="annonce_archive2" >Je souhaite supprimer mon annonce définitivement</label>
+            <div class="aa-archive-flexitem">
+                <div class="aa-archive-dontwo" >
+                    <!--<input name="annonce[vendu]" type="hidden" value="0">-->
+                    <input label="false" type="radio" value="1" name="annonce[vendu]" id="annonce_vendu_artaetas2" >
+                    <label class="form-check-label boolean optional" for="annonce_vendu_artaetas2" >J'ai vendu grâce à ARTAETAS</label>
+                </div>
+                <div class="aa-archive-dontwo" >
+                    <!--<input name="annonce[vendu]" type="hidden" value="0">-->
+                    <input label="false" type="radio" value="2" name="annonce[vendu]" id="annonce_vendu_autre2" >
+                    <label class="form-check-label boolean optional" for="annonce_vendu_autre2" >J'ai vendu mon oeuvre par d'autres moyens</label>
+                </div>
+                <div class="aa-archive-dontwo" >
+                    <!--<input name="annonce[vendu]" type="hidden" value="0">-->
+                    <input label="false" type="radio" value="3" name="annonce[vendu]" id="annonce_retirer2" >
+                    <label class="form-check-label boolean optional" for="annonce_retirer2" >Je souhaite juste retirer mon oeuvre</label>
+                </div>
+            </div>
         </div>
         <input type="submit" name="commit" value="Confirmer" class="btn btn-primary aa-mobile-btn aa-new-publierannonce aa-archive-confirm" data-disable-with="Confirmer">
         

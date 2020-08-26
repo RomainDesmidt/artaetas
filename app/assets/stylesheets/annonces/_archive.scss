@@ -1,8 +1,12 @@
-.aa-archive-don {
+.aa-archive-donone, .aa-archive-dontwo  {
     display: none;
 }
 
-.aa-archive-mainquestion:checked ~ .aa-archive-don {
+.aa-archive-mainquestionone:checked ~  .aa-archive-flexitem > .aa-archive-donone {
+    display: block;
+}
+
+.aa-archive-mainquestiontwo:checked ~ .aa-archive-flexitem > .aa-archive-dontwo {
     display: block;
 }
 
@@ -11,11 +15,25 @@
     top: 15px;
 }
 
-.aa-archive-mainquestion:checked ~ .aa-archive-confirm {
-    position: relative;
-    top: 75px;
-}
+// .aa-archive-mainquestion:checked ~ .aa-archive-confirm {
+//     position: relative;
+//     top: 75px;
+// }
 
 .aa-don-width {
     width: 55px;
+}
+
+.aa-archive-flex {
+    display: flex;
+    margin-left: 25%;
+    margin-right: 25%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.aa-archive-flexitem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }

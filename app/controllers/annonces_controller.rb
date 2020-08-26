@@ -639,27 +639,38 @@ class AnnoncesController < ApplicationController
     @annonce = Annonce.find(params[:id])
     if current_user == @annonce.user
       #@annonce.update(annonce_params)
-      @don = params[:annonce][:faire_un_don].to_i
+      # @don = params[:annonce][:faire_un_don].to_i
+      # @archivedef = params[:annonce][:archiver_definitivement].to_i
+      
+      @vendu = params[:annonce][:vendu].to_i
       @archive = params[:annonce][:archive].to_i
-      @archivedef = params[:annonce][:archiver_definitivement].to_i
       # puts params[:annonce]
       #puts @don
       #puts @archive
-      if @archive == 1 && @archivedef == 1
-       @annonce.update(archive: true)
-      else
-        if @archive == 1
-          @annonce.update(archive: true)
-        end
+      # puts "la valeur de @vendu est #{@vendu}"
+      # puts @vendu.is_a? Integer
+      # puts "la valeur de @archive est #{@archive}"
+      # puts @archive.is_a? Integer
+      if @vendu == 0 && @archive == 0
+        flash[:notice] = "Faites un choix"
+        render 'edit_archive'
+        return
       end
-      if @don == 1
-        redirect_to don_annonce_path(@annonce)
-      else
-        redirect_to users_mesannonces_path
-        #puts @don
-      end
-    else
-      redirect_to users_mesannonces_path
+    #   if @archive == 1 && @archivedef == 1
+    #   @annonce.update(archive: true)
+    #   else
+    #     if @archive == 1
+    #       @annonce.update(archive: true)
+    #     end
+    #   end
+    #   if @don == 1
+    #     redirect_to don_annonce_path(@annonce)
+    #   else
+    #     redirect_to users_mesannonces_path
+    #     #puts @don
+    #   end
+    # else
+    #   redirect_to users_mesannonces_path
     end
   end
   
