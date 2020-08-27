@@ -27,7 +27,7 @@
 .aa-archive-flex {
     display: flex;
     margin-left: 25%;
-    margin-right: 25%;
+    // margin-right: 25%;
     flex-direction: column;
     align-items: flex-start;
 }
@@ -36,4 +36,13 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.form-check-input:checked + label {
+    color: #1d5f8f;
+    background-color: transparent !important;
+}
+input[type="radio"]:checked + label {
+    color: #1d5f8f;
+    background-color: transparent !important;    
 }
