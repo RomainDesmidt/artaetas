@@ -651,10 +651,25 @@ class AnnoncesController < ApplicationController
       # puts @vendu.is_a? Integer
       # puts "la valeur de @archive est #{@archive}"
       # puts @archive.is_a? Integer
-      if @vendu == 0 && @archive == 0
+      if @vendu == 0 || @archive == 0
         flash[:notice] = "Faites un choix"
         render 'edit_archive'
         return
+      else
+        case @archive
+        when 1
+          @annonce.update(archive: true)
+        when 2
+          @annonce.update(archive: true, archivedef: true)
+        end
+        case @vendu
+        when 1
+          redirect_to don_annonce_path(@annonce)
+        when 2
+          redirect_to don_annonce_path(@annonce)
+        when 3
+          redirect_to users_mesannonces_path
+        end
       end
     #   if @archive == 1 && @archivedef == 1
     #   @annonce.update(archive: true)
