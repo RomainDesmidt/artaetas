@@ -21,8 +21,8 @@
 <br><br>
 <p><b>Les emplacements dédiés aux Mise à la une et Mise en avant sont limités.</b></p>
 <p>Emplacements actuellement disponibles : </p>
-<p>-pour les Mise à la une, <b><%= @countmalu %>/<%= @limmaxmalu %></b></p>
-<p>-pour les Mise en avant, <b><%= @countmea %>/<%= @limmaxmea %></b></p>
+<p>-pour les Mise à la une, <b><%= @limmaxmalu-@countmalu %>/<%= @limmaxmalu %></b></p>
+<p>-pour les Mise en avant, <b><%= @limmaxmea-@countmea %>/<%= @limmaxmea %></b></p>
 
 
     <%= form_tag orders_path do %>
