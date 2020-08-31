@@ -77,7 +77,7 @@
       <div class="aa-new-vafield">
         <p class="aa-new-label">Categories</p>
       
-         <%= f.select :cat_ids, options_for_select(Categorie.all.collect {|u| [u.name, u.id]}, @categories), {:include_blank => false}, {:multiple => true, :class => 'multiple-dd form-group'}  %>
+         <%= f.select :cat_ids, options_for_select(Categorie.all.order("name ASC").collect {|u| [u.name, u.id]}, @categories), {:include_blank => false}, {:multiple => true, :class => 'multiple-dd form-group'}  %>
         <%# for categorie in Categorie.all %>
           <%# if @categories.include?(categorie.id) %>
             <!--<label>-->
@@ -92,7 +92,7 @@
          <%# end %>
 
         <p class="aa-new-label">Courants</p>
-        <%= f.select :courant_ids , options_for_select(Courant.all.collect {|u| [u.name, u.id]}, @courants), {:include_blank => false}, {:multiple => true, :class => 'multiple-dd2 form-group'}  %>
+        <%= f.select :courant_ids , options_for_select(Courant.all.order("name ASC").collect {|u| [u.name, u.id]}, @courants), {:include_blank => false}, {:multiple => true, :class => 'multiple-dd2 form-group'}  %>
         <%# for courant in Courant.all %>
           <%# if @courants.include?(courant.id) %>
             <!--<label>-->
@@ -122,7 +122,7 @@
           <%# end %>
         <%# end %>
         <p class="aa-new-label">Couleurs</p>
-        <%= f.select :couleur_ids , options_for_select(Couleur.all.collect {|u| [u.couleur_dominante, u.id]}, @couleurs), {:include_blank => false}, {:multiple => true, :size =>10, :class => 'multiple-dd3 form-group'}  %>
+        <%= f.select :couleur_ids , options_for_select(Couleur.all.order("couleur_dominante ASC").collect {|u| [u.couleur_dominante, u.id]}, @couleurs), {:include_blank => false}, {:multiple => true, :size =>10, :class => 'multiple-dd3 form-group'}  %>
 
       </div>
     </div>
