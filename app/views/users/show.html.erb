@@ -208,7 +208,7 @@
       <div class="aa-search-annonce-container">
             <% if @user.annonces.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true).count > 0 %>
               <% @user.annonces.joins(:user).where("users.confirmation_webmaster = true").where(envente_yesno: true).each do |a| %>
-              <% unless a.archivedef %>  
+              <% unless a.archivedef || a.archive %>  
                   <div class="aa-search-annonce-card">
                   <%= link_to showannonces_path(a.slug), class: "aa-search-annonce-card-image aa-show-user-pub" do %>
                     <!-- <div class="aa-search-annonce-card-image"> -->
@@ -259,6 +259,63 @@
       </div>
     </div>
   <% end %>
+      <div class="aa-me-annonceuser">
+      <p class="text-center"><b>ANNONCES ARCHIVEE</b></p>
+      <div class="aa-search-annonce-container">
+            <% if @user.annonces.joins(:user).where("users.confirmation_webmaster = true").where(archive: true).count > 0 %>
+              <% @user.annonces.joins(:user).where("users.confirmation_webmaster = true").where(archive: true).each do |a| %>
+              <% unless a.archivedef %>  
+                  <div class="aa-search-annonce-card">
+                  <%= link_to showannonces_path(a.slug), class: "aa-search-annonce-card-image aa-show-user-pub" do %>
+                    <!-- <div class="aa-search-annonce-card-image"> -->
+                      <%= cl_image_tag a.photo.exifignore %>
+                    <!-- </div> -->
+                  <% end %>
+                  <%= link_to showannonces_path(a.slug), class: "aa-search-annonce-card-detail" do %>
+                  
+                  
+                  
+                    <b><p class='aa-show-titre'><%= a.name %></p></b>
+                    <p class="aa-show-detail-italic">
+                    <% if a.nom_artiste? %>
+                     <%= "#{a.nom_artiste} - "  %>
+                    <% end %>
+                    <% if a.anneecreation %>
+                      <%= "#{a.anneecreation}" %>
+                    <% end %>
+                    </p>
+                    <p class="aa-show-price  aa-show-detail-italic">
+                      <% if a.prix?   %>
+                        <% if (a.prix.to_i - a.prix) > 0 %>
+                          <%= number_with_delimiter(a.prix.to_s, delimiter: " " ) %>€
+                        <% else %>
+                          <%= number_with_delimiter(a.prix.to_i.to_s, delimiter: " " ) %>€
+                        <% end %>
+                      <% end %>
+                    </p>
+                    
+                    
+                    
+                    <p class="aa-p-description">
+                     <%= a.description %>
+                    </p>
+                    
+                  <% end %>
+      
+                    <div class="aa-search-annonce-card-control">
+                    </div>
+      
+      
+                  </div>
+                <% end %>
+              <% end %>
+            <% else %>
+              <h1>Aucune annonce trouvee</h1>
+            <% end %>
+      </div>
+    </div>
+  
+  
 </div>
 <% unless current_user.nil? %>
   <% if current_user.username == params[:username] %>
