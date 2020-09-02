@@ -7,13 +7,23 @@
     
     <%= form_tag orders_donate_path, style: "text-align: center;" do %>
         <%= hidden_field_tag 'annonce_id', @annonce.id %>
-<p style="height: 33px; padding-top: 6px;">Aidez nous à développer ARTAETAS en réalisant une contribution volontaire.</p>
-        <p style="height: 33px; padding-top: 6px;">100% de cette contribution sera réinvestie dans le budget publicitaire de la plateforme. Cela renforcera l'afflux d'acheteurs potentiels.</p>
+        <p style="height: 33px; padding-top: 6px;"></p>
+        <p style="height: 33px; padding-top: 6px;">Bienvenue sur le module de donation !</p>
+        <br>
+        <p style="height: 33px; padding-top: 6px;">Nous croyons dans la bienveillance et la solidarité.</p>
+        <p style="height: 33px; padding-top: 6px;">ARTAETAS soutient ses membres, artistes, collectionneurs et acteurs du marché de l'art en leur proposant un service de qualité sans contrepartie.</p>
+        <p style="height: 33px; padding-top: 6px;">En particulier, nous sommes convaincus que notre plateforme permet et permettra à de nombreux artistes de vivre de leur art.</p>
+        <br>
+        <p style="height: 33px; padding-top: 6px;">Vous avez la possibilité d’aider ARTAETAS dans la réalisation de sa mission en versant une donation à la plateforme. </p>
+        <p style="height: 33px; padding-top: 6px;">Nous nous engageons à dédier 100% de cette donation au budget développement du site. Cela permettra de proposer de nouveaux services pour les membres de la plateforme.</p>
+        <br>
+        <p style="height: 33px; padding-top: 6px;">Merci d’avance pour votre générosité :)</p>
+        <br>
         
         <!--<p><label class="form-control-label select optional" for="Montant">Quel Montant souhaitez vous donner ?</label></p>-->
-        <p style="height: 33px">Je décide de verser une contribution de  <%= number_field_tag 'montant', nil, class: "aa-don-width" %> euros à destination du budget publicitaire de la plateforme.</p>
+        <p style="height: 33px">Je décide de verser une donation de   <%= number_field_tag 'montant', nil, class: "aa-don-width" %> euros à destination du budget développement de la plateforme ARTAETAS.</p>
         <br>
-        <%= submit_tag 'Donner', class: 'btn btn-primary aa-mobile-btn aa-new-publierannonce' %>
+        <%= submit_tag 'Verser ma donation', class: 'btn btn-primary aa-mobile-btn aa-new-publierannonce' %>
     <% end %>
     <!--<form class="simple_form edit_annonce" id="edit_annonce_8" novalidate="novalidate" action="/annonces/8/update_archive" accept-charset="UTF-8" method="post">-->
     <!--    <input type="hidden" name="_method" value="patch">-->
