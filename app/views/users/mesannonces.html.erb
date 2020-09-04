@@ -41,7 +41,7 @@
           <div class="grid-sizer-me"></div>
           <div class="gutter-sizer-me"></div>
            <% @annonces.each do |t| %>
-             <% unless t.archivedef == true %>
+             <% unless t.archivedef == true || t.archive == true %>
                <% if t.formule == "Mise en Avant" %>
                  <div class="grid-item-me" style="">
                <% else %>
@@ -127,8 +127,117 @@
     
                   </div>
                   <% end %>
-                <% end %>
               </div>
+              <% end %>
+           <% end %>
+        </div>
+      </div>
+    </div>
+    
+</div>
+
+
+<div class="tab-content" id="myTabContent">
+    
+    <div class="tab-pane fade active show" id="annonces" role="tabpanel" aria-labelledby="annonces-tab">
+          <div class="aa-me-moncompte-container">
+            <div class="aa-me-infoperso">
+              <h2>Mes Annonces Archivée</h2>        
+            </div>
+          </div>
+      <div class="grid-container aa-search-grid-container">
+        <div class="grid-me">
+          <div class="grid-sizer-me"></div>
+          <div class="gutter-sizer-me"></div>
+           <% @annonces.each do |t| %>
+             <% if t.archive == true && t.archivedef == false %>
+               <% if t.formule == "Mise en Avant" %>
+                 <div class="grid-item-me" style="">
+               <% else %>
+                 <% if t.formule == "Mise a la une" %>
+                   <div class="grid-item-me" style="">
+                 <% else %>
+                   <div class="grid-item-me hello">
+                 <% end %>
+               <% end %>
+               <%= link_to showannonces_path(t.slug) , { class: "aa-annonce-titre"} do %>
+                  <% if t.photo.url.nil? %>
+                    <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
+                  <% else %>
+                    <%= image_tag(t.photo.low.exifignore)  %>
+                  <% end %>
+                  <%#= image_tag(t.photo.url.insert(4, 's'))  %>
+                  <%#= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.url.insert(4, 's') })  %>
+                  <% unless t.name.lines.first.nil? %>
+                    <p class='p-titre-me'><%= t.name.lines.first[0,70] %></p>
+                  <% end %>
+                  <% unless t.description.lines.first.nil? %>
+                    <p class='p-description-me'><%= t.description.lines.first[0,70] %></p>
+                  <% end %>
+                  
+                  <div class="aa-cache-button-me">
+    
+                    <div class="aa-me-submenu">
+                        <% case t.envente_yesno %>
+                          <% when nil %>
+                            <%= link_to "#", class: "aa-link-confirm-action aa-link-confirm-waiting" do %>
+                              <%= inline_svg "attente.svg", class: "aa-confirm-action aa-action-waiting" %>
+                            <% end %>
+                          <% when true %>
+                            <%= link_to "#", class: "aa-link-confirm-action aa-link-confirm-confirmed" do %>
+                              <%= inline_svg "ok.svg", class: "aa-confirm-action aa-action-confirmed" %>
+                            <% end %>
+                          <% when false %>
+                            <%= link_to "#", class: "aa-link-confirm-action aa-link-confirm-refused" do %>
+                              <%= inline_svg "erreur.svg", class: "aa-confirm-action aa-action-refused" %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                    
+                    <div class="aa-me-submenu">
+                      <%= link_to edit_annonce_path(t), class: "aa-edit-action" do %>
+                        <%= inline_svg "modifier.svg", class: "aa-edit-svg" %>
+                      <% end %>
+                    </div>
+                    
+                    <% if t.envente_yesno %>
+                      <div class="aa-me-submenu">
+                        <% case t.formule %>
+                          <% when "Standard" %>
+                            <%= link_to edit_formule_annonce_path(t) , class: "aa-standard-action" do %>
+                              <%= inline_svg "prix-composant.svg", class: "aa-suppr-svg" %>
+                            <% end %>
+                          <% when "Mise en Avant" %>
+                            <%= link_to edit_formule_annonce_path(t) , class: "aa-mea-action" do %>
+                              <%= inline_svg "prix-composant.svg", class: "aa-suppr-svg" %>
+                            <% end %>
+                          <% when "Mise a la une" %>
+                            <%= link_to edit_formule_annonce_path(t) , class: "aa-malu-action" do %>
+                              <%= inline_svg "prix-composant.svg", class: "aa-suppr-svg" %>
+                            <% end %>
+                        <% end %>
+                      </div>
+                    <% end %>
+                    
+                    
+                    <div class="aa-me-submenu">
+                      <%= link_to t , class: "aa-delete-action", method: :delete, data: { confirm: 'Etes vous sûr?' } do %>
+                        <%= inline_svg "suppression.svg", class: "aa-suppr-svg" %>
+                      <% end %>
+                    </div>
+                    <!--<div class="aa-me-submenu">-->
+                    <!--  <%#= link_to edit_archive_annonce_path(t) , class: "aa-delete-action" do %>-->
+                    <!--    <%#= inline_svg "suppression.svg", class: "aa-suppr-svg" %>-->
+                    <!--  <%# end %>-->
+                    <!--</div>-->
+                    
+    
+    
+    
+                  </div>
+                  <% end %>
+              </div>
+              <% end %>
            <% end %>
         </div>
       </div>
