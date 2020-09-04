@@ -14,7 +14,7 @@
         <p style="height: 33px; padding-top: 6px;">100% de cette contribution sera réinvestie dans le budget publicitaire de la plateforme. Cela renforcera le flux d’acheteurs potentiels</p>
         <br>
         <!--<p><label class="form-control-label select optional" for="Montant">Quel Montant souhaitez vous donner ?</label></p>-->
-        <p style="height: 33px">Je décide de verser une contribution de  <%= number_field_tag 'montant', nil, class: "aa-don-width" %> euros à destination du budget publicitaire de la plateforme ARTAETAS.</p>
+        <p style="height: 33px">Je décide de verser une contribution de  <%= number_field_tag 'montant', "0", in:0...9999999, class: "aa-don-width" %> euros à destination du budget publicitaire de la plateforme ARTAETAS.</p>
         <br>
         <%= submit_tag 'Verser ma contribution', class: 'btn btn-primary aa-mobile-btn aa-new-publierannonce' %>
     <% end %>

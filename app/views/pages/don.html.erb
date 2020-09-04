@@ -21,7 +21,7 @@
         <br>
         
         <!--<p><label class="form-control-label select optional" for="Montant">Quel Montant souhaitez vous donner ?</label></p>-->
-        <p style="height: 33px">Je décide de verser une donation de   <%= number_field_tag 'montant', nil, class: "aa-don-width" %> euros à destination du budget développement de la plateforme ARTAETAS.</p>
+        <p style="height: 33px">Je décide de verser une donation de   <%= number_field_tag 'montant', "0", in:0...9999999, class: "aa-don-width" %> euros à destination du budget développement de la plateforme ARTAETAS.</p>
         <br>
         <%= submit_tag 'Verser ma donation', class: 'btn btn-primary aa-mobile-btn aa-new-publierannonce' %>
     <% end %>
