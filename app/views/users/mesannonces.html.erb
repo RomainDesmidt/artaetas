@@ -136,7 +136,7 @@
     
 </div>
 
-
+<% unless current_user.annonces.where(archive: true).empty? || (current_user.annonces.where(archive: true) - current_user.annonces.where(archivedef: true)).empty? %>
 <div class="tab-content" id="myTabContent">
     
     <div class="tab-pane fade active show" id="annonces" role="tabpanel" aria-labelledby="annonces-tab">
@@ -244,3 +244,4 @@
     </div>
     
 </div>
+<% end %>

@@ -259,6 +259,9 @@
       </div>
     </div>
   <% end %>
+  
+  
+ <% unless @user.annonces.where(archive: true).empty? || (@user.annonces.where(archive: true) - @user.annonces.where(archivedef: true)).empty? %> 
       <div class="aa-me-annonceuser">
       <p class="text-center"><b>ANNONCES ARCHIVEE</b></p>
       <div class="aa-search-annonce-container">
@@ -314,7 +317,7 @@
             <% end %>
       </div>
     </div>
-  
+<% end %>  
   
 </div>
 <% unless current_user.nil? %>
