@@ -265,7 +265,7 @@
               </div>
               
                 
-                <% if user_signed_in? %>
+                <% if user_signed_in? && @annonces.archive == false %>
                   <% if current_user.followees.include?(@user) %>
                   <div class="aa-show-detailuser-followbtn"><%= link_to "MEMBRE SUIVI", unfollow_annonce_path(@annonces), method: :put, class: "aa-show-suivre-link" %> <%#= inline_svg "enlever.svg", class: "aa-show-follow-svg" %></div>
                   <% else %>
@@ -274,8 +274,10 @@
                 <% end %>
             </div>
           </div>
-          <p class="aa-show-share-title aa-show-interess-title">Interessé par cette annonce?</p>
-          <% if user_signed_in? %>        
+          <%# unless @annonces.archive == true %>
+            <p class="aa-show-share-title aa-show-interess-title"><% unless @annonces.archive == true %>Interessé par cette annonce?<% end %></p>
+          <%# end %>
+          <% if user_signed_in? && @annonces.archive == false %>        
             <div class="aa-show-detailuser-contact-email">
               <div class="aa-show-detailuser-contact-btn">
                 <% if @annonces.user.afficher_email %>
@@ -306,9 +308,14 @@
               </div>
             <% end %>
           <% else %>
-            <a href="" data-toggle="modal" data-target="#exampleModal">
-              <p class="aa-show-share-title aa-show-share-title-hover" style="text-align: center !important;">Enregistrez-vous pour contacter le membre</p>
-            </a>
+            <% unless @annonces.archive == true %>
+              <a href="" data-toggle="modal" data-target="#exampleModal">
+                <p class="aa-show-share-title aa-show-share-title-hover" style="text-align: center !important;">Enregistrez-vous pour contacter le membre</p>
+              </a>
+            <% end %>
+            <% if @annonces.archive == true %>
+              <p class="aa-show-share-title aa-show-share-title-hover" style="text-align: center !important;">Cette oeuvre est actuellement dans la collection de quelqu'un d'autre</p>
+            <% end %>
           <% end %> 
         </div>
         
