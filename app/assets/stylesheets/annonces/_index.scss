@@ -10,6 +10,42 @@
 //   width: 100px!important ;
 // }
 
+.contribution-h4-titre {
+  height: 33px; 
+  padding-top: 6px; 
+  font-weight: bold; 
+  color:  #3A89C1; 
+  margin-bottom: 33px; 
+  margin-top: 40px;
+}
+
+.contribution-p-1 {
+  height: 30px; 
+  padding-top: 6px;
+}
+
+.contribution-p-2 {
+  height: 22px; 
+  padding-top: 6px; 
+  font-weight: bold;
+}
+
+.contribution-p-3 {
+  height: 33px; 
+  padding-top: 6px;
+}
+
+.contribution-margin-form {
+  margin-left: 20%; 
+  margin-right: 20%;
+}
+
+
+.archive-margin-top {
+  margin-left: 20%; 
+  margin-right: 20%;
+}
+
 .modal-body-cquoi {
   padding: 1.4rem 2.4rem !important;
 }
@@ -1150,6 +1186,13 @@ p {
 
 @media (max-width: 1233px) {
   
+  .contribution-p-2 {
+    height: 48px; 
+  }
+  
+  .contribution-p-3 {
+    height: 48px; 
+  }
   .p-titre-end {
     align-self: flex-end;
   }
@@ -1180,6 +1223,15 @@ p {
   // }
 }
 @media (max-width: 768px) {
+  
+  .aa-archive-flex {
+    margin-left: 5%;
+  }
+  
+  .archive-margin-top {
+    margin-left: 0px; 
+    margin-right: 0px;
+  }
 
   .container-annonces-div {
     width: 50%; // fallback
@@ -1252,6 +1304,11 @@ p {
 }
 
 @media (max-width: 576px) {
+  
+  .contribution-margin-form {
+    margin-left: 0px; 
+    margin-right: 0px;
+  }
   #myTab {
     display: none;
   }
