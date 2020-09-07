@@ -1,4 +1,5 @@
 <div class="aa-me-undernavbar" style="height: 100px;"></div>
+<!--<img src="<%#= asset_path("don.jpg") %>" style="position: absolute; opacity: 0.4; top: 72px; left: 274px;" />-->
 <div style="margin-left: 20%; margin-right: 20%;">
     <%#= simple_form_for(@annonce, :url => orders_donate_path, :method => post ) do |f| %>
        <%#= f.input :montant, label: "Quel montant voulait vous donner ?" %>
@@ -7,21 +8,23 @@
     
     <%= form_tag orders_donate_path, style: "text-align: center;" do %>
         <%= hidden_field_tag 'annonce_id', @annonce.id %>
-        <p style="height: 33px; padding-top: 6px;"></p>
-        <p style="height: 33px; padding-top: 6px;">Bienvenue sur le module de donation !</p>
+        <!--<p style="height: 33px; padding-top: 6px;"></p>-->
+        <h4 style="height: 33px; padding-top: 6px; font-weight: bold; color:  #3A89C1; margin-bottom: 24px;">Bienvenue sur le module de donation !</h4>
         <br>
-        <p style="height: 33px; padding-top: 6px;">Nous croyons dans la bienveillance et la solidarité.</p>
-        <p style="height: 33px; padding-top: 6px;">ARTAETAS soutient ses membres, artistes, collectionneurs et acteurs du marché de l'art en leur proposant un service de qualité sans contrepartie.</p>
-        <p style="height: 33px; padding-top: 6px;">En particulier, nous sommes convaincus que notre plateforme permet et permettra à de nombreux artistes de vivre de leur art.</p>
+        <p style="height: 20px; padding-top: 6px;">Nous croyons dans la bienveillance et la solidarité.</p>
+        <p style="height: 22px; padding-top: 6px;">ARTAETAS soutient ses membres, artistes, collectionneurs et acteurs du marché de l'art en leur proposant un service de qualité sans contrepartie.</p>
+        <p style="height: 22px; padding-top: 6px;">En particulier, nous sommes convaincus que notre plateforme permet et permettra à de nombreux artistes de vivre de leur art.</p>
         <br>
-        <p style="height: 33px; padding-top: 6px;">Vous avez la possibilité d’aider ARTAETAS dans la réalisation de sa mission en versant une donation à la plateforme. </p>
+        <p style="height: 22px; padding-top: 6px;">Vous avez la possibilité d’aider ARTAETAS dans la réalisation de sa mission en versant une donation à la plateforme. </p>
         <p style="height: 33px; padding-top: 6px;">Nous nous engageons à dédier 100% de cette donation au budget développement du site. Cela permettra de proposer de nouveaux services pour les membres de la plateforme.</p>
         <br>
-        <p style="height: 33px; padding-top: 6px;">Merci d’avance pour votre générosité :)</p>
+        <h5 style="height: 33px; padding-top: 6px; font-weight: bold; color:  #3A89C1; margin-bottom: 18px; ">Merci d’avance pour votre générosité :)</h5>
         <br>
         
         <!--<p><label class="form-control-label select optional" for="Montant">Quel Montant souhaitez vous donner ?</label></p>-->
-        <p style="height: 33px">Je décide de verser une donation de   <%= number_field_tag 'montant', "0", in:0...9999999, class: "aa-don-width" %> euros à destination du budget développement de la plateforme ARTAETAS.</p>
+        <h5 style="height: 27px; font-weight: bold; color:  #3A89C1; margin-bottom: 0px; margin-top: 7px;">Je décide de verser une donation de </h5>  
+            <%= number_field_tag 'montant', "0", min: 0, class: "aa-don-width" %> <b style="font-size: 30px; top: 5px; position: relative; color:  #3A89C1;">€</b>
+        <h5 style="height: 32px;  font-weight: bold; margin-top: 15px;  color: #3A89C1; margin-bottom: 0px;">à destination du budget développement de la plateforme ARTAETAS.</h5>
         <br>
         <%= submit_tag 'Verser ma donation', class: 'btn btn-primary aa-mobile-btn aa-new-publierannonce' %>
     <% end %>
@@ -62,3 +65,13 @@
         
     <!--</form>-->
 </div>
+<% unless current_user.nil? %>
+  <%# if current_user.username == params[:username] %>
+    <div class="aa-show-retour">
+      <%#=link_to users_me_path( :view_param => "annonce") do %> 
+      <%=link_to users_mesannonces_path do %>
+        <%= inline_svg "home.svg", class: "aa-show-retour-svg" %>&nbsp;&nbsp;&nbsp;<span>Retour Profil</span>
+      <% end %>
+    </div>
+  <%# end %>
+<% end %>  

@@ -1,4 +1,5 @@
 <div class="aa-me-undernavbar" style="height: 100px;"></div>
+<!--<img src="<%#= asset_path("contrib.jpg") %>" style="position: absolute; opacity: 0.4; top: 64px; left: 197px;" />-->
 <div style="margin-left: 20%; margin-right: 20%;">
     <%#= simple_form_for(@annonce, :url => orders_donate_path, :method => post ) do |f| %>
        <%#= f.input :montant, label: "Quel montant voulait vous donner ?" %>
@@ -7,14 +8,16 @@
     
     <%= form_tag orders_donate_path, style: "text-align: center;" do %>
         <%= hidden_field_tag 'annonce_id', @annonce.id %>
-        <p style="height: 33px; padding-top: 6px;">Félicitations pour votre vente !</p>
-        <p style="height: 33px; padding-top: 6px;">Nous sommes fiers d’avoir participé à cette transaction. C’est un pas de plus vers la réalisation de notre mission. </p>
+        <h4 style="height: 33px; padding-top: 6px; font-weight: bold; color:  #3A89C1; margin-bottom: 33px;">Félicitations pour votre vente !</h4>
+        <p style="height: 30px; padding-top: 6px;">Nous sommes fiers d’avoir participé à cette transaction. C’est un pas de plus vers la réalisation de notre mission. </p>
         <br>
-        <p style="height: 33px; padding-top: 6px;">Aidez nous à renforcer notre soutien aux artistes grâce à une contribution volontaire du montant de votre choix.</p>
-        <p style="height: 33px; padding-top: 6px;">100% de cette contribution sera réinvestie dans le budget publicitaire de la plateforme. Cela renforcera le flux d’acheteurs potentiels</p>
+        <p style="height: 22px; padding-top: 6px; font-weight: bold;">Aidez nous à renforcer notre soutien aux artistes grâce à une contribution volontaire du montant de votre choix.</p>
+        <p style="height: 33px; padding-top: 6px;">100% de cette contribution sera réinvestie dans le budget publicitaire de la plateforme. Cela renforcera le flux d’acheteurs potentiels.</p>
         <br>
         <!--<p><label class="form-control-label select optional" for="Montant">Quel Montant souhaitez vous donner ?</label></p>-->
-        <p style="height: 33px">Je décide de verser une contribution de  <%= number_field_tag 'montant', "0", in:0...9999999, class: "aa-don-width" %> euros à destination du budget publicitaire de la plateforme ARTAETAS.</p>
+        <h5 style="height: 27px; font-weight: bold; color:  #3A89C1; margin-bottom: 0px; margin-top: 7px;">Je décide de verser une contribution de</h5>  
+            <%= number_field_tag 'montant', "0", min: 0, class: "aa-don-width" %> <b style="font-size: 30px; top: 5px; position: relative; color:  #3A89C1;">€</b>
+        <h5 style="height: 33px;  font-weight: bold; margin-top: 15px;  color: #3A89C1; margin-bottom: 23px;">à destination du budget publicitaire de la plateforme ARTAETAS.</h5>
         <br>
         <%= submit_tag 'Verser ma contribution', class: 'btn btn-primary aa-mobile-btn aa-new-publierannonce' %>
     <% end %>
@@ -55,3 +58,13 @@
         
     <!--</form>-->
 </div>
+<% unless current_user.nil? %>
+  <%# if current_user.username == params[:username] %>
+    <div class="aa-show-retour">
+      <%#=link_to users_me_path( :view_param => "annonce") do %> 
+      <%=link_to users_mesannonces_path do %>
+        <%= inline_svg "home.svg", class: "aa-show-retour-svg" %>&nbsp;&nbsp;&nbsp;<span>Retour Profil</span>
+      <% end %>
+    </div>
+  <%# end %>
+<% end %>  
