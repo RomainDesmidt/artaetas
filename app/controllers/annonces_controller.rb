@@ -664,9 +664,9 @@ class AnnoncesController < ApplicationController
         end
         case @vendu
         when 1
-          redirect_to don_annonce_path(@annonce)
+          redirect_to contribution_annonce_path(@annonce)
         when 2
-          redirect_to don_annonce_path(@annonce)
+          redirect_to contribution_annonce_path(@annonce)
         when 3
           redirect_to users_mesannonces_path
         end
