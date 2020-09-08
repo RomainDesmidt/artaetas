@@ -16,7 +16,7 @@
         <br>
         <!--<p><label class="form-control-label select optional" for="Montant">Quel Montant souhaitez vous donner ?</label></p>-->
         <h5 style="height: 27px; font-weight: bold; color:  #3A89C1; margin-bottom: 0px; margin-top: 7px;">Je décide de verser une contribution de</h5>  
-            <%= number_field_tag 'montant', "0", min: 0, class: "aa-don-width" %> <b style="font-size: 30px; top: 5px; position: relative; color:  #3A89C1;">€</b>
+            <%= number_field_tag 'montant', "0", min: 1, class: "aa-don-width" %> <b style="font-size: 30px; top: 5px; position: relative; color:  #3A89C1;">€</b>
         <h5 style="height: 33px;  font-weight: bold; margin-top: 15px;  color: #3A89C1; margin-bottom: 23px;">à destination du budget publicitaire de la plateforme ARTAETAS.</h5>
         <br>
         <%= submit_tag 'Verser ma contribution', class: 'btn btn-primary aa-mobile-btn aa-new-publierannonce' %>

@@ -263,7 +263,7 @@
   
  <% unless @user.annonces.where(archive: true).empty? || (@user.annonces.where(archive: true) - @user.annonces.where(archivedef: true)).empty? %> 
       <div class="aa-me-annonceuser">
-      <p class="text-center"><b>ANNONCES ARCHIVEE</b></p>
+      <p class="text-center"><b>ANNONCES ARCHIVEES</b></p>
       <div class="aa-search-annonce-container">
             <% if @user.annonces.joins(:user).where("users.confirmation_webmaster = true").where(archive: true).count > 0 %>
               <% @user.annonces.joins(:user).where("users.confirmation_webmaster = true").where(archive: true).each do |a| %>

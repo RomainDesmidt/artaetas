@@ -1,6 +1,6 @@
 <div class="aa-me-undernavbar" style="height: 100px;"></div>
 <!--<img src="<%#= asset_path("don.jpg") %>" style="position: absolute; opacity: 0.4; top: 72px; left: 274px;" />-->
-<div style="margin-left: 20%; margin-right: 20%;">
+<div class="contribution-margin-form">
     <%#= simple_form_for(@annonce, :url => orders_donate_path, :method => post ) do |f| %>
        <%#= f.input :montant, label: "Quel montant voulait vous donner ?" %>
        <%#= f.submit 'Confirmer', class: 'btn btn-primary aa-mobile-btn aa-new-publierannonce' %>
@@ -11,12 +11,12 @@
         <!--<p style="height: 33px; padding-top: 6px;"></p>-->
         <h4 style="height: 33px; padding-top: 6px; font-weight: bold; color:  #3A89C1; margin-bottom: 24px; margin-top: 40px;">Bienvenue sur le module de donation !</h4>
         <br>
-        <p style="height: 20px; padding-top: 6px;">Nous croyons dans la bienveillance et la solidarité.</p>
-        <p style="height: 22px; padding-top: 6px;">ARTAETAS soutient ses membres, artistes, collectionneurs et acteurs du marché de l'art en leur proposant un service de qualité sans contrepartie.</p>
-        <p style="height: 22px; padding-top: 6px;">En particulier, nous sommes convaincus que notre plateforme permet et permettra à de nombreux artistes de vivre de leur art.</p>
+        <p class="don-p-1">Nous croyons dans la bienveillance et la solidarité.</p>
+        <p class="don-p-2">ARTAETAS soutient ses membres, artistes, collectionneurs et acteurs du marché de l'art en leur proposant un service de qualité sans contrepartie.</p>
+        <p class="don-p-3">En particulier, nous sommes convaincus que notre plateforme permet et permettra à de nombreux artistes de vivre de leur art.</p>
         <br>
-        <p style="height: 22px; padding-top: 6px;">Vous avez la possibilité d’aider ARTAETAS dans la réalisation de sa mission en versant une donation à la plateforme. </p>
-        <p style="height: 33px; padding-top: 6px;">Nous nous engageons à dédier 100% de cette donation au budget développement du site. Cela permettra de proposer de nouveaux services pour les membres de la plateforme.</p>
+        <p class="don-p-4">Vous avez la possibilité d’aider ARTAETAS dans la réalisation de sa mission en versant une donation à la plateforme. </p>
+        <p class="don-p-5">Nous nous engageons à dédier 100% de cette donation au budget développement du site. Cela permettra de proposer de nouveaux services pour les membres de la plateforme.</p>
         <br>
         <h5 style="height: 33px; padding-top: 6px; font-weight: bold; color:  #3A89C1; margin-bottom: 18px; ">Merci d’avance pour votre générosité :)</h5>
         <br>
@@ -24,7 +24,7 @@
         <!--<p><label class="form-control-label select optional" for="Montant">Quel Montant souhaitez vous donner ?</label></p>-->
         <h5 style="height: 27px; font-weight: bold; color:  #3A89C1; margin-bottom: 0px; margin-top: 7px;">Je décide de verser une donation de </h5>  
             <%= number_field_tag 'montant', "0", min: 0, class: "aa-don-width" %> <b style="font-size: 30px; top: 5px; position: relative; color:  #3A89C1;">€</b>
-        <h5 style="height: 32px;  font-weight: bold; margin-top: 15px;  color: #3A89C1; margin-bottom: 0px;">à destination du budget développement de la plateforme ARTAETAS.</h5>
+        <h5 class="don-h5-end">à destination du budget développement de la plateforme ARTAETAS.</h5>
         <br>
         <%= submit_tag 'Verser ma donation', class: 'btn btn-primary aa-mobile-btn aa-new-publierannonce' %>
     <% end %>

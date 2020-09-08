@@ -41,6 +41,40 @@
 }
 
 
+.don-p-1 {
+  height: 20px; 
+  padding-top: 6px;
+}
+
+.don-p-2 {
+  height: 22px; 
+  padding-top: 6px;
+}
+
+.don-p-3 {
+  height: 22px; 
+  padding-top: 6px;
+}
+
+.don-p-4 {
+  height: 22px; 
+  padding-top: 6px;
+}
+
+.don-p-5 {
+   height: 33px; 
+   padding-top: 6px; 
+}
+
+.don-h5-end {
+  height: 32px;  
+  font-weight: bold; 
+  margin-top: 15px;  
+  color: #3A89C1; 
+  margin-bottom: 0px;
+}
+
+
 .archive-margin-top {
   margin-left: 20%; 
   margin-right: 20%;
@@ -1181,6 +1215,12 @@ p {
   // padding: 10px 0px;
 }
 
+@media (max-width: 1551px) {
+  .don-p-2 {
+    height: 48px; 
+  }
+}
+
 
 // ################################## MEDIA QUERIES
 
@@ -1193,6 +1233,27 @@ p {
   .contribution-p-3 {
     height: 48px; 
   }
+  
+  .don-p-1 {
+    height: 27px; 
+  }
+  
+  .don-p-3 {
+    height: 48px; 
+  }
+  
+  .don-p-4 {
+    height: 48px; 
+  }
+  
+  .don-p-5 {
+     height: 69px; 
+  }
+  
+  .don-h5-end {
+    height: 48px;  
+  }
+  
   .p-titre-end {
     align-self: flex-end;
   }
@@ -1222,6 +1283,12 @@ p {
   // column-count:         3;
   // }
 }
+@media (max-width: 773px) {
+  .don-p-2 {
+    height: 72px; 
+  }
+}
+
 @media (max-width: 768px) {
   
   .aa-archive-flex {
@@ -1247,6 +1314,12 @@ p {
   // -webkit-column-count: 2;
   // column-count:         2;
   // }
+}
+@media (max-width: 647px) {
+  .don-p-4 {
+    height: 72px;
+  }
+  
 }
 
 @media (max-width: 638px) {
