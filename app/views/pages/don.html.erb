@@ -23,7 +23,7 @@
         
         <!--<p><label class="form-control-label select optional" for="Montant">Quel Montant souhaitez vous donner ?</label></p>-->
         <h5 style="height: 27px; font-weight: bold; color:  #3A89C1; margin-bottom: 0px; margin-top: 7px;">Je décide de verser une donation de </h5>  
-            <%= number_field_tag 'montant', "0", min: 0, class: "aa-don-width" %> <b style="font-size: 30px; top: 5px; position: relative; color:  #3A89C1;">€</b>
+            <%= number_field_tag 'montant', "0", min: 1, class: "aa-don-width" %> <b style="font-size: 30px; top: 5px; position: relative; color:  #3A89C1;">€</b>
         <h5 class="don-h5-end">à destination du budget développement de la plateforme ARTAETAS.</h5>
         <br>
         <%= submit_tag 'Verser ma donation', class: 'btn btn-primary aa-mobile-btn aa-new-publierannonce' %>
