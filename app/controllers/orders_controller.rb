@@ -44,31 +44,36 @@ class OrdersController < ApplicationController
     end
     
     def donate
-      annonce = Annonce.find(params[:annonce_id])
-      if annonce.id == 1
-        premium_formule = "Don"
+      if (params[:montant].to_d >= 0 && params[:montant].to_d < 1 )
+        redirect_to users_mesannonces_path
       else
-        premium_formule = "Contribution"
+        annonce = Annonce.find(params[:annonce_id])
+        if annonce.id == 1
+          premium_formule = "Don"
+        else
+          premium_formule = "Contribution"
+        end
+        amount_premium = params[:montant].to_i*100
+        amount_stripe = amount_premium
+        order  = Order.create!(annonce: annonce, premium_sku: premium_formule, amount: (amount_premium/100), state: 'pending', user: current_user)
+      
+        session = Stripe::Checkout::Session.create(
+          payment_method_types: ['card'],
+          line_items: [{
+            name: annonce.name,
+            images: [annonce.photo_url],
+            amount: amount_stripe,
+            currency: 'eur',
+            quantity: 1
+          }],
+          success_url: facturepdf_url(order.slug, order.id),
+          cancel_url: new_order_payment_url(order)
+        )
+      
+        order.update(checkout_session_id: session.id)
+        redirect_to new_order_payment_path(order)
+      
       end
-      amount_premium = params[:montant].to_i*100
-      amount_stripe = amount_premium
-      order  = Order.create!(annonce: annonce, premium_sku: premium_formule, amount: (amount_premium/100), state: 'pending', user: current_user)
-    
-      session = Stripe::Checkout::Session.create(
-        payment_method_types: ['card'],
-        line_items: [{
-          name: annonce.name,
-          images: [annonce.photo_url],
-          amount: amount_stripe,
-          currency: 'eur',
-          quantity: 1
-        }],
-        success_url: facturepdf_url(order.slug, order.id),
-        cancel_url: new_order_payment_url(order)
-      )
-    
-      order.update(checkout_session_id: session.id)
-      redirect_to new_order_payment_path(order)
     end
     
     def show

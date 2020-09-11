@@ -52,9 +52,20 @@
         </tr>
         <% @paid.each do |unit| %>
         <tr>
+          <% case unit.premium_sku %>
+          <% when "Mise en Avant"  %>
+            <% skul = "Mise en avant" %>
+          <% when "Mise a la une" %>
+            <% skul = "Mise à la une" %>
+          <% when "Don" %>
+            <% skul = "Don" %>
+          <% when "Contribution" %>
+            <% skul = "Contribution" %>
+          <% end %>
+          <%# puts unit.premium_sku %>
           <td class="aa-order-filler"></td>
           <td class="aa-order-fifthcell"><%= "#{unit.created_at}" %></td>
-          <td class="aa-order-firstcell"><%= "#{(unit.premium_sku == "Mise en Avant" ? "Mise en avant" : "Mise à la une")}" %></td>
+          <td class="aa-order-firstcell"><%= "#{skul}" %></td>
           <td class="aa-order-secondcell"><%= "#{unit.amount} €" %></td>
           <td class="aa-order-thirdcell"><%= "#{unit.annonce.name.lines.first[0,30]} #{(unit.annonce.name.lines.first[31].nil? ? '' : '..')}" %></td>
           <td class="aa-order-fourthcell"><%= link_to "PDF", facturepdf_path(unit.slug, unit.id, format: "pdf")  %></td>
@@ -76,9 +87,19 @@
         </tr>
       <% @gifted.each do |unit| %>
         <tr>
+          <% case unit.premium_sku %>
+          <% when "Mise en Avant" %>
+            <% skug = "Mise en avant" %>
+          <% when "Mise a la une" %>
+            <% skug = "Mise à la une" %>
+          <% when "Don" %>
+            <% skug = "Don" %>
+          <% when "Contribution" %>
+            <% skug = "Contribution" %>
+          <% end %>
           <td class="aa-order-filler"></td>
           <td class="aa-order-fifthcell"><%= "#{unit.created_at}" %></td>
-          <td class="aa-order-firstcell"><%= "#{(unit.premium_sku == "Mise en Avant" ? "Mise en avant" : "Mise à la une")}" %></td>
+          <td class="aa-order-firstcell"><%= "#{skug}" %></td>
           <td class="aa-order-secondcell"><%= "#{unit.amount} €" %></td>
           <td class="aa-order-thirdcell"><%= "#{unit.annonce.name.lines.first[0,30]} #{(unit.annonce.name.lines.first[31].nil? ? '' : '..')}" %></td>
           <td class="aa-order-fourthcell"><%= link_to "PDF", facturepdf_path(unit.slug, unit.id, format: "pdf")  %></td>
