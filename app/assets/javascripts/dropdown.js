@@ -1,18 +1,62 @@
 //= require slimselect.min
-var selection = document.querySelector('.multiple-dd') !== null;
-if (selection) {
-   var select = new SlimSelect({
-  select: document.querySelector('.multiple-dd')
-  
-})
 
+function multipleDd(ddClass,placeholderText) {
+  if (document.querySelector('.'+ddClass) !== null) {
+    var select = new SlimSelect({
+      placeholder: placeholderText, 
+      select: document.querySelector('.'+ddClass) 
+      })
+    document.querySelector('div.'+ddClass+'>div.ss-content>div.ss-search>input').placeholder = "Saisie";
+  };
+}
+
+multipleDd("multiple-dd", "Choisissez une catégorie...");
+multipleDd("multiple-dd2", "Choisissez un courant/style...");
+multipleDd("multiple-dd3", "Choisissez une couleur...");
+multipleDd("multiple-dd4", "Spécificités...");
+multipleDd("multiple-dd5", "Disposition...");
+multipleDd("multiple-dd6", "Code Postaux...");
+multipleDd("multiple-dd7", "Pays...");
+multipleDd("multiple-dd8", "Taille...");
+multipleDd("multiple-dd9", "Artiste...");
+
+
+
+
+
+
+
+
+
+//var selection = document.querySelector('.multiple-dd') !== null;
+//var infoCategory = {};
+// info.searchPlaceholder = "Choisissez 2";
+//infoCategory.placeholder = "Choisissez une catégorie...";
+//infoCategory.select = document.querySelector('.multiple-dd');
+
+
+
+/*
+if (selection) {
+//   var select = new SlimSelect({
+//   config: (searchPlaceholder = "Choisissez2"),
+//   select: document.querySelector('.multiple-dd'),
+  
+  
+  
+// })
+var select = new SlimSelect(infoCategory)
+select.config.searchPlaceholder = "Choisissez 2";
 if ( document.querySelector('div.multiple-dd>div.ss-multi-selected>div.ss-values>span.ss-disabled') != null )  {
-  document.querySelector('div.multiple-dd>div.ss-multi-selected>div.ss-values>span.ss-disabled').innerText = "Choisissez une catégorie...";
+  // document.querySelector('div.multiple-dd>div.ss-multi-selected>div.ss-values>span.ss-disabled').innerText = "Choisissez une catégorie...";
 }
   document.querySelector('div.multiple-dd>div.ss-content>div.ss-search>input').placeholder = "Saisie";
 
 };
+*/
 
+
+/*
 var selection2 = document.querySelector('.multiple-dd2') !== null;
 if (selection2) {
    var select2 = new SlimSelect({
@@ -24,6 +68,7 @@ if ( document.querySelector('div.multiple-dd2>div.ss-multi-selected>div.ss-value
 }
   document.querySelector('div.multiple-dd2>div.ss-content>div.ss-search>input').placeholder = "Saisie";
 };
+
 
 var selection3 = document.querySelector('.multiple-dd3') !== null;
 if (selection3) {
@@ -110,3 +155,4 @@ if ( document.querySelector('div.multiple-dd9>div.ss-multi-selected>div.ss-value
   document.querySelector('div.multiple-dd9>div.ss-content>div.ss-search>input').placeholder = "Saisie";
 };
 
+*/
