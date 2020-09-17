@@ -94,3 +94,49 @@ function searchContract() {
     document.getElementById('aa-nav-deposer').classList.toggle("hidden");
   };
 }
+
+//   document.getElementById('aa-search-red-id').onclick = function()
+//   {
+//     document.getElementsByClassName("aa-search-field-select-tag").forEach(newmyFunction);
+    
+//     //document.getElementById("aa-search-field-select-tag").classList.toggle("hidden");
+//     //document.getElementById("aa-nav-search-input").classList.toggle("toggled-search");
+//   }
+  
+//   function newmyFunction(item)  {
+//     item.classList.toggle("hidden"); 
+//   }
+  
+//   for (var i = 0; i < children.length; i++){
+//     console.log(children[i]);
+// }
+
+$("#aa-search-red-id").click(function() {
+  $("div.aa-search-field-select").toggleClass("hidden-mobile-576-only");
+  $(".slider-horizontal").toggleClass("hidden-mobile-576-only");
+  $("#aa-search-red-plus").toggleClass("hidden");
+  $("#aa-search-red-moins").toggleClass("hidden");
+  //$(".aa-search-field-select").toggleClass("aa-search-field-select-hidden");
+ // $("#aa-hide-slider").toggleClass("hidden-mobile-576-only");
+  //$("#aa-search-red-id").nextAll("select").toggle();
+  //$("#aa-search-red-id").nextAll("option").toggle();
+  
+  
+// setTimeout(
+//   function() 
+//   {
+// $("div.multiple-dd9>div.ss-multi-selected>div.ss-values>span.ss-disabled")[0].innerText = "Artiste...";
+// $("div.multiple-dd8>div.ss-multi-selected>div.ss-values>span.ss-disabled")[0].innerText = "Taille...";
+// $("div.multiple-dd7>div.ss-multi-selected>div.ss-values>span.ss-disabled")[0].innerText = "Pays...";
+// $("div.multiple-dd6>div.ss-multi-selected>div.ss-values>span.ss-disabled")[0].innerText = "Code Postaux...";
+// $("div.multiple-dd5>div.ss-multi-selected>div.ss-values>span.ss-disabled")[0].innerText = "Disposition...";
+// $("div.multiple-dd4>div.ss-multi-selected>div.ss-values>span.ss-disabled")[0].innerText = "Spécificités...";
+// $("div.multiple-dd3>div.ss-multi-selected>div.ss-values>span.ss-disabled")[0].innerText = "Choisissez une couleur...";
+// $("div.multiple-dd2>div.ss-multi-selected>div.ss-values>span.ss-disabled")[0].innerText = "Choisissez un courant/style...";
+// $("div.multiple-dd>div.ss-multi-selected>div.ss-values>span.ss-disabled")[0].innerText = "Choisissez une catégorie...";
+//   }, 50);
+
+  
+  // $("select").toggle();
+  // $("option").toggle();
+});

@@ -16,41 +16,48 @@
       <% end %>
       
       </div>
+      <div style="height: 32px; width: 100%; padding: 5px; border: 1px solid rgba(1,1,1,0.1);" class="flex-mobile-576-only aa-search-red" id="aa-search-red-id">
+        <div style="align-self: center; color: #717679; line-height: 16px; font-size: 1rem;">Filtres&nbsp;&nbsp;&nbsp;</div>
+        <div style="align-self: center; color: #717679; line-height: 16px; font-size: 1.3rem;" id="aa-search-red-plus">+</div>
+        <div style="align-self: center; color: #717679; line-height: 16px; font-size: 2.1rem; padding-bottom: 2px;"  class="hidden"  id="aa-search-red-moins">-</div>
+        
+      </div>
       
       <% if params[:categorie_search2] == '' || params[:categorie_search2].nil? %>
-        <%= select_tag :categorie_search2 , options_from_collection_for_select(Categorie.all.order("name ASC"), "id", "name", selected: @categorie_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd"  %>
+        <%= select_tag :categorie_search2 , options_from_collection_for_select(Categorie.all.order("name ASC"), "id", "name", selected: @categorie_search2 || nil), include_blank: false, :multiple => true, :class => "hidden-mobile-576-only aa-search-field-select aa-search-field-select-hidden aa-search-field-select-tag aa-search-field-basis multiple-dd"  %>
       <% else %>
-        <%= select_tag :categorie_search2 ,   options_from_collection_for_select(Categorie.all.order("name ASC"), "id", "name", selected: @categorie_search2 || nil ), include_blank: false, :multiple => true, :class =>"aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd"  %>
+        <%= select_tag :categorie_search2 ,   options_from_collection_for_select(Categorie.all.order("name ASC"), "id", "name", selected: @categorie_search2 || nil ), include_blank: false, :multiple => true, :class =>"hidden-mobile-576-only aa-search-field-select  aa-search-field-select-hidden  aa-search-field-select-tag aa-search-field-basis multiple-dd"  %>
       <% end %>
 
       <% if params[:courant_search2] == '' || params[:courant_search2].nil?%>
-        <%= select_tag :courant_search2 , options_from_collection_for_select(Courant.all.order("name ASC"), "id", "name", selected: @courant_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd2"  %>
+        <%= select_tag :courant_search2 , options_from_collection_for_select(Courant.all.order("name ASC"), "id", "name", selected: @courant_search2 || nil), include_blank: false, :multiple => true, :class => "hidden-mobile-576-only aa-search-field-select  aa-search-field-select-hidden  aa-search-field-select-tag aa-search-field-basis multiple-dd2"  %>
       <% else %>
-        <%= select_tag :courant_search2 , options_from_collection_for_select(Courant.all.order("name ASC"), "id", "name", selected: @courant_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd2"  %>      
+        <%= select_tag :courant_search2 , options_from_collection_for_select(Courant.all.order("name ASC"), "id", "name", selected: @courant_search2 || nil), include_blank: false, :multiple => true, :class => "hidden-mobile-576-only aa-search-field-select aa-search-field-select-hidden  aa-search-field-select-tag aa-search-field-basis multiple-dd2"  %>      
       <% end %>
 
       <% if params[:couleur_search2] == '' || params[:couleur_search2].nil?%>
-        <%= select_tag :couleur_search2 , options_from_collection_for_select(Couleur.all.order("couleur_dominante ASC"), "id", "couleur_dominante", selected: @couleur_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd3"  %>  
+        <%= select_tag :couleur_search2 , options_from_collection_for_select(Couleur.all.order("couleur_dominante ASC"), "id", "couleur_dominante", selected: @couleur_search2 || nil), include_blank: false, :multiple => true, :class => "hidden-mobile-576-only aa-search-field-select aa-search-field-select-hidden  aa-search-field-select-tag aa-search-field-basis multiple-dd3"  %>  
       <% else %>
-        <%= select_tag :couleur_search2 , options_from_collection_for_select(Couleur.all.order("couleur_dominante ASC"), "id", "couleur_dominante", selected: @couleur_search2 || nil), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd3"  %>  
+        <%= select_tag :couleur_search2 , options_from_collection_for_select(Couleur.all.order("couleur_dominante ASC"), "id", "couleur_dominante", selected: @couleur_search2 || nil), include_blank: false, :multiple => true, :class => "hidden-mobile-576-only aa-search-field-select aa-search-field-select-hidden  aa-search-field-select-tag aa-search-field-basis multiple-dd3"  %>  
       <% end %>
       
 
       
 
-     
+    <!--<div class="hidden-mobile-576-only aa-search-field-select aa-search-field-select-basis slider slider-horizontal" id="aa-hide-slider">  -->
     <% if params[:prix_slider] == '' || params[:prix_slider].nil?%>
       <!--<dd class="title-slider-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="prix_slider" class="aa-label-prix-slider">Prix</label></dd>-->
-      <input data-slider-ticks="[0,<%= "#{@slider_max}" %>]" data-slider-ticks-labels='["Prix Min", "Prix Max"]' name="prix_slider" id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="<%= "#{@slider_max}" %>" data-slider-step="5" data-slider-value="[0,<%= "#{@slider_max}" %>]"/>
+      <input data-slider-class="hidden-mobile-576-only" data-slider-id="datasliderid" data-slider-ticks="[0,<%= "#{@slider_max}" %>]" data-slider-ticks-labels='["Prix Min", "Prix Max"]' name="prix_slider" id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="<%= "#{@slider_max}" %>" data-slider-step="5" data-slider-value="[0,<%= "#{@slider_max}" %>]"/>
     <% else %>
       <dd class="title-slider-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="prix_slider" class="aa-label-prix-slider">Prix</label></dd>
-      <input name="prix_slider" id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="<%= "#{@slider_max}" %>" data-slider-step="5" data-slider-value="[<%= "#{@pricemin}" %>,<%= "#{@pricemax}" %>]"/>
+      <input data-slider-class="hidden-mobile-576-only" data-slider-id="datasliderid" name="prix_slider" id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="<%= "#{@slider_max}" %>" data-slider-step="5" data-slider-value="[<%= "#{@pricemin}" %>,<%= "#{@pricemax}" %>]"/>
     <% end %>
+    <!--</div>-->
     
     <% if params[:disposition_search2] == '' || params[:disposition_search2].nil?%>
-      <%= select_tag :disposition_search2, options_for_select(["Portrait","Paysage","Carre"], ""), include_blank: false, :multiple => true,  :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd5"  %>  
+      <%= select_tag :disposition_search2, options_for_select(["Portrait","Paysage","Carre"], ""), include_blank: false, :multiple => true,  :class => "hidden-mobile-576-only aa-search-field-select aa-search-field-select-hidden  aa-search-field-select-tag aa-search-field-basis multiple-dd5"  %>  
     <% else %>
-      <%= select_tag :disposition_search2, options_for_select(["Portrait","Paysage","Carre"], @disposition_search2), include_blank: false, :multiple => true,  :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis  multiple-dd5"  %>  
+      <%= select_tag :disposition_search2, options_for_select(["Portrait","Paysage","Carre"], @disposition_search2), include_blank: false, :multiple => true,  :class => "hidden-mobile-576-only aa-search-field-select aa-search-field-select-hidden  aa-search-field-select-tag aa-search-field-basis  multiple-dd5"  %>  
     <% end %>
     
     <%# if params[:disposition] == '' || params[:disposition].nil?%>
@@ -60,9 +67,9 @@
     <%# end %>
     
       <% if params[:administratif_search2] == '' || params[:administratif_search2].nil?%>
-        <%= select_tag :administratif_search2 , options_for_select([ ["Facture d'origine","facture_achat"], ["Certificat d'authenticité","certificat_authenticite"], ["Encadrement","encadrement"], ["Etat Neuf","etat_neuf"] ], ""), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd4"  %>  
+        <%= select_tag :administratif_search2 , options_for_select([ ["Facture d'origine","facture_achat"], ["Certificat d'authenticité","certificat_authenticite"], ["Encadrement","encadrement"], ["Etat Neuf","etat_neuf"] ], ""), include_blank: false, :multiple => true, :class => "hidden-mobile-576-only aa-search-field-select aa-search-field-select-hidden  aa-search-field-select-tag aa-search-field-basis multiple-dd4"  %>  
       <% else %>
-        <%= select_tag :administratif_search2 , options_for_select([ ["Facture d'origine","facture_achat"], ["Certificat d'authenticité","certificat_authenticite"], ["Encadrement","encadrement"], ["Etat Neuf","etat_neuf"] ], @administratif_search2 ), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis multiple-dd4"  %>  
+        <%= select_tag :administratif_search2 , options_for_select([ ["Facture d'origine","facture_achat"], ["Certificat d'authenticité","certificat_authenticite"], ["Encadrement","encadrement"], ["Etat Neuf","etat_neuf"] ], @administratif_search2 ), include_blank: false, :multiple => true, :class => "hidden-mobile-576-only aa-search-field-select aa-search-field-select-hidden  aa-search-field-select-tag aa-search-field-basis multiple-dd4"  %>  
       <% end %>
     
     <%# if params[:facture_achat] == '' || params[:facture_achat].nil?%>
@@ -72,15 +79,15 @@
     <%# end %>
     
     <% if params[:code_postal_search2] == '' || params[:code_postal_search2].nil?%>
-      <%= select_tag :code_postal_search2, options_for_select(@code_postal_all.each {|p| [ p ] if p.is_a? Integer }, 99999999), include_blank: false, :multiple => true,  :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis  multiple-dd6"  %>  
+      <%= select_tag :code_postal_search2, options_for_select(@code_postal_all.each {|p| [ p ] if p.is_a? Integer }, 99999999), include_blank: false, :multiple => true,  :class => "hidden-mobile-576-only aa-search-field-select aa-search-field-select-hidden  aa-search-field-select-tag aa-search-field-basis  multiple-dd6"  %>  
     <% else %>
-      <%= select_tag :code_postal_search2, options_for_select(@code_postal_all.each {|p| [ p ] if p.is_a? Integer }, @code_postal_search2), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis  multiple-dd6"  %>  
+      <%= select_tag :code_postal_search2, options_for_select(@code_postal_all.each {|p| [ p ] if p.is_a? Integer }, @code_postal_search2), include_blank: false, :multiple => true, :class => "hidden-mobile-576-only aa-search-field-select aa-search-field-select-hidden  aa-search-field-select-tag aa-search-field-basis  multiple-dd6"  %>  
     <% end %>
     
     <% if params[:nom_artiste_search2] == '' || params[:nom_artiste_search2].nil?%>
-      <%= select_tag :nom_artiste_search2, options_for_select(@nom_artiste_all.each {|p| [ p ] if p.is_a? String }, 99999999), include_blank: false, :multiple => true,  :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis  multiple-dd9"  %>  
+      <%= select_tag :nom_artiste_search2, options_for_select(@nom_artiste_all.each {|p| [ p ] if p.is_a? String }, 99999999), include_blank: false, :multiple => true,  :class => "hidden-mobile-576-only aa-search-field-select aa-search-field-select-hidden  aa-search-field-select-tag aa-search-field-basis  multiple-dd9"  %>  
     <% else %>
-      <%= select_tag :nom_artiste_search2, options_for_select(@nom_artiste_all.each {|p| [ p ] if p.is_a? String }, @nom_artiste_search2), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis  multiple-dd9"  %>  
+      <%= select_tag :nom_artiste_search2, options_for_select(@nom_artiste_all.each {|p| [ p ] if p.is_a? String }, @nom_artiste_search2), include_blank: false, :multiple => true, :class => "hidden-mobile-576-only aa-search-field-select aa-search-field-select-hidden  aa-search-field-select-tag aa-search-field-basis  multiple-dd9"  %>  
     <% end %>
     
     <%# if params[:code_postal] == '' || params[:code_postal].nil?%>
@@ -90,9 +97,9 @@
     <%# end %>
     
     <% if params[:pays_search2] == '' || params[:pays_search2].nil?%>
-       <%= select_tag :pays_search2, options_for_select(["France","Grande-Bretagne","Irlande","Belgique","Pays-Bas","Luxembourg","Allemagne","Suisse","Italie","Espagne","Portugal"], "" ), include_blank: true, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis  multiple-dd7"  %>  
+       <%= select_tag :pays_search2, options_for_select(["France","Grande-Bretagne","Irlande","Belgique","Pays-Bas","Luxembourg","Allemagne","Suisse","Italie","Espagne","Portugal"], "" ), include_blank: true, :multiple => true, :class => "hidden-mobile-576-only aa-search-field-select aa-search-field-select-hidden  aa-search-field-select-tag aa-search-field-basis  multiple-dd7"  %>  
     <% else %>
-      <%= select_tag :pays_search2, options_for_select(["France","Grande-Bretagne","Irlande","Belgique","Pays-Bas","Luxembourg","Allemagne","Suisse","Italie","Espagne","Portugal"], @pays_search2 ) , include_blank: true, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis  multiple-dd7"  %>  
+      <%= select_tag :pays_search2, options_for_select(["France","Grande-Bretagne","Irlande","Belgique","Pays-Bas","Luxembourg","Allemagne","Suisse","Italie","Espagne","Portugal"], @pays_search2 ) , include_blank: true, :multiple => true, :class => "hidden-mobile-576-only aa-search-field-select aa-search-field-select-hidden  aa-search-field-select-tag aa-search-field-basis  multiple-dd7"  %>  
     <% end %>
     
     <%# if params[:pays] == '' || params[:pays].nil?%>
@@ -102,9 +109,9 @@
     <%# end %>
     
     <% if params[:volume_search2] == '' || params[:volume_search2].nil?%>
-       <%= select_tag :volume_search2, options_for_select([["Grand","g"],["Moyen","m"],["Petit","p"]], "" ), include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis  multiple-dd8"  %>  
+       <%= select_tag :volume_search2, options_for_select([["Grand","g"],["Moyen","m"],["Petit","p"]], "" ), include_blank: false, :multiple => true, :class => "hidden-mobile-576-only aa-search-field-select aa-search-field-select-hidden  aa-search-field-select-tag aa-search-field-basis  multiple-dd8"  %>  
     <% else %>
-      <%= select_tag :volume_search2, options_for_select([["Grand","g"],["Moyen","m"],["Petit","p"]], @volume_search2 ) , include_blank: false, :multiple => true, :class => "aa-search-field-select aa-search-field-select-tag aa-search-field-basis  multiple-dd8"  %>  
+      <%= select_tag :volume_search2, options_for_select([["Grand","g"],["Moyen","m"],["Petit","p"]], @volume_search2 ) , include_blank: false, :multiple => true, :class => "hidden-mobile-576-only aa-search-field-select aa-search-field-select-hidden  aa-search-field-select-tag aa-search-field-basis  multiple-dd8"  %>  
     <% end %>
     
     <%# if params[:volume] == '' || params[:volume].nil?%>

@@ -10,6 +10,14 @@
 //   width: 100px!important ;
 // }
 
+.flex-mobile-576-only {
+   display: none; 
+  }
+
+.hidden-mobile-576-only {
+  //display: block !important;
+}
+
 .contribution-h4-titre {
   height: 33px; 
   padding-top: 6px; 
@@ -22,6 +30,10 @@
 .contribution-p-1 {
   height: 30px; 
   padding-top: 6px;
+}
+
+.aa-search-red {
+ display: none; 
 }
 
 .contribution-p-2 {
@@ -431,13 +443,13 @@ textarea.form-control.is-valid {
 
 .aa-delete-action::before {
   visibility: hidden;
-  content: 'Supprimer';
+  content: 'Archiver';
   padding-right: 10px;
   padding-left: 10px;
   background-color: white;
   color: $entete;
   position: absolute;
-  left: -90px;
+  left: -75px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
@@ -1394,6 +1406,31 @@ p {
 
 @media (max-width: 576px) {
   
+  select > .aa-search-field-select {
+    display: none !important;
+  }
+  
+  .flex-mobile-576-only {
+   display: flex;
+   justify-content: center;
+   flex-direction: row;
+  }
+  // .slider {
+  //   display: none !important;
+  // }
+  
+  .hidden-mobile-576-only {
+    display: none !important;
+  }
+  
+  .aa-search-red {
+    // display: block; 
+     margin-top: 15px;
+  }
+  
+  .aa-search-field-select-hidden {
+    // display: none !important;
+  }
   .contribution-margin-form {
     margin-left: 0px; 
     margin-right: 0px;
