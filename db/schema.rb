@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_18_152424) do
+ActiveRecord::Schema.define(version: 2020_09_23_123801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -167,6 +167,19 @@ ActiveRecord::Schema.define(version: 2020_08_18_152424) do
     t.index ["annonce_id"], name: "index_orders_on_annonce_id"
     t.index ["slug"], name: "index_orders_on_slug", unique: true
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "sponsors", force: :cascade do |t|
+    t.string "name", default: ""
+    t.text "texte", default: ""
+    t.string "lien_image", default: ""
+    t.string "lien_video", default: ""
+    t.string "lien_redir", default: ""
+    t.boolean "publiee", default: false
+    t.integer "compteur", default: 0
+    t.datetime "period_start", default: "2020-09-23 12:43:44"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

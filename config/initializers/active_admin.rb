@@ -264,6 +264,7 @@ ActiveAdmin.setup do |config|
       menu.add label: "Categories", url: "/admin/categories?order=name_asc"
       menu.add label: "Couleurs", url: "/admin/couleurs?order=name_asc"
       menu.add label: "Courants", url: "/admin/courants?order=name_asc"
+      menu.add label: "Annonceurs", url: "/admin/sponsors?order=name_asc"
       #menu.add label: "Categories", if: proc{ false }
     end
   end
