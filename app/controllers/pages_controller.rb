@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home,:social, :cgu, :politiquedeconfidentialite, :mentionslegales, :quisommesnous, :faq]
+  skip_before_action :authenticate_user!, only: [:home,:social, :cgu, :politiquedeconfidentialite, :mentionslegales, :quisommesnous, :faq, :canttouchthis]
 
   def home
   end
@@ -17,6 +17,17 @@ class PagesController < ApplicationController
   end
   
   def mentionslegales
+  end
+  
+  def canttouchthis
+    @occurencemalu = Varlocale.where(nomchamp: "OccurenceMalu").first.valeurchamp
+    @annonces_confirmeduser = Annonce.joins(:user).where("users.confirmation_webmaster = true").where("annonces.archive = false")
+    @annonces_all = @annonces_confirmeduser.where(envente_yesno: true)
+    @landingp = 1
+    @annonces_premium = Sponsor.all
+    @annonces_standard = @annonces_all.where(formule: "Standard").or(@annonces_all.where(formule: "Mise en Avant")).order('random()')
+    @annonces = @annonces_standard.to_a
+    @annonces_pre = @annonces_premium.to_a
   end
 
   def styleguide

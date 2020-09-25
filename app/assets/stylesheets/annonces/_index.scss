@@ -1129,6 +1129,16 @@ p {
   // text-overflow: ellipsis;
 }
 
+.p-description-annonceur {
+  // width: 87%;
+  font-size: 9px;
+  color: grey;
+  // text-overflow: ellipsis;
+  // white-space: nowrap;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+}
+
 .aa-annonce-titre .p-titre {
   max-width: 20ch;
   white-space: nowrap;
