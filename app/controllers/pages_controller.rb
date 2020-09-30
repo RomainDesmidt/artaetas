@@ -20,14 +20,29 @@ class PagesController < ApplicationController
   end
   
   def canttouchthis
+    
+    # @occurencemalu = Varlocale.where(nomchamp: "OccurenceMalu").first.valeurchamp
+    # @annonces_confirmeduser = Annonce.joins(:user).where("users.confirmation_webmaster = true").where("annonces.archive = false")
+    # @annonces_all = @annonces_confirmeduser.where(envente_yesno: true)
+    # @landingp = 1
+    # @annonces_premium = Sponsor.all
+    # @annonces_standard = @annonces_all.where(formule: "Standard").or(@annonces_all.where(formule: "Mise en Avant")).order('random()')
+    # @annonces = @annonces_standard.to_a
+    # @annonces_pre = @annonces_premium.to_a
+    
     @occurencemalu = Varlocale.where(nomchamp: "OccurenceMalu").first.valeurchamp
+    @occurenceannonceurs = Varlocale.where(nomchamp: "OccurenceAnnonceurs").first.valeurchamp
     @annonces_confirmeduser = Annonce.joins(:user).where("users.confirmation_webmaster = true").where("annonces.archive = false")
     @annonces_all = @annonces_confirmeduser.where(envente_yesno: true)
     @landingp = 1
-    @annonces_premium = Sponsor.all
+    @annonces_premium = @annonces_all.where(formule: "Mise a la une").order('random()')
     @annonces_standard = @annonces_all.where(formule: "Standard").or(@annonces_all.where(formule: "Mise en Avant")).order('random()')
+    @annonceurs_all = Sponsor.all.order('random()')
     @annonces = @annonces_standard.to_a
     @annonces_pre = @annonces_premium.to_a
+    @annonces_annonceurs = @annonceurs_all.to_a
+    
+    
   end
 
   def styleguide
