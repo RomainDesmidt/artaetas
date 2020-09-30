@@ -31,8 +31,8 @@
 <% a_annonceurs.replace(@annonces_annonceurs) %>
 
 <%# i = Varlocale.where(nomchamp: "OccurenceMalu").first.valeurchamp %>
-  <% occurence_annonceurs = 0 %>
-  <% occurence_malu = 0 %>
+  <% occurence_annonceurs = @occurenceannonceurs %>
+  <% occurence_malu = @occurence_malu %>
   <%# total_annonces = 0 %>
   
       <% @annonces.each do |t| %>
@@ -47,7 +47,7 @@
             <% a_annonceurs.replace(@annonces_annonceurs) %>
           <% end %>          
          
-          <% if occurence_annonceurs == @occurence_annonceurs %>
+          <% if occurence_annonceurs == @occurenceannonceurs %>
             <% unless a_annonceurs[0].nil? %>
              <div class="grid-item aa-formule-malu">
                <%= link_to "#{a_annonceurs[0].lien_redir}", { class: "aa-annonce-titre"} do %>
@@ -124,8 +124,8 @@
               
             <% end %>
           </div>
-          <% occurence_annonceurs = occurence_annonceurs + 1  %>
-          <% occurence_malu = occurence_malu + 1 %>
+          <% occurence_annonceurs += 1 %>
+          <% occurence_malu += 1 %>
           <%# total_annonces += 1 %>
         <%# end %>
       <% end %>
