@@ -47,7 +47,7 @@
             <% a_annonceurs.replace(@annonces_annonceurs) %>
           <% end %>          
          
-          <% if occurence_annonceurs == 4 %>
+          <% if occurence_annonceurs == @occurence_annonceurs.to_i %>
             <% unless a_annonceurs[0].nil? %>
              <div class="grid-item aa-formule-malu">
                <%= link_to "#{a_annonceurs[0].lien_redir}", { class: "aa-annonce-titre"} do %>
