@@ -124,8 +124,8 @@
               
             <% end %>
           </div>
-          <% occurence_annonceurs += 1 %>
-          <% occurence_malu += 1 %>
+          <% occurence_annonceurs = occurence_annonceurs.to_i + 1  %>
+          <% occurence_malu = occurence_malu.to_i + 1 %>
           <%# total_annonces += 1 %>
         <%# end %>
       <% end %>
