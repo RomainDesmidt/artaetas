@@ -31,8 +31,8 @@
 <% a_annonceurs.replace(@annonces_annonceurs) %>
 
 <%# i = Varlocale.where(nomchamp: "OccurenceMalu").first.valeurchamp %>
-  <% occurence_annonceurs = @occurenceannonceurs %>
-  <% occurence_malu = @occurence_malu %>
+  <% occurence_annonceurs = @occurenceannonceurs.to_i %>
+  <% occurence_malu = @occurence_malu.to_i %>
   <%# total_annonces = 0 %>
   
       <% @annonces.each do |t| %>
