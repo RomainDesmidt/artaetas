@@ -30,8 +30,8 @@ class PagesController < ApplicationController
     # @annonces = @annonces_standard.to_a
     # @annonces_pre = @annonces_premium.to_a
     
-    @occurencemalu = Varlocale.where(nomchamp: "OccurenceMalu").first.valeurchamp
-    @occurenceannonceurs = Varlocale.where(nomchamp: "OccurenceAnnonceurs").first.valeurchamp
+    @occurencemalu = Varlocale.where(nomchamp: "OccurenceMalu").first.valeurchamp.to_i
+    @occurenceannonceurs = Varlocale.where(nomchamp: "OccurenceAnnonceurs").first.valeurchamp.to_i
     @annonces_confirmeduser = Annonce.joins(:user).where("users.confirmation_webmaster = true").where("annonces.archive = false")
     @annonces_all = @annonces_confirmeduser.where(envente_yesno: true)
     @landingp = 1
