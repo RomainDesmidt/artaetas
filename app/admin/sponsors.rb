@@ -11,6 +11,19 @@ ActiveAdmin.register Sponsor do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+  index do
+    selectable_column
+    id_column
+    column :publiee
+    column :name
+    column :compteur
+    column :period_start
+    column :created_at
+    column :updated_at
+    actions
+  end
+
+
 
 #menu :parent => "Adverts", :if => proc { false }
 menu :parent => "Aceurs" , :if => proc { false }
