@@ -62,7 +62,7 @@
                     <% if a_annonceurs[0].lien_video == "" %> 
                       <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_annonceurs[0].lien_image })  %>
                     <% else %>
-                      <iframe class="embed-responsive-item"  src="<%= "#{a_annonceurs[0].lien_video}" %>?modestbranding=1&rel=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      <iframe class="embed-responsive-item"  src="<%= "#{a_annonceurs[0].lien_video}" %>?autoplay=1&modestbranding=1&rel=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <% end %>
                   <% end %>
   
