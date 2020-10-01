@@ -18,7 +18,7 @@ $( document ).ready(function() {
  
 });
 
-$('a[data-popup]').live('click', function(e) {
+$('a[data-popup]').on('click', function(e) {
 window.open($(this).href);
 e.preventDefault();
 });
