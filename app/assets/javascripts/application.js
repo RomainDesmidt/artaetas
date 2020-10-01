@@ -17,3 +17,8 @@ $( document ).ready(function() {
  // $('aa-footer-ae title').html('');
  
 });
+
+$('a[data-popup]').live('click', function(e) {
+window.open($(this).href);
+e.preventDefault();
+});

@@ -50,7 +50,9 @@
           <% if occurence_annonceurs == @occurenceannonceurs %>
             <% unless a_annonceurs[0].nil? %>
              <div class="grid-item aa-formule-malu">
-               <%= link_to "#{a_annonceurs[0].lien_redir}", { class: "aa-annonce-titre"}, target: '_blank', rel: 'noopener'  do %>
+               <%= link_to "#{a_annonceurs[0].lien_redir}", { class: "aa-annonce-titre", "data-popup" => "#{a_annonceurs[0].lien_redir}"}   do %>
+               <%#= link_to_function 'window.open()'  , { class: "aa-annonce-titre"}  do %>
+               <%# "#{a_annonceurs[0].lien_redir}" %>
                   <% unless a_annonceurs[0].name.lines.first.nil? %>
                     <p class='p-titre'><%= a_annonceurs[0].name.lines.first[0,70] %></p>
                   <% end %>
@@ -58,7 +60,7 @@
                     <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
                   <% else %>
                     <% if a_annonceurs[0].lien_video == "" %> 
-                      <%#= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_annonceurs[0].lien_image })  %>
+                      <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_annonceurs[0].lien_image })  %>
                     <% else %>
                       <iframe class="embed-responsive-item"  src="<%= "#{a_annonceurs[0].lien_video}" %>?modestbranding=1&rel=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <% end %>
