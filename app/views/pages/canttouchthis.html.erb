@@ -50,7 +50,7 @@
           <% if occurence_annonceurs == @occurenceannonceurs %>
             <% unless a_annonceurs[0].nil? %>
              <div class="grid-item aa-formule-malu">
-               <%= link_to "#{a_annonceurs[0].lien_redir}", { class: "aa-annonce-titre"} do %>
+               <%= link_to "#{a_annonceurs[0].lien_redir}", { class: "aa-annonce-titre"}, target: :_blank  do %>
                   <% unless a_annonceurs[0].name.lines.first.nil? %>
                     <p class='p-titre'><%= a_annonceurs[0].name.lines.first[0,70] %></p>
                   <% end %>
