@@ -31,8 +31,9 @@
 <% a_annonceurs.replace(@annonces_annonceurs) %>
 
 <%# i = Varlocale.where(nomchamp: "OccurenceMalu").first.valeurchamp %>
-  <% occurence_annonceurs = @startannonceurs.to_i %>
+  <% occurence_annonceurs = 0 %>
   <% occurence_malu = @occurence_malu.to_i %>
+  <% compteur_annonce = 0 %>
   <%# total_annonces = 0 %>
   
       <% @annonces.each do |t| %>
@@ -45,39 +46,41 @@
           <% if a_annonceurs[0].nil? %>
             <% a_annonceurs = [] %>
             <% a_annonceurs.replace(@annonces_annonceurs) %>
-          <% end %>          
-         
-          <% if occurence_annonceurs == @occurenceannonceurs %>
-            <% unless a_annonceurs[0].nil? %>
-             <div class="grid-item aa-formule-normal">
-               <%= link_to "#{a_annonceurs[0].lien_redir}", { class: "aa-annonce-titre", "data-popup" => "#{a_annonceurs[0].lien_redir}"}   do %>
-               <%#= link_to_function 'window.open()'  , { class: "aa-annonce-titre"}  do %>
-               <%# "#{a_annonceurs[0].lien_redir}" %>
-                  <% unless a_annonceurs[0].name.lines.first.nil? %>
-                    <p class='p-titre'><%= a_annonceurs[0].name.lines.first[0,70] %></p>
-                  <% end %>
-                  <% if a_annonceurs[0].lien_image.nil? %>
-                    <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
-                  <% else %>
-                    <% if a_annonceurs[0].lien_video == "" %> 
-                      <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_annonceurs[0].lien_image })  %>
+          <% end %>
+          
+          <% if compteur_annonce >= @startannonceurs %>         
+            <% if occurence_annonceurs == @occurenceannonceurs %>
+              <% unless a_annonceurs[0].nil? %>
+               <div class="grid-item aa-formule-normal">
+                 <%= link_to "#{a_annonceurs[0].lien_redir}", { class: "aa-annonce-titre", "data-popup" => "#{a_annonceurs[0].lien_redir}"}   do %>
+                 <%#= link_to_function 'window.open()'  , { class: "aa-annonce-titre"}  do %>
+                 <%# "#{a_annonceurs[0].lien_redir}" %>
+                    <% unless a_annonceurs[0].name.lines.first.nil? %>
+                      <p class='p-titre'><%= a_annonceurs[0].name.lines.first[0,70] %></p>
+                    <% end %>
+                    <% if a_annonceurs[0].lien_image.nil? %>
+                      <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
                     <% else %>
-                      <iframe class="embed-responsive-item"  src="<%= "#{a_annonceurs[0].lien_video}" %>?modestbranding=1&rel=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      <% if a_annonceurs[0].lien_video == "" %> 
+                        <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_annonceurs[0].lien_image })  %>
+                      <% else %>
+                        <iframe class="embed-responsive-item"  src="<%= "#{a_annonceurs[0].lien_video}" %>?modestbranding=1&rel=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      <% end %>
+                    <% end %>
+    
+                    
+                    
+                    <% unless a_annonceurs[0].texte.lines.first.nil? %>
+                      <p class='p-description-annonceur'><%= a_annonceurs[0].texte %></p>
                     <% end %>
                   <% end %>
-  
-                  
-                  
-                  <% unless a_annonceurs[0].texte.lines.first.nil? %>
-                    <p class='p-description-annonceur'><%= a_annonceurs[0].texte %></p>
-                  <% end %>
-                <% end %>
-              </div>
-              <% a_annonceurs.slice!(0) %>
-              <% occurence_annonceurs = 0 %>
+                </div>
+                <% a_annonceurs.slice!(0) %>
+                <% occurence_annonceurs = 0 %>
+              <% end %>
             <% end %>
           <% end %>
-         
+          
         <% if occurence_malu == @occurencemalu %>
          <% unless a_pre[0].nil? %>
            <div class="grid-item aa-formule-malu">
@@ -107,6 +110,7 @@
             </div>
             <% a_pre.slice!(0) %>
             <% occurence_malu = 0 %>
+            <% compteur_annonce += 1 %>
           <% end %>
        <% end %>
          
@@ -132,7 +136,7 @@
           </div>
           <% occurence_annonceurs += 1 %>
           <% occurence_malu += 1 %>
-          <%# total_annonces += 1 %>
+          <% compteur_annonce += 1 %>
         <%# end %>
       <% end %>
      
