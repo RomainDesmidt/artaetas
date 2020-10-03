@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   #   get 'users/me?view_param=annonce', :to => 'users#me', :as => :user_root
   # end
 
-  root to: 'annonces#index'
+ # root to: 'annonces#index'
+ root to: 'sponsors#index'
   resources :annonces, except: [:show] do
     member do
         put "like", to: "annonces#like"
@@ -61,7 +62,7 @@ Rails.application.routes.draw do
   get 'mentionslegales', to: 'pages#mentionslegales'
   get 'imglist', to: 'pages#imglist'
   get 'cant/touch/this', to: 'pages#canttouchthis'
-  get 'can/touch/this', to: 'sponsors#index'
+  #get 'can/touch/this', to: 'sponsors#index'
   # put "like", to: "annonces#like"
   # put "dislike", to: "annonces#dislike"
 
