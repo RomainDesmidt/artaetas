@@ -38,7 +38,7 @@ class PagesController < ApplicationController
     @landingp = 1
     @annonces_premium = @annonces_all.where(formule: "Mise a la une").order('random()')
     @annonces_standard = @annonces_all.where(formule: "Standard").or(@annonces_all.where(formule: "Mise en Avant")).order('random()')
-    @annonceurs_all = Sponsor.all.where(publiee: true).order('random()')
+    @annonceurs_all = Sponsor.all.order('random()')
     @annonces = @annonces_standard.to_a
     @annonces_pre = @annonces_premium.to_a
     @annonces_annonceurs = @annonceurs_all.to_a

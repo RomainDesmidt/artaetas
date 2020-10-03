@@ -61,6 +61,7 @@ Rails.application.routes.draw do
   get 'mentionslegales', to: 'pages#mentionslegales'
   get 'imglist', to: 'pages#imglist'
   get 'cant/touch/this', to: 'pages#canttouchthis'
+  get 'can/touch/this', to: 'sponsors#index'
   # put "like", to: "annonces#like"
   # put "dislike", to: "annonces#dislike"
 

@@ -1,0 +1,206 @@
+
+
+<%# ###################################### Accroche ####################################################### %>
+
+<div class='aa-accroche'>
+  <div class='aa-accroche-texture'>
+    <div class='p-accroche-desktop'>
+      <p class='p-titre p-titre-end'>La plateforme ARTAETAS, c’est la simplicité d'une plateforme dédiée mobile, c’est le choix&nbsp;</p>
+      <p class='p-titre p-titre-start'>en oeuvres d'arts de toutes catégories, c’est la liberté de vendre et d'acheter, pour tous, artistes, amateurs et collectionneurs.</p>
+    </div>
+    <div class='p-accroche-mobile'>
+      <p class="p-titre p-titre-center">ARTAETAS, c’est la simplicité, c’est le choix, c’est la liberté, </p>
+      <p class="p-titre p-titre-center">pour tous, artistes, amateurs et collectionneurs.</p>
+    </div>
+    <a href="" class="aa-accroche-button" data-toggle="modal" data-target="#infosmodal">ARTAETAS c'est quoi?</a>
+  </div>
+</div>
+
+<%# ###################################### Carousel ####################################################### %>
+<div class="grid-container">
+  <div class="grid">
+    <div class="grid-sizer"></div>
+    <div class="gutter-sizer"></div>
+    
+
+<%# ###################################### EACH ON Standard ####################################################### %>
+
+<% a_pre = [] %>
+<% a_pre.replace(@annonces_pre) %>
+<% a_annonceurs = [] %>
+<% a_annonceurs.replace(@annonces_annonceurs) %>
+
+<%# i = Varlocale.where(nomchamp: "OccurenceMalu").first.valeurchamp %>
+  <% occurence_annonceurs = 0 %>
+  <% occurence_malu = @occurence_malu.to_i %>
+  <% compteur_annonce = 0 %>
+  <%# total_annonces = 0 %>
+  
+      <% @annonces.each do |t| %>
+        <%# if total_annonces < 10 %>
+         
+          <% if a_pre[0].nil? %>
+            <% a_pre = [] %>
+            <% a_pre.replace(@annonces_pre) %>
+          <% end %>
+          <% if a_annonceurs[0].nil? %>
+            <% a_annonceurs = [] %>
+            <% a_annonceurs.replace(@annonces_annonceurs) %>
+          <% end %>
+          
+          <% if compteur_annonce >= @startannonceurs %>         
+            <% if occurence_annonceurs == @occurenceannonceurs %>
+              <% unless a_annonceurs[0].nil? %>
+               <div class="grid-item aa-formule-normal">
+                 <%= link_to "#{a_annonceurs[0].lien_redir}", { class: "aa-annonce-titre", "data-popup" => "#{a_annonceurs[0].lien_redir}" }   do %>
+                 <%#= link_to_function 'window.open()'  , { class: "aa-annonce-titre"}  do %>
+                 <%# "#{a_annonceurs[0].lien_redir}" %>
+                    <% unless a_annonceurs[0].name.lines.first.nil? %>
+                      <p class='p-titre'><%= a_annonceurs[0].name.lines.first[0,70] %></p>
+                    <% end %>
+                    <% if a_annonceurs[0].lien_image.nil? %>
+                      <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
+                    <% else %>
+                      <% if a_annonceurs[0].lien_video == "" %> 
+                        <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_annonceurs[0].lien_image })  %>
+                      <% else %>
+                        <iframe class="embed-responsive-item"  src="<%= "#{a_annonceurs[0].lien_video}" %>?modestbranding=1&rel=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      <% end %>
+                    <% end %>
+    
+                    
+                    
+                    <% unless a_annonceurs[0].texte.lines.first.nil? %>
+                      <p class='p-description-annonceur'><%= a_annonceurs[0].texte %></p>
+                    <% end %>
+                  <% end %>
+                </div>
+                <% compteurinc = a_annonceurs[0].compteur + 1 %>
+                <% a_annonceurs[0].update(compteur: compteurinc) %>
+                <% a_annonceurs.slice!(0) %>
+                <% occurence_annonceurs = 0 %>
+              <% end %>
+            <% end %>
+          <% end %>
+          
+        <% if occurence_malu == @occurencemalu %>
+         <% unless a_pre[0].nil? %>
+           <div class="grid-item aa-formule-malu">
+             <%= link_to showannonces_path(a_pre[0].slug), { class: "aa-annonce-titre"} do %>
+                <% if a_pre[0].photo.url.nil? %>
+                  <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
+                <% else %>
+                  <%# imagepath = a_pre[0].photo.url.insert(4, 's') %>
+                  <%# filename = a_pre[0].photo.filename %>
+                  <%# imagepath.slice! filename %>
+                  <%# imageminusfilename = imagepath + 'q_auto:low/' %>
+                  <%# imagefullpath = imageminusfilename + filename %>
+                  <%#= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: imagefullpath })  %>
+                  <%#= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_pre[0].photo.url.insert(4, 's') })  %>
+                  <%#= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_pre[0].photolow })  %>
+                  <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_pre[0].photo.low.exifignore })  %>
+                <% end %>
+                <% unless a_pre[0].name.lines.first.nil? %>
+                  <p class='p-titre'><%= a_pre[0].name.lines.first[0,70] %></p>
+                <% end %>
+                
+                
+                <% unless a_pre[0].description.lines.first.nil? %>
+                  <p class='p-description'><%= a_pre[0].description.lines.first[0,70] %></p>
+                <% end %>
+              <% end %>
+            </div>
+            <% a_pre.slice!(0) %>
+            <% occurence_malu = 0 %>
+            <% compteur_annonce += 1 %>
+          <% end %>
+       <% end %>
+         
+         
+       
+          <div class="grid-item aa-formule-normal">
+            <%= link_to showannonces_path(t.slug), { class: "aa-annonce-titre"} do %>
+              <% if t.photo.url.nil? %>
+                <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
+              <% else %>
+  
+                <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.low.exifignore })  %>
+              <% end %>
+              <% unless t.name.lines.first.nil? %>
+                <p class='p-titre'><%= t.name.lines.first[0,70] %></p>
+              <% end %>
+                
+              <% unless t.description.lines.first.nil? %>
+                <p class='p-description'><%= t.description.lines.first[0,70] %></p>
+              <% end %>
+              
+            <% end %>
+          </div>
+          <% occurence_annonceurs += 1 %>
+          <% occurence_malu += 1 %>
+          <% compteur_annonce += 1 %>
+        <%# end %>
+      <% end %>
+     
+  </div>
+</div>
+<%# ###################################### Boutons ####################################################### %>
+
+<div class="aa-button">
+  
+  <div class="aa-button-decouvrir" id="aa-decouvrir">
+    <div class="aa-button-symb-blue">
+      <a href="/searchannonce"><%= svg 'recherche' %></a>
+    </div>
+    <div class="aa-button-text">
+      <div class="aa-button-gros">
+        <p>Rechercher&nbsp;</p>
+      </div>
+      <div class="aa-button-petit">
+        <p>une oeuvre</p>
+      </div>
+    </div>
+   <%#= link_to "Decouvrir une oeuvre", { :controller => "annonces", :action => :search }, :method => :get, :class => "aa-button-link aa-decouvrir"  %>
+     <a href="/searchannonce" class="aa-surcouche"></a>
+  </div>
+  
+  <div class="aa-button-deposer" id="aa-deposer">
+    <div class="aa-button-symb-white">
+      <%= link_to new_annonce_path do %>
+        <%= svg 'archiver2' %>
+      <% end %>
+      <!--<a href="/annonces/new" ></a>-->
+    </div>
+    <div class="aa-button-text">
+      <div class="aa-button-gros">
+        <p>Déposer&nbsp;</p>
+      </div>
+      <div class="aa-button-petit">
+        <p>une oeuvre</p>
+      </div>
+    </div>
+  <%# link_to "Deposer une oeuvre", { :controller => "annonces", :action => :new }, :method => :get, :class => "aa-button-link aa-deposer"  %>
+  </div>
+  
+</div>
+
+<%# ###################################### Artaetas c'est quoi ? ####################################################### %>
+
+<div class="aa-who">
+  <a name="cestquoi"></a>
+   <%= svg 'artaetas_noir2' %>
+    <!-- <p class="aa-who-p-title">Le passage de Lorem Ipsum standard, utilisé depuis 1500</p> -->
+  <p class="aa-who-p">ARTAETAS veut être le maillon qui facilitera l'accès à l’art pour tous.
+  « Artes Aetas », le temps de l’art en latin.</p>
+  <h6>LE TEMPS...</h6>
+  <!-- <p class="aa-who-p-title">Section 1.10.32 du "De Finibus Bonorum et Malorum" de Ciceron (45 av. J.-C.)</p> -->
+  <p class="aa-who-p">...de rendre l’art accessible à tous, que chaque amateur d’art puisse profiter d’un large choix avec un accès direct aux artistes et aux collectionneurs.</p>
+  
+  <p class="aa-who-p">...pour chaque talent artistique de rayonner sur une plateforme qui leur est dédiée, simple, totalement gratuite, construite pour un usage mobile.</p>
+  
+  <p class="aa-who-p">...pour les particuliers de pouvoir facilement renouveler leurs collections, vendre ou acheter leurs oeuvres en totale liberté.   </p>
+  <p class="aa-who-footer">ARTAETAS, c’est la simplicité, c’est le choix, c’est la liberté, pour tous, artistes, amateurs et collectionneurs.</p>
+</div>
+
+
+
