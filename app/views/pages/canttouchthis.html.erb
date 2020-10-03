@@ -52,7 +52,7 @@
             <% if occurence_annonceurs == @occurenceannonceurs %>
               <% unless a_annonceurs[0].nil? %>
                <div class="grid-item aa-formule-normal">
-                 <%= link_to "#{a_annonceurs[0].lien_redir}", { class: "aa-annonce-titre", "data-popup" => "#{a_annonceurs[0].lien_redir}"}   do %>
+                 <%= link_to "#", { class: "aa-annonce-titre", "data-popup" => "#{a_annonceurs[0].lien_redir}"}   do %>
                  <%#= link_to_function 'window.open()'  , { class: "aa-annonce-titre"}  do %>
                  <%# "#{a_annonceurs[0].lien_redir}" %>
                     <% unless a_annonceurs[0].name.lines.first.nil? %>
