@@ -35,6 +35,10 @@
   <% occurence_malu = @occurence_malu.to_i %>
   <% compteur_annonce = 0 %>
   <%# total_annonces = 0 %>
+      <% a_annonceurs.each do |annonceur| %>
+          <% compteurinc = annonceur.compteur + 1 %>
+          <% annonceur.update(compteur: compteurinc) %>
+      <% end %>
   
       <% @annonces.each do |t| %>
         <%# if total_annonces < 10 %>
@@ -75,8 +79,6 @@
                     <% end %>
                   <% end %>
                 </div>
-                <% compteurinc = a_annonceurs[0].compteur + 1 %>
-                <% a_annonceurs[0].update(compteur: compteurinc) %>
                 <% a_annonceurs.slice!(0) %>
                 <% occurence_annonceurs = 0 %>
               <% end %>
