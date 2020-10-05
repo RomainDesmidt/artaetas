@@ -56,7 +56,7 @@
                  <%#= link_to_function 'window.open()'  , { class: "aa-annonce-titre"}  do %>
                  <%# "#{a_annonceurs[0].lien_redir}" %>
                     <% unless a_annonceurs[0].name.lines.first.nil? %>
-                      <p class='p-titre'><%= a_annonceurs[0].name.lines.first[0,70] %></p>
+                      <p class='p-titre'><%= "#{compteur_annonce} #{a_annonceurs[0].name.lines.first[0,70]}" %></p>
                     <% end %>
                     <% if a_annonceurs[0].lien_image.nil? %>
                       <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
@@ -99,7 +99,7 @@
                   <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_pre[0].photo.low.exifignore })  %>
                 <% end %>
                 <% unless a_pre[0].name.lines.first.nil? %>
-                  <p class='p-titre'><%= a_pre[0].name.lines.first[0,70] %></p>
+                  <p class='p-titre'><%= "#{compteur_annonce} #{a_pre[0].name.lines.first[0,70]}" %></p>
                 <% end %>
                 
                 
@@ -125,7 +125,7 @@
                 <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.low.exifignore })  %>
               <% end %>
               <% unless t.name.lines.first.nil? %>
-                <p class='p-titre'><%= t.name.lines.first[0,70] %></p>
+                <p class='p-titre'><%= "#{compteur_annonce} #{t.name.lines.first[0,70]}" %></p>
               <% end %>
                 
               <% unless t.description.lines.first.nil? %>
