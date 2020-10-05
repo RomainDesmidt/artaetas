@@ -34,6 +34,7 @@
   <% occurence_annonceurs = 0 %>
   <% occurence_malu = @occurence_malu.to_i %>
   <% compteur_annonce = 0 %>
+  <% no_more = [0,0] %>
   <%# total_annonces = 0 %>
   
       <% @annonces.each do |t| %>
@@ -49,7 +50,7 @@
           <% end %>
           
           <% if compteur_annonce >= @startannonceurs %>
-            <% if compteur_annonce == @startannonceurs || compteur_annonce == @startannonceurs + 1  %>
+            <% if (compteur_annonce == @startannonceurs || compteur_annonce == @startannonceurs + 1) && no_more[0] == 0  %>
               <% unless a_annonceurs[0].nil? %>
                <div class="grid-item aa-formule-normal">
                  <%= link_to "#{a_annonceurs[0].lien_redir}", { class: "aa-annonce-titre", "data-popup" => "#{a_annonceurs[0].lien_redir}" }   do %>
@@ -77,13 +78,14 @@
                 </div>
                 <% a_annonceurs.slice!(0) %>
                 <% occurence_annonceurs = 0 %>
+                <% no_more = [1,compteur_annonce] %>
               <% end %>
             <% end %>
             
           
           
           
-            <% if occurence_annonceurs == @occurenceannonceurs %>
+            <% if occurence_annonceurs == @occurenceannonceurs && no_more[0] == 1 && no_more[1] < compteur_annonce %>
               <% unless a_annonceurs[0].nil? %>
                <div class="grid-item aa-formule-normal">
                  <%= link_to "#{a_annonceurs[0].lien_redir}", { class: "aa-annonce-titre", "data-popup" => "#{a_annonceurs[0].lien_redir}" }   do %>
