@@ -34,6 +34,7 @@
   <% occurence_annonceurs = 0 %>
   <% occurence_malu = @occurence_malu.to_i %>
   <% compteur_annonce = 0 %>
+  <% compteur_total = 0 %>
   <% no_more = [0,0] %>
   <%# total_annonces = 0 %>
   
@@ -57,7 +58,7 @@
                  <%#= link_to_function 'window.open()'  , { class: "aa-annonce-titre"}  do %>
                  <%# "#{a_annonceurs[0].lien_redir}" %>
                     <% unless a_annonceurs[0].name.lines.first.nil? %>
-                      <p class='p-titre'><%= "#{compteur_annonce} #{a_annonceurs[0].name.lines.first[0,70]}" %></p>
+                      <p class='p-titre'><%= "#{compteur_total} #{a_annonceurs[0].name.lines.first[0,70]}" %></p>
                     <% end %>
                     <% if a_annonceurs[0].lien_image.nil? %>
                       <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
@@ -79,6 +80,7 @@
                 <% a_annonceurs.slice!(0) %>
                 <% occurence_annonceurs = 0 %>
                 <% no_more = [1,compteur_annonce] %>
+                <% compteur_total += 1 %>
               <% end %>
             <% end %>
             
@@ -92,7 +94,7 @@
                  <%#= link_to_function 'window.open()'  , { class: "aa-annonce-titre"}  do %>
                  <%# "#{a_annonceurs[0].lien_redir}" %>
                     <% unless a_annonceurs[0].name.lines.first.nil? %>
-                      <p class='p-titre'><%= "#{compteur_annonce} #{a_annonceurs[0].name.lines.first[0,70]}" %></p>
+                      <p class='p-titre'><%= "#{compteur_total} #{a_annonceurs[0].name.lines.first[0,70]}" %></p>
                     <% end %>
                     <% if a_annonceurs[0].lien_image.nil? %>
                       <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")  %>
@@ -113,6 +115,7 @@
                 </div>
                 <% a_annonceurs.slice!(0) %>
                 <% occurence_annonceurs = 0 %>
+                <% compteur_total += 1 %>
               <% end %>
             <% end %>
           <% end %>
@@ -135,7 +138,7 @@
                   <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: a_pre[0].photo.low.exifignore })  %>
                 <% end %>
                 <% unless a_pre[0].name.lines.first.nil? %>
-                  <p class='p-titre'><%= "#{compteur_annonce} #{a_pre[0].name.lines.first[0,70]}" %></p>
+                  <p class='p-titre'><%= "#{compteur_total} #{a_pre[0].name.lines.first[0,70]}" %></p>
                 <% end %>
                 
                 
@@ -147,6 +150,7 @@
             <% a_pre.slice!(0) %>
             <% occurence_malu = 0 %>
             <% compteur_annonce += 1 %>
+            <% compteur_total += 1 %>
           <% end %>
        <% end %>
          
@@ -161,7 +165,7 @@
                 <%= image_tag("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", data: { original: t.photo.low.exifignore })  %>
               <% end %>
               <% unless t.name.lines.first.nil? %>
-                <p class='p-titre'><%= "#{compteur_annonce} #{t.name.lines.first[0,70]}" %></p>
+                <p class='p-titre'><%= "#{compteur_total} #{t.name.lines.first[0,70]}" %></p>
               <% end %>
                 
               <% unless t.description.lines.first.nil? %>
@@ -173,6 +177,7 @@
           <% occurence_annonceurs += 1 %>
           <% occurence_malu += 1 %>
           <% compteur_annonce += 1 %>
+          <% compteur_total += 1 %>
         <%# end %>
       <% end %>
      
