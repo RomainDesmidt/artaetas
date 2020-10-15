@@ -4,6 +4,9 @@ class PagesController < ApplicationController
   def home
   end
   
+  def partenaires
+  end
+  
   def cgu
   end
   

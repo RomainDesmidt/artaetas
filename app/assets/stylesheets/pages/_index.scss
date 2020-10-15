@@ -2,3 +2,46 @@
 @import "home";
 @import "styleguide";
 @import "index2";
+
+
+.container-partenaire {
+    display: flex;
+    flex-direction: row;
+}
+
+.container-logo-partenaire {
+    flex: 1 1 250px;
+}
+
+.logo-partenaire {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.detail-partenaire {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding-left: 25px;
+}
+
+.detail-partenaire > div {
+    padding-top: 5px; 
+    padding-bottom: 5px; 
+}
+
+.nom-partenaire {
+    justify-content: flex-start;
+    flex: 0 0 auto;
+}
+
+.description-partenaire {
+    flex: 1 1 auto;
+    align-items: center;
+    display: flex;
+}
+.lien-partenaire {
+    justify-content: flex-end;
+    flex: 0 0 auto;
+}
