@@ -141,7 +141,7 @@
           
           <div class="aa-new-photo-field-indivi">
             <%= f.input :photofond,
-             label: "Bannière de profil",
+             label: "Bannière de profil (1066 x 350 px)",
             :input_html => { :onchange => "document.getElementById('previewPhotoFond').src = window.URL.createObjectURL(this.files[0])", 
             class: 'hide-photo-btn' }  %>
             <% if current_user.photofond? %>
