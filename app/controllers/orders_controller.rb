@@ -176,25 +176,49 @@ class OrdersController < ApplicationController
       # Ostravská 1
       # 747 70  Opava
       # ADDRESS
+      
+      
+      
       if @order.premium_sku == "Don" || @order.premium_sku == "Contribution"
+        provider_address = <<~ADDRESS
+          24 allée des allumoirs
+          59493 VILLENEUVE D\'ASCQ, FRANCE
+        ADDRESS
+        
+        surname = @order.annonce.user.surname.nil? ? "" : @order.annonce.user.surname
+        lastname = @order.annonce.user.lastname.nil? ? "" : @order.annonce.user.lastname 
+        codep = @order.annonce.user.codepostal.nil? ? "" : @order.annonce.user.codepostal.to_s
+        viller = @order.annonce.user.villeresidence.nil? ? "" : @order.annonce.user.villeresidence
+        purchaser_address = <<~ADDRESS2
+          #{surname} #{lastname}
+          #{codep} #{viller}
+        ADDRESS2
+        #
+        #{surname} #{lastname})
+        #(@order.annonce.user.surname.nil? ? "" : @order.annonce.user.surname )+' '+(@order.annonce.user.lastname.nil? ? "" : @order.annonce.user.lastname ),
+        #(@order.annonce.user.codepostal.nil? ? "" : @order.annonce.user.codepostal.to_s )+' '+(@order.annonce.user.villeresidence.nil? ? "" : @order.annonce.user.villeresidence ),              
+        
         invoice = InvoicePrinter::Document.new(
           number: 'No.'+@order.updated_at.strftime("%Y%m%d").to_s+@order.id.to_s,
+          #provider_lines: 'YOURARTAVENUE SASU\n 24 allée des allumoirs \n\n 59493 VILLENEUVE D\'ASCQ, FRANCE',
           provider_name: 'YOURARTAVENUE SASU',
+          provider_lines: provider_address,
           # Deprecated 1.3 API, use provider_lines
           # Here for compatibility test
-          provider_street: '24 allée des allumoirs',
-          provider_street_number: '',
-          provider_postcode: '59493 VILLENEUVE D\'ASCQ, FRANCE',
-          provider_city: '',
-          provider_city_part: '',
-          provider_extra_address_line: '',
+          #provider_street: '24 allée des allumoirs',
+          #provider_street_number: '',
+          #provider_postcode: '59493 VILLENEUVE D\'ASCQ, FRANCE',
+          #provider_city: '',
+          #provider_city_part: '',
+          #provider_extra_address_line: '',
           purchaser_name: @order.annonce.user.email,
+          purchaser_lines: purchaser_address,
           # Deprecated 1.3 API, use purchaser_lines
           # Here for compatibility test
-          purchaser_street: (@order.annonce.user.surname.nil? ? "" : @order.annonce.user.surname )+' '+(@order.annonce.user.lastname.nil? ? "" : @order.annonce.user.lastname ),
-          purchaser_street_number: '' ,
-          purchaser_postcode: (@order.annonce.user.codepostal.nil? ? "" : @order.annonce.user.codepostal.to_s )+' '+(@order.annonce.user.villeresidence.nil? ? "" : @order.annonce.user.villeresidence ), 
-          purchaser_city: '',
+          #purchaser_street: (@order.annonce.user.surname.nil? ? "" : @order.annonce.user.surname )+' '+(@order.annonce.user.lastname.nil? ? "" : @order.annonce.user.lastname ),
+          #purchaser_street_number: '' ,
+          #purchaser_postcode: (@order.annonce.user.codepostal.nil? ? "" : @order.annonce.user.codepostal.to_s )+' '+(@order.annonce.user.villeresidence.nil? ? "" : @order.annonce.user.villeresidence ), 
+          #purchaser_city: '',
           issue_date: @order.updated_at.strftime("%d/%m/%Y").to_s,
           due_date: '',
           subtotal: '',
@@ -204,24 +228,45 @@ class OrdersController < ApplicationController
           #note: 'TVA non applicable, art.293 B du CGI'
         )
       else
+        provider_address = <<~ADDRESS
+          24 allée des allumoirs
+          59493 VILLENEUVE D\'ASCQ, FRANCE
+        ADDRESS
+        
+        surname = @order.annonce.user.surname.nil? ? "" : @order.annonce.user.surname
+        lastname = @order.annonce.user.lastname.nil? ? "" : @order.annonce.user.lastname 
+        codep = @order.annonce.user.codepostal.nil? ? "" : @order.annonce.user.codepostal.to_s
+        viller = @order.annonce.user.villeresidence.nil? ? "" : @order.annonce.user.villeresidence
+        purchaser_address = <<~ADDRESS2
+          #{surname} #{lastname}
+          #{codep} #{viller}
+        ADDRESS2
+        #
+        #{surname} #{lastname})
+        #(@order.annonce.user.surname.nil? ? "" : @order.annonce.user.surname )+' '+(@order.annonce.user.lastname.nil? ? "" : @order.annonce.user.lastname ),
+        #(@order.annonce.user.codepostal.nil? ? "" : @order.annonce.user.codepostal.to_s )+' '+(@order.annonce.user.villeresidence.nil? ? "" : @order.annonce.user.villeresidence ),              
+        
         invoice = InvoicePrinter::Document.new(
           number: 'No.'+@order.updated_at.strftime("%Y%m%d").to_s+@order.id.to_s,
+          #provider_lines: 'YOURARTAVENUE SASU\n 24 allée des allumoirs \n\n 59493 VILLENEUVE D\'ASCQ, FRANCE',
           provider_name: 'YOURARTAVENUE SASU',
+          provider_lines: provider_address,
           # Deprecated 1.3 API, use provider_lines
           # Here for compatibility test
-          provider_street: '24 allée des allumoirs',
-          provider_street_number: '',
-          provider_postcode: '59493 VILLENEUVE D\'ASCQ, FRANCE',
-          provider_city: '',
-          provider_city_part: '',
-          provider_extra_address_line: '',
+          #provider_street: '24 allée des allumoirs',
+          #provider_street_number: '',
+          #provider_postcode: '59493 VILLENEUVE D\'ASCQ, FRANCE',
+          #provider_city: '',
+          #provider_city_part: '',
+          #provider_extra_address_line: '',
           purchaser_name: @order.annonce.user.email,
+          purchaser_lines: purchaser_address,
           # Deprecated 1.3 API, use purchaser_lines
           # Here for compatibility test
-          purchaser_street: (@order.annonce.user.surname.nil? ? "" : @order.annonce.user.surname )+' '+(@order.annonce.user.lastname.nil? ? "" : @order.annonce.user.lastname ),
-          purchaser_street_number: '' ,
-          purchaser_postcode: (@order.annonce.user.codepostal.nil? ? "" : @order.annonce.user.codepostal.to_s )+' '+(@order.annonce.user.villeresidence.nil? ? "" : @order.annonce.user.villeresidence ), 
-          purchaser_city: '',
+          #purchaser_street: (@order.annonce.user.surname.nil? ? "" : @order.annonce.user.surname )+' '+(@order.annonce.user.lastname.nil? ? "" : @order.annonce.user.lastname ),
+          #purchaser_street_number: '' ,
+          #purchaser_postcode: (@order.annonce.user.codepostal.nil? ? "" : @order.annonce.user.codepostal.to_s )+' '+(@order.annonce.user.villeresidence.nil? ? "" : @order.annonce.user.villeresidence ), 
+          #purchaser_city: '',
           issue_date: @order.updated_at.strftime("%d/%m/%Y").to_s,
           due_date: (@order.updated_at+7.days).strftime("%d/%m/%Y").to_s,
           subtotal: '',
