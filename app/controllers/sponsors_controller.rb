@@ -15,6 +15,9 @@ class SponsorsController < ApplicationController
         @annonces = @annonces_standard.to_a
         @annonces_pre = @annonces_premium.to_a
         @annonces_annonceurs = @annonceurs_all.to_a
+        if current_user then
+          Reporting.create!(userid: current_user.id, username: current_user.username, params: params, origin: "annonces index")  
+        end         
     end
   
 end

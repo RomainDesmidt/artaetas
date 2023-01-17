@@ -4,6 +4,9 @@ class UsersController < ApplicationController
     @users = User.all
   end
   def show
+    if current_user then
+      Reporting.create!(userid: current_user.id, username: current_user.username, params: params, origin: "user show")  
+    end       
     @username = params[:username]
     # @user= User.find(params[:id])
     @user= User.where(username: @username).first
