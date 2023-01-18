@@ -456,12 +456,19 @@ class AnnoncesController < ApplicationController
 
     @annonces = @annonces.to_a
     @annonces_pre = @annonces_pre.to_a
+    
+    if current_user then
+      Reporting.create!(userid: current_user.id, username: current_user.username, params: params, origin: "annonces search")
+    else
+      Reporting.create!(userid: 0, username: "anon", params: params, origin: "annonces search")
+    end    
   end
 
 
   def show
     # @annonces = Annonce.find(params[:id])
     @annonces = Annonce.where(slug: params[:slug]).first
+    @annonces.update(views: @annonces.views + 1)    
     @user = User.find(@annonces.user_id)
     if @annonces.hauteur.nil?
       @hauteur = 1
@@ -480,6 +487,79 @@ class AnnoncesController < ApplicationController
     end
     
     @volume = @largeur * @hauteur * @profondeur / 1000000
+    
+    if current_user then
+      params2 = params
+      cats = []
+      courant = []
+      couleur = []
+
+      unless @annonces.cats.empty? then
+        @annonces.cats.each do |cat|
+          #params2["categorie_search2"] << cat.id
+          #puts cat.id
+          cats << cat.id.to_s
+        end
+        params2["categorie_search2"] = cats
+      end
+
+      unless @annonces.courants.empty? then
+        @annonces.courants.each do |cour|
+          #params2["courant_search2"] << cour.id
+          #puts cour.id
+          courant << cour.id.to_s
+        end
+        params2["courant_search2"] = courant
+      end
+
+      unless @annonces.couleurs.empty? then
+        @annonces.couleurs.each do |coul|
+          #params2["courant_search2"] << cour.id
+          #puts cour.id
+          couleur << coul.id.to_s
+        end
+        params2["couleur_search2"] = couleur
+      end      
+
+      Reporting.create!(userid: current_user.id, username: current_user.username, params: params2, origin: "annonces show")
+
+    else
+      params2 = params
+      cats = []
+      courant = []
+      couleur = []
+
+      unless @annonces.cats.empty? then
+        @annonces.cats.each do |cat|
+          #params2["categorie_search2"] << cat.id
+          #puts cat.id
+          cats << cat.id.to_s
+        end
+        params2["categorie_search2"] = cats
+      end
+
+      unless @annonces.courants.empty? then
+        @annonces.courants.each do |cour|
+          #params2["courant_search2"] << cour.id
+          #puts cour.id
+          courant << cour.id.to_s
+        end
+        params2["courant_search2"] = courant
+      end
+
+      unless @annonces.couleurs.empty? then
+        @annonces.couleurs.each do |coul|
+          #params2["courant_search2"] << cour.id
+          #puts cour.id
+          couleur << coul.id.to_s
+        end
+        params2["couleur_search2"] = couleur
+      end        
+
+      Reporting.create!(userid: 0, username: "anon", params: params, origin: "annonces show")
+
+    end    
+    
   end
 
   def edit
@@ -558,12 +638,18 @@ class AnnoncesController < ApplicationController
   def bookmark
     @annonce = Annonce.find(params[:id])
     current_user.bookmark(@annonce)
+    if current_user then
+      Reporting.create!(userid: current_user.id, username: current_user.username, params: params, origin: "annonces bookmark")  
+    end        
     redirect_to showannonces_path(@annonce.slug)
   end
   
   def unbookmark
     @annonce = Annonce.find(params[:id])
     current_user.unbookmark(@annonce)
+    if current_user then
+      Reporting.create!(userid: current_user.id, username: current_user.username, params: params, origin: "annonces unbookmark")  
+    end      
     redirect_to showannonces_path(@annonce.slug)
   end
   
@@ -571,6 +657,9 @@ class AnnoncesController < ApplicationController
   def like
     @annonce = Annonce.find(params[:id])
     @annonce.liked_by current_user
+    if current_user then
+      Reporting.create!(userid: current_user.id, username: current_user.username, params: params, origin: "annonces like")  
+    end      
     redirect_to showannonces_path(@annonce.slug)
   end
 
@@ -578,12 +667,18 @@ class AnnoncesController < ApplicationController
     @annonce = Annonce.find(params[:id])
     @user = User.find(@annonce.user_id)
     @user.liked_by current_user
+    if current_user then
+      Reporting.create!(userid: current_user.id, username: current_user.username, params: params, origin: "user like")  
+    end      
     redirect_to showannonces_path(@annonce.slug)
   end
 
   def dislike   
     @annonce = Annonce.find(params[:id])
     @annonce.disliked_by current_user
+    if current_user then
+      Reporting.create!(userid: current_user.id, username: current_user.username, params: params, origin: "annonces dislike")  
+    end      
     redirect_to showannonces_path(@annonce.slug)
   end
 
@@ -591,6 +686,9 @@ class AnnoncesController < ApplicationController
     @annonce = Annonce.find(params[:id])
     @user = User.find(@annonce.user_id)
     @user.disliked_by current_user
+    if current_user then
+      Reporting.create!(userid: current_user.id, username: current_user.username, params: params, origin: "user dislike")  
+    end        
     redirect_to showannonces_path(@annonce.slug)
   end
 
@@ -599,6 +697,9 @@ class AnnoncesController < ApplicationController
     @user = User.find(@annonce.user_id)
     @user.followers << current_user
     # redirect_to @annonce
+    if current_user then
+      Reporting.create!(userid: current_user.id, username: current_user.username, params: params, origin: "user follow")  
+    end        
     redirect_back fallback_location: root_path, flash: { success: "Le membre est suivi, vous pouvez accéder à la liste des membres suivis dans votre compte membre!" }
   end
 
@@ -607,6 +708,9 @@ class AnnoncesController < ApplicationController
     @user = User.find(@annonce.user_id)
     Follow.where(follower_id: current_user.id, followee_id: @user.id).first.destroy!
     # redirect_to @annonce
+    if current_user then
+      Reporting.create!(userid: current_user.id, username: current_user.username, params: params, origin: "user unfollow")  
+    end       
     redirect_back fallback_location: root_path, flash: { success: "Le membre n'est plus suivi!" }
   end
   
@@ -614,6 +718,9 @@ class AnnoncesController < ApplicationController
     @user = User.find(params[:id])
     @user.followers << current_user
     # redirect_to @annonce
+    if current_user then
+      Reporting.create!(userid: current_user.id, username: current_user.username, params: params, origin: "user follow")  
+    end      
     redirect_back fallback_location: root_path, flash: { success: "Le membre est suivi, vous pouvez accéder à la liste des membres suivis dans votre compte membre!" }
   end
 
@@ -621,6 +728,9 @@ class AnnoncesController < ApplicationController
     @user = User.find(params[:id])
     Follow.where(follower_id: current_user.id, followee_id: @user.id).first.destroy!
     # redirect_to @annonce
+    if current_user then
+      Reporting.create!(userid: current_user.id, username: current_user.username, params: params, origin: "user unfollow")  
+    end         
     redirect_back fallback_location: root_path, flash: { success: "Le membre n'est plus suivi!" }
   end
   
