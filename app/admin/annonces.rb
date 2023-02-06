@@ -44,6 +44,7 @@ ActiveAdmin.register Annonce do
       row :cats
       row :courants
       row :couleurs
+      row :shadow_push
     end
   end
     
@@ -98,6 +99,14 @@ ActiveAdmin.register Annonce do
   action_item :archiver, only: [:show], if: proc { Annonce.find(params[:id]).archive == false }  do 
     link_to 'Archiver', archiver_admin_annonce_path, method: :put
   end
+  
+  action_item :shadowpushoff, only: [:show], if: proc { Annonce.find(params[:id]).shadow_push == true }  do 
+    link_to 'ShadowPush-', shadowpushoff_admin_annonce_path, method: :put
+  end
+  
+  action_item :shadowpushon, only: [:show], if: proc { Annonce.find(params[:id]).shadow_push == false || Annonce.find(params[:id]).shadow_push == nil  }  do 
+    link_to 'ShadowPush+', shadowpushon_admin_annonce_path, method: :put
+  end    
   
   
   # action_item :statutmea, only: [:show], if: proc { Annonce.find(params[:id]).formule == "Standard" || Annonce.find(params[:id]).formule == "Mise a la une"  }  do 
@@ -181,6 +190,25 @@ ActiveAdmin.register Annonce do
     #AdminMailer.with(user: @modif_usertarget, annonce: @modif_annonce).refuse_user_annonce.deliver_now
     redirect_to admin_annonce_path
   end
+  
+  member_action :shadowpushon, :method => :put do
+    @modif_annonce = Annonce.find(params[:id])
+    @modif_annonce.shadow_push = true
+    @modif_annonce.save!
+    #@modif_usertarget = @modif_annonce.user
+    #AdminMailer.with(user: @modif_usertarget, annonce: @modif_annonce ).confirm_user_annonce.deliver_now
+    redirect_to admin_annonce_path
+  end
+  
+  member_action :shadowpushoff, :method => :put do
+    @modif_annonce = Annonce.find(params[:id])
+    @modif_annonce.shadow_push = false
+    @modif_annonce.save!
+    #@modif_usertarget = @modif_annonce.user
+    #AdminMailer.with(user: @modif_usertarget, annonce: @modif_annonce).refuse_user_annonce.deliver_now
+    redirect_to admin_annonce_path
+  end  
+  
 # ---------------------
   action_item :previous, only: [:show, :edit] do
     id = Annonce.where('id < ?', params[:id]).order('id DESC').first

@@ -176,6 +176,7 @@
 # Varlocale.create!( id: 6, nomchamp: "PeriodeMalu", valeurchamp: 7) 
 # Varlocale.create!( id: 7, nomchamp: "LimMaxMea", valeurchamp: 100, description: "Nombre maximum de mise en avant autorisé, avant que la prise d'option soit bloquée") 
 # Varlocale.create!( id: 8, nomchamp: "LimMaxMalu", valeurchamp: 100, description: "Nombre maximum de mise a la une autorisé, avant que la prise d'option soit bloquée") 
+# Varlocale.create!( id: 11, nomchamp: "ShadowPush", valeurchamp: 20)
 # Annonce.all.each do |an|
 #     if an.anneecreation.nil?
 #         an.update!(anneecreation: 2000)

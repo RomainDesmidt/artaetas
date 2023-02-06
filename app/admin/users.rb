@@ -83,7 +83,35 @@ ActiveAdmin.register User do
     link_to 'Débloquer', debloquer_admin_user_path, method: :put
   end
   
-    member_action :publier, :method => :put do
+  action_item :onpartner, only: [:show], if: proc { User.find(params[:id]).partner == false || User.find(params[:id]).partner == nil  }  do 
+    link_to 'Partenaire', partneron_admin_user_path, method: :put
+  end
+  
+  action_item :offpartner, only: [:show], if: proc { User.find(params[:id]).partner == true }  do 
+    link_to 'NonPartenaire', partneroff_admin_user_path, method: :put
+  end
+  
+  action_item :userreport, only: [:show]  do 
+    #admin_welcome_messages_path(edit: true), :method => :get
+    link_to 'UserStats', reportindiv_admin_user_path, method: :get
+    #link_to 'UserStats', admin_stats_path
+  end
+  
+  member_action :partneron, :method => :put do
+    @modif_user = User.find(params[:id])
+    @modif_user.update(partner: true)
+    #AdminMailer.with(user: @modif_user ).refuse_user.deliver_now
+    redirect_to admin_user_path
+  end
+  
+  member_action :partneroff, :method => :put do
+    @modif_user = User.find(params[:id])
+    @modif_user.update(partner: false)
+    #AdminMailer.with(user: @modif_user ).refuse_user.deliver_now
+    redirect_to admin_user_path
+  end
+  
+  member_action :publier, :method => :put do
     @modif_user = User.find(params[:id])
     @modif_user.confirmation_webmaster = true
     @modif_user.save!
@@ -113,6 +141,11 @@ ActiveAdmin.register User do
     redirect_to admin_user_path
   end
   
+  member_action :reportindiv, method: :get do
+    #render active_admin_template('_reportindiv.html.erb'), :layout => false
+    render partial: 'reportindiv'
+    
+  end
   
 
 
@@ -140,6 +173,7 @@ ActiveAdmin.register User do
             #f.input :password_confirmation ## a delete
             f.input :surname
             f.input :lastname
+            f.input :partner
             f.input :afficher_identite
             f.input :afficher_email
             f.input :tel
