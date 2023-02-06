@@ -26,6 +26,7 @@
 <%# ###################################### EACH ON Standard ####################################################### %>
 
 <% a_pre = [] %>
+<%#= @annonces_pre %>
 <% a_pre.replace(@annonces_pre) %>
 <% a_annonceurs = [] %>
 <% a_annonceurs.replace(@annonces_annonceurs) %>
@@ -43,7 +44,7 @@
   
       <% @annonces.each do |t| %>
         <%# if total_annonces < 10 %>
-         
+          <%#= @annonces %>
           <% if a_pre[0].nil? %>
             <% a_pre = [] %>
             <% a_pre.replace(@annonces_pre) %>
@@ -144,7 +145,7 @@
                 
                 
                 <% unless a_pre[0].description.lines.first.nil? %>
-                  <p class='p-description'><%= a_pre[0].description.lines.first[0,70] %></p>
+                  <p class='p-description'><%#= a_pre[0].description.lines.first[0,70] %></p>
                 <% end %>
               <% end %>
             </div>
@@ -169,7 +170,7 @@
               <% end %>
                 
               <% unless t.description.lines.first.nil? %>
-                <p class='p-description'><%= t.description.lines.first[0,70] %></p>
+                <p class='p-description'><%#= t.description.lines.first[0,70] %></p>
               <% end %>
               
             <% end %>
@@ -184,11 +185,12 @@
 </div>
 <%# ###################################### Boutons ####################################################### %>
 
+<!--
 <div class="aa-button">
   
   <div class="aa-button-decouvrir" id="aa-decouvrir">
     <div class="aa-button-symb-blue">
-      <a href="/searchannonce"><%= svg 'recherche' %></a>
+      <a href="/searchannonce"><%#= svg 'recherche' %></a>
     </div>
     <div class="aa-button-text">
       <div class="aa-button-gros">
@@ -204,10 +206,12 @@
   
   <div class="aa-button-deposer" id="aa-deposer">
     <div class="aa-button-symb-white">
-      <%= link_to new_annonce_path do %>
-        <%= svg 'archiver2' %>
-      <% end %>
+      <%#= link_to new_annonce_path do %>
+        <%#= svg 'archiver2' %>
+      <#% end %>
+-->
       <!--<a href="/annonces/new" ></a>-->
+<!--      
     </div>
     <div class="aa-button-text">
       <div class="aa-button-gros">
@@ -221,7 +225,7 @@
   </div>
   
 </div>
-
+-->
 <%# ###################################### Artaetas c'est quoi ? ####################################################### %>
 
 <div class="aa-who">
