@@ -442,6 +442,16 @@ class AnnoncesController < ApplicationController
         @annonces_pre = @annonces_pre.order('anneecreation DESC')
         # @probleme = "Prix decroissant"
       end
+      if params[:ordre_annonce] == "ANNONCE VUE DECROISSANT"
+        @annonces = @annonces.order('views DESC')
+        @annonces_pre = @annonces_pre.order('views DESC')
+        # @probleme = "Prix decroissant"
+      end
+      if params[:ordre_annonce] == "USER SUIVI DECROISSANT"
+        @annonces = @annonces.joins(:user).order('followcount DESC')
+        @annonces_pre = @annonces_pre.joins(:user).order('followcount DESC')
+        # @probleme = "Prix decroissant"
+      end       
     end
     
     # unless params[:term] == "Que recherchez-vous?"
