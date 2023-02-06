@@ -303,7 +303,7 @@ class AnnoncesController < ApplicationController
     unless params[:administratif_search2] == '' 
       if params[:administratif_search2]
       k = 0
-      @init_query_administratif = Annonce.where( "disposition = ? ", "pasdedisposition" )
+      @init_query_administratif = Annonce.where( "disposition = ? ", "pasdedisposition" ) 
         params[:administratif_search2].each do |administratif_var|
           @query_to_add_administratif = Annonce.where( "#{administratif_var} = ? ", true )
           if k == 0
