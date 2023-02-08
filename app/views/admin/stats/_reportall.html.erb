@@ -1,3 +1,29 @@
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  /*width: 100% !important; */
+  width: auto !important;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  /*background-color: #04AA6D;*/
+  background-color: #6a7176;
+  color: white;
+}
+</style>
       <% @cat_to_name = []
       @courant_to_name = []
       @couleur_to_name = []
@@ -83,7 +109,7 @@
 
 
 
-<main class="aa-cgu">
+<main class="aa-cgu" style="height: 600px !important">
     <h2 class="aa-legal-titre">Reporting Tags All Users</h1>
     
     <%# @somehash = {} %>
@@ -126,15 +152,15 @@
     <%# @countcourant_annonce =  @courant_annonce.group_by(&:itself).transform_values(&:count) %>
     <%# @countcouleur_annonce =  @couleur_annonce.group_by(&:itself).transform_values(&:count) %>       
     
-    <table>
+    <table id="customers">
         <thead>
             <tr>
-                <td style="text-align: center" >Catégories</td>
+                <th style="text-align: center" >Catégories</th>
                 <% @cat_to_name.each do |catname| %>
                     <% if catname.is_a?(String) then %>
-                        <td style="text-align: center" >
+                        <th style="text-align: center" >
                             <%= catname %>
-                        </td>
+                        </th>
                     <% end %>
                 <% end %>
             </tr>
@@ -198,15 +224,15 @@
     
     <br>
     
-    <table>
+    <table id="customers">
         <thead>
             <tr>
-                <td style="text-align: center" >Courants</td>
+                <th style="text-align: center" >Courants</th>
                 <% @courant_to_name.each do |catname| %>
                     <% if catname.is_a?(String) then %>
-                        <td style="text-align: center" >
+                        <th style="text-align: center" >
                             <%= catname %>
-                        </td>
+                        </th>
                     <% end %>
                 <% end %>
             </tr>
@@ -268,15 +294,15 @@
     
     <br>
     
-    <table>
+    <table id="customers">
         <thead>
             <tr>
-                <td style="text-align: center" >Couleur</td>
+                <th style="text-align: center" >Couleur</th>
                 <% @couleur_to_name.each do |catname| %>
                     <% if catname.is_a?(String) then %>
-                        <td style="text-align: center" >
+                        <th style="text-align: center" >
                             <%= catname %>
-                        </td>
+                        </th>
                     <% end %>
                 <% end %>
             </tr>
@@ -373,4 +399,322 @@
     <%#end%>    
     <%#= @user_select %>
     <!-- <iframe name="my_iframe"></iframe> -->
+</main>
+
+<%
+    #@user = User.find(params[:id])
+    @cat_to_name = []
+    @courant_to_name = []
+    @couleur_to_name = []
+    
+    @categorie_all = []
+    @couleur_all = []
+    @courant_all = []
+    
+    @categorie_search = []
+    @couleur_search = []
+    @courant_search = []
+
+    @categorie_annonce = []
+    @couleur_annonce = []
+    @courant_annonce = []    
+    
+    Categorie.all.each do |cat|
+      @cat_to_name[cat.id] = cat.name
+    end     
+    Courant.all.each do |cat|
+      @courant_to_name[cat.id] = cat.name
+    end   
+    Couleur.all.each do |cat|
+      @couleur_to_name[cat.id] = cat.couleur_dominante
+    end 
+    #Reporting.all.where(origin: "annonces search").each do |r|
+    Reporting.all.where(userid: 0).each do |r|
+      parsedvar = JSON.parse r.params.gsub('=>', ':')
+      unless parsedvar["categorie_search2"].nil?
+          parsedvar["categorie_search2"].each {|cat| @categorie_all << cat }
+      end
+      unless parsedvar["courant_search2"].nil?
+         parsedvar["courant_search2"].each {|cat| @courant_all << cat }
+      end
+      unless parsedvar["couleur_search2"].nil?
+          parsedvar["couleur_search2"].each {|cat| @couleur_all << cat }      
+      end    
+    end
+    
+    Reporting.all.where(userid: 0).where(origin: "annonces search").each do |r|
+      parsedvar = JSON.parse r.params.gsub('=>', ':')
+      unless parsedvar["categorie_search2"].nil?
+          parsedvar["categorie_search2"].each {|cat| @categorie_search << cat }
+      end
+      unless parsedvar["courant_search2"].nil?
+         parsedvar["courant_search2"].each {|cat| @courant_search << cat }
+      end
+      unless parsedvar["couleur_search2"].nil?
+          parsedvar["couleur_search2"].each {|cat| @couleur_search << cat }      
+      end    
+    end
+    
+    Reporting.all.where(userid: 0).where(origin: "annonces show").each do |r|
+      parsedvar = JSON.parse r.params.gsub('=>', ':')
+      unless parsedvar["categorie_search2"].nil?
+          parsedvar["categorie_search2"].each {|cat| @categorie_annonce << cat }
+      end
+      unless parsedvar["courant_search2"].nil?
+        parsedvar["courant_search2"].each {|cat| @courant_annonce << cat }
+      end
+      unless parsedvar["couleur_search2"].nil?
+          parsedvar["couleur_search2"].each {|cat| @couleur_annonce << cat }      
+      end    
+    end %>
+
+<main class="aa-cgu">
+    <h2 class="aa-legal-titre">Reporting Tags Anonymes </h1>
+    <%# @somehash = {} %>
+    <%# Reporting.all.where(origin: "annonces search").each do |r| %>
+    <%# Reporting.all.where(origin: "annonces search").first(2).last.each do |r| %>
+    
+        <%# @somehash = Reporting.all.where(origin: "annonces search").first(2).last.params  %>
+        <%# @somehash = Reporting.all.where(origin: "annonces search").last.params  %>
+        <%# @somehashfs = JSON.parse @somehash.gsub('=>', ':') %>
+        <%#= @somehashfs["categorie_search2"] %> 
+        
+    <%# @categorie = [] %>
+    <%# Reporting.all.where(origin: "annonces search").each do |r| %>
+        <%# somevar = JSON.parse r.params.gsub('=>', ':') %>
+        <%# unless somevar["categorie_search2"].nil?  %>
+            <%# somevar["categorie_search2"].each {|cat| @categorie << cat } %>
+            <%# @categorie << somevar["categorie_search2"]  %>
+        <%# end %>
+    <%# end %>
+    <%# @cattoname = [] %>
+    <%# Categorie.all.each do |cat| %>
+        <%#= cat.id %>
+       <%# @cattoname[:cat.id] = cat.name  %>
+       <%# @cattoname[cat.id] = cat.name  %>
+    <%# end %>
+    
+    <%#= @categorie %>   
+    <%# @categorie.each do |cat| %>
+        <%#= @cattoname[cat.to_i] %>
+    <%# end %>
+    <% @countcategorie =  @categorie_all.group_by(&:itself).transform_values(&:count) %>
+    <% @countcourant =  @courant_all.group_by(&:itself).transform_values(&:count) %>
+    <% @countcouleur =  @couleur_all.group_by(&:itself).transform_values(&:count) %>
+    
+    <% @countcategorie_search =  @categorie_search.group_by(&:itself).transform_values(&:count) %>
+    <% @countcourant_search =  @courant_search.group_by(&:itself).transform_values(&:count) %>
+    <% @countcouleur_search =  @couleur_search.group_by(&:itself).transform_values(&:count) %>    
+    
+    <% @countcategorie_annonce =  @categorie_annonce.group_by(&:itself).transform_values(&:count) %>
+    <% @countcourant_annonce =  @courant_annonce.group_by(&:itself).transform_values(&:count) %>
+    <% @countcouleur_annonce =  @couleur_annonce.group_by(&:itself).transform_values(&:count) %>      
+    
+    <table id="customers">
+        <thead>
+            <tr>
+                <th style="text-align: center" >Catégories</th>
+                <% @cat_to_name.each do |catname| %>
+                    <% if catname.is_a?(String) then %>
+                        <th style="text-align: center" >
+                            <%= catname %>
+                        </th>
+                    <% end %>
+                <% end %>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: center" >ALL</td>
+                <% @cat_to_name.each_with_index do |catname,index| %>
+                    <% if catname.is_a?(String) then %>
+                        <td style="text-align: center" >
+                            <%#= catname %>
+                            <%#= index %>
+                            <% if  @countcategorie[index.to_s].is_a?(Integer) then %>
+                                <%= @countcategorie[index.to_s]  %>
+                            <% else %>
+                                <%= 0 %>
+                            <% end %>
+                            
+                        </td>
+                    <% end %>
+                <% end %>            
+            </tr>
+            <tr>
+                <td style="text-align: center" >Search</td>
+                <% @cat_to_name.each_with_index do |catname,index| %>
+                    <% if catname.is_a?(String) then %>
+                        <td style="text-align: center" >
+                            <%#= catname %>
+                            <%#= index %>
+                            <% if  @countcategorie_search[index.to_s].is_a?(Integer) then %>
+                                <%= @countcategorie_search[index.to_s]  %>
+                            <% else %>
+                                <%= 0 %>
+                            <% end %>
+                            
+                        </td>
+                    <% end %>
+                <% end %>                 
+            </tr>
+            <tr>
+                <td style="text-align: center" >Annonces</td>
+                <% @cat_to_name.each_with_index do |catname,index| %>
+                    <% if catname.is_a?(String) then %>
+                        <td style="text-align: center" >
+                            <%#= catname %>
+                            <%#= index %>
+                            <% if  @countcategorie_annonce[index.to_s].is_a?(Integer) then %>
+                                <%= @countcategorie_annonce[index.to_s]  %>
+                            <% else %>
+                                <%= 0 %>
+                            <% end %>
+                            
+                        </td>
+                    <% end %>
+                <% end %>                
+            </tr>
+        </tbody>
+    </table>
+    
+    <br>
+    
+    <table id="customers">
+        <thead>
+            <tr>
+                <th style="text-align: center" >Courants</th>
+                <% @courant_to_name.each do |catname| %>
+                    <% if catname.is_a?(String) then %>
+                        <th style="text-align: center" >
+                            <%= catname %>
+                        </th>
+                    <% end %>
+                <% end %>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: center" >ALL</td>
+                <% @courant_to_name.each_with_index do |catname,index| %>
+                    <% if catname.is_a?(String) then %>
+                        <td style="text-align: center" >
+                            <%#= catname %>
+                            <%#= index %>
+                            <% if  @countcourant[index.to_s].is_a?(Integer) then %>
+                                <%= @countcourant[index.to_s]  %>
+                            <% else %>
+                                <%= 0 %>
+                            <% end %>
+                            
+                        </td>
+                    <% end %>
+                <% end %>            
+            </tr>
+            <tr>
+                <td style="text-align: center" >Search</td>
+                <% @courant_to_name.each_with_index do |catname,index| %>
+                    <% if catname.is_a?(String) then %>
+                        <td style="text-align: center" >
+                            <%#= catname %>
+                            <%#= index %>
+                            <% if  @countcourant_search[index.to_s].is_a?(Integer) then %>
+                                <%= @countcourant_search[index.to_s]  %>
+                            <% else %>
+                                <%= 0 %>
+                            <% end %>
+                            
+                        </td>
+                    <% end %>
+                <% end %>                    
+            </tr>
+            <tr>
+                <td style="text-align: center" >Annonces</td>
+                <% @courant_to_name.each_with_index do |catname,index| %>
+                    <% if catname.is_a?(String) then %>
+                        <td style="text-align: center" >
+                            <%#= catname %>
+                            <%#= index %>
+                            <% if  @countcourant_annonce[index.to_s].is_a?(Integer) then %>
+                                <%= @countcourant_annonce[index.to_s]  %>
+                            <% else %>
+                                <%= 0 %>
+                            <% end %>
+                            
+                        </td>
+                    <% end %>
+                <% end %>                  
+            </tr>
+        </tbody>
+    </table>    
+    
+    <br>
+    
+    <table id="customers">
+        <thead>
+            <tr>
+                <th style="text-align: center" >Couleur</th>
+                <% @couleur_to_name.each do |catname| %>
+                    <% if catname.is_a?(String) then %>
+                        <th style="text-align: center" >
+                            <%= catname %>
+                        </th>
+                    <% end %>
+                <% end %>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: center" >ALL</td>
+                <% @couleur_to_name.each_with_index do |catname,index| %>
+                    <% if catname.is_a?(String) then %>
+                        <td style="text-align: center" >
+                            <%#= catname %>
+                            <%#= index %>
+                            <% if  @countcouleur[index.to_s].is_a?(Integer) then %>
+                                <%= @countcouleur[index.to_s]  %>
+                            <% else %>
+                                <%= 0 %>
+                            <% end %>
+                            
+                        </td>
+                    <% end %>
+                <% end %>            
+            </tr>
+            <tr>
+                <td style="text-align: center" >Search</td>
+                <% @couleur_to_name.each_with_index do |catname,index| %>
+                    <% if catname.is_a?(String) then %>
+                        <td style="text-align: center" >
+                            <%#= catname %>
+                            <%#= index %>
+                            <% if  @countcouleur_search[index.to_s].is_a?(Integer) then %>
+                                <%= @countcouleur_search[index.to_s]  %>
+                            <% else %>
+                                <%= 0 %>
+                            <% end %>
+                            
+                        </td>
+                    <% end %>
+                <% end %>                   
+            </tr>
+            <tr>
+                <td style="text-align: center" >Annonces</td>
+                <% @couleur_to_name.each_with_index do |catname,index| %>
+                    <% if catname.is_a?(String) then %>
+                        <td style="text-align: center" >
+                            <%#= catname %>
+                            <%#= index %>
+                            <% if  @countcouleur_annonce[index.to_s].is_a?(Integer) then %>
+                                <%= @countcouleur_annonce[index.to_s]  %>
+                            <% else %>
+                                <%= 0 %>
+                            <% end %>
+                            
+                        </td>
+                    <% end %>
+                <% end %>                  
+            </tr>
+        </tbody>
+    </table>
 </main>
