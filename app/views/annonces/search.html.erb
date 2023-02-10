@@ -206,12 +206,14 @@
                 </p>
                 
                 <p class="aa-search-price  aa-show-detail-italic">
-                  <% if t.prix   %>
+                  <% if t.prix and t.prix.to_i > 0 %>
                     <% if (t.prix.to_i - t.prix) > 0 %>
                       <%= number_with_delimiter(t.prix.to_s, delimiter: " " ) %>€
                     <% else %>
                       <%= number_with_delimiter(t.prix.to_i.to_s, delimiter: " " ) %>€
                     <% end %>
+                  <% else %>
+                    Prix sur demande
                   <% end %>
                 </p>
               </div>
@@ -257,12 +259,14 @@
                   <% end %>
                 </p>
                 <p class="aa-search-price  aa-show-detail-italic">
-                  <% if a_pre[0].prix   %>
+                  <% if a_pre[0].prix and a_pre[0].prix.to_i > 0    %>
                     <% if (a_pre[0].prix.to_i - a_pre[0].prix) > 0 %>
                       <%= number_with_delimiter(a_pre[0].prix.to_s, delimiter: " " ) %>€
                     <% else %>
                       <%= number_with_delimiter(a_pre[0].prix.to_i.to_s, delimiter: " " ) %>€
                     <% end %>
+                  <% else %>
+                    Prix sur demande
                   <% end %>
                 </p>
               </div>
@@ -302,12 +306,14 @@
                 </p>
                 
                 <p class="aa-search-price  aa-show-detail-italic">
-                  <% if t.prix   %>
+                  <% if t.prix and t.prix.to_i > 0   %>
                     <% if (t.prix.to_i - t.prix) > 0 %>
                       <%= number_with_delimiter(t.prix.to_s, delimiter: " " ) %>€
                     <% else %>
                       <%= number_with_delimiter(t.prix.to_i.to_s, delimiter: " " ) %>€
                     <% end %>
+                  <% else %>
+                    Prix sur demande
                   <% end %>
                 </p>
               </div>

@@ -116,7 +116,7 @@ class AnnoncesController < ApplicationController
     end
     @nom_artiste_all = @nom_artiste_all.sort!.uniq!
     unless params[:prix_slider].nil?
-      @pricemin = params[:prix_slider].split(",",2)[0].to_i
+      @pricemin = params[:prix_slider].split(",",2)[0].to_i - 1 # prix sur demande <=> prix = 0, need to start with -1 instead of 0
       @pricemax = params[:prix_slider].split(",",2)[1].to_i
     end
     

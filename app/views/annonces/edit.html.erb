@@ -10,8 +10,8 @@
         <p style="font-size: 12px; color: #6c757d;">les champs suivis d'une étoile * sont nécessaires pour enregistrer l'annonce.</p>
         <br>
         <%= f.input :name, label: "Nom de l'oeuvre", hint: "max 70 caracteres dans l'index"  %>
-        <%= f.input :description, hint: "Seul 70 caracteres de la premiere ligne apparaissent dans l'index" %>
-        <%= f.input :prix, placeholder: "€" %>
+        <%= f.input :description, hint: "seul 70 caracteres de la premiere ligne apparaissent dans l'index" %>
+        <%= f.input :prix, placeholder: "€", hint: "zéro donne l'affichage \"prix sur demande\""  %>
         <%= f.input :anneecreation, label: "Année de création" %>
         <%= f.input :nom_artiste, label: "Nom de l'artiste" %>
         

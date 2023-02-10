@@ -96,12 +96,14 @@
               <% end %>
               </p>
               <p class="aa-show-price  aa-show-detail-italic">
-              <% if @annonces.prix   %>
+              <% if @annonces.prix and @annonces.prix.to_i > 0   %>
                 <% if (@annonces.prix.to_i - @annonces.prix) > 0 %>
                   <%= number_with_delimiter(@annonces.prix.to_s, delimiter: " " ) %>€
                 <% else %>
                   <%= number_with_delimiter(@annonces.prix.to_i.to_s, delimiter: " " ) %>€
                 <% end %>
+              <% else %>
+                Prix sur demande
               <% end %>
               </p>
             
