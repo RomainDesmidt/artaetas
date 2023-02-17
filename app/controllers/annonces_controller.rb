@@ -86,6 +86,7 @@ class AnnoncesController < ApplicationController
     
     
     # Params Get
+    keep_partner = false
     @categorie_search2 = params[:categorie_search2]
     @courant_search2 = params[:courant_search2]
     @couleur_search2 = params[:couleur_search2]
@@ -137,6 +138,16 @@ class AnnoncesController < ApplicationController
     
     #if params[:term].nil?
       @annonces_all = Annonce.joins(:user).where("users.confirmation_webmaster = true").where("annonces.archive = false").where(envente_yesno: true)
+      
+    if params[:administratif_search2]
+
+      if params[:administratif_search2].include?("partner")
+        @annonces_all = Annonce.joins(:user).where("users.confirmation_webmaster = true and users.partner = true").where("annonces.archive = false").where(envente_yesno: true)
+        
+      end
+    end
+
+    
     #else
     #  @annonces_all = Annonce.joins(:user).where("users_annonces.confirmation_webmaster = true").where(envente_yesno: true)
    # end
@@ -300,26 +311,30 @@ class AnnoncesController < ApplicationController
       end
     end        
     
-    unless params[:administratif_search2] == '' 
+    unless params[:administratif_search2] == ''
       if params[:administratif_search2]
       k = 0
       @init_query_administratif = Annonce.where( "disposition = ? ", "pasdedisposition" ) 
         params[:administratif_search2].each do |administratif_var|
-          @query_to_add_administratif = Annonce.where( "#{administratif_var} = ? ", true )
-          if k == 0
-            @result_query_administratif = Annonce.from("(#{@init_query_administratif.to_sql} UNION #{@query_to_add_administratif.to_sql}) AS annonces")
-            k += 1
-          else
-            @result_query_administratif = Annonce.from("(#{@init_query_administratif.to_sql} INTERSECT #{@query_to_add_administratif.to_sql}) AS annonces")
+          unless administratif_var == "partner"
+            @query_to_add_administratif = Annonce.where( "#{administratif_var} = ? ", true )
+            if k == 0
+              @result_query_administratif = Annonce.from("(#{@init_query_administratif.to_sql} UNION #{@query_to_add_administratif.to_sql}) AS annonces")
+              k += 1
+            else
+              @result_query_administratif = Annonce.from("(#{@init_query_administratif.to_sql} INTERSECT #{@query_to_add_administratif.to_sql}) AS annonces")
+            end
+            @init_query_administratif = @result_query_administratif
           end
-          @init_query_administratif = @result_query_administratif
         end
         
-        @annonces = Annonce.from("(#{@annonces.to_sql} INTERSECT #{@result_query_administratif.to_sql}) AS annonces")
-        @annonces_pre = Annonce.from("(#{@annonces_pre.to_sql} INTERSECT #{@result_query_administratif.to_sql}) AS annonces")
+        if k > 0
+          @annonces = Annonce.from("(#{@annonces.to_sql} INTERSECT #{@result_query_administratif.to_sql}) AS annonces")
+          @annonces_pre = Annonce.from("(#{@annonces_pre.to_sql} INTERSECT #{@result_query_administratif.to_sql}) AS annonces")
+        end
         
       end
-    end    
+    end
     
     # unless params[:disposition] == ''
     #   if params[:disposition]
