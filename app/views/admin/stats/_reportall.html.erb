@@ -24,23 +24,48 @@
   color: white;
 }
 </style>
-      <% @cat_to_name = []
-      @courant_to_name = []
-      @couleur_to_name = []
+        <% @cat_to_name = []
+        @courant_to_name = []
+        @couleur_to_name = []
+        
+        @categorie_all = []
+        @couleur_all = []
+        @courant_all = []
+        
+        @categorie_search = []
+        @couleur_search = []
+        @courant_search = []
+        
+        @categorie_annonce = []
+        @couleur_annonce = []
+        @courant_annonce = []
+        
+        @user_select = []
+        
+        @params = params
+        
+        date_first = Reporting.all.first.created_at
+        date_last = Reporting.all.last.created_at      
+        @allreporting = Reporting.all
       
-      @categorie_all = []
-      @couleur_all = []
-      @courant_all = []
       
-      @categorie_search = []
-      @couleur_search = []
-      @courant_search = []
-  
-      @categorie_annonce = []
-      @couleur_annonce = []
-      @courant_annonce = []
+        if @params[:dob]
+            bd = @params[:dob]["date(3i)"].to_i
+            bm = @params[:dob]["date(2i)"].to_i
+            by = @params[:dob]["date(1i)"].to_i
+            @dob_date = Date.new(by, bm, bd)
+            @allreporting = @allreporting.where("DATE(created_at) >= ?", @dob_date - 1.day)
+        end
+        if @params[:doe]
+            bd = @params[:doe]["date(3i)"].to_i
+            bm = @params[:doe]["date(2i)"].to_i
+            by = @params[:doe]["date(1i)"].to_i
+            @doe_date = Date.new(by, bm, bd)
+            @allreporting = @allreporting.where("DATE(created_at) <= ?", @doe_date - 1.day)
+        end        
+        
+
       
-      @user_select = []
       
       User.all.each do |user|
         user_table = [user.username,user.id]  
@@ -55,9 +80,10 @@
       end   
       Couleur.all.each do |cat|
         @couleur_to_name[cat.id] = cat.couleur_dominante
-      end 
+      end
+
       #Reporting.all.where(origin: "annonces search").each do |r|
-      Reporting.all.each do |r|
+      @allreporting.each do |r|
         parsedvar = JSON.parse r.params.gsub('=>', ':')
         unless parsedvar["categorie_search2"].nil?
             parsedvar["categorie_search2"].each {|cat| @categorie_all << cat }
@@ -70,7 +96,7 @@
         end    
       end
       
-      Reporting.all.where(origin: "annonces search").each do |r|
+      @allreporting.where(origin: "annonces search").each do |r|
         parsedvar = JSON.parse r.params.gsub('=>', ':')
         unless parsedvar["categorie_search2"].nil?
             parsedvar["categorie_search2"].each {|cat| @categorie_search << cat }
@@ -83,7 +109,7 @@
         end    
       end
       
-      Reporting.all.where(origin: "annonces show").each do |r|
+      @allreporting.where(origin: "annonces show").each do |r|
         parsedvar = JSON.parse r.params.gsub('=>', ':')
         unless parsedvar["categorie_search2"].nil?
             parsedvar["categorie_search2"].each {|cat| @categorie_annonce << cat }
@@ -109,7 +135,71 @@
 
 
 
-<main class="aa-cgu" style="height: 600px !important">
+<main class="aa-cgu" style="height: 700px !important">
+    <%# @dob = {} %>
+    <%#= form_tag(url: admin_stats_path, method: :get ) do  %>
+    <%= form_tag admin_stats_path, :method => :get do  %>
+        <%#= select_tag :id , options_for_select(@user_select, ""), include_blank: false, :multiple => false  %>    
+        <%#= date_select :dob, start_year:2016, end_year: Time.now.year %>
+        <%= label_tag :dob,"Date de début" %>
+        <br>
+        <% if @params[:dob] %>
+            <% bd = @params[:dob]["date(3i)"].to_i %>
+            <% bm = @params[:dob]["date(2i)"].to_i %>
+            <% by = @params[:dob]["date(1i)"].to_i %>
+            <% @dob = Date.new(by, bm, bd) %>
+            <%= date_select :dob, "date", { :start_year => Date.today.year - (Date.today.year-2018), :end_year => Date.today.year, order: [:day, :month, :year], :selected => Date.new(by, bm, bd) }   %>
+        <% else %>
+            <%= date_select :dob, "date", { :start_year => Date.today.year - (Date.today.year-2018), :end_year => Date.today.year, order: [:day, :month, :year], :default => date_first }  %>
+        <% end %>
+        <br>
+        
+        <%= label_tag :doe,"Date de fin" %>
+        <br>
+        <% if @params[:doe] %>
+            <% ed = @params[:doe]["date(3i)"].to_i %>
+            <% em = @params[:doe]["date(2i)"].to_i %>
+            <% ey = @params[:doe]["date(1i)"].to_i %>
+            <%= date_select :doe, "date", { :start_year => Date.today.year - (Date.today.year-2018), :end_year => Date.today.year, order: [:day, :month, :year], :selected => Date.new(ey, em, ed) }   %>
+        <% else %>
+            <%= date_select :doe, "date", { :start_year => Date.today.year - (Date.today.year-2018), :end_year => Date.today.year, order: [:day, :month, :year], :default => date_last }  %>
+        <% end %>
+        <br>
+        <br>
+        <%= submit_tag 'Restreindre' %>
+        <%#= submit_tag 'Detail User' , :formtarget => "_blank", data: { disable_with: false } %>
+    <% end %>
+    <%#= @params %>
+    <!--<br>-->
+    <%#= @params[:dob] %>
+    <!--<br>-->
+    <%#= @params[:dob]["date(1i)"] %>
+    <!--<br>-->
+    <%#= @params[:doe] %>
+    <!--<br>-->
+    <%#= date_first.year %>
+    <%#= Date.today.year %>
+    <%#= datetime_select :dob2, {}, { start_year: Date.today.year - 5, :end_year => Date.today.year, order: [:day, :month, :year] }  %>
+    <%#= params[:id] %>
+    <%#= form_for @user, url: admin_stats_path do %>
+        <%#= select_tag :id , options_for_select(@user_select, ""), include_blank: false, :multiple => false  %>    
+        <%#= submit_tag 'Detail User' , :formtarget => "_blank", data: { disable_with: false } %>    
+    <%# end %>
+    
+    
+    <%#= submit_tag 'Detail User' , :formtarget => "my_iframe" %>    
+    
+    
+    
+    <%#= form_with model: @person do |person_form| %>
+    <%# @usersall = User.all %>
+    <%#= simple_form_for @usersall do |f| %>
+       <%#= f.input :username, :collection => @usersall.id,:include_blank => false %>
+       <%#= f.button :submit %>
+    <%#end%>    
+    <%#= @user_select %>
+    <!-- <iframe name="my_iframe"></iframe> -->
+    
     <h2 class="aa-legal-titre">Reporting Tags All Users</h1>
     
     <%# @somehash = {} %>
@@ -429,7 +519,7 @@
       @couleur_to_name[cat.id] = cat.couleur_dominante
     end 
     #Reporting.all.where(origin: "annonces search").each do |r|
-    Reporting.all.where(userid: 0).each do |r|
+    @allreporting.where(userid: 0).each do |r|
       parsedvar = JSON.parse r.params.gsub('=>', ':')
       unless parsedvar["categorie_search2"].nil?
           parsedvar["categorie_search2"].each {|cat| @categorie_all << cat }
@@ -442,7 +532,7 @@
       end    
     end
     
-    Reporting.all.where(userid: 0).where(origin: "annonces search").each do |r|
+    @allreporting.where(userid: 0).where(origin: "annonces search").each do |r|
       parsedvar = JSON.parse r.params.gsub('=>', ':')
       unless parsedvar["categorie_search2"].nil?
           parsedvar["categorie_search2"].each {|cat| @categorie_search << cat }
@@ -455,7 +545,7 @@
       end    
     end
     
-    Reporting.all.where(userid: 0).where(origin: "annonces show").each do |r|
+    @allreporting.where(userid: 0).where(origin: "annonces show").each do |r|
       parsedvar = JSON.parse r.params.gsub('=>', ':')
       unless parsedvar["categorie_search2"].nil?
           parsedvar["categorie_search2"].each {|cat| @categorie_annonce << cat }
