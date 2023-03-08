@@ -3536,274 +3536,279 @@ body {
 
 <br><br><br><br><br><br><br><br><br><br>
 
-
-<main class="aa-cgu">
-    <h2 class="aa-legal-titre">Reporting Tags <%= @user.username %> </h2>
-    <%# @somehash = {} %>
-    <%# Reporting.all.where(origin: "annonces search").each do |r| %>
-    <%# Reporting.all.where(origin: "annonces search").first(2).last.each do |r| %>
-    
-        <%# @somehash = Reporting.all.where(origin: "annonces search").first(2).last.params  %>
-        <%# @somehash = Reporting.all.where(origin: "annonces search").last.params  %>
-        <%# @somehashfs = JSON.parse @somehash.gsub('=>', ':') %>
-        <%#= @somehashfs["categorie_search2"] %> 
+<div id="active_admin_content" class="without_sidebar">
+  <div id="main_content_wrapper">
+    <div id="main_content">  
+    <main class="aa-cgu">
+        <h2 class="aa-legal-titre">Reporting Tags <%= @user.username %> </h2>
+        <%# @somehash = {} %>
+        <%# Reporting.all.where(origin: "annonces search").each do |r| %>
+        <%# Reporting.all.where(origin: "annonces search").first(2).last.each do |r| %>
         
-    <%# @categorie = [] %>
-    <%# Reporting.all.where(origin: "annonces search").each do |r| %>
-        <%# somevar = JSON.parse r.params.gsub('=>', ':') %>
-        <%# unless somevar["categorie_search2"].nil?  %>
-            <%# somevar["categorie_search2"].each {|cat| @categorie << cat } %>
-            <%# @categorie << somevar["categorie_search2"]  %>
+            <%# @somehash = Reporting.all.where(origin: "annonces search").first(2).last.params  %>
+            <%# @somehash = Reporting.all.where(origin: "annonces search").last.params  %>
+            <%# @somehashfs = JSON.parse @somehash.gsub('=>', ':') %>
+            <%#= @somehashfs["categorie_search2"] %> 
+            
+        <%# @categorie = [] %>
+        <%# Reporting.all.where(origin: "annonces search").each do |r| %>
+            <%# somevar = JSON.parse r.params.gsub('=>', ':') %>
+            <%# unless somevar["categorie_search2"].nil?  %>
+                <%# somevar["categorie_search2"].each {|cat| @categorie << cat } %>
+                <%# @categorie << somevar["categorie_search2"]  %>
+            <%# end %>
         <%# end %>
-    <%# end %>
-    <%# @cattoname = [] %>
-    <%# Categorie.all.each do |cat| %>
-        <%#= cat.id %>
-       <%# @cattoname[:cat.id] = cat.name  %>
-       <%# @cattoname[cat.id] = cat.name  %>
-    <%# end %>
-    
-    <%#= @categorie %>   
-    <%# @categorie.each do |cat| %>
-        <%#= @cattoname[cat.to_i] %>
-    <%# end %>
-    <% @countcategorie =  @categorie_all.group_by(&:itself).transform_values(&:count) %>
-    <% @countcourant =  @courant_all.group_by(&:itself).transform_values(&:count) %>
-    <% @countcouleur =  @couleur_all.group_by(&:itself).transform_values(&:count) %>
-    
-    <% @countcategorie_search =  @categorie_search.group_by(&:itself).transform_values(&:count) %>
-    <% @countcourant_search =  @courant_search.group_by(&:itself).transform_values(&:count) %>
-    <% @countcouleur_search =  @couleur_search.group_by(&:itself).transform_values(&:count) %>    
-    
-    <% @countcategorie_annonce =  @categorie_annonce.group_by(&:itself).transform_values(&:count) %>
-    <% @countcourant_annonce =  @courant_annonce.group_by(&:itself).transform_values(&:count) %>
-    <% @countcouleur_annonce =  @couleur_annonce.group_by(&:itself).transform_values(&:count) %>      
-    
-    <table id="customers">
-        <thead>
-            <tr>
-                <th style="text-align: center" >Catégories</th>
-                <% @cat_to_name.each do |catname| %>
-                    <% if catname.is_a?(String) then %>
-                        <th style="text-align: center" >
-                            <%= catname %>
-                        </th>
+        <%# @cattoname = [] %>
+        <%# Categorie.all.each do |cat| %>
+            <%#= cat.id %>
+           <%# @cattoname[:cat.id] = cat.name  %>
+           <%# @cattoname[cat.id] = cat.name  %>
+        <%# end %>
+        
+        <%#= @categorie %>   
+        <%# @categorie.each do |cat| %>
+            <%#= @cattoname[cat.to_i] %>
+        <%# end %>
+        <% @countcategorie =  @categorie_all.group_by(&:itself).transform_values(&:count) %>
+        <% @countcourant =  @courant_all.group_by(&:itself).transform_values(&:count) %>
+        <% @countcouleur =  @couleur_all.group_by(&:itself).transform_values(&:count) %>
+        
+        <% @countcategorie_search =  @categorie_search.group_by(&:itself).transform_values(&:count) %>
+        <% @countcourant_search =  @courant_search.group_by(&:itself).transform_values(&:count) %>
+        <% @countcouleur_search =  @couleur_search.group_by(&:itself).transform_values(&:count) %>    
+        
+        <% @countcategorie_annonce =  @categorie_annonce.group_by(&:itself).transform_values(&:count) %>
+        <% @countcourant_annonce =  @courant_annonce.group_by(&:itself).transform_values(&:count) %>
+        <% @countcouleur_annonce =  @couleur_annonce.group_by(&:itself).transform_values(&:count) %>      
+        
+        <table id="customers">
+            <thead>
+                <tr>
+                    <th style="text-align: center" >Catégories</th>
+                    <% @cat_to_name.each do |catname| %>
+                        <% if catname.is_a?(String) then %>
+                            <th style="text-align: center" >
+                                <%= catname %>
+                            </th>
+                        <% end %>
                     <% end %>
-                <% end %>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td style="text-align: center" >ALL</td>
-                <% @cat_to_name.each_with_index do |catname,index| %>
-                    <% if catname.is_a?(String) then %>
-                        <td style="text-align: center" >
-                            <%#= catname %>
-                            <%#= index %>
-                            <% if  @countcategorie[index.to_s].is_a?(Integer) then %>
-                                <%= @countcategorie[index.to_s]  %>
-                            <% else %>
-                                <%= 0 %>
-                            <% end %>
-                            
-                        </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center" >ALL</td>
+                    <% @cat_to_name.each_with_index do |catname,index| %>
+                        <% if catname.is_a?(String) then %>
+                            <td style="text-align: center" >
+                                <%#= catname %>
+                                <%#= index %>
+                                <% if  @countcategorie[index.to_s].is_a?(Integer) then %>
+                                    <%= @countcategorie[index.to_s]  %>
+                                <% else %>
+                                    <%= 0 %>
+                                <% end %>
+                                
+                            </td>
+                        <% end %>
+                    <% end %>            
+                </tr>
+                <tr>
+                    <td style="text-align: center" >Search</td>
+                    <% @cat_to_name.each_with_index do |catname,index| %>
+                        <% if catname.is_a?(String) then %>
+                            <td style="text-align: center" >
+                                <%#= catname %>
+                                <%#= index %>
+                                <% if  @countcategorie_search[index.to_s].is_a?(Integer) then %>
+                                    <%= @countcategorie_search[index.to_s]  %>
+                                <% else %>
+                                    <%= 0 %>
+                                <% end %>
+                                
+                            </td>
+                        <% end %>
+                    <% end %>                 
+                </tr>
+                <tr>
+                    <td style="text-align: center" >Annonces</td>
+                    <% @cat_to_name.each_with_index do |catname,index| %>
+                        <% if catname.is_a?(String) then %>
+                            <td style="text-align: center" >
+                                <%#= catname %>
+                                <%#= index %>
+                                <% if  @countcategorie_annonce[index.to_s].is_a?(Integer) then %>
+                                    <%= @countcategorie_annonce[index.to_s]  %>
+                                <% else %>
+                                    <%= 0 %>
+                                <% end %>
+                                
+                            </td>
+                        <% end %>
+                    <% end %>                
+                </tr>
+            </tbody>
+        </table>
+        
+        <br>
+        
+        <table id="customers">
+            <thead>
+                <tr>
+                    <th style="text-align: center" >Courants</th>
+                    <% @courant_to_name.each do |catname| %>
+                        <% if catname.is_a?(String) then %>
+                            <th style="text-align: center" >
+                                <%= catname %>
+                            </th>
+                        <% end %>
                     <% end %>
-                <% end %>            
-            </tr>
-            <tr>
-                <td style="text-align: center" >Search</td>
-                <% @cat_to_name.each_with_index do |catname,index| %>
-                    <% if catname.is_a?(String) then %>
-                        <td style="text-align: center" >
-                            <%#= catname %>
-                            <%#= index %>
-                            <% if  @countcategorie_search[index.to_s].is_a?(Integer) then %>
-                                <%= @countcategorie_search[index.to_s]  %>
-                            <% else %>
-                                <%= 0 %>
-                            <% end %>
-                            
-                        </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center" >ALL</td>
+                    <% @courant_to_name.each_with_index do |catname,index| %>
+                        <% if catname.is_a?(String) then %>
+                            <td style="text-align: center" >
+                                <%#= catname %>
+                                <%#= index %>
+                                <% if  @countcourant[index.to_s].is_a?(Integer) then %>
+                                    <%= @countcourant[index.to_s]  %>
+                                <% else %>
+                                    <%= 0 %>
+                                <% end %>
+                                
+                            </td>
+                        <% end %>
+                    <% end %>            
+                </tr>
+                <tr>
+                    <td style="text-align: center" >Search</td>
+                    <% @courant_to_name.each_with_index do |catname,index| %>
+                        <% if catname.is_a?(String) then %>
+                            <td style="text-align: center" >
+                                <%#= catname %>
+                                <%#= index %>
+                                <% if  @countcourant_search[index.to_s].is_a?(Integer) then %>
+                                    <%= @countcourant_search[index.to_s]  %>
+                                <% else %>
+                                    <%= 0 %>
+                                <% end %>
+                                
+                            </td>
+                        <% end %>
+                    <% end %>                    
+                </tr>
+                <tr>
+                    <td style="text-align: center" >Annonces</td>
+                    <% @courant_to_name.each_with_index do |catname,index| %>
+                        <% if catname.is_a?(String) then %>
+                            <td style="text-align: center" >
+                                <%#= catname %>
+                                <%#= index %>
+                                <% if  @countcourant_annonce[index.to_s].is_a?(Integer) then %>
+                                    <%= @countcourant_annonce[index.to_s]  %>
+                                <% else %>
+                                    <%= 0 %>
+                                <% end %>
+                                
+                            </td>
+                        <% end %>
+                    <% end %>                  
+                </tr>
+            </tbody>
+        </table>    
+        
+        <br>
+        
+        <table id="customers">
+            <thead>
+                <tr>
+                    <th style="text-align: center" >Couleur</th>
+                    <% @couleur_to_name.each do |catname| %>
+                        <% if catname.is_a?(String) then %>
+                            <th style="text-align: center" >
+                                <%= catname %>
+                            </th>
+                        <% end %>
                     <% end %>
-                <% end %>                 
-            </tr>
-            <tr>
-                <td style="text-align: center" >Annonces</td>
-                <% @cat_to_name.each_with_index do |catname,index| %>
-                    <% if catname.is_a?(String) then %>
-                        <td style="text-align: center" >
-                            <%#= catname %>
-                            <%#= index %>
-                            <% if  @countcategorie_annonce[index.to_s].is_a?(Integer) then %>
-                                <%= @countcategorie_annonce[index.to_s]  %>
-                            <% else %>
-                                <%= 0 %>
-                            <% end %>
-                            
-                        </td>
-                    <% end %>
-                <% end %>                
-            </tr>
-        </tbody>
-    </table>
-    
-    <br>
-    
-    <table id="customers">
-        <thead>
-            <tr>
-                <th style="text-align: center" >Courants</th>
-                <% @courant_to_name.each do |catname| %>
-                    <% if catname.is_a?(String) then %>
-                        <th style="text-align: center" >
-                            <%= catname %>
-                        </th>
-                    <% end %>
-                <% end %>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td style="text-align: center" >ALL</td>
-                <% @courant_to_name.each_with_index do |catname,index| %>
-                    <% if catname.is_a?(String) then %>
-                        <td style="text-align: center" >
-                            <%#= catname %>
-                            <%#= index %>
-                            <% if  @countcourant[index.to_s].is_a?(Integer) then %>
-                                <%= @countcourant[index.to_s]  %>
-                            <% else %>
-                                <%= 0 %>
-                            <% end %>
-                            
-                        </td>
-                    <% end %>
-                <% end %>            
-            </tr>
-            <tr>
-                <td style="text-align: center" >Search</td>
-                <% @courant_to_name.each_with_index do |catname,index| %>
-                    <% if catname.is_a?(String) then %>
-                        <td style="text-align: center" >
-                            <%#= catname %>
-                            <%#= index %>
-                            <% if  @countcourant_search[index.to_s].is_a?(Integer) then %>
-                                <%= @countcourant_search[index.to_s]  %>
-                            <% else %>
-                                <%= 0 %>
-                            <% end %>
-                            
-                        </td>
-                    <% end %>
-                <% end %>                    
-            </tr>
-            <tr>
-                <td style="text-align: center" >Annonces</td>
-                <% @courant_to_name.each_with_index do |catname,index| %>
-                    <% if catname.is_a?(String) then %>
-                        <td style="text-align: center" >
-                            <%#= catname %>
-                            <%#= index %>
-                            <% if  @countcourant_annonce[index.to_s].is_a?(Integer) then %>
-                                <%= @countcourant_annonce[index.to_s]  %>
-                            <% else %>
-                                <%= 0 %>
-                            <% end %>
-                            
-                        </td>
-                    <% end %>
-                <% end %>                  
-            </tr>
-        </tbody>
-    </table>    
-    
-    <br>
-    
-    <table id="customers">
-        <thead>
-            <tr>
-                <th style="text-align: center" >Couleur</th>
-                <% @couleur_to_name.each do |catname| %>
-                    <% if catname.is_a?(String) then %>
-                        <th style="text-align: center" >
-                            <%= catname %>
-                        </th>
-                    <% end %>
-                <% end %>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td style="text-align: center" >ALL</td>
-                <% @couleur_to_name.each_with_index do |catname,index| %>
-                    <% if catname.is_a?(String) then %>
-                        <td style="text-align: center" >
-                            <%#= catname %>
-                            <%#= index %>
-                            <% if  @countcouleur[index.to_s].is_a?(Integer) then %>
-                                <%= @countcouleur[index.to_s]  %>
-                            <% else %>
-                                <%= 0 %>
-                            <% end %>
-                            
-                        </td>
-                    <% end %>
-                <% end %>            
-            </tr>
-            <tr>
-                <td style="text-align: center" >Search</td>
-                <% @couleur_to_name.each_with_index do |catname,index| %>
-                    <% if catname.is_a?(String) then %>
-                        <td style="text-align: center" >
-                            <%#= catname %>
-                            <%#= index %>
-                            <% if  @countcouleur_search[index.to_s].is_a?(Integer) then %>
-                                <%= @countcouleur_search[index.to_s]  %>
-                            <% else %>
-                                <%= 0 %>
-                            <% end %>
-                            
-                        </td>
-                    <% end %>
-                <% end %>                   
-            </tr>
-            <tr>
-                <td style="text-align: center" >Annonces</td>
-                <% @couleur_to_name.each_with_index do |catname,index| %>
-                    <% if catname.is_a?(String) then %>
-                        <td style="text-align: center" >
-                            <%#= catname %>
-                            <%#= index %>
-                            <% if  @countcouleur_annonce[index.to_s].is_a?(Integer) then %>
-                                <%= @countcouleur_annonce[index.to_s]  %>
-                            <% else %>
-                                <%= 0 %>
-                            <% end %>
-                            
-                        </td>
-                    <% end %>
-                <% end %>                  
-            </tr>
-        </tbody>
-    </table>     
-    
-    <%#= @countcategorie %>
-    <%# @countcategorie.each do |count| %>
-        <%#= @cat_to_name[count[0].to_i] %>  <%#= count[1] %> <br>
-    <%# end %>
-    <br>
-    
-    <%# @countcourant.each do |count| %>
-        <%#= @courant_to_name[count[0].to_i] %>  <%#= count[1] %> <br>
-    <%# end %>
-    <br>
-    
-    <%# @countcouleur.each do |count| %>
-        <%#= @couleur_to_name[count[0].to_i] %>  <%#= count[1] %> <br>
-    <%# end %>
-    <br>
-    
-    
-    <%#= @cattoname %>
-</main>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center" >ALL</td>
+                    <% @couleur_to_name.each_with_index do |catname,index| %>
+                        <% if catname.is_a?(String) then %>
+                            <td style="text-align: center" >
+                                <%#= catname %>
+                                <%#= index %>
+                                <% if  @countcouleur[index.to_s].is_a?(Integer) then %>
+                                    <%= @countcouleur[index.to_s]  %>
+                                <% else %>
+                                    <%= 0 %>
+                                <% end %>
+                                
+                            </td>
+                        <% end %>
+                    <% end %>            
+                </tr>
+                <tr>
+                    <td style="text-align: center" >Search</td>
+                    <% @couleur_to_name.each_with_index do |catname,index| %>
+                        <% if catname.is_a?(String) then %>
+                            <td style="text-align: center" >
+                                <%#= catname %>
+                                <%#= index %>
+                                <% if  @countcouleur_search[index.to_s].is_a?(Integer) then %>
+                                    <%= @countcouleur_search[index.to_s]  %>
+                                <% else %>
+                                    <%= 0 %>
+                                <% end %>
+                                
+                            </td>
+                        <% end %>
+                    <% end %>                   
+                </tr>
+                <tr>
+                    <td style="text-align: center" >Annonces</td>
+                    <% @couleur_to_name.each_with_index do |catname,index| %>
+                        <% if catname.is_a?(String) then %>
+                            <td style="text-align: center" >
+                                <%#= catname %>
+                                <%#= index %>
+                                <% if  @countcouleur_annonce[index.to_s].is_a?(Integer) then %>
+                                    <%= @countcouleur_annonce[index.to_s]  %>
+                                <% else %>
+                                    <%= 0 %>
+                                <% end %>
+                                
+                            </td>
+                        <% end %>
+                    <% end %>                  
+                </tr>
+            </tbody>
+        </table>     
+        
+        <%#= @countcategorie %>
+        <%# @countcategorie.each do |count| %>
+            <%#= @cat_to_name[count[0].to_i] %>  <%#= count[1] %> <br>
+        <%# end %>
+        <br>
+        
+        <%# @countcourant.each do |count| %>
+            <%#= @courant_to_name[count[0].to_i] %>  <%#= count[1] %> <br>
+        <%# end %>
+        <br>
+        
+        <%# @countcouleur.each do |count| %>
+            <%#= @couleur_to_name[count[0].to_i] %>  <%#= count[1] %> <br>
+        <%# end %>
+        <br>
+        
+        
+        <%#= @cattoname %>
+    </main>
+    </div>
+  </div>
+</div>
 </body></html>
