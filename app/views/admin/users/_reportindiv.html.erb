@@ -3409,7 +3409,36 @@ body {
   font-size: 72%;
   background: #FFF;
   color: #323537;
-}    
+}
+
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  /*width: 100% !important; */
+  width: auto !important;
+  font-size: 11.5px !important;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left ;
+  /*background-color: #04AA6D;*/
+  background-color: #6a7176 ;
+  color: white ;
+
+}
+
+    
 </style>
 </head>
   <body class="show admin_users active_admin logged_in admin_namespace">
@@ -3509,7 +3538,7 @@ body {
 
 
 <main class="aa-cgu">
-    <h1 class="aa-legal-titre">Reporting Tags <%= @user.username %> </h1>
+    <h2 class="aa-legal-titre">Reporting Tags <%= @user.username %> </h2>
     <%# @somehash = {} %>
     <%# Reporting.all.where(origin: "annonces search").each do |r| %>
     <%# Reporting.all.where(origin: "annonces search").first(2).last.each do |r| %>
@@ -3550,15 +3579,15 @@ body {
     <% @countcourant_annonce =  @courant_annonce.group_by(&:itself).transform_values(&:count) %>
     <% @countcouleur_annonce =  @couleur_annonce.group_by(&:itself).transform_values(&:count) %>      
     
-    <table>
+    <table id="customers">
         <thead>
             <tr>
-                <td style="text-align: center" >Catégories</td>
+                <th style="text-align: center" >Catégories</th>
                 <% @cat_to_name.each do |catname| %>
                     <% if catname.is_a?(String) then %>
-                        <td style="text-align: center" >
+                        <th style="text-align: center" >
                             <%= catname %>
-                        </td>
+                        </th>
                     <% end %>
                 <% end %>
             </tr>
@@ -3620,15 +3649,15 @@ body {
     
     <br>
     
-    <table>
+    <table id="customers">
         <thead>
             <tr>
-                <td style="text-align: center" >Courants</td>
+                <th style="text-align: center" >Courants</th>
                 <% @courant_to_name.each do |catname| %>
                     <% if catname.is_a?(String) then %>
-                        <td style="text-align: center" >
+                        <th style="text-align: center" >
                             <%= catname %>
-                        </td>
+                        </th>
                     <% end %>
                 <% end %>
             </tr>
@@ -3690,15 +3719,15 @@ body {
     
     <br>
     
-    <table>
+    <table id="customers">
         <thead>
             <tr>
-                <td style="text-align: center" >Couleur</td>
+                <th style="text-align: center" >Couleur</th>
                 <% @couleur_to_name.each do |catname| %>
                     <% if catname.is_a?(String) then %>
-                        <td style="text-align: center" >
+                        <th style="text-align: center" >
                             <%= catname %>
-                        </td>
+                        </th>
                     <% end %>
                 <% end %>
             </tr>
